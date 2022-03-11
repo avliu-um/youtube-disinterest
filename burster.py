@@ -18,6 +18,7 @@ MAX_WATCH_SECONDS = 1800
 LOAD_BUFFER_SECONDS = 10
 
 
+# Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
 class Burster(object):
 
     def __init__(self, profile_filepath):
