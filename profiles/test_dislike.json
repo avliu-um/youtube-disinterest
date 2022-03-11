@@ -1,0 +1,15 @@
+{
+  "account_username": "sean.carter.99.test",
+  "account_password": "99problems",
+  "run_id": 2,
+  "seed_videos": [],
+  "seed_category": "L",
+  "burst_videos": [
+    "1-N13bIizIU",
+    "1-N13bIizIU"
+  ],
+  "burst_category": "R",
+  "burst_method": "dislike",
+  "limit_type": "time",
+  "limit_number": "60"
+}

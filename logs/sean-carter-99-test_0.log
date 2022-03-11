@@ -1,0 +1,15 @@
+2022-03-10 22:31:56,063 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-03-10 22:32:37,067 - INFO - Login succeeded at attempt #1
+2022-03-10 22:32:37,068 - INFO - Creating a filter bubble.
+2022-03-10 22:32:37,068 - INFO - Loading homepage.
+2022-03-10 22:32:52,936 - INFO - Recommended videos: ['SuQU3BtsiNc', 'ULdkpU51hTQ', 'e5zQaOmZJBM', 'V9KZGs1MtP4', 'zT3w_NvNFlM', 'wcYQzzTT73Y', 'oznAFplzZJA', 'aOcAqCvH66Q', 'ul0sSjf9wAQ', 'CcIwt2bRDkc']
+2022-03-10 22:32:57,962 - INFO - Loading video ID omsP26Y9wXk.
+2022-03-10 22:33:10,510 - INFO - Recommended videos: ['fVn0aYHA3cA', 'vOpzwBx6hK8', 'OeP4FFr88SQ', 'XPeeCyJReZw', 'K3odScka55A', 'cT_dQGk_5Iw', 'k25wAeh4xg0', 'CI3J4SK15kA', 'fWvKvOViM3g', 'frAbNbQZyaA']
+2022-03-10 22:33:10,739 - INFO - Watching video for 155 seconds.
+2022-03-10 22:35:45,740 - INFO - Moving to bursting stage.
+2022-03-10 22:35:50,748 - INFO - Loading homepage.
+2022-03-10 22:36:02,134 - INFO - Recommended videos: ['SuQU3BtsiNc', 'ULdkpU51hTQ', 'wcYQzzTT73Y', '--OnclX8yac', 'JsPHKDuP-Hk', 'e5zQaOmZJBM', 'CejhQC9hUO8', 'jNhh-OLzWlE', 'l6IYeBD0MFI', 'lj5GXZaE7qs']
+2022-03-10 22:36:07,148 - INFO - Loading video ID 3UwtCFh7SAc.
+2022-03-10 22:36:19,307 - INFO - Recommended videos: ['kbMX4dQZURA', 'hkPTHGVnbUw', 'VYFGv7Y4yEU', 'rNaIMC4XMhc', 'C6iWa-yhyew', 'hm5VrEWg7cQ', 'dliwHc6VR3w', 'ucPoLHSav7A', 'sM5WNEEx5zY', 'ysZ4bGg-nNw']
+2022-03-10 22:36:24,623 - INFO - Watching video for 102 seconds.
+2022-03-10 22:38:06,625 - INFO - Done.

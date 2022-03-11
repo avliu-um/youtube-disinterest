@@ -1,0 +1,18 @@
+2022-03-10 22:52:11,982 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-03-10 22:52:56,488 - INFO - Login succeeded at attempt #1
+2022-03-10 22:52:56,489 - INFO - Creating a filter bubble.
+2022-03-10 22:52:56,489 - INFO - Moving to bursting stage.
+2022-03-10 22:53:01,494 - INFO - Loading homepage.
+2022-03-10 22:53:15,270 - INFO - Recommended videos: ['eLV9DACWRdc', 'ULdkpU51hTQ', 'seJSm-vD9OA', 'CejhQC9hUO8', 'aOcAqCvH66Q', 'e5zQaOmZJBM', 'SuQU3BtsiNc', 'gYSMus3ypKY', 'wcYQzzTT73Y', '_f8_3YhNbnc']
+2022-03-10 22:53:20,285 - INFO - Loading video ID Gsz3mrnIBd0.
+2022-03-10 22:53:34,616 - INFO - Recommended videos: ['sgn7VfXH2GY', 'gByn-Orq9l8', 'tT9Eh8wNMkw', 'EHeOxVwFyOw', 'OjWE6rHxSDc', 'SnlcP_rgRhM', 'WErBeIEmIHI', 'ej6gfL4yF4E', 'w2Zl9hm9VFE', 'CpB7-8SGlJ0']
+2022-03-10 22:53:39,856 - INFO - Attempting to press the subscribe button.
+2022-03-10 22:53:40,060 - INFO - Success at attempt #1
+2022-03-10 22:53:45,065 - INFO - Loading homepage.
+2022-03-10 22:53:56,652 - INFO - Recommended videos: ['eLV9DACWRdc', 'ULdkpU51hTQ', 'r_s-7_JnMQg', 'QPxrA-9CUPQ', 'aOcAqCvH66Q', 'e5zQaOmZJBM', 'Ze1xp9hYDl4', 'AN8Sxu8rmVQ', 'SuQU3BtsiNc', 'lj5GXZaE7qs']
+2022-03-10 22:54:01,659 - INFO - Loading video ID Gsz3mrnIBd0.
+2022-03-10 22:54:13,502 - INFO - Recommended videos: ['gByn-Orq9l8', 'OjWE6rHxSDc', 'tT9Eh8wNMkw', 'WErBeIEmIHI', 'EHeOxVwFyOw', 'sgn7VfXH2GY', '9hjMisX997Y', '_sI_Ps7JSEk', 'dogx8wggnA4', 'LlMht4jXB9A']
+2022-03-10 22:54:18,753 - INFO - Attempting to press the subscribe button.
+2022-03-10 22:54:18,829 - INFO - Button already pressed.
+2022-03-10 22:54:18,829 - INFO - Success at attempt #1
+2022-03-10 22:54:18,829 - INFO - Done.
