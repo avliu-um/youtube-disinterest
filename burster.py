@@ -41,6 +41,7 @@ class Burster(object):
             """
             Initialize Selenium webdriver with Chrome options.
             """
+            # TODO: Use OS Join
             adblock_filepath = 'conf/webdriver/adblock.crx'
             if sys.platform == 'win32':
                 driver_path = 'conf/webdriver/chromedriver.exe'
@@ -58,6 +59,19 @@ class Burster(object):
             chrome_options.add_extension(adblock_filepath)
             driver = webdriver.Chrome(driver_path, options=chrome_options)
             driver.maximize_window()
+
+            # TODO: This needs testing
+            time.sleep(3)
+            driver.get("chrome://extensions/?id=cjpalhdlnbpafiamejdnhcphjbkeiagm")
+            time.sleep(3)
+            driver.execute_script(
+                "return document.querySelector('extensions-manager').shadowRoot.querySelector('#viewManager > extension"
+                "s-detail-view.active').shadowRoot.querySelector('div#container.page-container > div.page-content > div"
+                "#options-section extensions-toggle-row#allow-incognito').shadowRoot.querySelector('label#label input')"
+                ".click()"
+            )
+            time.sleep(3)
+
             return driver
 
         with open(profile_filepath) as json_file:
@@ -155,9 +169,6 @@ class Burster(object):
         WebDriverWait(self.driver, login_wait_secs).until(
             EC.element_to_be_clickable((By.ID, 'submit'))
         ).click()
-
-        # TESTING
-        time.sleep(30)
 
     # Copied from Tomlein et al. (2021)
     # An interesting way of checking whether we've logged in or not

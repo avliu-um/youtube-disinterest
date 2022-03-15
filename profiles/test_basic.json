@@ -1,16 +1,12 @@
 {
   "account_username": "sean.carter.99.test",
   "account_password": "99problems",
-  "run_id": 0,
+  "run_id": "basic",
   "seed_videos": [
-    "omsP26Y9wXk",
-    "omsP26Y9wXk",
     "omsP26Y9wXk"
   ],
   "seed_category": "L",
   "burst_videos": [
-    "3UwtCFh7SAc",
-    "3UwtCFh7SAc",
     "3UwtCFh7SAc"
   ],
   "burst_category": "R",

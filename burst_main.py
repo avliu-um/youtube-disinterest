@@ -7,6 +7,7 @@ def burst_experiment(profile_filepath):
     bot = Burster(profile_filepath)
     if bot.has_account:
         bot.login()
+    time.sleep(5)
 
     bot.log('Creating a filter bubble.')
 
