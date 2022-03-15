@@ -5,7 +5,8 @@ import argparse
 
 def burst_experiment(profile_filepath):
     bot = Burster(profile_filepath)
-    bot.login()
+    if bot.has_account:
+        bot.login()
 
     bot.log('Creating a filter bubble.')
 

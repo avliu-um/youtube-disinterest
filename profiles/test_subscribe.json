@@ -11,5 +11,6 @@
   "burst_category": "R",
   "burst_method": "subscribe",
   "limit_type": "time",
-  "limit_number": "60"
+  "limit_number": "60",
+  "chrome_arguments": []
 }

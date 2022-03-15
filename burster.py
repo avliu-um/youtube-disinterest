@@ -37,7 +37,7 @@ class Burster(object):
             logger.setLevel(logging.INFO)
             return logger
 
-        def __get_driver(headless=False):
+        def __get_driver(chrome_arguments):
             """
             Initialize Selenium webdriver with Chrome options.
             """
@@ -51,8 +51,9 @@ class Burster(object):
 
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument('--mute-audio')
-            if headless:
-                chrome_options.add_argument('--headless')
+
+            for chrome_argument in chrome_arguments:
+                chrome_options.add_argument(chrome_argument)
 
             chrome_options.add_extension(adblock_filepath)
             driver = webdriver.Chrome(driver_path, options=chrome_options)
@@ -61,8 +62,14 @@ class Burster(object):
 
         with open(profile_filepath) as json_file:
             profile = json.load(json_file)
+
             self.account_username = profile['account_username']
             self.account_password = profile['account_password']
+
+            self.has_account = False
+            if self.account_username and self.account_password:
+                self.has_account = True
+
             self.seed_videos = profile['seed_videos']
             self.seed_category = profile['seed_category']
             self.burst_videos = profile['burst_videos']
@@ -71,19 +78,23 @@ class Burster(object):
             self.limit_type = profile['limit_type']
             self.limit_number = profile['limit_number']
             self.run_id = profile['run_id']
+            self.chrome_arguments = profile['chrome_arguments']
 
         self.phase = "create"
         self.level = 0
 
-        # e.g. 'test.yt.username' --> 'test-yt-username'
-        filename = '{0}_{1}'.format(self.account_username, self.run_id)
-        filename = filename.replace('.', '-')
+        if 'filename' in profile.keys():
+            filename = profile['filename']
+        else:
+            # e.g. 'test.yt.username' --> 'test-yt-username'
+            filename = self.account_username
+        filename = '{0}_{1}'.format(filename, self.run_id).replace('.', '-')
         self.results_filepath = os.path.join('.', 'results', '{0}.csv'.format(filename))
         self.log_filepath = os.path.join('.', 'logs', '{0}.log'.format(filename))
 
         open(self.results_filepath, 'x')
         self.logger = __get_logger(self.log_filepath)
-        self.driver = __get_driver()
+        self.driver = __get_driver(self.chrome_arguments)
 
     def log(self, message):
         """
@@ -266,8 +277,11 @@ class Burster(object):
         rank = 0
         video_suggestions = secondary_results['secondaryResults']['results']
         # New as of 3/2/2021: Filtering recommendations by "chips", e.g. 'All', 'Listenable', 'Related'...
-        # Getting true video_suggestions has changed a bit
-        video_suggestions = video_suggestions[1]['itemSectionRenderer']['contents']
+        try:
+            video_suggestions = video_suggestions[1]['itemSectionRenderer']['contents']
+        # We need this in the case of Incognito, when there are no rec filters
+        except KeyError:
+            video_suggestions = secondary_results['secondaryResults']['results']
         for rec in video_suggestions:
             # 0 indexed
             if rank > max_recs-1:

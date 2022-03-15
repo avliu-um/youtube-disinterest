@@ -11,5 +11,7 @@
   "burst_category": "R",
   "burst_method": "dislike",
   "limit_type": "time",
-  "limit_number": "60"
+  "limit_number": "60",
+  "chrome_arguments": []
+
 }
