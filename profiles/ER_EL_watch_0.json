@@ -1,0 +1,26 @@
+{
+  "account_username": "sean.carter.99.test",
+  "account_password": "99problems",
+  "filename": "ER_EL_watch",
+  "run_id": 0,
+  "seed_videos": [
+    "tCuhILOgrMM",
+    "NRkbJsea2xw",
+    "rJboGx6pZXA",
+    "Xk2dfSFHrqQ",
+    "hpyQKeS-62I"
+  ],
+  "seed_category": "ER",
+  "burst_videos": [
+    "yICSRPQnYlM",
+    "LyPTfSyVOwE",
+    "UkEq5BikkrM",
+    "38QbLe5rMhg",
+    "vo9HrjKwvjk"
+  ],
+  "burst_category": "EL",
+  "burst_method": "watch",
+  "limit_type": "time",
+  "limit_number": "60",
+  "chrome_arguments": []
+}

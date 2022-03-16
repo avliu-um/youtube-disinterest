@@ -1,0 +1,55 @@
+2022-03-16 15:51:41,797 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-03-16 15:51:52,833 - INFO - Login succeeded at attempt #1
+2022-03-16 15:51:57,835 - INFO - Creating a filter bubble.
+2022-03-16 15:51:57,836 - INFO - Loading homepage.
+2022-03-16 15:52:11,810 - INFO - Recommended videos: ['9CdY7t5VKIY', 'aOcAqCvH66Q', 'hg-HbRIk0xM', 'KM36zdNUzZk', 'oznAFplzZJA', '2oLl8NLtels', 'DSCkYRTjlNw', '8EMBZGl-UgQ', 'H9-ekUCFCr0', 'nP9zoP3km7g']
+2022-03-16 15:52:16,822 - INFO - Loading video ID tCuhILOgrMM.
+2022-03-16 15:52:28,735 - INFO - Recommended videos: ['zGwcZEN0tJU', 'pu5GKwygrKM', '9voZnLhXFL4', 'YZFnHFMDkWI', 'OeP4FFr88SQ', 'csgXgAytdv4', 'FeGr87SfEE0', 't5xqzEzkcj0', 't_TGEmwUUgg', 'E21NATEP9QI']
+2022-03-16 15:52:28,943 - INFO - Watching video for 381 seconds.
+2022-03-16 15:58:49,935 - INFO - Loading homepage.
+2022-03-16 15:59:01,591 - INFO - Recommended videos: ['kp36H_LZa2U', 'ULdkpU51hTQ', 'aOcAqCvH66Q', '9voZnLhXFL4', 'DSCkYRTjlNw', '2aadrXH6oic', '7eOnu19E3vU', 'pRVFeLYQyuM', 'nP9zoP3km7g', 'LGQVn8nsvN0']
+2022-03-16 15:59:06,601 - INFO - Loading video ID NRkbJsea2xw.
+2022-03-16 15:59:18,353 - INFO - Recommended videos: ['sblnbcoCN8A', 'lxASOQqWFrY', 'vfJ2bpDrW6k', 'EMK43WNG4JE', 'XV5voabNkso', 'O2TQ2ehSsKs', 'GJpZjG07QFE', 'HdKK3XtUnFY', 'pCD-X1fdx1Y', 'W-h9kXXOMzQ']
+2022-03-16 15:59:18,578 - INFO - Watching video for 75 seconds.
+2022-03-16 16:00:33,581 - INFO - Loading homepage.
+2022-03-16 16:00:45,686 - INFO - Recommended videos: ['MiSbBdLeA-Q', '7eOnu19E3vU', 'aOcAqCvH66Q', '2oLl8NLtels', '9voZnLhXFL4', 'FfqLxxXLM-4', 'DSGyEsJ17cI', 'ULdkpU51hTQ', 'R7lR1MINzIs', '79U5HV7Pesg']
+2022-03-16 16:00:50,695 - INFO - Loading video ID rJboGx6pZXA.
+2022-03-16 16:01:02,004 - INFO - Recommended videos: ['W_E9iazLKcU', 'sO8Qy9PVzho', 'FeGr87SfEE0', 'uQJWo3QMJBU', '6SFNW5F8K9Y', 'KenjW8m-9jc', 'U-waf5puqaA', 'S1Onniy08AY', 'YqVRcFQagtI', 'SGADnOhvcbY']
+2022-03-16 16:01:02,218 - INFO - Watching video for 647 seconds.
+2022-03-16 16:11:49,203 - INFO - Loading homepage.
+2022-03-16 16:12:00,357 - INFO - Recommended videos: ['cyzmNhWqsx8', 'neV3EPgvZ3g', 'aOcAqCvH66Q', 'ByI8nke4R3A', '9voZnLhXFL4', '2oLl8NLtels', 'ULdkpU51hTQ', 'DSCkYRTjlNw', 'FfqLxxXLM-4', '_FqPnuoQgoM']
+2022-03-16 16:12:05,368 - INFO - Loading video ID Xk2dfSFHrqQ.
+2022-03-16 16:12:16,794 - INFO - Recommended videos: ['fwAuEP1igis', 'OlVUmkZYsn8', 'Kj3EtIvttFk', 'VPe5f5dcrGE', '-1jAOJHvll0', 'OeP4FFr88SQ', 'HiOZQSwj5VU', 'JrMiSQAGOS4', 'HdKK3XtUnFY', 'FeGr87SfEE0']
+2022-03-16 16:12:17,004 - INFO - Watching video for 1790 seconds.
+2022-03-16 16:42:06,948 - INFO - Loading homepage.
+2022-03-16 16:42:18,363 - INFO - Recommended videos: ['lORBbuXHv20', '7eOnu19E3vU', 'aOcAqCvH66Q', 'FfqLxxXLM-4', 'HnqQyfdJTlM', '9voZnLhXFL4', 'ULdkpU51hTQ', 'DSCkYRTjlNw', 'qlM_IFCNgKw', 'LGQVn8nsvN0']
+2022-03-16 16:42:23,372 - INFO - Loading video ID hpyQKeS-62I.
+2022-03-16 16:42:34,706 - INFO - Recommended videos: ['xwuSgA_RzYc', 'yGWhNvTE_fk', 'VVlDpksqras', 'sFtTWfuAdAY', 't5xqzEzkcj0', 'zfaOf70M4xs', 'f8O-9NQqZQo', 'sxU2es2-Bxo', '8kvFtXphmMU', 'ECVxKMBJjJA']
+2022-03-16 16:42:34,915 - INFO - Watching video for 156 seconds.
+2022-03-16 16:45:10,915 - INFO - Moving to bursting stage.
+2022-03-16 16:45:15,918 - INFO - Loading homepage.
+2022-03-16 16:45:26,917 - INFO - Recommended videos: ['0-qAxWMjSKw', '3rmWJAQ0Na4', 'aOcAqCvH66Q', '9voZnLhXFL4', 'gBx4IwYe3L8', 'HnqQyfdJTlM', 'ULdkpU51hTQ', 'yhbDgIVV4-w', 'HM5SMSlDi6A', 'wMi6iKhgdpI']
+2022-03-16 16:45:31,927 - INFO - Loading video ID yICSRPQnYlM.
+2022-03-16 16:45:43,450 - INFO - Recommended videos: ['cPRKsKwEdUQ', 'NReT4f1bXY0', '7oj-PMDjSa4', 'Xy7BbkacIBM', 'pu5GKwygrKM', 'cz8S1sRVz1c', 'xwuSgA_RzYc', 'RYwCxUkQeIQ', 'phsU1vVHOQI', 'BSOtKXV2reo']
+2022-03-16 16:45:48,672 - INFO - Watching video for 93 seconds.
+2022-03-16 16:47:26,675 - INFO - Loading homepage.
+2022-03-16 16:47:37,724 - INFO - Recommended videos: ['0-qAxWMjSKw', 'nP9zoP3km7g', '7eOnu19E3vU', 'lKq4q6lM2T0', 'uq5i_iRc9Eg', '9voZnLhXFL4', '38zRx9AYDHQ', 'neV3EPgvZ3g', 'DSCkYRTjlNw', '2oLl8NLtels']
+2022-03-16 16:47:42,732 - INFO - Loading video ID LyPTfSyVOwE.
+2022-03-16 16:47:54,252 - INFO - Recommended videos: ['Xy7BbkacIBM', 'caNRc1ER8p4', 'NkK7fymVq3c', 'MIxbqz-6qtA', 'L7vTv-FMAPk', 'fJ7El41zXSE', 'bdRf-7pwW48', 'RYwCxUkQeIQ', 'IxAcW7zgAD4', '0bIhD6GzYq4']
+2022-03-16 16:47:59,478 - INFO - Watching video for 107 seconds.
+2022-03-16 16:49:51,484 - INFO - Loading homepage.
+2022-03-16 16:50:03,351 - INFO - Recommended videos: ['0-qAxWMjSKw', 'nP9zoP3km7g', '9voZnLhXFL4', 'YIVoecc9O3w', 'z_4ns_xzlVs', 'DSCkYRTjlNw', 'aOcAqCvH66Q', '-9pTrFJj8tE', '-9pTrFJj8tE', 'q1JEHOC-KNM']
+2022-03-16 16:50:08,360 - INFO - Loading video ID UkEq5BikkrM.
+2022-03-16 16:50:19,840 - INFO - Recommended videos: ['MlzrC-B6n-M', 'Zna1r0rpr8A', 'mPMxlYeeo4w', 'RYwCxUkQeIQ', 'HdKK3XtUnFY', 'oDC8EuSLKLw', 'caNRc1ER8p4', 'vHqnqRvcKF8', 'L7vTv-FMAPk', 'Pb4j2UqkOJ0']
+2022-03-16 16:50:25,072 - INFO - Watching video for 107 seconds.
+2022-03-16 16:52:17,075 - INFO - Loading homepage.
+2022-03-16 16:52:29,069 - INFO - Recommended videos: ['0-qAxWMjSKw', 'nP9zoP3km7g', '9voZnLhXFL4', 'ULdkpU51hTQ', 'GtwZreBfpqY', 'aOcAqCvH66Q', 'DSCkYRTjlNw', 'YfQhxvMTWik', '-9pTrFJj8tE', '-9pTrFJj8tE']
+2022-03-16 16:52:34,079 - INFO - Loading video ID 38QbLe5rMhg.
+2022-03-16 16:52:45,597 - INFO - Recommended videos: ['SJ3SVkhdwdQ', 'HdKK3XtUnFY', 'fJuapp9SORA', 'aA6ew5wSnA0', 'pu5GKwygrKM', 'RYwCxUkQeIQ', '4OvJR_ke5uM', '3K8dNctci1Y', 'Q5D2RvIQwQE', 'L7vTv-FMAPk']
+2022-03-16 16:52:50,814 - INFO - Watching video for 73 seconds.
+2022-03-16 16:54:08,817 - INFO - Loading homepage.
+2022-03-16 16:54:20,649 - INFO - Recommended videos: ['rtED8_9TEhs', 'nP9zoP3km7g', '9voZnLhXFL4', 'KZflkhzzdOQ', 'l0e0GZ3aD_M', 'wUEBBwOS9xw', 'DSCkYRTjlNw', '8rPlrVb00NQ', '-9pTrFJj8tE', '-9pTrFJj8tE']
+2022-03-16 16:54:25,659 - INFO - Loading video ID vo9HrjKwvjk.
+2022-03-16 16:54:37,213 - INFO - Recommended videos: ['KlKeMaDbY48', 'VkFq7MeWQ3U', 'FeGr87SfEE0', 'vs_7pAYRueQ', 'RYwCxUkQeIQ', 'sxU2es2-Bxo', 'TpNtFBAI0V8', 'e5Hs0JciU4s', 'es2rxQ_pa70', 'GRfFKWjOBO4']
+2022-03-16 16:54:42,441 - INFO - Watching video for 316 seconds.
+2022-03-16 16:59:58,436 - INFO - Done.
