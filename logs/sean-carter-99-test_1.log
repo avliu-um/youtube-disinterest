@@ -1,19 +1,19 @@
-2022-03-15 10:57:05,573 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
-2022-03-15 10:57:48,242 - INFO - Login succeeded at attempt #1
-2022-03-15 10:57:48,243 - INFO - Creating a filter bubble.
-2022-03-15 10:57:48,243 - INFO - Moving to bursting stage.
-2022-03-15 10:57:53,246 - INFO - Loading homepage.
-2022-03-15 10:58:06,729 - INFO - Recommended videos: ['aOcAqCvH66Q', 'e5zQaOmZJBM', 'WTz0nARAxpA', 'B4-L2nfGcuE', 'kUMe1FH4CHE', 'VvHFKW02NJw', 'zZC0WcBEICc', 'l8IYJBbPEHE', 'Mo57kAYJXPE', 'HBOdscUwUnc']
-2022-03-15 10:58:11,745 - INFO - Loading video ID 3UwtCFh7SAc.
-2022-03-15 10:58:25,634 - INFO - Recommended videos: ['4TWjnM3ZEPo', 'OUlizS0H8hk', 'h2b-uBT134c', 'wIRiGQHbRl8', 'uQJWo3QMJBU', 'C6iWa-yhyew', 'mFNxXfwlP3A', 'rUs1eZZWZxw', 'kbMX4dQZURA', 'NXl7FYBgYUA']
-2022-03-15 10:58:30,863 - INFO - Attempting to press the like button.
-2022-03-15 10:58:30,919 - INFO - Button already pressed.
-2022-03-15 10:58:30,919 - INFO - Success at attempt #1
-2022-03-15 10:58:35,924 - INFO - Loading homepage.
-2022-03-15 10:58:47,007 - INFO - Recommended videos: ['aOcAqCvH66Q', 'VvHFKW02NJw', '4fezP875xOQ', 'l1mER1bV0N0', 'hb6F8RqfvUk', 'jNhh-OLzWlE', 'pYc2i78_UkI', 'Mo57kAYJXPE', 'bSAPgRPAiTk', 'e5zQaOmZJBM']
-2022-03-15 10:58:52,015 - INFO - Loading video ID 3UwtCFh7SAc.
-2022-03-15 10:59:03,676 - INFO - Recommended videos: ['vOR7dZ_M-Ko', 'kbMX4dQZURA', 'C6iWa-yhyew', 'cokCgWPRZPg', 'c2gw-asbBIM', 'CM1fL5D1_W8', 'Kqlu7v1DPBU', '4TWjnM3ZEPo', 'Mo57kAYJXPE', '3GEXDG4T1C8']
-2022-03-15 10:59:08,905 - INFO - Attempting to press the like button.
-2022-03-15 10:59:08,988 - INFO - Button already pressed.
-2022-03-15 10:59:08,988 - INFO - Success at attempt #1
-2022-03-15 10:59:08,989 - INFO - Done.
+2022-03-16 15:23:32,791 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-03-16 15:23:43,580 - INFO - Login succeeded at attempt #1
+2022-03-16 15:23:48,585 - INFO - Creating a filter bubble.
+2022-03-16 15:23:48,586 - INFO - Moving to bursting stage.
+2022-03-16 15:23:53,588 - INFO - Loading homepage.
+2022-03-16 15:24:07,600 - INFO - Recommended videos: ['kp36H_LZa2U', 'HBOdscUwUnc', 'gmBiPz_lmjE&list=RDCMUCp1KrVaZDZ7BOI_QBuTWWmg&start_radio=1', '2aadrXH6oic', 'mB-QXgtoItA', 'aOcAqCvH66Q', '39vz1A1BhoU', 'omsP26Y9wXk', '8GY4m022tgo', 'bSAPgRPAiTk']
+2022-03-16 15:24:12,611 - INFO - Loading video ID 3UwtCFh7SAc.
+2022-03-16 15:24:27,194 - INFO - Recommended videos: ['0CggLXL-RxU', 'sO8Qy9PVzho', 'QHGI2XvYkxc', 'FeGr87SfEE0', 'pTeDrfch0j4', '87VLDJziAXY', 'M4F-mm6OOp4', 'dECE7285GxU', 'OeP4FFr88SQ', 'uUn7yg4rOL4']
+2022-03-16 15:24:32,419 - INFO - Attempting to press the like button.
+2022-03-16 15:24:32,485 - INFO - Button already pressed.
+2022-03-16 15:24:32,485 - INFO - Success at attempt #1
+2022-03-16 15:24:37,490 - INFO - Loading homepage.
+2022-03-16 15:24:48,685 - INFO - Recommended videos: ['E8FPTilI4D0', 'A6EjcJ2L1Dg', 'HBOdscUwUnc', '2aadrXH6oic', 'ivfxHNWURzo', 'gmBiPz_lmjE&list=RDCMUCp1KrVaZDZ7BOI_QBuTWWmg&start_radio=1', 'aOcAqCvH66Q', 'B83nmCSwRuw', '6COKC5ZU6gM', 'jj-4jf3e5_A']
+2022-03-16 15:24:53,694 - INFO - Loading video ID 3UwtCFh7SAc.
+2022-03-16 15:25:05,434 - INFO - Recommended videos: ['0CggLXL-RxU', 'sO8Qy9PVzho', 'FeGr87SfEE0', 'onMm0DLg8CE', 'pTeDrfch0j4', 'uUn7yg4rOL4', 'QHGI2XvYkxc', '87VLDJziAXY', 'kbMX4dQZURA', 'Ct9eht6udiU']
+2022-03-16 15:25:10,655 - INFO - Attempting to press the like button.
+2022-03-16 15:25:10,719 - INFO - Button already pressed.
+2022-03-16 15:25:10,719 - INFO - Success at attempt #1
+2022-03-16 15:25:10,719 - INFO - Done.

@@ -1,18 +1,19 @@
-2022-03-10 22:52:11,982 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
-2022-03-10 22:52:56,488 - INFO - Login succeeded at attempt #1
-2022-03-10 22:52:56,489 - INFO - Creating a filter bubble.
-2022-03-10 22:52:56,489 - INFO - Moving to bursting stage.
-2022-03-10 22:53:01,494 - INFO - Loading homepage.
-2022-03-10 22:53:15,270 - INFO - Recommended videos: ['eLV9DACWRdc', 'ULdkpU51hTQ', 'seJSm-vD9OA', 'CejhQC9hUO8', 'aOcAqCvH66Q', 'e5zQaOmZJBM', 'SuQU3BtsiNc', 'gYSMus3ypKY', 'wcYQzzTT73Y', '_f8_3YhNbnc']
-2022-03-10 22:53:20,285 - INFO - Loading video ID Gsz3mrnIBd0.
-2022-03-10 22:53:34,616 - INFO - Recommended videos: ['sgn7VfXH2GY', 'gByn-Orq9l8', 'tT9Eh8wNMkw', 'EHeOxVwFyOw', 'OjWE6rHxSDc', 'SnlcP_rgRhM', 'WErBeIEmIHI', 'ej6gfL4yF4E', 'w2Zl9hm9VFE', 'CpB7-8SGlJ0']
-2022-03-10 22:53:39,856 - INFO - Attempting to press the subscribe button.
-2022-03-10 22:53:40,060 - INFO - Success at attempt #1
-2022-03-10 22:53:45,065 - INFO - Loading homepage.
-2022-03-10 22:53:56,652 - INFO - Recommended videos: ['eLV9DACWRdc', 'ULdkpU51hTQ', 'r_s-7_JnMQg', 'QPxrA-9CUPQ', 'aOcAqCvH66Q', 'e5zQaOmZJBM', 'Ze1xp9hYDl4', 'AN8Sxu8rmVQ', 'SuQU3BtsiNc', 'lj5GXZaE7qs']
-2022-03-10 22:54:01,659 - INFO - Loading video ID Gsz3mrnIBd0.
-2022-03-10 22:54:13,502 - INFO - Recommended videos: ['gByn-Orq9l8', 'OjWE6rHxSDc', 'tT9Eh8wNMkw', 'WErBeIEmIHI', 'EHeOxVwFyOw', 'sgn7VfXH2GY', '9hjMisX997Y', '_sI_Ps7JSEk', 'dogx8wggnA4', 'LlMht4jXB9A']
-2022-03-10 22:54:18,753 - INFO - Attempting to press the subscribe button.
-2022-03-10 22:54:18,829 - INFO - Button already pressed.
-2022-03-10 22:54:18,829 - INFO - Success at attempt #1
-2022-03-10 22:54:18,829 - INFO - Done.
+2022-03-16 15:08:21,104 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-03-16 15:08:31,834 - INFO - Login succeeded at attempt #1
+2022-03-16 15:08:36,839 - INFO - Creating a filter bubble.
+2022-03-16 15:08:36,839 - INFO - Moving to bursting stage.
+2022-03-16 15:08:41,844 - INFO - Loading homepage.
+2022-03-16 15:08:56,522 - INFO - Recommended videos: ['kp36H_LZa2U', 'gmBiPz_lmjE&list=RDCMUCp1KrVaZDZ7BOI_QBuTWWmg&start_radio=1', 'e5zQaOmZJBM', 'HBOdscUwUnc', 'A6EjcJ2L1Dg', 'iUohO2MSot8', 'fb8dk9w3fnQ', '2aadrXH6oic', 'v_lYz3LKKgM&pp=sAQB', 'v_lYz3LKKgM&pp=sAQB']
+2022-03-16 15:09:01,542 - INFO - Loading video ID Gsz3mrnIBd0.
+2022-03-16 15:09:14,360 - INFO - Recommended videos: ['sgn7VfXH2GY', 'HpGJ6gt9QX0', 'UxIPVAPRBi4', 'CpB7-8SGlJ0', 'SKMKglJ8CZw', 'EHeOxVwFyOw', 'gByn-Orq9l8', 'rqpriUFsMQQ', '5iymWkSN3EI', '6vGX-B9Jo2U']
+2022-03-16 15:09:19,600 - INFO - Attempting to press the subscribe button.
+2022-03-16 15:09:19,699 - INFO - Button already pressed.
+2022-03-16 15:09:19,699 - INFO - Success at attempt #1
+2022-03-16 15:09:24,704 - INFO - Loading homepage.
+2022-03-16 15:09:36,596 - INFO - Recommended videos: ['kp36H_LZa2U', 'gmBiPz_lmjE&list=RDCMUCp1KrVaZDZ7BOI_QBuTWWmg&start_radio=1', 'TJMX8NMcmDY', '2aadrXH6oic', 'shoVsQhou-8', 'FokgTfxQwWU', 'hb6F8RqfvUk', 'tAuXNZ5TSlA', 'LGKlOmnKfpU', 'KDDtKERvF4M']
+2022-03-16 15:09:41,604 - INFO - Loading video ID Gsz3mrnIBd0.
+2022-03-16 15:09:53,383 - INFO - Recommended videos: ['sgn7VfXH2GY', 'UlFNy9iWrpE', 'CpB7-8SGlJ0', 'mKf1x3CALAE', '7t3xBqAWLaU', 'gByn-Orq9l8', 'tSv04ylc6To', 'tT9Eh8wNMkw', 'SKMKglJ8CZw', 'EHeOxVwFyOw']
+2022-03-16 15:09:58,619 - INFO - Attempting to press the subscribe button.
+2022-03-16 15:09:58,689 - INFO - Button already pressed.
+2022-03-16 15:09:58,689 - INFO - Success at attempt #1
+2022-03-16 15:09:58,689 - INFO - Done.

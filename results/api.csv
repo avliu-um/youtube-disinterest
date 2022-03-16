@@ -1,4 +1,4 @@
-video_id,channel_id,rank,component,time,parent_id
+video_id,channel_id,rank,component,time,parent_video_id
 ucPoLHSav7A,UCoMdktPbSTixAyNGwb-UYkQ,0,api,2022-03-15 15:56:04.041962,3UwtCFh7SAc
 fYGCI553Z0M,UCFq5vPnNRNNNysLrktz4aSw,1,api,2022-03-15 15:56:04.041976,3UwtCFh7SAc
 rNaIMC4XMhc,UC16niRr50-MSBwiO3YDb3RA,2,api,2022-03-15 15:56:04.041978,3UwtCFh7SAc

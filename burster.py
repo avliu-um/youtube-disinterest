@@ -248,7 +248,7 @@ class Burster(object):
         """
         self.__load_videopage(vid_id)
         time.sleep(LOAD_BUFFER_SECONDS)
-        self.__save_videopage()
+        self.__save_videopage(vid_id)
         duration = self.__get_videopage_seconds()
         return duration
 
@@ -262,7 +262,7 @@ class Burster(object):
         videopage_url = youtube_watch_url + vid_id
         self.driver.get(videopage_url)
 
-    def __save_videopage(self):
+    def __save_videopage(self, parent_id):
         """
         Find and write recommendations on the videopage (both video ID's and channel ID's)
         Examines the js code (rather than raw html) because channel ID's are only available there
@@ -314,7 +314,8 @@ class Burster(object):
                 video_id = rec['videoId']
                 cid = rec['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
 
-                rec_data = {'video_id': video_id, 'channel_id': cid, 'rank': rank, 'component': 'videopage'}
+                rec_data = {'video_id': video_id, 'channel_id': cid, 'rank': rank, 'component': 'videopage',
+                            'parent_video_id': parent_id}
                 rec_data = self.__attach_context(rec_data)
                 recs.append(rec_data)
                 rec_ids.append(video_id)
