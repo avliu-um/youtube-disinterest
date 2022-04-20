@@ -27,6 +27,10 @@ def burst_experiment(profile_filepath):
     if bot.burst_method == 'delete':
         for i in range(len(bot.seed_videos)):
             bot.delete_video()
+    elif bot.burst_method == 'not interested':
+        unwanted = []
+        for i in range(len(bot.burst_videos)):
+            bot.not_interested(unwanted)
     else:
         for burst_vid in bot.burst_videos:
             time.sleep(5)

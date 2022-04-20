@@ -34,6 +34,23 @@ def find_json(json_str, key):
         return fix_json(json_str[pos_begin - 1: pos_end + 1])
 
 
+def find_jsons(json_str, key):
+    """ Find a list of multiple jsons that start with a given key
+        e.g. "... 'a':[1,2,3], ... 'a':[4,5,6], ... 'a':[7,8,9] ... " --> [ [1,2,3], [4,5,6], [7,8,9] ]
+    """
+    answer = []
+    if json_str.find(key) == -1:
+        return []
+    else:
+        key_idx = json_str.find(key)
+        while key_idx > -1:
+            answer.append(find_json(json_str, key))
+            shift_idx = key_idx + len(key)
+            json_str = json_str[shift_idx:]
+            key_idx = json_str.find(key)
+    return answer
+
+
 def search_dict(partial, key):
     if isinstance(partial, dict):
         for k, v in partial.items():

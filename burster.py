@@ -11,7 +11,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException,
 import sys, os, time, json, logging, re, datetime
 import pandas as pd
 
-from util import find_value, find_json, append_df
+from util import find_value, find_json, find_jsons, append_df
 
 # 30 minutes suggested (Tomlein et al. 2021)
 MAX_WATCH_SECONDS = 1800
@@ -491,3 +491,66 @@ class Burster(object):
 
         button = contents.find_element(By.CSS_SELECTOR, 'button')
         button.click()
+
+        a = 10
+
+
+    def not_interested(self, unwanted_channels):
+        unwanted_video = self.scrub_homepage(unwanted_channels)
+        time.sleep(5)
+        if unwanted_video:
+            # Click the three dots
+            menu = unwanted_video.find_element(By.CSS_SELECTOR, 'ytd-menu-renderer')
+            menu.click()
+
+            time.sleep(5)
+
+            # Click not interested button
+            content_wrapper = self.driver.find_element(By.CSS_SELECTOR, 'div#contentWrapper')
+            buttons = content_wrapper.find_elements(By.CSS_SELECTOR, 'ytd-menu-service-item-renderer')
+            for button in buttons:
+                if 'Not interested' in button.text:
+                    button.click()
+                    break
+
+    def scrub_homepage(self, unwanted_channels):
+        """
+        Load the homepage
+        """
+        homepage_url = 'https://www.youtube.com'
+
+        self.log('Loading homepage.')
+        self.driver.get(homepage_url)
+
+        html = self.driver.page_source
+        initial_data = find_value(html, 'var ytInitialData = ', 0, '\n').rstrip(';')
+        videos = find_jsons(initial_data, '"videoRenderer":{')
+
+        # If true, we try and scrub the first video that comes up
+        TEST = True
+
+        unwanted_video_id = None
+        for video in videos:
+            video_id = video['videoId']
+            channel_id = video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
+            if TEST or channel_id in unwanted_channels:
+                unwanted_video_id = video_id
+                break
+
+        unwanted_video = None
+        if unwanted_video_id:
+            # FIND BUTTON/VIDEO CARD IN HTML
+            recs = self.driver.find_elements(By.CSS_SELECTOR, 'div#contents div#content')
+            unwanted_query = 'a[href*="/watch?v=' + unwanted_video_id + '"]'
+            for rec in recs:
+                try:
+                    unwanted_video = rec.find_element(By.CSS_SELECTOR, unwanted_query)
+                    return rec
+                    break
+                except:
+                    continue
+
+        return None
+
+
+
