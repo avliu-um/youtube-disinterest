@@ -476,7 +476,18 @@ class Burster(object):
 
 
 
+    def delete_video(self):
+        history_url = 'https://www.youtube.com/feed/history'
 
+        self.log('Loading history page.')
+        self.driver.get(history_url)
 
+        time.sleep(5)
 
+        WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#contents'))
+        )
+        contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
 
+        button = contents.find_element(By.CSS_SELECTOR, 'button')
+        button.click()

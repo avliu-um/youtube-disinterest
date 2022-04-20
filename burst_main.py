@@ -22,22 +22,28 @@ def burst_experiment(profile_filepath):
 
     bot.phase = "burst"
     bot.level = 0
-    for burst_vid in bot.burst_videos:
-        time.sleep(5)
-        bot.load_and_save_homepage()
-        time.sleep(5)
-        duration = bot.load_and_save_videopage(burst_vid)
-        time.sleep(5)
-        if bot.burst_method == "watch":
-            bot.watch_video(duration)
-        elif bot.burst_method == 'like' or \
-                bot.burst_method == 'dislike' or \
-                bot.burst_method == 'subscribe':
-            bot.video_action(bot.burst_method)
-        else:
-            bot.log('Burst method {0} not implemented yet!!!'.format(bot.burst_method))
-            raise NotImplementedError
-        bot.level += 1
+
+    # NEW
+    if bot.burst_method == 'delete':
+        for i in range(len(bot.seed_videos)):
+            bot.delete_video()
+    else:
+        for burst_vid in bot.burst_videos:
+            time.sleep(5)
+            bot.load_and_save_homepage()
+            time.sleep(5)
+            duration = bot.load_and_save_videopage(burst_vid)
+            time.sleep(5)
+            if bot.burst_method == "watch":
+                bot.watch_video(duration)
+            elif bot.burst_method == 'like' or \
+                    bot.burst_method == 'dislike' or \
+                    bot.burst_method == 'subscribe':
+                bot.video_action(bot.burst_method)
+            else:
+                bot.log('Burst method {0} not implemented yet!!!'.format(bot.burst_method))
+                raise NotImplementedError
+            bot.level += 1
 
     bot.log('Done.')
 

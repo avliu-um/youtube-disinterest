@@ -1,0 +1,11 @@
+2022-04-20 10:49:22,537 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-04-20 10:49:31,288 - INFO - Login succeeded at attempt #1
+2022-04-20 10:49:36,293 - INFO - Creating a filter bubble.
+2022-04-20 10:49:36,294 - INFO - Loading homepage.
+2022-04-20 10:49:51,213 - INFO - Recommended videos: ['lSN_V-Kc9u8', '2JBgHzDN7pA', 'ZzrVOets2oE', '49E9rqLJqKs', '6eOnsGOyc00', 'B8Scjolhc00', 'jqtXvTZOZ7E', 'jYgZh1MbnFs', '9q6Z78rmrUQ', '-gK4K5p2YiA']
+2022-04-20 10:49:56,226 - INFO - Loading video ID RPuel-DMYlw.
+2022-04-20 10:50:10,494 - INFO - Recommended videos: ['UlFNy9iWrpE', 'F3Ec3bUsSsw', '_lBQLgi70ns', 'TkTaadb9GmM', '_FO0sToXM5U', 'VlR9AAYMa3A', 'Unzc731iCUY', 'K1DjminYtg8', '-2n2_yyPVTw', '-k0D_qFPb4o']
+2022-04-20 10:50:10,685 - INFO - Watching video for 47 seconds.
+2022-04-20 10:50:57,687 - INFO - Moving to bursting stage.
+2022-04-20 10:50:57,687 - INFO - Loading history page.
+2022-04-20 10:51:04,862 - INFO - Done.
