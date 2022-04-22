@@ -27,10 +27,15 @@ def burst_experiment(profile_filepath):
     if bot.burst_method == 'delete':
         for i in range(len(bot.seed_videos)):
             bot.delete_video()
-    elif bot.burst_method == 'not interested':
+    elif bot.burst_method == 'not interested' or bot.burst_method == 'no channel':
         unwanted = []
         for i in range(len(bot.burst_videos)):
-            bot.not_interested(unwanted)
+            bot.menu_service(unwanted, bot.burst_method)
+    elif bot.burst_method == 'dislike recommendation':
+        unwanted = []
+        for i in range(len(bot.burst_videos)):
+            bot.dislike_recommended(unwanted)
+
     else:
         for burst_vid in bot.burst_videos:
             time.sleep(5)

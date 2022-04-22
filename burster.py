@@ -492,10 +492,18 @@ class Burster(object):
         button = contents.find_element(By.CSS_SELECTOR, 'button')
         button.click()
 
-        a = 10
+        time.sleep(5)
 
+    def dislike_recommended(self, unwanted_channels):
+        unwanted_video = self.scrub_homepage(unwanted_channels)
+        time.sleep(5)
+        if unwanted_video:
+            unwanted_video.click()
+            time.sleep(5)
+            self.video_action('dislike')
+        time.sleep(5)
 
-    def not_interested(self, unwanted_channels):
+    def menu_service(self, unwanted_channels, action):
         unwanted_video = self.scrub_homepage(unwanted_channels)
         time.sleep(5)
         if unwanted_video:
@@ -508,10 +516,22 @@ class Burster(object):
             # Click not interested button
             content_wrapper = self.driver.find_element(By.CSS_SELECTOR, 'div#contentWrapper')
             buttons = content_wrapper.find_elements(By.CSS_SELECTOR, 'ytd-menu-service-item-renderer')
+            if action == 'not interested':
+                button_text = 'Not interested'
+            elif action == 'no channel':
+                button_text = "Don't recommend channel"
+            else:
+                raise NotImplementedError
+            found = False
             for button in buttons:
-                if 'Not interested' in button.text:
+                if button_text in button.text:
                     button.click()
+                    found = True
                     break
+            if not found:
+                self.log('Button not found!')
+
+            time.sleep(5)
 
     def scrub_homepage(self, unwanted_channels):
         """
@@ -530,23 +550,23 @@ class Burster(object):
         TEST = True
 
         unwanted_video_id = None
-        for video in videos:
+        for i in range(len(videos)):
+            video = videos[i]
             video_id = video['videoId']
             channel_id = video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
-            if TEST or channel_id in unwanted_channels:
+            if (TEST and i == 3) or (channel_id in unwanted_channels):
                 unwanted_video_id = video_id
                 break
 
-        unwanted_video = None
         if unwanted_video_id:
             # FIND BUTTON/VIDEO CARD IN HTML
             recs = self.driver.find_elements(By.CSS_SELECTOR, 'div#contents div#content')
             unwanted_query = 'a[href*="/watch?v=' + unwanted_video_id + '"]'
             for rec in recs:
                 try:
-                    unwanted_video = rec.find_element(By.CSS_SELECTOR, unwanted_query)
+                    # Seeing if video id is findable in this video card
+                    rec.find_element(By.CSS_SELECTOR, unwanted_query)
                     return rec
-                    break
                 except:
                     continue
 

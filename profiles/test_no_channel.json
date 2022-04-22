@@ -1,15 +1,15 @@
 {
   "account_username": "sean.carter.99.test",
   "account_password": "99problems",
-  "run_id": 8,
+  "run_id": 10,
   "seed_videos": [
-    "jNtkXeOm0AM"
   ],
   "seed_category": "L",
   "burst_videos": [
+        "RPuel-DMYlw"
   ],
   "burst_category": "R",
-  "burst_method": "delete",
+  "burst_method": "no channel",
   "limit_type": "time",
   "limit_number": "60",
   "chrome_arguments": []
