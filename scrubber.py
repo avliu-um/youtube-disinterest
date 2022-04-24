@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementNotInteractableException, \
     ElementClickInterceptedException
 
-import sys, os, time, json, logging, re, datetime
+import sys, os, time, json, logging, re, datetime, csv
 import pandas as pd
 
 from util import find_value, find_json, find_jsons, append_df
@@ -17,9 +17,8 @@ from util import find_value, find_json, find_jsons, append_df
 MAX_WATCH_SECONDS = 1800
 LOAD_BUFFER_SECONDS = 10
 
-
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
-class Burster(object):
+class Scrubber(object):
 
     def __init__(self, profile_filepath):
         def __get_logger(log_filepath):
@@ -77,38 +76,60 @@ class Burster(object):
         with open(profile_filepath) as json_file:
             profile = json.load(json_file)
 
+        self.community = profile['community']
+        self.scrubbing_strategy = profile['scrubbing_strategy']
+        self.note = profile['note']
+
+        self.staining_videos = profile['staining_videos']
+        self.scrubbing_extras = profile['scrubbing_extras']
+
+        self.has_account = False
+        if len(profile['account_username']) > 0 and len(profile['account_password']) > 0:
             self.account_username = profile['account_username']
             self.account_password = profile['account_password']
+            self.has_account = True
+        self.chrome_arguments = profile['chrome_arguments']
 
-            self.has_account = False
-            if self.account_username and self.account_password:
-                self.has_account = True
+        self.unwanted_channels = None
+        self.scrubbing_videos = None
+        if self.scrubbing_strategy == 'dislike recommendation' or \
+                self.scrubbing_strategy == 'not interested' or \
+                self.scrubbing_strategy == 'no channel':
+            # Get the list of channels from csv
+            if type(self.scrubbing_extras) == str and self.scrubbing_extras[-4:] == '.csv':
+                with open(self.scrubbing_extras, newline='') as f:
+                    reader = csv.reader(f)
+                    self.unwanted_channels = list(reader)
+            elif type(self.scrubbing_extras) == list:
+                self.unwanted_channels = self.scrubbing_extras
+            else:
+                raise TypeError
+            # Make sure it's actually a list of channels that start with 'UC...'
+            for channel in self.unwanted_channels:
+                assert(type(channel) == str)
+                assert(channel[:2] == 'UC')
+        elif self.scrubbing_strategy == 'watch':
+            self.scrubbing_videos = self.scrubbing_extras
+            assert(type(self.scrubbing_videos) == list)
+            for video in self.scrubbing_videos:
+                assert(type(video) == str)
 
-            self.seed_videos = profile['seed_videos']
-            self.seed_category = profile['seed_category']
-            self.burst_videos = profile['burst_videos']
-            self.burst_category = profile['burst_category']
-            self.burst_method = profile['burst_method']
-            self.limit_type = profile['limit_type']
-            self.limit_number = profile['limit_number']
-            self.run_id = profile['run_id']
-            self.chrome_arguments = profile['chrome_arguments']
-
-        self.phase = "create"
-        self.level = 0
-
-        if 'filename' in profile.keys():
-            filename = profile['filename']
-        else:
-            # e.g. 'test.yt.username' --> 'test-yt-username'
-            filename = self.account_username
-        filename = '{0}_{1}'.format(filename, self.run_id).replace('.', '-')
-        self.results_filepath = os.path.join('.', 'results', '{0}.csv'.format(filename))
-        self.log_filepath = os.path.join('.', 'logs', '{0}.log'.format(filename))
+        name = self.community + '_' + self.scrubbing_strategy + '_' + self.note
+        name = name.replace('.', '_')
+        name = name.replace(' ', '_')
+        self.name = name
+        self.results_filepath = os.path.join('.', 'results', '{0}.csv'.format(name))
+        self.log_filepath = os.path.join('.', 'logs', '{0}.log'.format(name))
 
         open(self.results_filepath, 'x')
         self.logger = __get_logger(self.log_filepath)
         self.driver = __get_driver(self.chrome_arguments)
+
+        self.phase = "setup"
+        self.level = 0
+
+    def set_phase(self, phase):
+        self.phase = phase
 
     def log(self, message):
         """
@@ -344,6 +365,10 @@ class Burster(object):
         self.log('Watching video for {0} seconds.'.format(watch_seconds))
         time.sleep(watch_seconds)
 
+    # We only implement this one because it's the only one being used so far for our scrubbing experiment
+    def dislike_video(self):
+        self.video_action('dislike')
+
     # Modified from Tomlein et al. (2021)
     def video_action(self, action):
         """
@@ -476,7 +501,7 @@ class Burster(object):
 
 
 
-    def delete_video(self):
+    def delete_most_recent(self):
         history_url = 'https://www.youtube.com/feed/history'
 
         self.log('Loading history page.')
@@ -494,8 +519,8 @@ class Burster(object):
 
         time.sleep(5)
 
-    def dislike_recommended(self, unwanted_channels):
-        unwanted_video = self.scrub_homepage(unwanted_channels)
+    def dislike_recommended(self):
+        unwanted_video = self.scrub_homepage()
         time.sleep(5)
         if unwanted_video:
             unwanted_video.click()
@@ -503,8 +528,8 @@ class Burster(object):
             self.video_action('dislike')
         time.sleep(5)
 
-    def menu_service(self, unwanted_channels, action):
-        unwanted_video = self.scrub_homepage(unwanted_channels)
+    def menu_service(self, action):
+        unwanted_video = self.scrub_homepage()
         time.sleep(5)
         if unwanted_video:
             # Click the three dots
@@ -513,34 +538,36 @@ class Burster(object):
 
             time.sleep(5)
 
-            # Click not interested button
-            content_wrapper = self.driver.find_element(By.CSS_SELECTOR, 'div#contentWrapper')
-            buttons = content_wrapper.find_elements(By.CSS_SELECTOR, 'ytd-menu-service-item-renderer')
-            if action == 'not interested':
-                button_text = 'Not interested'
-            elif action == 'no channel':
-                button_text = "Don't recommend channel"
+            if action == 'not recommended':
+                unwanted_video.click()
+                time.sleep(5)
+                self.video_action('dislike')
             else:
-                raise NotImplementedError
-            found = False
-            for button in buttons:
-                if button_text in button.text:
-                    button.click()
-                    found = True
-                    break
-            if not found:
-                self.log('Button not found!')
+                # Click not interested button
+                content_wrapper = self.driver.find_element(By.CSS_SELECTOR, 'div#contentWrapper')
+                buttons = content_wrapper.find_elements(By.CSS_SELECTOR, 'ytd-menu-service-item-renderer')
+                if action == 'not interested':
+                    button_text = 'Not interested'
+                elif action == 'no channel':
+                    button_text = "Don't recommend channel"
+                else:
+                    raise NotImplementedError
+                found = False
+                for button in buttons:
+                    if button_text in button.text:
+                        button.click()
+                        found = True
+                        break
+                if not found:
+                    self.log('Button not found!')
 
             time.sleep(5)
 
-    def scrub_homepage(self, unwanted_channels):
+    def scrub_homepage(self):
         """
         Load the homepage
         """
-        homepage_url = 'https://www.youtube.com'
-
-        self.log('Loading homepage.')
-        self.driver.get(homepage_url)
+        # assert(self.driver.current_url == 'https://www.youtube.com')
 
         html = self.driver.page_source
         initial_data = find_value(html, 'var ytInitialData = ', 0, '\n').rstrip(';')
@@ -554,7 +581,7 @@ class Burster(object):
             video = videos[i]
             video_id = video['videoId']
             channel_id = video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
-            if (TEST and i == 3) or (channel_id in unwanted_channels):
+            if (TEST and i == 3) or (channel_id in self.unwanted_channels):
                 unwanted_video_id = video_id
                 break
 

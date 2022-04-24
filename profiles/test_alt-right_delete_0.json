@@ -1,0 +1,14 @@
+{
+  "community": "alt-right",
+  "scrubbing_strategy": "delete",
+  "note": "test-0",
+
+  "staining_videos": [
+    "5dlubcRwYnI"
+  ],
+  "scrubbing_extras": "communities/altright/ribeiro_alt-right.csv",
+
+  "account_username": "sean.carter.99.test",
+  "account_password": "99problems",
+  "chrome_arguments": []
+}
