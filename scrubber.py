@@ -131,12 +131,16 @@ class Scrubber(object):
     def set_phase(self, phase):
         self.phase = phase
 
-    def log(self, message):
+    def log(self, message, exception=False):
         """
         Print and log the same message
         """
-        self.logger.info(message)
-        print(message)
+        if exception:
+            print(message)
+            self.logger.exception(message)
+        else:
+            print(message)
+            self.logger.info(message)
 
     # Modified from Tomlein et al. (2021)
     def login(self):
@@ -499,8 +503,6 @@ class Scrubber(object):
         recs_df = pd.DataFrame(recs)
         append_df(recs_df, self.results_filepath, False)
 
-
-
     def delete_most_recent(self):
         history_url = 'https://www.youtube.com/feed/history'
 
@@ -514,9 +516,15 @@ class Scrubber(object):
         )
         contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
 
+        self.log('Deleting most recent.')
         button = contents.find_element(By.CSS_SELECTOR, 'button')
         button.click()
 
+        time.sleep(5)
+
+        # This should produce an error
+        self.log('Performing an action that should produce an error!')
+        button.click()
         time.sleep(5)
 
     def dislike_recommended(self):

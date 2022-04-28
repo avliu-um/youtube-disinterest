@@ -1,0 +1,16 @@
+{
+  "community": "alt-right",
+  "scrubbing_strategy": "watch",
+  "note": "test-failure",
+
+  "staining_videos": [
+    "5dlubcRwYnI"
+  ],
+  "scrubbing_extras": [
+    "___________"
+  ],
+
+  "account_username": "sean.carter.99.test",
+  "account_password": "99problems",
+  "chrome_arguments": []
+}

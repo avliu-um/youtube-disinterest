@@ -1,6 +1,7 @@
 from scrubber import Scrubber
 import time
 import argparse
+import os
 
 TEST = True
 
@@ -15,9 +16,7 @@ if TEST:
     CONTROL_ITER_LIMIT = 1
 
 
-def scrub_experiment(profile_filepath):
-    bot = Scrubber(profile_filepath)
-
+def scrub_experiment(bot):
     bot.log('SETUP PHASE')
 
     if bot.has_account:
@@ -106,9 +105,18 @@ def main():
     parser.add_argument('--filepath', type=str, required=True,
                         help='The filepath to the configuration file')
     args = parser.parse_args()
-    filepath = args.filepath
+    bot_filepath = args.filepath
+    bot = Scrubber(bot_filepath)
 
-    scrub_experiment(filepath)
+    try:
+        scrub_experiment(bot)
+    except:
+        fail_filepath = os.path.join('.', 'failures', bot.name + '.html')
+        bot.log('Error! Saving html to ' + fail_filepath, True)
+
+        html = bot.driver.page_source
+        with open(fail_filepath, 'w') as f:
+            f.write(html)
 
 
 if __name__ == '__main__':
