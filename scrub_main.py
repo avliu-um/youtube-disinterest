@@ -23,7 +23,7 @@ def scrub_experiment(bot):
         bot.login()
     time.sleep(5)
 
-    bot.log('STAIN PHASE')
+    bot.log('\nSTAIN PHASE')
     bot.set_phase('stain')
 
     for seed_vid in bot.staining_videos:
@@ -31,11 +31,11 @@ def scrub_experiment(bot):
         time.sleep(5)
         duration = bot.load_and_save_videopage(seed_vid)
         bot.watch_video(duration)
-        bot.level += 1
+        bot.phase_level += 1
     # Used in the teardown phase
     final_stain_vid = bot.staining_videos[-1]
 
-    bot.log('SCRUB PHASE')
+    bot.log('\nSCRUB PHASE')
     bot.set_phase('scrub')
 
     # Watch-based
@@ -72,7 +72,6 @@ def scrub_experiment(bot):
         for i in range(REC_ITER_LIMIT):
             bot.load_and_save_homepage()
             time.sleep(5)
-            # TODO: Change to more intuitive name, push back to scrubbrer
             bot.dislike_recommended()
             time.sleep(5)
     elif bot.scrubbing_strategy == 'not interested':
@@ -91,14 +90,14 @@ def scrub_experiment(bot):
     else:
         raise NotImplementedError
 
-    bot.log('TEARDOWN PHASE')
+    bot.log('\nTEARDOWN PHASE')
     bot.set_phase('teardown')
 
     bot.load_and_save_homepage()
     bot.load_and_save_videopage(final_stain_vid)
     # TODO: Clear history
 
-    bot.log('DONE!')
+    bot.log('\nDONE!')
 
 def main():
     parser = argparse.ArgumentParser()

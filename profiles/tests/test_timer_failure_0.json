@@ -1,5 +1,5 @@
 {
-  "community": "alt-right",
+  "community": "timer",
   "scrubbing_strategy": "watch",
   "note": "test-failure",
 
@@ -7,7 +7,7 @@
     "5dlubcRwYnI"
   ],
   "scrubbing_extras": [
-    "___________"
+    "this_should_fail"
   ],
 
   "account_username": "sean.carter.99.test",

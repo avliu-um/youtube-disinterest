@@ -1,14 +1,12 @@
 {
-  "community": "alt-right",
-  "scrubbing_strategy": "watch",
+  "community": "timer",
+  "scrubbing_strategy": "dislike recommendation",
   "note": "test-0",
 
   "staining_videos": [
     "5dlubcRwYnI"
   ],
-  "scrubbing_extras": [
-    "jNtkXeOm0AM"
-  ],
+  "scrubbing_extras": "communities/timers/timer_channels.csv",
 
   "account_username": "sean.carter.99.test",
   "account_password": "99problems",

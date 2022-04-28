@@ -16,6 +16,7 @@ from util import find_value, find_json, find_jsons, append_df
 # 30 minutes suggested (Tomlein et al. 2021)
 MAX_WATCH_SECONDS = 1800
 LOAD_BUFFER_SECONDS = 10
+MAX_RECS = 10
 
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
 class Scrubber(object):
@@ -98,8 +99,10 @@ class Scrubber(object):
             # Get the list of channels from csv
             if type(self.scrubbing_extras) == str and self.scrubbing_extras[-4:] == '.csv':
                 with open(self.scrubbing_extras, newline='') as f:
-                    reader = csv.reader(f)
-                    self.unwanted_channels = list(reader)
+                    lines = f.readlines()
+                    lines = [line.rstrip() for line in lines]
+                    self.unwanted_channels = lines
+
             elif type(self.scrubbing_extras) == list:
                 self.unwanted_channels = self.scrubbing_extras
             else:
@@ -126,7 +129,10 @@ class Scrubber(object):
         self.driver = __get_driver(self.chrome_arguments)
 
         self.phase = "setup"
-        self.level = 0
+        self.phase_level = 0
+
+        self.log('Created bot in community {0} and scrubbing strategy {1}'
+                 .format(self.community, self.scrubbing_strategy))
 
     def set_phase(self, phase):
         self.phase = phase
@@ -233,36 +239,27 @@ class Scrubber(object):
         """
         num_homepage_recs = 10
         yt_video_url = 'https://www.youtube.com/watch?v='
-        # yt_channel_url = 'https://www.youtube.com/channel/'
 
-        # Wait until everything's loaded
-        WebDriverWait(self.driver, 30).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#contents'))
-        )
-        contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
-        # Get ALL video box thingys (notice we use find_elements, not find_element)
-        recs = contents.find_elements(By.CSS_SELECTOR, 'div#content')
+        self.log('Saving homepage.')
+
+        html = self.driver.page_source
+        initial_data = find_value(html, 'var ytInitialData = ', 0, '\n').rstrip(';')
+        videos = find_jsons(initial_data, '"videoRenderer":{')
 
         recs_data = []
         recs_ids = []
-        rank = 0
-        for rec in recs:
-            # 0 based indexing
-            if rank > num_homepage_recs-1:
+        for i in range(len(videos)):
+            if i > MAX_RECS-1:
                 break
-            try:
-                video_link = rec.find_element(By.CSS_SELECTOR, 'a[href*="/watch?v="]').get_attribute('href')
-                # We don't get the channel because we discovered that it can show up as 'c', 'channel', or 'user'
-                # channel_link = rec.find_element(By.CSS_SELECTOR, 'a[href*="/c/"]').get_attribute('href')
-            except NoSuchElementException:
-                continue
-            video_id = video_link[len(yt_video_url):]
-            # channel_id = channel_link[len(yt_channel_url):]
-            rec_data = {'video_id': video_id, 'rank': rank, 'component': 'homepage'}
+
+            video = videos[i]
+            video_id = video['videoId']
+            channel_id = video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
+            rec_data = {'video_id': video_id, 'channel_id': channel_id, 'rank': i, 'component': 'homepage'}
+
             rec_data = self.__attach_context(rec_data)
             recs_data.append(rec_data)
             recs_ids.append(video_id)
-            rank += 1
 
         self.log('Recommended videos: {0}'.format(recs_ids))
         self.__write_recs(recs_data)
@@ -287,12 +284,13 @@ class Scrubber(object):
         videopage_url = youtube_watch_url + vid_id
         self.driver.get(videopage_url)
 
-    def __save_videopage(self, parent_id):
+    def __save_videopage(self, watch_id):
         """
         Find and write recommendations on the videopage (both video ID's and channel ID's)
         Examines the js code (rather than raw html) because channel ID's are only available there
         """
-        max_recs = 10
+
+        self.log('Saving videopage')
 
         html = self.driver.page_source
         # Find and write recommendations
@@ -320,7 +318,7 @@ class Scrubber(object):
             video_suggestions = secondary_results['secondaryResults']['results']
         for rec in video_suggestions:
             # 0 indexed
-            if rank > max_recs-1:
+            if rank > MAX_RECS-1:
                 break
             # This video is autoplay
             if 'compactAutoplayRenderer' in rec:
@@ -340,7 +338,7 @@ class Scrubber(object):
                 cid = rec['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
 
                 rec_data = {'video_id': video_id, 'channel_id': cid, 'rank': rank, 'component': 'videopage',
-                            'parent_video_id': parent_id}
+                            'watch_video_id': watch_id}
                 rec_data = self.__attach_context(rec_data)
                 recs.append(rec_data)
                 rec_ids.append(video_id)
@@ -485,12 +483,12 @@ class Scrubber(object):
         """
         Add in details about the run that are required for the recommendation row but do not need to be scraped
         """
-        if 'bot_id' not in row:
-            row['bot_id'] = self.account_username
+        if 'bot_name' not in row:
+            row['bot_name'] = self.name
         if 'phase' not in row:
             row['phase'] = self.phase
-        if 'level' not in row:
-            row['level'] = self.level
+        if 'phase_level' not in row:
+            row['phase_level'] = self.phase_level
         if 'time' not in row:
             row['time'] = datetime.datetime.now()
         return row
@@ -540,34 +538,32 @@ class Scrubber(object):
         unwanted_video = self.scrub_homepage()
         time.sleep(5)
         if unwanted_video:
+
+            self.log('Attempting to click the {0} button'.format(action))
+
             # Click the three dots
             menu = unwanted_video.find_element(By.CSS_SELECTOR, 'ytd-menu-renderer')
             menu.click()
 
             time.sleep(5)
 
-            if action == 'not recommended':
-                unwanted_video.click()
-                time.sleep(5)
-                self.video_action('dislike')
+            content_wrapper = self.driver.find_element(By.CSS_SELECTOR, 'div#contentWrapper')
+            buttons = content_wrapper.find_elements(By.CSS_SELECTOR, 'ytd-menu-service-item-renderer')
+            if action == 'not interested':
+                button_text = 'Not interested'
+            elif action == 'no channel':
+                button_text = "Don't recommend channel"
             else:
-                # Click not interested button
-                content_wrapper = self.driver.find_element(By.CSS_SELECTOR, 'div#contentWrapper')
-                buttons = content_wrapper.find_elements(By.CSS_SELECTOR, 'ytd-menu-service-item-renderer')
-                if action == 'not interested':
-                    button_text = 'Not interested'
-                elif action == 'no channel':
-                    button_text = "Don't recommend channel"
-                else:
-                    raise NotImplementedError
-                found = False
-                for button in buttons:
-                    if button_text in button.text:
-                        button.click()
-                        found = True
-                        break
-                if not found:
-                    self.log('Button not found!')
+                raise NotImplementedError
+            found = False
+            for button in buttons:
+                if button_text in button.text:
+                    button.click()
+                    found = True
+                    break
+            if not found:
+                self.log('Button not found.')
+                raise NotImplementedError
 
             time.sleep(5)
 
@@ -577,19 +573,19 @@ class Scrubber(object):
         """
         # assert(self.driver.current_url == 'https://www.youtube.com')
 
+        self.log('Checking homepage for video from unwanted channel.')
+
         html = self.driver.page_source
         initial_data = find_value(html, 'var ytInitialData = ', 0, '\n').rstrip(';')
         videos = find_jsons(initial_data, '"videoRenderer":{')
-
-        # If true, we try and scrub the first video that comes up
-        TEST = True
 
         unwanted_video_id = None
         for i in range(len(videos)):
             video = videos[i]
             video_id = video['videoId']
             channel_id = video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
-            if (TEST and i == 3) or (channel_id in self.unwanted_channels):
+            if channel_id in self.unwanted_channels:
+                self.log('Found video {0} from unwanted channel {1}.'.format(video_id, channel_id))
                 unwanted_video_id = video_id
                 break
 
@@ -604,8 +600,9 @@ class Scrubber(object):
                     return rec
                 except:
                     continue
-
-        return None
+        else:
+            self.log('No videos from unwanted channels were found.')
+            return None
 
 
 

@@ -1,13 +1,12 @@
 {
-  "community": "alt-right",
-  "scrubbing_strategy": "dislike recommendation",
+  "community": "timer",
+  "scrubbing_strategy": "dislike",
   "note": "test-0",
 
   "staining_videos": [
     "5dlubcRwYnI"
   ],
-  "scrubbing_extras": [
-  ],
+  "scrubbing_extras": [],
 
   "account_username": "sean.carter.99.test",
   "account_password": "99problems",
