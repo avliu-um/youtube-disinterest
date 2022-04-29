@@ -95,7 +95,11 @@ def scrub_experiment(bot):
 
     bot.load_and_save_homepage()
     bot.load_and_save_videopage(final_stain_vid)
-    # TODO: Clear history
+
+    if not TEST:
+        bot.clear_history()
+    if bot.scrubbing_strategy == 'dislike' or bot.scrubbing_strategy == 'dislike recommended':
+        bot.clear_disliked_videos()
 
     bot.log('\nDONE!')
 

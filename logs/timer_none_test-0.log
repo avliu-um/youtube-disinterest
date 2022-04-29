@@ -1,56 +1,77 @@
-2022-04-29 14:38:33,380 - INFO - Created bot in community timer and scrubbing strategy none
-2022-04-29 14:38:33,381 - INFO - SETUP PHASE
-2022-04-29 14:38:33,381 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
-2022-04-29 14:38:42,863 - INFO - Login succeeded at attempt #1
-2022-04-29 14:38:47,868 - INFO - 
+2022-04-29 15:41:55,962 - INFO - Created bot in community timer and scrubbing strategy none
+2022-04-29 15:41:55,963 - INFO - SETUP PHASE
+2022-04-29 15:41:55,963 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-04-29 15:42:07,830 - INFO - Login succeeded at attempt #1
+2022-04-29 15:42:12,835 - INFO - 
 STAIN PHASE
-2022-04-29 14:38:47,869 - INFO - Loading homepage.
-2022-04-29 14:39:04,276 - INFO - Saving homepage.
-2022-04-29 14:39:04,576 - INFO - Recommended videos: ['NxQvaydVJtA', 'h0JKZWN4ZSM', 'nT8CqX0muJA', 'v_XT9-C5Qu8', 'Ig9gaAgNHbY', '8wCVxatKsZQ', 'O7zaUceGCmY', 'lLSkZ7v-7T4', 'B9XKI0Cw-gQ', 'FWtWJAmHuc8']
-2022-04-29 14:39:09,592 - INFO - Loading video ID 5dlubcRwYnI.
-2022-04-29 14:39:22,648 - INFO - Saving videopage
-2022-04-29 14:39:22,912 - INFO - Recommended videos: ['2uMc3rNnTo4', 'W7wymCpjerc', 'HsBVosr0Pm8', 'NVLrikfkdXg', 'FKis488_sSk', 'zbeY0eEAEl8', 'LaUe-Hf0uSM', 'PHJWV1SmPTc', 'G4X4ZQHsTyE', 'suCgD14jtp0']
-2022-04-29 14:39:23,099 - INFO - Watching video for 16 seconds.
-2022-04-29 14:39:39,104 - INFO - Loading homepage.
-2022-04-29 14:39:50,553 - INFO - Saving homepage.
-2022-04-29 14:39:50,823 - INFO - Recommended videos: ['bd-lLkqrWvc', 'zkqgxWcj0ek', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', 'B4dnPVZ2MV0', 'yklW2CV3xwE', 'TXZapadD5EE', 'nT8CqX0muJA', 'v_XT9-C5Qu8', 'Ck2DSDWSKRk']
-2022-04-29 14:39:55,832 - INFO - Loading video ID QLpArkPb-YU.
-2022-04-29 14:40:06,999 - INFO - Saving videopage
-2022-04-29 14:40:07,259 - INFO - Recommended videos: ['jU-dYdwrde8', 'OBF4kZS9baw', 'HsBVosr0Pm8', 'suCgD14jtp0', 'J7DdNoMHpgU', 'rcuOsoDS4Cc', 'JT_NB-N5fjA', 'NVLrikfkdXg', 'cDPoW54kL1w', 'h5l8m1JjvHU']
-2022-04-29 14:40:07,444 - INFO - Watching video for 2 seconds.
-2022-04-29 14:40:09,449 - INFO - Loading homepage.
-2022-04-29 14:40:20,282 - INFO - Saving homepage.
-2022-04-29 14:40:20,559 - INFO - Recommended videos: ['BtA0e_egOx8', 'h0JKZWN4ZSM', 'nT8CqX0muJA', 'Gsz3mrnIBd0', 'D_8MwdSOqOQ', '5LV7rMC0fbg', 'DmE5DY7iNCw', 'v_XT9-C5Qu8', 'A3uZ6CoC1J8', 'ZJ4I3zH2ijc']
-2022-04-29 14:40:25,568 - INFO - Loading video ID zU9y354XAgM.
-2022-04-29 14:40:36,972 - INFO - Saving videopage
-2022-04-29 14:40:37,219 - INFO - Recommended videos: ['P0xCuVeBqss', 'gG0yjQ47IZU', 'Pg-FJ00kcYI', 'HsBVosr0Pm8', 'h5l8m1JjvHU', 'htPDFCM9jG0', 'bBUTI7yGr3k', 'WC7qZG3Ffqg', 'FKis488_sSk', 'rcuOsoDS4Cc']
-2022-04-29 14:40:37,400 - INFO - Watching video for 17 seconds.
-2022-04-29 14:40:54,400 - INFO - Loading homepage.
-2022-04-29 14:41:06,079 - INFO - Saving homepage.
-2022-04-29 14:41:06,349 - INFO - Recommended videos: ['cN7xxY3suEo', 'aOcAqCvH66Q', 'Gsz3mrnIBd0', 'B4dnPVZ2MV0', 'UQQeSnrVSMw', 'AX3h-9OZf8o', 'h0JKZWN4ZSM', 'qRbnxOuOrk8', 'yUACgxIx03U', 'MtdupS0gRt0']
-2022-04-29 14:41:11,358 - INFO - Loading video ID GS2UGZQJufI.
-2022-04-29 14:41:22,931 - INFO - Saving videopage
-2022-04-29 14:41:23,198 - INFO - Recommended videos: ['WC7qZG3Ffqg', '2uMc3rNnTo4', 'suCgD14jtp0', 'sB7fJ-qmcWY', 'h5l8m1JjvHU', '-PyZV6Ok2MU', 'P8Wiye5X6nE', 'WS3r1BT7hAQ', 'Pg-FJ00kcYI', '_4TdCJ6Uqik']
-2022-04-29 14:41:23,391 - INFO - Watching video for 30 seconds.
-2022-04-29 14:41:53,390 - INFO - Loading homepage.
-2022-04-29 14:42:04,764 - INFO - Saving homepage.
-2022-04-29 14:42:05,038 - INFO - Recommended videos: ['cN7xxY3suEo', 'LNYm40RmRzs', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', 'bd-lLkqrWvc', 'KhwCwxCeRys', 'xhbsTjbC3No', 'nT8CqX0muJA', 'B4dnPVZ2MV0', 'D_8MwdSOqOQ']
-2022-04-29 14:42:10,049 - INFO - Loading video ID FUKmyRLOlAA.
-2022-04-29 14:42:21,521 - INFO - Saving videopage
-2022-04-29 14:42:21,793 - INFO - Recommended videos: ['0_CDMstFg7M', 'HsBVosr0Pm8', 'suCgD14jtp0', 'pyQNw2JZ9DY', 'h5l8m1JjvHU', 'FKis488_sSk', 'XhQmzSUBHLY', '3F5lSQDog98', 'btb1977yjjQ', 'BN9RzFVJo3s']
-2022-04-29 14:42:22,007 - INFO - Watching video for 0 seconds.
-2022-04-29 14:42:22,008 - INFO - 
+2022-04-29 15:42:12,836 - INFO - Loading homepage.
+2022-04-29 15:42:29,180 - INFO - Saving homepage.
+2022-04-29 15:42:29,523 - INFO - Recommended videos: ['Z7wtsuCDaTc', 'aOcAqCvH66Q', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', 'B4dnPVZ2MV0', 'B9XKI0Cw-gQ', 'H0CiS7Fo1iI', 'G3e-cpL7ofc', 'X0lXHpRJ9t8', 'XVENjm3Bjk0']
+2022-04-29 15:42:34,548 - INFO - Loading video ID 5dlubcRwYnI.
+2022-04-29 15:42:46,826 - INFO - Saving videopage
+2022-04-29 15:42:47,129 - INFO - Recommended videos: ['P0xCuVeBqss', 'W7wymCpjerc', 's_zMbl8qN_A', 'LaUe-Hf0uSM', 'OR1L0AZOtwg', 'suCgD14jtp0', '_4TdCJ6Uqik', 'g_Uh0r8nYDo', 'NY15qmpIjHI', 'h5l8m1JjvHU']
+2022-04-29 15:42:47,313 - INFO - Watching video for 16 seconds.
+2022-04-29 15:43:03,318 - INFO - Loading homepage.
+2022-04-29 15:43:14,733 - INFO - Saving homepage.
+2022-04-29 15:43:15,058 - INFO - Recommended videos: ['Zk__HiwMIjA', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', '2OPOGUUkauc', 'yklW2CV3xwE', 'G3e-cpL7ofc', 'A3uZ6CoC1J8', 'v_XT9-C5Qu8', 'LNYm40RmRzs', 'iBd1gFDfwnA']
+2022-04-29 15:43:20,070 - INFO - Loading video ID QLpArkPb-YU.
+2022-04-29 15:43:31,264 - INFO - Saving videopage
+2022-04-29 15:43:31,560 - INFO - Recommended videos: ['jU-dYdwrde8', 'P0xCuVeBqss', 'OBF4kZS9baw', 'suCgD14jtp0', 'h5l8m1JjvHU', 's_zMbl8qN_A', 'Pg-FJ00kcYI', 'VBKNoLcj8jA', 'JT_NB-N5fjA', '1znjHDiqBk8']
+2022-04-29 15:43:31,743 - INFO - Watching video for 2 seconds.
+2022-04-29 15:43:33,749 - INFO - Loading homepage.
+2022-04-29 15:43:45,083 - INFO - Saving homepage.
+2022-04-29 15:43:45,367 - INFO - Recommended videos: ['EdwAiHpN1Mg', 'aOcAqCvH66Q', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', 'Ig9gaAgNHbY', '5GLB9t7a6aI', 'B4dnPVZ2MV0', 'DmE5DY7iNCw', 'ltqx-jo6aWE', 'G0lYgEuHrgc']
+2022-04-29 15:43:50,378 - INFO - Loading video ID zU9y354XAgM.
+2022-04-29 15:44:01,412 - INFO - Saving videopage
+2022-04-29 15:44:01,691 - INFO - Recommended videos: ['P0xCuVeBqss', 'gG0yjQ47IZU', 'Pg-FJ00kcYI', 's_zMbl8qN_A', 'BN9RzFVJo3s', 'htPDFCM9jG0', 'Ajry4-4MP6E', 'UBrATCXHsZA', 'JheAtsBO86M', 'h5l8m1JjvHU']
+2022-04-29 15:44:01,874 - INFO - Watching video for 17 seconds.
+2022-04-29 15:44:18,879 - INFO - Loading homepage.
+2022-04-29 15:44:30,345 - INFO - Saving homepage.
+2022-04-29 15:44:30,708 - INFO - Recommended videos: ['L5CV53wCWO0', 'aOcAqCvH66Q', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', 'LNYm40RmRzs', 'p_emcSMT6d0', 'tZ_ZsBHuL9A', 'uvHzle4Qze8', 'v_XT9-C5Qu8', 'iBd1gFDfwnA']
+2022-04-29 15:44:35,720 - INFO - Loading video ID GS2UGZQJufI.
+2022-04-29 15:44:47,176 - INFO - Saving videopage
+2022-04-29 15:44:47,492 - INFO - Recommended videos: ['WC7qZG3Ffqg', '2uMc3rNnTo4', 'P0xCuVeBqss', 's_zMbl8qN_A', 'agRi3rgMmtU', 'sB7fJ-qmcWY', 'h5l8m1JjvHU', 'uQ3RMfOdWmg', '_4TdCJ6Uqik', 'H_bB0sAqLNg']
+2022-04-29 15:44:47,693 - INFO - Watching video for 30 seconds.
+2022-04-29 15:45:17,698 - INFO - Loading homepage.
+2022-04-29 15:45:30,208 - INFO - Saving homepage.
+2022-04-29 15:45:30,541 - INFO - Recommended videos: ['2ZROxGEvirE', 'B4dnPVZ2MV0', 'Gsz3mrnIBd0', 'DmE5DY7iNCw', '6DxjJzmYsXo', 'KhwCwxCeRys', 'YA4EIbaEVYo', 'pU72XlMODgI', 'daAVTmsMXeI', 'X0lXHpRJ9t8']
+2022-04-29 15:45:35,555 - INFO - Loading video ID FUKmyRLOlAA.
+2022-04-29 15:45:46,973 - INFO - Saving videopage
+2022-04-29 15:45:47,280 - INFO - Recommended videos: ['UmgPTrN-bn8', 'IvlJuT7nFHg', 'McheKi3yJ4I', '0_CDMstFg7M', '7HWWZxIEaqY', 'BMxlHRitMeE', 'ObzR-8LqhEA', 'tWoo8i_VkvI', '3iZg1xBW4tA', 'BN9RzFVJo3s']
+2022-04-29 15:45:47,480 - INFO - Watching video for 0 seconds.
+2022-04-29 15:45:47,480 - INFO - 
 SCRUB PHASE
-2022-04-29 14:42:22,008 - INFO - Loading homepage.
-2022-04-29 14:42:33,160 - INFO - Saving homepage.
-2022-04-29 14:42:33,430 - INFO - Recommended videos: ['L5CV53wCWO0', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', '5jrpNXvsD5k', 'IkdmOVejUlI', '2rdEGM-CnKw', 'GUg_bsdHNAM', 'A3uZ6CoC1J8', 'BtA0e_egOx8', 'Ck2DSDWSKRk']
-2022-04-29 14:42:38,439 - INFO - 
+2022-04-29 15:45:47,480 - INFO - Loading homepage.
+2022-04-29 15:45:58,938 - INFO - Saving homepage.
+2022-04-29 15:45:59,274 - INFO - Recommended videos: ['sB7fJ-qmcWY', 'vyqbNFMDRGQ', 'Gsz3mrnIBd0', '8X09eBFPuT4', 'iBd1gFDfwnA', 'Spe4q3Dr-5E', 'h0JKZWN4ZSM', 'MtdupS0gRt0', '47r8FXYZWNU', 'lSN_V-Kc9u8']
+2022-04-29 15:46:04,302 - INFO - 
 TEARDOWN PHASE
-2022-04-29 14:42:38,440 - INFO - Loading homepage.
-2022-04-29 14:42:49,759 - INFO - Saving homepage.
-2022-04-29 14:42:50,043 - INFO - Recommended videos: ['xhbsTjbC3No', 'h0JKZWN4ZSM', 'nT8CqX0muJA', 'pzhsswFhSLo', 'Gsz3mrnIBd0', 'LNYm40RmRzs', 'O7zaUceGCmY', 'coj5BH58KdM', '_OkQw1eykg0', 'mYr-mGZYdrI']
-2022-04-29 14:42:50,049 - INFO - Loading video ID FUKmyRLOlAA.
-2022-04-29 14:43:01,415 - INFO - Saving videopage
-2022-04-29 14:43:01,676 - INFO - Recommended videos: ['n5OVSpd4RQg', '0_CDMstFg7M', 'NOxHtNaog4A', 'UBrATCXHsZA', 'L_I7Qt-SWbw', 'P0xCuVeBqss', 'sO65YihyZac', 'gG0yjQ47IZU', 'HsBVosr0Pm8', 'h5l8m1JjvHU']
-2022-04-29 14:43:01,880 - INFO - 
-DONE!
+2022-04-29 15:46:04,303 - INFO - Loading homepage.
+2022-04-29 15:46:15,892 - INFO - Saving homepage.
+2022-04-29 15:46:16,233 - INFO - Recommended videos: ['sB7fJ-qmcWY', 'vyqbNFMDRGQ', 'Gsz3mrnIBd0', 'D_8MwdSOqOQ', 'Ix76rPcGYW8', 'SrchM4oXlbQ', 'LNYm40RmRzs', 'bd-lLkqrWvc', 'EdwAiHpN1Mg', 'ROftXJkL-o4']
+2022-04-29 15:46:16,240 - INFO - Loading video ID FUKmyRLOlAA.
+2022-04-29 15:46:27,576 - INFO - Saving videopage
+2022-04-29 15:46:27,887 - INFO - Recommended videos: ['UmgPTrN-bn8', 'RYgIVc5Jvjg', 'L88yE7jL-Xk', 'IvlJuT7nFHg', '0_CDMstFg7M', 'UBrATCXHsZA', '7HWWZxIEaqY', 'yXkIHyBfns8', '3iZg1xBW4tA', 'ObzR-8LqhEA']
+2022-04-29 15:48:31,133 - ERROR - Error! Saving html to ./failures/timer_none_test-0.html
+Traceback (most recent call last):
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrub_main.py", line 114, in main
+    scrub_experiment(bot)
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrub_main.py", line 99, in scrub_experiment
+    bot.clear_history()
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrubber.py", line 639, in clear_history
+    time.sleep(1)
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrubber.py", line 639, in clear_history
+    time.sleep(1)
+  File "_pydevd_bundle/pydevd_cython_darwin_310_64.pyx", line 1180, in _pydevd_bundle.pydevd_cython_darwin_310_64.SafeCallWrapper.__call__
+  File "_pydevd_bundle/pydevd_cython_darwin_310_64.pyx", line 621, in _pydevd_bundle.pydevd_cython_darwin_310_64.PyDBFrame.trace_dispatch
+  File "_pydevd_bundle/pydevd_cython_darwin_310_64.pyx", line 1096, in _pydevd_bundle.pydevd_cython_darwin_310_64.PyDBFrame.trace_dispatch
+  File "_pydevd_bundle/pydevd_cython_darwin_310_64.pyx", line 1058, in _pydevd_bundle.pydevd_cython_darwin_310_64.PyDBFrame.trace_dispatch
+  File "_pydevd_bundle/pydevd_cython_darwin_310_64.pyx", line 318, in _pydevd_bundle.pydevd_cython_darwin_310_64.PyDBFrame.do_wait_suspend
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/pydevd.py", line 1147, in do_wait_suspend
+    self._do_wait_suspend(thread, frame, event, arg, suspend_type, from_this_thread)
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/pydevd.py", line 1162, in _do_wait_suspend
+    time.sleep(0.01)
+KeyboardInterrupt
+2022-04-29 15:48:31,152 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fe331ea0ca0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/01a8557079549684a16e6857ffeb6ffb/source
+2022-04-29 15:48:31,153 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fe341098340>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/01a8557079549684a16e6857ffeb6ffb/source
+2022-04-29 15:48:31,154 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fe3410995a0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/01a8557079549684a16e6857ffeb6ffb/source

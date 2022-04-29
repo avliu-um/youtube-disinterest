@@ -130,6 +130,7 @@ class Scrubber(object):
 
         self.phase = "setup"
         self.phase_level = 0
+        self.disliked_videos = set()
 
         self.log('Created bot in community {0} and scrubbing strategy {1}'
                  .format(self.community, self.scrubbing_strategy))
@@ -369,10 +370,15 @@ class Scrubber(object):
 
     # We only implement this one because it's the only one being used so far for our scrubbing experiment
     def dislike_video(self):
+        # Add it to our disliked videos list for later un-disliking
+        url = self.driver.current_url
+        video_id = url[len('https://www.youtube.com/watch?v='):]
+        self.disliked_videos.add(video_id)
+
         self.video_action('dislike')
 
     # Modified from Tomlein et al. (2021)
-    def video_action(self, action):
+    def video_action(self, action, turn_on=True):
         """
         Attempt the 'action' of pressing one of the buttons right below the video screen
         By 'action' we mean 'like', 'dislike', or 'subscribe'
@@ -383,7 +389,7 @@ class Scrubber(object):
         self.log('Attempting to press the {0} button.'.format(action))
         while counter < max_tries:
             try:
-                success = self.__interact_with_action_button(action)
+                success = self.__interact_with_action_button(action, turn_on)
                 if success:
                     self.log('Success at attempt #{0}'.format(counter))
                     return success
@@ -398,12 +404,13 @@ class Scrubber(object):
         raise RuntimeError(f'All attempts failed.')
 
     # Modified from Tomlein et al. (2021)
-    def __interact_with_action_button(self, action):
+    def __interact_with_action_button(self, action, turn_on=True):
         """
         Get and click on the button (if not clicked on already)
         """
         button, already_pressed = self.__get_action_button(action)
-        if already_pressed:
+        if (already_pressed and turn_on) or \
+                (not already_pressed and not turn_on):
             self.log('Button already pressed.')
             return True
         else:
@@ -526,7 +533,7 @@ class Scrubber(object):
         if unwanted_video:
             unwanted_video.click()
             time.sleep(5)
-            self.video_action('dislike')
+            self.dislike_video()
         time.sleep(5)
 
     def menu_service(self, action):
@@ -598,3 +605,81 @@ class Scrubber(object):
         else:
             self.log('No videos from unwanted channels were found.')
             return None
+
+    # Modified from Tomlein et al. (2021)
+    def clear_history(self):
+        clear_wait_secs = 10
+
+        self.driver.get('https://myactivity.google.com/item')
+
+        clicked = self.__open_clear_history_popup()
+
+        if not clicked:
+            # Wait until hamburger element on page loads and click it
+            WebDriverWait(self.driver, clear_wait_secs).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.gb_vc:nth-child(1)')))
+            WebDriverWait(self.driver, clear_wait_secs).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.gb_vc:nth-child(1)')))
+            self.driver.find_element_by_css_selector('div.gb_vc:nth-child(1)').click()
+            self.__open_clear_history_popup()
+
+        # Wait until the popup windows gets loaded
+        WebDriverWait(self.driver, clear_wait_secs).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.iZdpV')))
+        WebDriverWait(self.driver, clear_wait_secs).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.iZdpV')))
+
+        # Find link for deleting all history in choices and click it
+        choice_list = self.driver.find_elements_by_css_selector('div.iZdpV')
+        for choice in choice_list:
+            if choice.text == 'Always' or choice.text == 'All time':
+                choice.click()
+                break
+
+        # Wait until next part of popup window loads
+        WebDriverWait(self.driver, clear_wait_secs).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.Df8Did')))
+        time.sleep(1)
+        # Find all buttons
+        buttons = self.driver.find_element_by_css_selector('div.Df8Did').find_elements_by_css_selector('span.VfPpkd-vQzf8d')
+        for button in buttons:
+            # In case there are multiple sources of history are present click `Next` and find `Delete` button to click
+            if button.text == 'Next':
+                # Click `Next`
+                button.find_element_by_xpath('..').click()
+                # Wait while new buttons load
+                time.sleep(1)
+                # Find all the buttons and click `Delete`
+                other_buttons = self.driver.find_element_by_css_selector('div.Df8Did').find_elements_by_css_selector('span.VfPpkd-vQzf8d')
+                for other_button in other_buttons:
+                    if other_button.text == 'Delete':
+                        other_button.find_element_by_xpath('..').click()
+                        return
+            # In case only one source of history is present click `Delete`
+            elif button.text == 'Delete':
+                button.find_element_by_xpath('..').click()
+                break
+
+    # Unlike 'likes', youtube doesn't conveniently give us a playlist of liked videos
+    # We may have to go through each one by url and un-dislike it that way
+    # For the 'dislike recommended' scrubbing strategy, we'll have to form a list as we go of everything we end up
+    #   disliking
+    def clear_disliked_videos(self):
+        self.log('Un-disliking disliked videos.')
+        for un_dislike_id in self.disliked_videos:
+            self.driver.get('https://www.youtube.com/watch?v=' + un_dislike_id)
+            self.video_action('dislike', False)
+
+    def __open_clear_history_popup(self):
+        clear_wait_secs = 10
+
+        # Wait until menu opens and find link for deleting all activity
+        WebDriverWait(self.driver, clear_wait_secs).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'a.IlZEuc')))
+        WebDriverWait(self.driver, clear_wait_secs).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'a.IlZEuc')))
+        navigation_menu_links = self.driver.find_elements_by_css_selector('.IlZEuc')
+        for link in navigation_menu_links:
+            if link.text == 'Delete activity by':
+                # Check if menu is open
+                try:
+                    link.click()
+                    return True
+                except ElementNotInteractableException:
+                    self.driver.find_element_by_css_selector('div.gb_vc:nth-child(1)').click()
+                    link.click()
+                    return True
+        return False
