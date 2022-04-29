@@ -1,6 +1,6 @@
 {
   "community": "timer",
-  "scrubbing_strategy": "delete",
+  "scrubbing_strategy": "watch",
   "note": "test-0",
 
   "staining_videos": [

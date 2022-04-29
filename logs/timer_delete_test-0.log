@@ -1,0 +1,30 @@
+2022-04-29 14:06:59,030 - INFO - Created bot in community timer and scrubbing strategy delete
+2022-04-29 14:06:59,030 - INFO - SETUP PHASE
+2022-04-29 14:06:59,030 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-04-29 14:07:08,629 - INFO - Login succeeded at attempt #1
+2022-04-29 14:07:13,634 - INFO - 
+STAIN PHASE
+2022-04-29 14:07:13,634 - INFO - Loading homepage.
+2022-04-29 14:07:28,555 - INFO - Saving homepage.
+2022-04-29 14:07:28,878 - INFO - Recommended videos: ['huE6wXcBxn4', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', '49E9rqLJqKs', 'ttviqvfTBTg', 'DIJiUc4PBNc', 'v_XT9-C5Qu8', 'nT8CqX0muJA', 'B9XKI0Cw-gQ', '4OElMKfDMi0']
+2022-04-29 14:07:33,892 - INFO - Loading video ID 5dlubcRwYnI.
+2022-04-29 14:07:46,665 - INFO - Saving videopage
+2022-04-29 14:07:46,923 - INFO - Recommended videos: ['DSrDeL2e8F8', 'W7wymCpjerc', 'LaUe-Hf0uSM', 'nUiU_oLiJ2M', 'ccT9WivevuM', 'NVLrikfkdXg', 'fuNl3c5U-Xc', 'GdtG3Arw4FU', 'y4UVIn8pN78', 'C0F2T7W_hpM']
+2022-04-29 14:07:47,114 - INFO - Watching video for 16 seconds.
+2022-04-29 14:08:03,118 - INFO - 
+SCRUB PHASE
+2022-04-29 14:08:03,119 - INFO - Loading homepage.
+2022-04-29 14:08:14,438 - INFO - Saving homepage.
+2022-04-29 14:08:14,664 - INFO - Recommended videos: ['eOkjepXPzmc', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', 'B9XKI0Cw-gQ', 'AX3h-9OZf8o', '5qap5aO4i9A', '5vt7dGR9o9U', 'v_XT9-C5Qu8', 'tZ_ZsBHuL9A', 'nT8CqX0muJA']
+2022-04-29 14:08:19,673 - INFO - Loading history page.
+2022-04-29 14:08:26,074 - INFO - Deleting most recent.
+2022-04-29 14:08:36,487 - INFO - 
+TEARDOWN PHASE
+2022-04-29 14:08:36,487 - INFO - Loading homepage.
+2022-04-29 14:08:48,159 - INFO - Saving homepage.
+2022-04-29 14:08:48,435 - INFO - Recommended videos: ['eOkjepXPzmc', 'h0JKZWN4ZSM', 'Ix76rPcGYW8', '1Xij_cIe5_A', 'DQQRjFzB8gY', 'O7zaUceGCmY', 'v_XT9-C5Qu8', '47r8FXYZWNU', 'ttviqvfTBTg', 'EUcvdGfGEj0']
+2022-04-29 14:08:48,440 - INFO - Loading video ID 5dlubcRwYnI.
+2022-04-29 14:08:59,598 - INFO - Saving videopage
+2022-04-29 14:08:59,861 - INFO - Recommended videos: ['DSrDeL2e8F8', 'W7wymCpjerc', 'LaUe-Hf0uSM', 'nUiU_oLiJ2M', 'ccT9WivevuM', 'NVLrikfkdXg', 'fuNl3c5U-Xc', 'GdtG3Arw4FU', 'y4UVIn8pN78', 'C0F2T7W_hpM']
+2022-04-29 14:09:00,043 - INFO - 
+DONE!

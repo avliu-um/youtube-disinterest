@@ -1,0 +1,25 @@
+2022-04-29 14:50:12,176 - INFO - Created bot in community timer and scrubbing strategy watch
+2022-04-29 14:50:12,177 - INFO - SETUP PHASE
+2022-04-29 14:50:12,177 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-04-29 14:50:22,915 - INFO - Login succeeded at attempt #1
+2022-04-29 14:50:27,920 - INFO - 
+STAIN PHASE
+2022-04-29 14:50:27,921 - INFO - Loading homepage.
+2022-04-29 14:50:42,617 - INFO - Saving homepage.
+2022-04-29 14:50:42,916 - INFO - Recommended videos: ['L5CV53wCWO0', 'aOcAqCvH66Q', 'LNYm40RmRzs', 'Gsz3mrnIBd0', '2OPOGUUkauc', '2y6NbsOobdU', 'h0JKZWN4ZSM', 'xhbsTjbC3No', 'B4dnPVZ2MV0', '5jrpNXvsD5k']
+2022-04-29 14:50:47,935 - INFO - Loading video ID 5dlubcRwYnI.
+2022-04-29 14:51:00,298 - INFO - Saving videopage
+2022-04-29 14:51:00,563 - INFO - Recommended videos: ['suCgD14jtp0', 'W7wymCpjerc', 'P0xCuVeBqss', 's_zMbl8qN_A', 'GEGC2qEHAqg', 'LaUe-Hf0uSM', 'yXkIHyBfns8', 'FKis488_sSk', 'PHJWV1SmPTc', 'zbeY0eEAEl8']
+2022-04-29 14:51:00,753 - INFO - Watching video for 16 seconds.
+2022-04-29 14:51:16,755 - INFO - 
+SCRUB PHASE
+2022-04-29 14:51:16,756 - INFO - 
+TEARDOWN PHASE
+2022-04-29 14:51:16,756 - INFO - Loading homepage.
+2022-04-29 14:51:28,225 - INFO - Saving homepage.
+2022-04-29 14:51:28,490 - INFO - Recommended videos: ['sB7fJ-qmcWY', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', 'iBd1gFDfwnA', 'zaXPYFE3C6g', '2OPOGUUkauc', '04N776ogEEg', 'Ck2DSDWSKRk', 'B4dnPVZ2MV0', 'i-iHksu9ePU']
+2022-04-29 14:51:28,495 - INFO - Loading video ID 5dlubcRwYnI.
+2022-04-29 14:51:39,884 - INFO - Saving videopage
+2022-04-29 14:51:40,139 - INFO - Recommended videos: ['P0xCuVeBqss', 'W7wymCpjerc', 'suCgD14jtp0', 's_zMbl8qN_A', 'h5l8m1JjvHU', 'yXkIHyBfns8', 'Iq72uLRfOS4', 'UgqATR7dg5w', 'djhGUsm0M8Y', 'zbeY0eEAEl8']
+2022-04-29 14:51:40,325 - INFO - 
+DONE!

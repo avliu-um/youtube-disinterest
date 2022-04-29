@@ -520,11 +520,6 @@ class Scrubber(object):
 
         time.sleep(5)
 
-        # This should produce an error
-        self.log('Performing an action that should produce an error!')
-        button.click()
-        time.sleep(5)
-
     def dislike_recommended(self):
         unwanted_video = self.scrub_homepage()
         time.sleep(5)
@@ -603,6 +598,3 @@ class Scrubber(object):
         else:
             self.log('No videos from unwanted channels were found.')
             return None
-
-
-

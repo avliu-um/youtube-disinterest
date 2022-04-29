@@ -1,0 +1,30 @@
+2022-04-29 14:43:37,624 - INFO - Created bot in community timer and scrubbing strategy not interested
+2022-04-29 14:43:37,624 - INFO - SETUP PHASE
+2022-04-29 14:43:37,624 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-04-29 14:43:48,495 - INFO - Login succeeded at attempt #1
+2022-04-29 14:43:53,499 - INFO - 
+STAIN PHASE
+2022-04-29 14:43:53,499 - INFO - Loading homepage.
+2022-04-29 14:44:08,466 - INFO - Saving homepage.
+2022-04-29 14:44:08,760 - INFO - Recommended videos: ['iDO9J_3OVJ0', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', 'Ix76rPcGYW8', 'LNYm40RmRzs', 'iFAmK0_9NhU', 'O7zaUceGCmY', 'Spe4q3Dr-5E', 'v_XT9-C5Qu8', 'B9XKI0Cw-gQ']
+2022-04-29 14:44:13,773 - INFO - Loading video ID 5dlubcRwYnI.
+2022-04-29 14:44:26,670 - INFO - Saving videopage
+2022-04-29 14:44:26,934 - INFO - Recommended videos: ['UBrATCXHsZA', 'W7wymCpjerc', 'FKis488_sSk', 'P0xCuVeBqss', 'zbeY0eEAEl8', 'LaUe-Hf0uSM', 'yXkIHyBfns8', 'JheAtsBO86M', 'Iq72uLRfOS4', 'djhGUsm0M8Y']
+2022-04-29 14:44:27,121 - INFO - Watching video for 16 seconds.
+2022-04-29 14:44:43,126 - INFO - 
+SCRUB PHASE
+2022-04-29 14:44:43,127 - INFO - Loading homepage.
+2022-04-29 14:44:54,211 - INFO - Saving homepage.
+2022-04-29 14:44:54,478 - INFO - Recommended videos: ['sB7fJ-qmcWY', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', '63UtzXfN15s', 'LNYm40RmRzs', '2y6NbsOobdU', 'DmE5DY7iNCw', 'B9XKI0Cw-gQ', 'Z7wtsuCDaTc', 'Ig9gaAgNHbY']
+2022-04-29 14:44:59,486 - INFO - Checking homepage for video from unwanted channel.
+2022-04-29 14:44:59,782 - INFO - No videos from unwanted channels were found.
+2022-04-29 14:45:09,785 - INFO - 
+TEARDOWN PHASE
+2022-04-29 14:45:09,785 - INFO - Loading homepage.
+2022-04-29 14:45:21,266 - INFO - Saving homepage.
+2022-04-29 14:45:21,597 - INFO - Recommended videos: ['iDO9J_3OVJ0', 'h0JKZWN4ZSM', 'bd-lLkqrWvc', 'B9XKI0Cw-gQ', 'IKsGU5pbgJg', '2y6NbsOobdU', 'O7zaUceGCmY', 'qRbnxOuOrk8', 'doZT3XdcCcE', 'L5CV53wCWO0']
+2022-04-29 14:45:21,612 - INFO - Loading video ID 5dlubcRwYnI.
+2022-04-29 14:45:32,863 - INFO - Saving videopage
+2022-04-29 14:45:33,130 - INFO - Recommended videos: ['yXkIHyBfns8', 'W7wymCpjerc', 'suCgD14jtp0', 'P0xCuVeBqss', 's_zMbl8qN_A', 'h5l8m1JjvHU', '7rGgxLcbqmI', 'Iq72uLRfOS4', 'djhGUsm0M8Y', 'LaUe-Hf0uSM']
+2022-04-29 14:45:33,320 - INFO - 
+DONE!
