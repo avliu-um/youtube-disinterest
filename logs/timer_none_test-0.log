@@ -1,0 +1,56 @@
+2022-04-29 14:38:33,380 - INFO - Created bot in community timer and scrubbing strategy none
+2022-04-29 14:38:33,381 - INFO - SETUP PHASE
+2022-04-29 14:38:33,381 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-04-29 14:38:42,863 - INFO - Login succeeded at attempt #1
+2022-04-29 14:38:47,868 - INFO - 
+STAIN PHASE
+2022-04-29 14:38:47,869 - INFO - Loading homepage.
+2022-04-29 14:39:04,276 - INFO - Saving homepage.
+2022-04-29 14:39:04,576 - INFO - Recommended videos: ['NxQvaydVJtA', 'h0JKZWN4ZSM', 'nT8CqX0muJA', 'v_XT9-C5Qu8', 'Ig9gaAgNHbY', '8wCVxatKsZQ', 'O7zaUceGCmY', 'lLSkZ7v-7T4', 'B9XKI0Cw-gQ', 'FWtWJAmHuc8']
+2022-04-29 14:39:09,592 - INFO - Loading video ID 5dlubcRwYnI.
+2022-04-29 14:39:22,648 - INFO - Saving videopage
+2022-04-29 14:39:22,912 - INFO - Recommended videos: ['2uMc3rNnTo4', 'W7wymCpjerc', 'HsBVosr0Pm8', 'NVLrikfkdXg', 'FKis488_sSk', 'zbeY0eEAEl8', 'LaUe-Hf0uSM', 'PHJWV1SmPTc', 'G4X4ZQHsTyE', 'suCgD14jtp0']
+2022-04-29 14:39:23,099 - INFO - Watching video for 16 seconds.
+2022-04-29 14:39:39,104 - INFO - Loading homepage.
+2022-04-29 14:39:50,553 - INFO - Saving homepage.
+2022-04-29 14:39:50,823 - INFO - Recommended videos: ['bd-lLkqrWvc', 'zkqgxWcj0ek', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', 'B4dnPVZ2MV0', 'yklW2CV3xwE', 'TXZapadD5EE', 'nT8CqX0muJA', 'v_XT9-C5Qu8', 'Ck2DSDWSKRk']
+2022-04-29 14:39:55,832 - INFO - Loading video ID QLpArkPb-YU.
+2022-04-29 14:40:06,999 - INFO - Saving videopage
+2022-04-29 14:40:07,259 - INFO - Recommended videos: ['jU-dYdwrde8', 'OBF4kZS9baw', 'HsBVosr0Pm8', 'suCgD14jtp0', 'J7DdNoMHpgU', 'rcuOsoDS4Cc', 'JT_NB-N5fjA', 'NVLrikfkdXg', 'cDPoW54kL1w', 'h5l8m1JjvHU']
+2022-04-29 14:40:07,444 - INFO - Watching video for 2 seconds.
+2022-04-29 14:40:09,449 - INFO - Loading homepage.
+2022-04-29 14:40:20,282 - INFO - Saving homepage.
+2022-04-29 14:40:20,559 - INFO - Recommended videos: ['BtA0e_egOx8', 'h0JKZWN4ZSM', 'nT8CqX0muJA', 'Gsz3mrnIBd0', 'D_8MwdSOqOQ', '5LV7rMC0fbg', 'DmE5DY7iNCw', 'v_XT9-C5Qu8', 'A3uZ6CoC1J8', 'ZJ4I3zH2ijc']
+2022-04-29 14:40:25,568 - INFO - Loading video ID zU9y354XAgM.
+2022-04-29 14:40:36,972 - INFO - Saving videopage
+2022-04-29 14:40:37,219 - INFO - Recommended videos: ['P0xCuVeBqss', 'gG0yjQ47IZU', 'Pg-FJ00kcYI', 'HsBVosr0Pm8', 'h5l8m1JjvHU', 'htPDFCM9jG0', 'bBUTI7yGr3k', 'WC7qZG3Ffqg', 'FKis488_sSk', 'rcuOsoDS4Cc']
+2022-04-29 14:40:37,400 - INFO - Watching video for 17 seconds.
+2022-04-29 14:40:54,400 - INFO - Loading homepage.
+2022-04-29 14:41:06,079 - INFO - Saving homepage.
+2022-04-29 14:41:06,349 - INFO - Recommended videos: ['cN7xxY3suEo', 'aOcAqCvH66Q', 'Gsz3mrnIBd0', 'B4dnPVZ2MV0', 'UQQeSnrVSMw', 'AX3h-9OZf8o', 'h0JKZWN4ZSM', 'qRbnxOuOrk8', 'yUACgxIx03U', 'MtdupS0gRt0']
+2022-04-29 14:41:11,358 - INFO - Loading video ID GS2UGZQJufI.
+2022-04-29 14:41:22,931 - INFO - Saving videopage
+2022-04-29 14:41:23,198 - INFO - Recommended videos: ['WC7qZG3Ffqg', '2uMc3rNnTo4', 'suCgD14jtp0', 'sB7fJ-qmcWY', 'h5l8m1JjvHU', '-PyZV6Ok2MU', 'P8Wiye5X6nE', 'WS3r1BT7hAQ', 'Pg-FJ00kcYI', '_4TdCJ6Uqik']
+2022-04-29 14:41:23,391 - INFO - Watching video for 30 seconds.
+2022-04-29 14:41:53,390 - INFO - Loading homepage.
+2022-04-29 14:42:04,764 - INFO - Saving homepage.
+2022-04-29 14:42:05,038 - INFO - Recommended videos: ['cN7xxY3suEo', 'LNYm40RmRzs', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', 'bd-lLkqrWvc', 'KhwCwxCeRys', 'xhbsTjbC3No', 'nT8CqX0muJA', 'B4dnPVZ2MV0', 'D_8MwdSOqOQ']
+2022-04-29 14:42:10,049 - INFO - Loading video ID FUKmyRLOlAA.
+2022-04-29 14:42:21,521 - INFO - Saving videopage
+2022-04-29 14:42:21,793 - INFO - Recommended videos: ['0_CDMstFg7M', 'HsBVosr0Pm8', 'suCgD14jtp0', 'pyQNw2JZ9DY', 'h5l8m1JjvHU', 'FKis488_sSk', 'XhQmzSUBHLY', '3F5lSQDog98', 'btb1977yjjQ', 'BN9RzFVJo3s']
+2022-04-29 14:42:22,007 - INFO - Watching video for 0 seconds.
+2022-04-29 14:42:22,008 - INFO - 
+SCRUB PHASE
+2022-04-29 14:42:22,008 - INFO - Loading homepage.
+2022-04-29 14:42:33,160 - INFO - Saving homepage.
+2022-04-29 14:42:33,430 - INFO - Recommended videos: ['L5CV53wCWO0', 'h0JKZWN4ZSM', 'Gsz3mrnIBd0', '5jrpNXvsD5k', 'IkdmOVejUlI', '2rdEGM-CnKw', 'GUg_bsdHNAM', 'A3uZ6CoC1J8', 'BtA0e_egOx8', 'Ck2DSDWSKRk']
+2022-04-29 14:42:38,439 - INFO - 
+TEARDOWN PHASE
+2022-04-29 14:42:38,440 - INFO - Loading homepage.
+2022-04-29 14:42:49,759 - INFO - Saving homepage.
+2022-04-29 14:42:50,043 - INFO - Recommended videos: ['xhbsTjbC3No', 'h0JKZWN4ZSM', 'nT8CqX0muJA', 'pzhsswFhSLo', 'Gsz3mrnIBd0', 'LNYm40RmRzs', 'O7zaUceGCmY', 'coj5BH58KdM', '_OkQw1eykg0', 'mYr-mGZYdrI']
+2022-04-29 14:42:50,049 - INFO - Loading video ID FUKmyRLOlAA.
+2022-04-29 14:43:01,415 - INFO - Saving videopage
+2022-04-29 14:43:01,676 - INFO - Recommended videos: ['n5OVSpd4RQg', '0_CDMstFg7M', 'NOxHtNaog4A', 'UBrATCXHsZA', 'L_I7Qt-SWbw', 'P0xCuVeBqss', 'sO65YihyZac', 'gG0yjQ47IZU', 'HsBVosr0Pm8', 'h5l8m1JjvHU']
+2022-04-29 14:43:01,880 - INFO - 
+DONE!
