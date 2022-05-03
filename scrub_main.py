@@ -3,7 +3,7 @@ import time
 import argparse
 import os
 
-TEST = True
+TEST = Scrubber.TEST
 
 # This is the iteration limit for scrubbing actions that involve interacting with recommendations
 # TODO: Pretest
@@ -19,6 +19,9 @@ if TEST:
 def scrub_experiment(bot):
     bot.log('SETUP PHASE')
 
+    if TEST:
+        bot.log('We are in TEST mode')
+
     if bot.has_account:
         bot.login()
     time.sleep(5)
@@ -33,7 +36,9 @@ def scrub_experiment(bot):
         bot.watch_video(duration)
         bot.phase_level += 1
     # Used in the teardown phase
-    final_stain_vid = bot.staining_videos[-1]
+    final_stain_vid = None
+    if len(bot.staining_videos) > 0:
+        final_stain_vid = bot.staining_videos[-1]
 
     bot.log('\nSCRUB PHASE')
     bot.set_phase('scrub')
@@ -78,13 +83,13 @@ def scrub_experiment(bot):
         for i in range(REC_ITER_LIMIT):
             bot.load_and_save_homepage()
             time.sleep(5)
-            bot.menu_service('not interested')
+            bot.not_interested()
             time.sleep(5)
     elif bot.scrubbing_strategy == 'no channel':
         for i in range(REC_ITER_LIMIT):
             bot.load_and_save_homepage()
             time.sleep(5)
-            bot.menu_service('no channel')
+            bot.no_channel()
             time.sleep(5)
 
     else:
@@ -93,13 +98,21 @@ def scrub_experiment(bot):
     bot.log('\nTEARDOWN PHASE')
     bot.set_phase('teardown')
 
-    bot.load_and_save_homepage()
-    bot.load_and_save_videopage(final_stain_vid)
+    if len(bot.staining_videos) > 0:
+        bot.load_and_save_homepage()
+        time.sleep(5)
+        bot.load_and_save_videopage(final_stain_vid)
+        time.sleep(5)
 
     if not TEST:
         bot.clear_history()
-    if bot.scrubbing_strategy == 'dislike' or bot.scrubbing_strategy == 'dislike recommended':
-        bot.clear_disliked_videos()
+        time.sleep(5)
+        bot.clear_not_interested()
+        time.sleep(5)
+        bot.clear_likes_dislikes()
+        time.sleep(5)
+        bot.clear_subscriptions()
+        time.sleep(5)
 
     bot.log('\nDONE!')
 

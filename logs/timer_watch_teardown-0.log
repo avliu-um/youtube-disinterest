@@ -1,0 +1,13 @@
+2022-05-03 09:53:11,740 - INFO - Created bot in community timer and scrubbing strategy watch
+2022-05-03 09:53:11,742 - INFO - SETUP PHASE
+2022-05-03 09:53:11,742 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-05-03 09:53:21,143 - INFO - Login succeeded at attempt #1
+2022-05-03 09:53:26,148 - INFO - 
+STAIN PHASE
+2022-05-03 09:53:26,149 - INFO - 
+SCRUB PHASE
+2022-05-03 09:53:26,149 - INFO - 
+TEARDOWN PHASE
+2022-05-03 09:53:26,149 - INFO - Clearing subscriptions.
+2022-05-03 09:53:40,243 - INFO - 
+DONE!

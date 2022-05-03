@@ -18,8 +18,11 @@ MAX_WATCH_SECONDS = 1800
 LOAD_BUFFER_SECONDS = 10
 MAX_RECS = 10
 
+
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
 class Scrubber(object):
+
+    TEST = True
 
     def __init__(self, profile_filepath):
         def __get_logger(log_filepath):
@@ -381,7 +384,9 @@ class Scrubber(object):
     def video_action(self, action, turn_on=True):
         """
         Attempt the 'action' of pressing one of the buttons right below the video screen
-        By 'action' we mean 'like', 'dislike', or 'subscribe'
+        By 'action' we mean 'like', 'dislike', or 'subscribe'.
+        turn_on was added to accomodate 'un-disliking' a video (via setting turn_on to False).
+        Un-disliking functionality is now done through the myactivities page but we keep turn_on for future use
         """
         counter = 1
         max_tries = 5
@@ -525,8 +530,6 @@ class Scrubber(object):
         button = contents.find_element(By.CSS_SELECTOR, 'button')
         button.click()
 
-        time.sleep(5)
-
     def dislike_recommended(self):
         unwanted_video = self.scrub_homepage()
         time.sleep(5)
@@ -534,7 +537,32 @@ class Scrubber(object):
             unwanted_video.click()
             time.sleep(5)
             self.dislike_video()
+
+    # Implementing this after realizing you can do "tell us why" --> "don't like video"
+    #   after clicking on the actual not interested button
+    def not_interested(self):
+        self.menu_service('not interested')
         time.sleep(5)
+
+        # click "tell us why"
+        tell_us_why_button = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Tell us why"]')
+        tell_us_why_button.click()
+        time.sleep(5)
+
+        # click "I don't like the video"
+        check_boxes = self.driver.find_elements(By.CSS_SELECTOR, 'div#reasons tp-yt-paper-checkbox')
+        for check_box in check_boxes:
+            if check_box.text == "I don't like the video":
+                check_box.click()
+                time.sleep(5)
+                break
+
+        # click "Submit"
+        submit_button = self.driver.find_element(By.CSS_SELECTOR, 'ytd-button-renderer#submit')
+        submit_button.click()
+
+    def no_channel(self):
+        self.menu_service('no channel')
 
     def menu_service(self, action):
         unwanted_video = self.scrub_homepage()
@@ -561,13 +589,12 @@ class Scrubber(object):
             for button in buttons:
                 if button_text in button.text:
                     button.click()
+                    self.log('Clicked!')
                     found = True
                     break
             if not found:
                 self.log('Button not found.')
                 raise NotImplementedError
-
-            time.sleep(5)
 
     def scrub_homepage(self):
         """
@@ -590,6 +617,10 @@ class Scrubber(object):
                 self.log('Found video {0} from unwanted channel {1}.'.format(video_id, channel_id))
                 unwanted_video_id = video_id
                 break
+            elif self.TEST and i == 3:
+                self.log('TEST: Pretending that the fourth video ({0}, {1}) matches'.format(video_id, channel_id))
+                unwanted_video_id = video_id
+                break
 
         if unwanted_video_id:
             # FIND BUTTON/VIDEO CARD IN HTML
@@ -609,6 +640,7 @@ class Scrubber(object):
     # Modified from Tomlein et al. (2021)
     def clear_history(self):
         clear_wait_secs = 10
+        self.log('Clearing watch history.')
 
         self.driver.get('https://myactivity.google.com/item')
 
@@ -655,16 +687,6 @@ class Scrubber(object):
                 button.find_element_by_xpath('..').click()
                 break
 
-    # Unlike 'likes', youtube doesn't conveniently give us a playlist of liked videos
-    # We may have to go through each one by url and un-dislike it that way
-    # For the 'dislike recommended' scrubbing strategy, we'll have to form a list as we go of everything we end up
-    #   disliking
-    def clear_disliked_videos(self):
-        self.log('Un-disliking disliked videos.')
-        for un_dislike_id in self.disliked_videos:
-            self.driver.get('https://www.youtube.com/watch?v=' + un_dislike_id)
-            self.video_action('dislike', False)
-
     def __open_clear_history_popup(self):
         clear_wait_secs = 10
 
@@ -683,3 +705,49 @@ class Scrubber(object):
                     link.click()
                     return True
         return False
+
+    def clear_not_interested(self):
+        self.log('Clearing "not interested" and "dont recommend channel" selections.')
+        self.driver.get('https://myactivity.google.com/more-activity')
+
+        time.sleep(5)
+
+        delete_button = self.driver.find_element_by_css_selector('div[jsname=ks0aWd] button')
+        delete_button.click()
+
+        time.sleep(5)
+
+        confirm_delete_button = self.driver.find_element_by_css_selector('[class="XfpsVe J9fJmf"] [class=Crf1o]')
+        confirm_delete_button.click()
+
+    def clear_likes_dislikes(self):
+        self.log('Clearing likes and dislikes.')
+        self.driver.get('https://myactivity.google.com/page?utm_source=my-activity&hl=en&page=youtube_likes')
+
+        time.sleep(5)
+
+        delete_button = self.driver.find_element_by_css_selector('a[jsname=BWf65c]')
+        delete_button.click()
+
+        time.sleep(5)
+
+        confirm_delete_button = self.driver.find_element_by_css_selector('[class="XfpsVe J9fJmf"] [class=Crf1o]')
+        confirm_delete_button.click()
+
+    def clear_subscriptions(self):
+        self.log('Clearing subscriptions.')
+        self.driver.get('https://myactivity.google.com/page?utm_source=my-activity&hl=en&page=youtube_subscriptions')
+
+        while True:
+            try:
+                time.sleep(5)
+                x_button = self.driver.find_element_by_css_selector('div.YkIxob div.iM6vT')
+                x_button.click()
+
+                time.sleep(5)
+
+                confirm_delete_button = self.driver.find_element_by_css_selector('[class="XfpsVe J9fJmf"] [class=Crf1o]')
+                confirm_delete_button.click()
+
+            except NoSuchElementException:
+                break
