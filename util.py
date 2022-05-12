@@ -23,14 +23,32 @@ def find_json(json_str, key):
     else:
         pos_end = pos_begin = json_str.find(key) + len(key)
         num_bracket = 1
+
+        # MOTIVATING ISSUE: Videos with brackets in them mess up the string parsing!
+        #    e.g. https://www.youtube.com/watch?v=TyX0twnnyHA
+        in_quotes = False
+
         for pos_idx in range(pos_begin, len(json_str)):
-            if json_str[pos_idx] == '{':
-                num_bracket += 1
-            elif json_str[pos_idx] == '}':
-                num_bracket -= 1
-                if num_bracket == 0:
-                    pos_end = pos_idx
-                    break
+
+            curr_char = json_str[pos_idx]
+            if curr_char == '"':
+                # Make sure not a literal quote, e.g. quote used in the title
+                # pos_idx is an index of the ENTIRE js response, so not likely to be less than 2
+                if json_str[pos_idx-1:pos_idx+1] != '\\"' and pos_idx > 1:
+                    if not in_quotes:
+                        in_quotes = True
+                    else:
+                        in_quotes = False
+
+            if not in_quotes:
+                if curr_char == '{':
+                    num_bracket += 1
+                elif curr_char == '}':
+                    num_bracket -= 1
+                    if num_bracket == 0:
+                        pos_end = pos_idx
+                        break
+
         return fix_json(json_str[pos_begin - 1: pos_end + 1])
 
 
