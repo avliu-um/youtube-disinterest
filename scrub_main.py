@@ -35,6 +35,7 @@ def scrub_experiment(bot):
         duration = bot.load_and_save_videopage(seed_vid)
         bot.watch_video(duration)
         bot.phase_level += 1
+        bot.level += 1
     # Used in the teardown phase
     final_stain_vid = None
     if len(bot.staining_videos) > 0:
@@ -42,6 +43,8 @@ def scrub_experiment(bot):
 
     bot.log('\nSCRUB PHASE')
     bot.set_phase('scrub')
+
+    bot.phase_level = 0
 
     # Watch-based
     if bot.scrubbing_strategy == 'watch':
@@ -51,6 +54,8 @@ def scrub_experiment(bot):
             duration = bot.load_and_save_videopage(burst_vid)
             time.sleep(5)
             bot.watch_video(duration)
+            bot.phase_level += 1
+            bot.level += 1
 
     # History-based
     elif bot.scrubbing_strategy == 'delete':
@@ -59,6 +64,7 @@ def scrub_experiment(bot):
             time.sleep(5)
             bot.delete_most_recent()
             time.sleep(5)
+            bot.phase_level += 1
     elif bot.scrubbing_strategy == 'dislike':
         for seed_vid in bot.staining_videos:
             bot.load_and_save_homepage()
@@ -66,11 +72,15 @@ def scrub_experiment(bot):
             bot.load_and_save_videopage(seed_vid)
             time.sleep(5)
             bot.dislike_video()
+            bot.phase_level += 1
+            bot.level += 1
 
     elif bot.scrubbing_strategy == 'none':
         for i in range(CONTROL_ITER_LIMIT):
             bot.load_and_save_homepage()
             time.sleep(5)
+            bot.phase_level += 1
+            bot.level += 1
 
     # Recommendation-based
     elif bot.scrubbing_strategy == 'dislike recommendation':
@@ -79,24 +89,32 @@ def scrub_experiment(bot):
             time.sleep(5)
             bot.dislike_recommended()
             time.sleep(5)
+            bot.phase_level += 1
+            bot.level += 1
     elif bot.scrubbing_strategy == 'not interested':
         for i in range(REC_ITER_LIMIT):
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.not_interested()
             time.sleep(5)
+            bot.phase_level += 1
+            bot.level += 1
     elif bot.scrubbing_strategy == 'no channel':
         for i in range(REC_ITER_LIMIT):
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.no_channel()
             time.sleep(5)
+            bot.phase_level += 1
 
     else:
         raise NotImplementedError
 
     bot.log('\nTEARDOWN PHASE')
     bot.set_phase('teardown')
+
+    bot.phase_level = 0
+    bot.level += 1
 
     if len(bot.staining_videos) > 0:
         bot.load_and_save_homepage()

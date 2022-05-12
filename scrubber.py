@@ -133,6 +133,7 @@ class Scrubber(object):
 
         self.phase = "setup"
         self.phase_level = 0
+        self.level = 0
         self.disliked_videos = set()
 
         self.log('Created bot in community {0} and scrubbing strategy {1}'
@@ -501,6 +502,8 @@ class Scrubber(object):
             row['phase'] = self.phase
         if 'phase_level' not in row:
             row['phase_level'] = self.phase_level
+        if 'level' not in row:
+            row['level'] = self.level
         if 'time' not in row:
             row['time'] = datetime.datetime.now()
         return row
