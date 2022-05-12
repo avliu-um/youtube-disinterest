@@ -6,10 +6,39 @@ import pandas as pd
 from googleapiclient.discovery import build
 from util import append_df
 
-DEVELOPER_KEY = 'AIzaSyD2N0qxNJtj3NKT2DBursxa6kzA6DZBC_Y'
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
+dev_key_file = '../yt_api_dev_key.txt'
+text_file = open(dev_key_file, "r")
+DEVELOPER_KEY = text_file.read()
+text_file.close()
 
+
+
+# Search channel for videos
+def api_search_channel(cid, order, video_duration, part="snippet", type="video", max_results=50):
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
+    request = youtube.search().list(
+        part=part,
+        order=order,
+        type=type,
+        channelId=cid,
+        maxResults=max_results,
+        videoDuration=video_duration
+    )
+
+def api_channel(cid, part="snippet,contentDetails,statistics"):
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
+    request = youtube.channels().list(
+        part=part,
+        id=cid
+    )
+    return execute_request(request)
+
+def execute_request(request):
+    response = request.execute()
+    # TODO: WRITE REQUEST AND RESPONSE
+    return response
 
 def get_recommendations(vid):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
