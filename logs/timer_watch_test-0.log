@@ -1,25 +1,25 @@
-2022-04-29 16:16:52,123 - INFO - Created bot in community timer and scrubbing strategy watch
-2022-04-29 16:16:52,126 - INFO - SETUP PHASE
-2022-04-29 16:16:52,126 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
-2022-04-29 16:17:01,884 - INFO - Login succeeded at attempt #1
-2022-04-29 16:17:06,889 - INFO - 
-STAIN PHASE
-2022-04-29 16:17:06,891 - INFO - Loading homepage.
-2022-04-29 16:17:21,429 - INFO - Saving homepage.
-2022-04-29 16:17:21,755 - INFO - Recommended videos: ['-BdtFjQ5JNI', 'vdf3sMFHiyU', 'aOcAqCvH66Q', 'wliRWxft-Nc', 'Spe4q3Dr-5E', '4OElMKfDMi0', 'Gsz3mrnIBd0', 'Fa9WJMrQLvw', 'iceS6BvhuQ8', 'sAleVHbqJhE']
-2022-04-29 16:17:26,776 - INFO - Loading video ID 5dlubcRwYnI.
-2022-04-29 16:17:39,068 - INFO - Saving videopage
-2022-04-29 16:17:39,375 - INFO - Recommended videos: ['r7b12ZFd0cA', 'W7wymCpjerc', 'LMkktYm6IcU', 'FKis488_sSk', 'LaUe-Hf0uSM', 'IaJ51vYyXX0', 'UBrATCXHsZA', 'suCgD14jtp0', 'Le4uct9E1LU', 'Pg-FJ00kcYI']
-2022-04-29 16:17:39,564 - INFO - Watching video for 16 seconds.
-2022-04-29 16:17:55,569 - INFO - 
-SCRUB PHASE
-2022-04-29 16:17:55,570 - INFO - 
-TEARDOWN PHASE
-2022-04-29 16:18:19,531 - INFO - Loading homepage.
-2022-04-29 16:18:32,064 - INFO - Saving homepage.
-2022-04-29 16:18:32,372 - INFO - Recommended videos: ['YA4EIbaEVYo', 'Gsz3mrnIBd0', 'yTTCx4-LsLQ', '094y1Z2wpJg', '0hA0pQGZ85I', 'vdf3sMFHiyU', 'J2sW-P3AH48', 'wliRWxft-Nc', 'Fa9WJMrQLvw', 'w3rHYUlj5gQ']
-2022-04-29 16:18:32,381 - INFO - Loading video ID 5dlubcRwYnI.
-2022-04-29 16:18:43,656 - INFO - Saving videopage
-2022-04-29 16:18:43,941 - INFO - Recommended videos: ['vEEcnAmIEeM', 'W7wymCpjerc', 'r7b12ZFd0cA', '1znjHDiqBk8', 'FKis488_sSk', 'bBUTI7yGr3k', 'Zojr8A5RZSw', 'IUXNiDJJ_9s', 'qIGTb-Dm3R0', 'G5krEz28f-A']
-2022-04-29 16:18:44,153 - INFO - 
-DONE!
+2022-05-10 12:46:13,084 - INFO - Created bot in community timer and scrubbing strategy watch
+2022-05-10 12:46:13,086 - INFO - SETUP PHASE
+2022-05-10 12:46:13,086 - INFO - We are in TEST mode
+2022-05-10 12:46:13,086 - INFO - Attempting login with username "sean.carter.99.test" and password "99problems".
+2022-05-10 12:46:22,778 - INFO - Login succeeded at attempt #1
+2022-05-10 12:47:03,327 - ERROR - Error! Saving html to ./failures/timer_watch_test-0.html
+Traceback (most recent call last):
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrub_main.py", line 128, in main
+    scrub_experiment(bot)
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrub_main.py", line 27, in scrub_experiment
+    time.sleep(5)
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrub_main.py", line 27, in scrub_experiment
+    time.sleep(5)
+  File "_pydevd_bundle/pydevd_cython_darwin_310_64.pyx", line 1590, in _pydevd_bundle.pydevd_cython_darwin_310_64.ThreadTracer.__call__
+  File "_pydevd_bundle/pydevd_cython_darwin_310_64.pyx", line 930, in _pydevd_bundle.pydevd_cython_darwin_310_64.PyDBFrame.trace_dispatch
+  File "_pydevd_bundle/pydevd_cython_darwin_310_64.pyx", line 921, in _pydevd_bundle.pydevd_cython_darwin_310_64.PyDBFrame.trace_dispatch
+  File "_pydevd_bundle/pydevd_cython_darwin_310_64.pyx", line 318, in _pydevd_bundle.pydevd_cython_darwin_310_64.PyDBFrame.do_wait_suspend
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/pydevd.py", line 1147, in do_wait_suspend
+    self._do_wait_suspend(thread, frame, event, arg, suspend_type, from_this_thread)
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/pydevd.py", line 1162, in _do_wait_suspend
+    time.sleep(0.01)
+KeyboardInterrupt
+2022-05-10 12:47:03,333 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa3605f0ca0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/19ff74ccfbe8ffb5a3e3e29e873b5d67/source
+2022-05-10 12:47:03,334 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa3605f1570>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/19ff74ccfbe8ffb5a3e3e29e873b5d67/source
+2022-05-10 12:47:03,334 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa3605f1180>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/19ff74ccfbe8ffb5a3e3e29e873b5d67/source
