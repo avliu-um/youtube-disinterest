@@ -22,7 +22,7 @@ MAX_RECS = 10
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
 class Scrubber(object):
 
-    TEST = True
+    TEST = False
 
     def __init__(self, profile_filepath):
         def __get_logger(log_filepath):
@@ -541,25 +541,26 @@ class Scrubber(object):
     # Implementing this after realizing you can do "tell us why" --> "don't like video"
     #   after clicking on the actual not interested button
     def not_interested(self):
-        self.menu_service('not interested')
+        found = self.menu_service('not interested')
         time.sleep(5)
 
-        # click "tell us why"
-        tell_us_why_button = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Tell us why"]')
-        tell_us_why_button.click()
-        time.sleep(5)
+        if found:
+            # click "tell us why"
+            tell_us_why_button = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Tell us why"]')
+            tell_us_why_button.click()
+            time.sleep(5)
 
-        # click "I don't like the video"
-        check_boxes = self.driver.find_elements(By.CSS_SELECTOR, 'div#reasons tp-yt-paper-checkbox')
-        for check_box in check_boxes:
-            if check_box.text == "I don't like the video":
-                check_box.click()
-                time.sleep(5)
-                break
+            # click "I don't like the video"
+            check_boxes = self.driver.find_elements(By.CSS_SELECTOR, 'div#reasons tp-yt-paper-checkbox')
+            for check_box in check_boxes:
+                if check_box.text == "I don't like the video":
+                    check_box.click()
+                    time.sleep(5)
+                    break
 
-        # click "Submit"
-        submit_button = self.driver.find_element(By.CSS_SELECTOR, 'ytd-button-renderer#submit')
-        submit_button.click()
+            # click "Submit"
+            submit_button = self.driver.find_element(By.CSS_SELECTOR, 'ytd-button-renderer#submit')
+            submit_button.click()
 
     def no_channel(self):
         self.menu_service('no channel')
@@ -595,6 +596,9 @@ class Scrubber(object):
             if not found:
                 self.log('Button not found.')
                 raise NotImplementedError
+            # Indicating whether a video to scrub was actually found
+            return True
+        return False
 
     def scrub_homepage(self):
         """
