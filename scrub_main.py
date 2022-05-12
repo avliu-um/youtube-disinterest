@@ -6,7 +6,6 @@ import os
 TEST = Scrubber.TEST
 
 # This is the iteration limit for scrubbing actions that involve interacting with recommendations
-# TODO: Pretest
 REC_ITER_LIMIT = 40
 # This is the iteration limit for the control group that does nothing but refresh the homepage
 CONTROL_ITER_LIMIT = 40
@@ -16,7 +15,8 @@ if TEST:
     CONTROL_ITER_LIMIT = 1
 
 
-def scrub_experiment(bot):
+def setup(bot):
+
     bot.log('SETUP PHASE')
 
     if TEST:
@@ -24,7 +24,9 @@ def scrub_experiment(bot):
 
     if bot.has_account:
         bot.login()
-    time.sleep(5)
+
+
+def stain(bot):
 
     bot.log('\nSTAIN PHASE')
     bot.set_phase('stain')
@@ -36,10 +38,9 @@ def scrub_experiment(bot):
         bot.watch_video(duration)
         bot.phase_level += 1
         bot.level += 1
-    # Used in the teardown phase
-    final_stain_vid = None
-    if len(bot.staining_videos) > 0:
-        final_stain_vid = bot.staining_videos[-1]
+
+
+def scrub(bot):
 
     bot.log('\nSCRUB PHASE')
     bot.set_phase('scrub')
@@ -110,6 +111,9 @@ def scrub_experiment(bot):
     else:
         raise NotImplementedError
 
+
+def teardown(bot):
+
     bot.log('\nTEARDOWN PHASE')
     bot.set_phase('teardown')
 
@@ -117,6 +121,7 @@ def scrub_experiment(bot):
     bot.level += 1
 
     if len(bot.staining_videos) > 0:
+        final_stain_vid = bot.staining_videos[0]
         bot.load_and_save_homepage()
         time.sleep(5)
         bot.load_and_save_videopage(final_stain_vid)
@@ -132,7 +137,18 @@ def scrub_experiment(bot):
         bot.clear_subscriptions()
         time.sleep(5)
 
+
+def scrub_experiment(bot):
+    bot.log('BEGIN!\n')
+    setup(bot)
+    time.sleep(5)
+    stain(bot)
+    time.sleep(5)
+    scrub(bot)
+    time.sleep(5)
+    teardown(bot)
     bot.log('\nDONE!')
+
 
 def main():
     parser = argparse.ArgumentParser()

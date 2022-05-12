@@ -84,7 +84,10 @@ class Scrubber(object):
         self.scrubbing_strategy = profile['scrubbing_strategy']
         self.note = profile['note']
 
-        self.staining_videos = profile['staining_videos']
+        staining_videos = profile['staining_videos']
+        # Hacky way of re-testing the staining video on the final staining iteration
+        staining_videos.append(staining_videos[0])
+        self.staining_videos = staining_videos
         self.scrubbing_extras = profile['scrubbing_extras']
 
         self.has_account = False
