@@ -86,7 +86,8 @@ class Scrubber(object):
 
         staining_videos = profile['staining_videos']
         # Hacky way of re-testing the staining video on the final staining iteration
-        staining_videos.append(staining_videos[0])
+        if len(staining_videos)>0:
+            staining_videos.append(staining_videos[0])
         self.staining_videos = staining_videos
         self.scrubbing_extras = profile['scrubbing_extras']
 
@@ -649,8 +650,37 @@ class Scrubber(object):
             self.log('No videos from unwanted channels were found.')
             return None
 
-    # Modified from Tomlein et al. (2021)
+    def attempt(self, fun):
+        """
+        Attempt a function that might need a few attempts to succeed
+        If we don't get it by max_tries let's just actually fail and write to failures folder
+        """
+        counter = 0
+        max_tries = 5
+        success = False
+        while success is False and counter < max_tries:
+            try:
+                fun()
+                success = True
+            except:
+                counter += 1
+        if not success:
+            fun()
+
     def clear_history(self):
+        self.attempt(self.__clear_history)
+
+    def clear_not_interested(self):
+        self.attempt(self.__clear_not_interested)
+
+    def clear_likes_dislikes(self):
+        self.attempt(self.__clear_likes_dislikes)
+
+    def clear_subscriptions(self):
+        self.attempt(self.__clear_subscriptions)
+
+    # Modified from Tomlein et al. (2021)
+    def __clear_history(self):
         clear_wait_secs = 10
         self.log('Clearing watch history.')
 
@@ -718,7 +748,7 @@ class Scrubber(object):
                     return True
         return False
 
-    def clear_not_interested(self):
+    def __clear_not_interested(self):
         self.log('Clearing "not interested" and "dont recommend channel" selections.')
         self.driver.get('https://myactivity.google.com/more-activity')
 
@@ -732,7 +762,7 @@ class Scrubber(object):
         confirm_delete_button = self.driver.find_element_by_css_selector('[class="XfpsVe J9fJmf"] [class=Crf1o]')
         confirm_delete_button.click()
 
-    def clear_likes_dislikes(self):
+    def __clear_likes_dislikes(self):
         self.log('Clearing likes and dislikes.')
         self.driver.get('https://myactivity.google.com/page?utm_source=my-activity&hl=en&page=youtube_likes')
 
@@ -746,7 +776,7 @@ class Scrubber(object):
         confirm_delete_button = self.driver.find_element_by_css_selector('[class="XfpsVe J9fJmf"] [class=Crf1o]')
         confirm_delete_button.click()
 
-    def clear_subscriptions(self):
+    def __clear_subscriptions(self):
         self.log('Clearing subscriptions.')
         self.driver.get('https://myactivity.google.com/page?utm_source=my-activity&hl=en&page=youtube_subscriptions')
 

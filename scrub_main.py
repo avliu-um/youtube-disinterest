@@ -159,7 +159,10 @@ def main():
     bot = Scrubber(bot_filepath)
 
     try:
-        scrub_experiment(bot)
+        # TESTING
+        # scrub_experiment(bot)
+        setup(bot)
+        teardown(bot)
     except:
         fail_filepath = os.path.join('.', 'failures', bot.name + '.html')
         bot.log('Error! Saving html to ' + fail_filepath, True)
