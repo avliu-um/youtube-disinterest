@@ -8,11 +8,11 @@ from util import append_df
 
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
-dev_key_file = '../yt_api_dev_key.txt'
+# TODO: FIX
+dev_key_file = '/Users/avliu/Documents/Research/youtube_audits/burst/yt_api_dev_key.txt'
 text_file = open(dev_key_file, "r")
 DEVELOPER_KEY = text_file.read()
 text_file.close()
-
 
 
 # Search channel for videos

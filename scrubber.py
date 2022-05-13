@@ -372,6 +372,8 @@ class Scrubber(object):
         Watch the (already-loaded) video for (slightly less than) the specified period of time
         """
         watch_seconds = min(duration, MAX_WATCH_SECONDS) - LOAD_BUFFER_SECONDS
+        if watch_seconds < 0:
+            watch_seconds = 0
         self.log('Watching video for {0} seconds.'.format(watch_seconds))
         time.sleep(watch_seconds)
 

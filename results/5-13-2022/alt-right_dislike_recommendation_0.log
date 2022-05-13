@@ -1,0 +1,546 @@
+2022-05-12 22:41:10,060 - INFO - Created bot in community alt-right and scrubbing strategy dislike recommendation
+2022-05-12 22:41:10,060 - INFO - BEGIN!
+
+2022-05-12 22:41:10,060 - INFO - SETUP PHASE
+2022-05-12 22:41:10,060 - INFO - Attempting login with username "sageashley17" and password "scrub2022".
+2022-05-12 22:41:29,400 - INFO - Login succeeded at attempt #1
+2022-05-12 22:41:34,405 - INFO - 
+STAIN PHASE
+2022-05-12 22:41:34,406 - INFO - Loading homepage.
+2022-05-12 22:41:51,195 - INFO - Saving homepage.
+2022-05-12 22:41:51,630 - INFO - Recommended videos: ['1rlPdXPKNBc', 'GyYJV1psDow', '7XthJZrzXgY', 'YS15RLUQ_FU', 'z4NCh_Lq8hE', 'H5v3kku4y6Q', 'V2kWUJkRvVs', 'o2SYvOLYKFc', 'ecQDonLMR1Q', 'I8h0eZZQt6I']
+2022-05-12 22:41:56,648 - INFO - Loading video ID pKM-_x5vgNI.
+2022-05-12 22:42:09,874 - INFO - Saving videopage
+2022-05-12 22:42:10,086 - INFO - Recommended videos: ['TcFt_khISRQ', '-rTT588cgtc', 'fsCMpMDj6kA', 'HtBevengm94', 'XgFqguNaCIg', 'n1rzFhtY0hg', '8vkg8PPme7M', 'wLLvsT586qw', 'ZFtQItdTj9M', 'dKUcRplG0Qk']
+2022-05-12 22:42:10,276 - INFO - Watching video for 293 seconds.
+2022-05-12 22:47:03,286 - INFO - Loading homepage.
+2022-05-12 22:47:15,128 - INFO - Saving homepage.
+2022-05-12 22:47:15,467 - INFO - Recommended videos: ['-rTT588cgtc', 'OwNZzl0OctU', 'GyYJV1psDow', 'HtBevengm94', 'EVXN9BuYS9c', 'dKUcRplG0Qk', '6CHs4x2uqcQ', 'Sx7SvkKJ9rw', 'YvzEZ88x7Tc', 'yO3JsvEu5wY']
+2022-05-12 22:47:20,482 - INFO - Loading video ID x5qBk5YIEmw.
+2022-05-12 22:47:31,845 - INFO - Saving videopage
+2022-05-12 22:47:32,028 - ERROR - Unable to find recommendations!
+2022-05-12 22:47:32,171 - INFO - Watching video for 687 seconds.
+2022-05-12 22:58:59,177 - INFO - Loading homepage.
+2022-05-12 22:59:11,500 - INFO - Saving homepage.
+2022-05-12 22:59:11,780 - INFO - Recommended videos: ['-rTT588cgtc', 'OwNZzl0OctU', 'Sx7SvkKJ9rw', 'HtBevengm94', 'dKUcRplG0Qk', 'EVXN9BuYS9c', 'yO3JsvEu5wY', 'MmxKsK90L14', 'Q0ZEmLosVXE', 'rOKNjl084W4']
+2022-05-12 22:59:16,795 - INFO - Loading video ID 7r9W-qadhVQ.
+2022-05-12 22:59:27,845 - INFO - Saving videopage
+2022-05-12 22:59:28,026 - ERROR - Unable to find recommendations!
+2022-05-12 22:59:28,164 - INFO - Watching video for 138 seconds.
+2022-05-12 23:01:46,168 - INFO - Loading homepage.
+2022-05-12 23:01:57,807 - INFO - Saving homepage.
+2022-05-12 23:01:58,123 - INFO - Recommended videos: ['-rTT588cgtc', 'OwNZzl0OctU', 'Sx7SvkKJ9rw', 'dKUcRplG0Qk', 'HtBevengm94', 'EVXN9BuYS9c', 'kafqVjWljWM', 'XXYlFuWEuKI', 'B6jGX3fT_fU', 'IOs2FhEjMjg']
+2022-05-12 23:02:03,133 - INFO - Loading video ID M64e3ZfA2PI.
+2022-05-12 23:02:14,665 - INFO - Saving videopage
+2022-05-12 23:02:14,929 - INFO - Recommended videos: ['tW8IkM5iZnk', 'Unzc731iCUY', 'T1gvNaC17B4', 'eSWwIQzKsbY', '1XqEhHCQe2g', '8qkaCDg8szc', 'iTm_zb9k2us', 'qLBsSpeTU1A', 'qe3UcJ0CAxI', 'YZshgYbtUmM']
+2022-05-12 23:02:15,122 - INFO - Watching video for 319 seconds.
+2022-05-12 23:07:34,124 - INFO - Loading homepage.
+2022-05-12 23:07:45,462 - INFO - Saving homepage.
+2022-05-12 23:07:45,739 - INFO - Recommended videos: ['QDssgN2vPX0', 'GyYJV1psDow', 'OwNZzl0OctU', 'dKUcRplG0Qk', 'VmytSGTizUY', 'LgiFdOpmCdk', 'Sx7SvkKJ9rw', 'HtBevengm94', 'NP7YtqspL58', 'cV2gBU6hKfY']
+2022-05-12 23:07:50,789 - INFO - Loading video ID 1Ua2XnYlm-o.
+2022-05-12 23:08:07,031 - INFO - Saving videopage
+2022-05-12 23:08:07,276 - INFO - Recommended videos: ['DcA5TotAkhs', 'QrR_gm6RqCo', 'rUiG5_GcMyY', '8mXtcxZdPPE', 'q4xKvHANqjk', 'Q-_QyhYfReQ', '-gDinVAmtA0', 'ETEg-SB01QY', 'NFuBaRiKwD4', 'XyGfxCxnZW0']
+2022-05-12 23:08:07,463 - INFO - Watching video for 1014 seconds.
+2022-05-12 23:25:01,493 - INFO - Loading homepage.
+2022-05-12 23:25:13,059 - INFO - Saving homepage.
+2022-05-12 23:25:13,330 - INFO - Recommended videos: ['QDssgN2vPX0', 'n1rzFhtY0hg', 'Q-_QyhYfReQ', 'dKUcRplG0Qk', 'GyYJV1psDow', 'XVjzgltpR8Q', 'a7WwrMgGTzo', 'HtBevengm94', 'NP7YtqspL58', 'Sx7SvkKJ9rw']
+2022-05-12 23:25:18,345 - INFO - Loading video ID c70dhKdSRAk.
+2022-05-12 23:25:29,613 - INFO - Saving videopage
+2022-05-12 23:25:29,862 - INFO - Recommended videos: ['94uFHMWGnuI', 'Unzc731iCUY', 'eSWwIQzKsbY', 'T1gvNaC17B4', 's2bTQK6vbKI', 'RgV9s9ez2cc', 'tW8IkM5iZnk', 'nR-Zen2s2Qw', 'vCxU3m_sTME', 'U7tn4DVotOM']
+2022-05-12 23:25:30,044 - INFO - Watching video for 284 seconds.
+2022-05-12 23:30:14,016 - INFO - Loading homepage.
+2022-05-12 23:30:26,148 - INFO - Saving homepage.
+2022-05-12 23:30:26,416 - INFO - Recommended videos: ['QDssgN2vPX0', 'n1rzFhtY0hg', 'Q-_QyhYfReQ', 'BixwVsiDdZM', '0SKO_xkpLXY', 'OYvISHsnUxI', 'dKUcRplG0Qk', 'OwNZzl0OctU', 'GyYJV1psDow', 'iQja0tt8F-I']
+2022-05-12 23:30:31,430 - INFO - Loading video ID 21YZhnM1o0U.
+2022-05-12 23:30:42,666 - INFO - Saving videopage
+2022-05-12 23:30:42,887 - INFO - Recommended videos: ['yJjRffrPAw8', '_xn3uAHZHcc', '4oGiE6opziI', '36GT2zI8lVA', 'iQja0tt8F-I', 's2bTQK6vbKI', 'hL9uk4hKyg4', 'Em7nqDqQ8oM', 'XB4ptBXroTw', '0dT6jB2Dbmk']
+2022-05-12 23:30:43,070 - INFO - Watching video for 1104 seconds.
+2022-05-12 23:49:07,093 - INFO - Loading homepage.
+2022-05-12 23:49:18,337 - INFO - Saving homepage.
+2022-05-12 23:49:18,610 - INFO - Recommended videos: ['zjA2lhec1Pk', 'iQja0tt8F-I', 'Q-_QyhYfReQ', 'B_zcaMoh358', 'OwNZzl0OctU', 'b0054QE9y-M', 'dKUcRplG0Qk', 'NP7YtqspL58', 'kgx4WGK0oNU', 'PpEV-P98NUg']
+2022-05-12 23:49:23,658 - INFO - Loading video ID TFqWsMn0rrk.
+2022-05-12 23:49:35,349 - INFO - Saving videopage
+2022-05-12 23:49:35,600 - INFO - Recommended videos: ['rWwaG_99bvo', 'DcA5TotAkhs', 'KOwm7GUjcg8', 'URwmZq70_DU', 'AQbmpecxS2w', 'S8KD68mT4mU', '1PC1X3R8kJ8', 'A6GTf6rOepQ', 'rL5wePSjTL8', '2Lq22FLuHJ4']
+2022-05-12 23:49:35,786 - INFO - Watching video for 388 seconds.
+2022-05-12 23:56:03,796 - INFO - Loading homepage.
+2022-05-12 23:56:17,421 - INFO - Saving homepage.
+2022-05-12 23:56:17,681 - INFO - Recommended videos: ['QDssgN2vPX0', 'ph2Ddo36wC4', 'Z8jZmEKRCf4', 'dKUcRplG0Qk', 'HtBevengm94', 'LgiFdOpmCdk', 'PpEV-P98NUg', 'kgx4WGK0oNU', 'RHpalC3WaXY', 'NP7YtqspL58']
+2022-05-12 23:56:22,694 - INFO - Loading video ID A4Z8wJz4ezY.
+2022-05-12 23:56:33,965 - INFO - Saving videopage
+2022-05-12 23:56:34,209 - INFO - Recommended videos: ['rWwaG_99bvo', 'CgZSbghtg20', 'CsmP6gDstuo', 'RxCXOoaKYRE', 'ZJ7e8QW4dEs', 'enf9SV1Jy9U', 'KuNPqysY07A', 'Ruvi7B8e8Zk', 'Ws6S138lAcQ', 'Rjp4tQRl3k4']
+2022-05-12 23:56:34,396 - INFO - Watching video for 0 seconds.
+2022-05-12 23:56:34,401 - INFO - Loading homepage.
+2022-05-12 23:56:45,690 - INFO - Saving homepage.
+2022-05-12 23:56:45,950 - INFO - Recommended videos: ['QDssgN2vPX0', 'ph2Ddo36wC4', 'dKUcRplG0Qk', 'HtBevengm94', 'Q-_QyhYfReQ', 'b0054QE9y-M', 'Z8jZmEKRCf4', 'a7WwrMgGTzo', 'NP7YtqspL58', 'cxdwEOpGknk']
+2022-05-12 23:56:50,965 - INFO - Loading video ID dolx0v0uWXw.
+2022-05-12 23:57:02,177 - INFO - Saving videopage
+2022-05-12 23:57:02,462 - INFO - Recommended videos: ['DcA5TotAkhs', '-G2RY-pamq8', 'Rjp4tQRl3k4', 'Ws6S138lAcQ', '6p-Cila9iQM', 'I1liR_hpSSs', 'NLNDdD8-IVI', 'pL8XPZp4-5c', 'O7u3Lu-kzgg', 'vsDJm0GcLro']
+2022-05-12 23:57:02,654 - INFO - Watching video for 50 seconds.
+2022-05-12 23:57:52,663 - INFO - Loading homepage.
+2022-05-12 23:58:04,597 - INFO - Saving homepage.
+2022-05-12 23:58:04,851 - INFO - Recommended videos: ['zjA2lhec1Pk', 'iQja0tt8F-I', 'yO3JsvEu5wY', 'yJjRffrPAw8', 'a7WwrMgGTzo', 'rk2xCDoWuQ8', 'Vx_60kIXLIU', 'HtBevengm94', 'q-yZ7497YPc', 'iSqt41QQIKM']
+2022-05-12 23:58:09,867 - INFO - Loading video ID vShe4ZbqFKU.
+2022-05-12 23:58:21,024 - INFO - Saving videopage
+2022-05-12 23:58:21,278 - INFO - Recommended videos: ['7dwmOE5Lpps', 'k5jze5b9JFg', 'FD2c6vAw4KI', 'EohpY7oJj7I', 'MToW4Hy_CcM', 'xWtfo9kuRTU', 'A37PHpBNS3k', 'LPpNGbo-w_I', 'zZ7SdKWXzGk', 'tNjRi5AJ53s']
+2022-05-12 23:58:21,456 - INFO - Watching video for 110 seconds.
+2022-05-13 00:00:11,443 - INFO - Loading homepage.
+2022-05-13 00:00:22,928 - INFO - Saving homepage.
+2022-05-13 00:00:23,219 - INFO - Recommended videos: ['zjA2lhec1Pk', 'iQja0tt8F-I', 'HtBevengm94', 'HNdoJRUEexU', 'dKUcRplG0Qk', 'LrGLu6gmrv8', 'iSqt41QQIKM', 'NP7YtqspL58', 'RHpalC3WaXY', '6eVcrF3OFOg']
+2022-05-13 00:00:28,236 - INFO - Loading video ID vVFhC4kuYDU.
+2022-05-13 00:00:39,409 - INFO - Saving videopage
+2022-05-13 00:00:39,659 - INFO - Recommended videos: ['FYPKiKbZayY', 'VgjyPmFKxCU', 'ELtc4GoOMts', 'xFk3O8jNmTI', '9zoe7RjuSlQ', 'O7u3Lu-kzgg', 'RHpalC3WaXY', 'Sy2MqQ_uNIY', 'vhTFkUpB8zc', '4oGiE6opziI']
+2022-05-13 00:00:39,844 - INFO - Watching video for 193 seconds.
+2022-05-13 00:03:52,853 - INFO - Loading homepage.
+2022-05-13 00:04:05,427 - INFO - Saving homepage.
+2022-05-13 00:04:05,690 - INFO - Recommended videos: ['zjA2lhec1Pk', 'NP7YtqspL58', 'HNdoJRUEexU', '3plapROTP7c', 'LgiFdOpmCdk', 'qCnaFLydb9c', 'kUbFe74rwH0', 'RHpalC3WaXY', 'GTkgrxoIFvk', 'dKUcRplG0Qk']
+2022-05-13 00:04:10,735 - INFO - Loading video ID Huekxp206CM.
+2022-05-13 00:04:21,863 - INFO - Saving videopage
+2022-05-13 00:04:22,120 - INFO - Recommended videos: ['Y0xXjl2NH6o', '3prphjnSj6Y', 'EohpY7oJj7I', 'ukxE99DqP_k', 'ZJ7e8QW4dEs', 'k5jze5b9JFg', 'NI9QSTBlxuA', 's4qk2OLeWjM', '5NqbIXkFd94', 'uVmVQBFC-98']
+2022-05-13 00:04:22,294 - INFO - Watching video for 455 seconds.
+2022-05-13 00:11:57,293 - INFO - Loading homepage.
+2022-05-13 00:12:09,166 - INFO - Saving homepage.
+2022-05-13 00:12:09,420 - INFO - Recommended videos: ['xW5HoADqm-4', 'iQja0tt8F-I', '3plapROTP7c', 'RHpalC3WaXY', 'ph4szaVTWSY', 'rk2xCDoWuQ8', 'iSqt41QQIKM', 'yO3JsvEu5wY', 'M7QYvpZ1aKI', 'HtBevengm94']
+2022-05-13 00:12:14,436 - INFO - Loading video ID RD6Lf18Lwfw.
+2022-05-13 00:12:25,628 - INFO - Saving videopage
+2022-05-13 00:12:25,890 - INFO - Recommended videos: ['Vng0EOIZLIA', 'gGFEWHA9WIQ', 'DcA5TotAkhs', 'Ruvi7B8e8Zk', 'Rd8J-9uUnfc', 'Unzc731iCUY', 'u9FDzeoT7SU', 'IA4tE3_2qmI', 'Ry4MWpajQH4', 'NSPcdtHh8zs']
+2022-05-13 00:12:26,066 - INFO - Watching video for 623 seconds.
+2022-05-13 00:22:49,068 - INFO - Loading homepage.
+2022-05-13 00:23:01,013 - INFO - Saving homepage.
+2022-05-13 00:23:01,276 - INFO - Recommended videos: ['zjA2lhec1Pk', 'iQja0tt8F-I', '3plapROTP7c', 'RHpalC3WaXY', 'r2T8akG6jGE', 'zagERrPcdwg', 'Vx_60kIXLIU', 'KzxR5_w8hhQ', 'yO3JsvEu5wY', 'eddco8ZJhZM']
+2022-05-13 00:23:06,291 - INFO - Loading video ID uTp8AAx8SE4.
+2022-05-13 00:23:17,470 - INFO - Saving videopage
+2022-05-13 00:23:17,716 - INFO - Recommended videos: ['rlMFpJNd3-k', 'Y0sC3lT313Q', 'N0mPbiG7xVA', 'Unzc731iCUY', 'azq0S0DKS50', 'DcA5TotAkhs', 'ukxE99DqP_k', 'QVPueKsJgPU', 'gkyNick_VAM', 'yofWFpWjueg']
+2022-05-13 00:23:17,892 - INFO - Watching video for 170 seconds.
+2022-05-13 00:26:07,900 - INFO - Loading homepage.
+2022-05-13 00:26:19,603 - INFO - Saving homepage.
+2022-05-13 00:26:19,858 - INFO - Recommended videos: ['KzxR5_w8hhQ', 'NP7YtqspL58', '3plapROTP7c', 'ph2Ddo36wC4', '4PPTu4g2_hg', 'jf8onKnstdM', 'zjA2lhec1Pk', 'iSqt41QQIKM', 'HtBevengm94', 'HNdoJRUEexU']
+2022-05-13 00:26:24,874 - INFO - Loading video ID WIG_bVxgfJw.
+2022-05-13 00:26:35,952 - INFO - Saving videopage
+2022-05-13 00:26:36,194 - INFO - Recommended videos: ['l5jXVEEcPIg', 'Ruvi7B8e8Zk', 'h6q0vFkuDiU', 'g3u3JEnyb_k', '5uTmY9zQ0eg', 'KOwm7GUjcg8', '0CUzQBXosqE', 'enf9SV1Jy9U', 'ZRHfMXk2Cq8', 'EohpY7oJj7I']
+2022-05-13 00:26:36,367 - INFO - Watching video for 210 seconds.
+2022-05-13 00:30:06,374 - INFO - Loading homepage.
+2022-05-13 00:30:17,968 - INFO - Saving homepage.
+2022-05-13 00:30:18,232 - INFO - Recommended videos: ['zjA2lhec1Pk', 'NP7YtqspL58', '3plapROTP7c', 'ph2Ddo36wC4', 'yNUK2crjmlY', 'jf8onKnstdM', 'KzxR5_w8hhQ', '4PPTu4g2_hg', 'HtBevengm94', '4oGiE6opziI']
+2022-05-13 00:30:23,248 - INFO - Loading video ID 3FyRnyMcD8c.
+2022-05-13 00:30:34,351 - INFO - Saving videopage
+2022-05-13 00:30:34,590 - INFO - Recommended videos: ['0CUzQBXosqE', 'MhBfmA-bQcM', 'EohpY7oJj7I', 'NLNDdD8-IVI', 'n70EmdrECn8', 'sipOjf2e0ic', 'vRtkJj3OFgU', 'j8N4rwnM92I', 'sIj3d9G8Sx0', 'd0hGUEG1OAU']
+2022-05-13 00:30:34,771 - INFO - Watching video for 79 seconds.
+2022-05-13 00:31:53,780 - INFO - Loading homepage.
+2022-05-13 00:32:06,269 - INFO - Saving homepage.
+2022-05-13 00:32:06,542 - INFO - Recommended videos: ['OHFlIG4-mI4', 'NP7YtqspL58', 'HtBevengm94', 'WGeZ_ZJJylM', 'iSqt41QQIKM', 'jf8onKnstdM', 'dKUcRplG0Qk', 'zjA2lhec1Pk', 'DRZh8iKtqzQ', '4oGiE6opziI']
+2022-05-13 00:32:11,556 - INFO - Loading video ID 6UyCuk6XA9w.
+2022-05-13 00:32:23,035 - INFO - Saving videopage
+2022-05-13 00:32:23,300 - INFO - Recommended videos: ['Unzc731iCUY', 'ouZrZa5pLXk', 'i7F-7BggUx0', 'azq0S0DKS50', '32NqTLcAaIM', 'DcA5TotAkhs', 'nd1pHD3uWPg', 'nJ-ehbVQYxI', 'KOwm7GUjcg8', 'NS4UT_t73b0']
+2022-05-13 00:32:23,492 - INFO - Watching video for 173 seconds.
+2022-05-13 00:35:16,492 - INFO - Loading homepage.
+2022-05-13 00:35:28,387 - INFO - Saving homepage.
+2022-05-13 00:35:28,650 - INFO - Recommended videos: ['zjA2lhec1Pk', 'KzxR5_w8hhQ', 'NP7YtqspL58', 'HNdoJRUEexU', 'HtBevengm94', 'jf8onKnstdM', 'dKUcRplG0Qk', 'iSqt41QQIKM', 'j0c_I7MWB1U', '7afgxY9fm1o']
+2022-05-13 00:35:33,703 - INFO - Loading video ID vm6MzvC-8pU.
+2022-05-13 00:35:44,974 - INFO - Saving videopage
+2022-05-13 00:35:45,221 - INFO - Recommended videos: ['eznku53slP8', '1X2TwPb3y10', 'fUC_NU0JPz8', 'wAKZsIAStd0', 'NNT4QYuYvJk', 'rd4QcEkQRUA', 'yBi0LTmkbN8', 'I78UYFaKKrc', 'MqZOyjA0_B0', 'p1HqnIZsluE']
+2022-05-13 00:35:45,393 - INFO - Watching video for 53 seconds.
+2022-05-13 00:36:38,395 - INFO - Loading homepage.
+2022-05-13 00:36:49,919 - INFO - Saving homepage.
+2022-05-13 00:36:50,169 - INFO - Recommended videos: ['zjA2lhec1Pk', 'NP7YtqspL58', 'HNdoJRUEexU', '3plapROTP7c', 'HpOWGpoM6uI', 'dFVFAvO8fMc', 'eAiZBUYNUBA', 'm7aOKZ28sVM', 'KzxR5_w8hhQ', 'vuHuKvhG88U']
+2022-05-13 00:36:55,186 - INFO - Loading video ID qWvtpjEVZ7c.
+2022-05-13 00:37:06,236 - INFO - Saving videopage
+2022-05-13 00:37:06,501 - INFO - Recommended videos: ['ebMMYFiN91U', 'b_Fp4znXvOg', 'S-ztoGpA7a4', 'C-yhzrCFsA0', 'Cf0nhtv-VS4', 'hL9uk4hKyg4', 'LmSuP1jtoTM', 'm9ZOGRMEvwU', 'vvy_jcArbhY', 'rtL5oMyBHPs']
+2022-05-13 00:37:06,672 - INFO - Watching video for 77 seconds.
+2022-05-13 00:38:23,659 - INFO - Loading homepage.
+2022-05-13 00:38:37,321 - INFO - Saving homepage.
+2022-05-13 00:38:37,569 - INFO - Recommended videos: ['zjA2lhec1Pk', 'NP7YtqspL58', 'KzxR5_w8hhQ', 'HNdoJRUEexU', 'HtBevengm94', 'jf8onKnstdM', 'rEYOkWeD2fM', 'ASZooYTwgEo', 'pMc_EDK2S5Y', 'u5QHHEW8Nzg']
+2022-05-13 00:38:42,585 - INFO - Loading video ID sb2J9s_202w.
+2022-05-13 00:38:54,501 - INFO - Saving videopage
+2022-05-13 00:38:54,765 - INFO - Recommended videos: ['DxREm3s1scA', 'cdZZpaB2kDM', 'qOVAbKKSH10', 'wu2twZdrM-E', 'DcA5TotAkhs', '4bjxFnAIAiI', 'YRvf00NooN8', '1PC1X3R8kJ8', 'mC43pZkpTec', '8TJQhQ2GZ0Y']
+2022-05-13 00:38:54,947 - INFO - Watching video for 930 seconds.
+2022-05-13 00:54:24,953 - INFO - Loading homepage.
+2022-05-13 00:54:36,389 - INFO - Saving homepage.
+2022-05-13 00:54:36,694 - INFO - Recommended videos: ['yO3JsvEu5wY', 'vuHuKvhG88U', 'HtBevengm94', '3cmaU5dNpCw', 'LbTPzWU2X7U', 'AVJY-CkZAZM', 'pMc_EDK2S5Y', 'NP7YtqspL58', 'M_qAtKYK0zg', 'GMGKeAtghYY']
+2022-05-13 00:54:41,718 - INFO - Loading video ID hVfCydL-dKc.
+2022-05-13 00:54:52,812 - INFO - Saving videopage
+2022-05-13 00:54:53,056 - INFO - Recommended videos: ['DcA5TotAkhs', 'NS4UT_t73b0', 's2bTQK6vbKI', 'Mls-W9nXebQ', 'H_szemxPcTI', '3qXLYtvbIOg', 'YctW-OBciuU', 'PnceSzQ-CpI', 'oMlcdujdEyQ', '4TkFmmdmk50']
+2022-05-13 00:54:53,229 - INFO - Watching video for 155 seconds.
+2022-05-13 00:57:28,232 - INFO - Loading homepage.
+2022-05-13 00:57:39,873 - INFO - Saving homepage.
+2022-05-13 00:57:40,127 - INFO - Recommended videos: ['yO3JsvEu5wY', 'dFVFAvO8fMc', 'HtBevengm94', 'vuHuKvhG88U', 'NP7YtqspL58', 'AVJY-CkZAZM', 'LbTPzWU2X7U', 'zjA2lhec1Pk', 'Yl9Vrbe6l2Y', '3cmaU5dNpCw']
+2022-05-13 00:57:45,167 - INFO - Loading video ID r2T8akG6jGE.
+2022-05-13 00:57:56,279 - INFO - Saving videopage
+2022-05-13 00:57:56,521 - INFO - Recommended videos: ['yJjRffrPAw8', 'Ruvi7B8e8Zk', 'pIYyg2b8eVA', 'HNdoJRUEexU', 'pDH3g6rRjM8', 'TU-MYe0SL9Q', '_xaj8QSJZ0E', 'qo4mbpcdSM8', 'uleku615u7M', 'EohpY7oJj7I']
+2022-05-13 00:57:56,693 - INFO - Watching video for 177 seconds.
+2022-05-13 01:00:53,710 - INFO - Loading homepage.
+2022-05-13 01:01:05,200 - INFO - Saving homepage.
+2022-05-13 01:01:05,474 - INFO - Recommended videos: ['zjA2lhec1Pk', 'NP7YtqspL58', 'OHFlIG4-mI4', 'HNdoJRUEexU', 'HtBevengm94', 'jf8onKnstdM', '1crk7Na2h3w', '12FQ-Y1bhDY', 'pMc_EDK2S5Y', '7UpKuAeLuh4']
+2022-05-13 01:01:10,491 - INFO - Loading video ID XYC0ekh-KqU.
+2022-05-13 01:01:21,673 - INFO - Saving videopage
+2022-05-13 01:01:21,917 - INFO - Recommended videos: ['5eGRi66iUfU', 'GC7pN8Mjot8', 'wu2twZdrM-E', 'TuTmC8aOQJE', 'enf9SV1Jy9U', 'Unzc731iCUY', 'rCPHK0EGKCI', 'vvy_jcArbhY', '6lIt07sBW4E', 'zDTHIsUrT5M']
+2022-05-13 01:01:22,091 - INFO - Watching video for 831 seconds.
+2022-05-13 01:15:13,097 - INFO - Loading homepage.
+2022-05-13 01:15:24,575 - INFO - Saving homepage.
+2022-05-13 01:15:24,839 - INFO - Recommended videos: ['yO3JsvEu5wY', 'Fi3RvBcHsdA', 'pMc_EDK2S5Y', 'vhTFkUpB8zc', '1crk7Na2h3w', 'AVJY-CkZAZM', 'NP7YtqspL58', '3plapROTP7c', '12FQ-Y1bhDY', 'DMlotOBWYhw']
+2022-05-13 01:15:29,898 - INFO - Loading video ID 6kJZeyL-jKI.
+2022-05-13 01:15:41,215 - INFO - Saving videopage
+2022-05-13 01:15:41,397 - ERROR - Unable to find recommendations!
+2022-05-13 01:15:41,536 - INFO - Watching video for 27 seconds.
+2022-05-13 01:16:08,546 - INFO - Loading homepage.
+2022-05-13 01:16:20,353 - INFO - Saving homepage.
+2022-05-13 01:16:20,600 - INFO - Recommended videos: ['yO3JsvEu5wY', 'vhTFkUpB8zc', '12FQ-Y1bhDY', 'pMc_EDK2S5Y', 'HtBevengm94', 'AVJY-CkZAZM', 'rEYOkWeD2fM', 'HNdoJRUEexU', 'NP7YtqspL58', '_n4zUVsLrPs']
+2022-05-13 01:16:25,609 - INFO - Loading video ID BHHJaEqMSqQ.
+2022-05-13 01:16:36,987 - INFO - Saving videopage
+2022-05-13 01:16:37,234 - INFO - Recommended videos: ['bdW7sXVbAyA', '3t-OsvFBiXE', 'JIEB5DKzJLM', 'Aaz4jdlqhSk', 'tJWjq76qEIQ', '_K3dAHVhQhA', 'HXXlEqN0rRc', '54aygAZCKzw', 'mMgyHAN1eMw', 'IFbtyncPvZw']
+2022-05-13 01:16:37,420 - INFO - Watching video for 41 seconds.
+2022-05-13 01:17:18,429 - INFO - Loading homepage.
+2022-05-13 01:17:29,963 - INFO - Saving homepage.
+2022-05-13 01:17:30,224 - INFO - Recommended videos: ['zjA2lhec1Pk', 'NP7YtqspL58', '1crk7Na2h3w', 'HNdoJRUEexU', 'GMGKeAtghYY', 'AVJY-CkZAZM', 'moPUWhjVMII', 'yO3JsvEu5wY', 'vhTFkUpB8zc', 'pMc_EDK2S5Y']
+2022-05-13 01:17:35,239 - INFO - Loading video ID p5Rl0lBYmAk.
+2022-05-13 01:17:46,317 - INFO - Saving videopage
+2022-05-13 01:17:46,529 - INFO - Recommended videos: ['DcA5TotAkhs', 'ver-JM3D26M', 'bIsA4HDxcG4', 'GNHOD6uXjjA', 'H_szemxPcTI', 'KuNPqysY07A', 'Unzc731iCUY', 'Ruvi7B8e8Zk', '7d9-wmbwxQM', 'wmafP3O6Fbw']
+2022-05-13 01:17:46,704 - INFO - Watching video for 915 seconds.
+2022-05-13 01:33:01,706 - INFO - Loading homepage.
+2022-05-13 01:33:14,813 - INFO - Saving homepage.
+2022-05-13 01:33:15,086 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', 'HtBevengm94', 'u0cKuFfYnVw', 'C3I4wpHshuw', 'kltVaCppyls', 'HNdoJRUEexU', '1crk7Na2h3w', 'NP7YtqspL58', 'Yl9Vrbe6l2Y']
+2022-05-13 01:33:20,151 - INFO - Loading video ID MJwncHyFsJo.
+2022-05-13 01:33:31,252 - INFO - Saving videopage
+2022-05-13 01:33:31,503 - INFO - Recommended videos: ['9ZzHATKPPVY', 'rxhKrtb3XsE', 'XyGfxCxnZW0', '32NqTLcAaIM', '0cV3iFxzIVc', 'ihaB8AFOhZo', 'PX8wEYM29FI', 'GODMK55cblY', 'T-otpq6oI2Q', 'iMZMO3tfgmk']
+2022-05-13 01:33:31,681 - INFO - Watching video for 168 seconds.
+2022-05-13 01:36:19,690 - INFO - Loading homepage.
+2022-05-13 01:36:31,445 - INFO - Saving homepage.
+2022-05-13 01:36:31,725 - INFO - Recommended videos: ['zjA2lhec1Pk', 'NP7YtqspL58', 'C7txOdJEDWw', 'pjrCRyZVTE8', '3plapROTP7c', 'kltVaCppyls', '7afgxY9fm1o', 'FtdVglihDok', 'pMc_EDK2S5Y', '1crk7Na2h3w']
+2022-05-13 01:36:36,753 - INFO - Loading video ID bwkG3qF--KM.
+2022-05-13 01:36:47,964 - INFO - Saving videopage
+2022-05-13 01:36:48,220 - INFO - Recommended videos: ['DcA5TotAkhs', 'w4lHAdy6KaA', 'wu2twZdrM-E', 'iqfOWaDxmv4', '6vj96QetfTg', 'ycJe_fhkOuw', 'PnceSzQ-CpI', 'OewXHpkcKxs', 'f6NVJG-5mHE', 'xsLJZyih3Ac']
+2022-05-13 01:36:48,413 - INFO - Watching video for 805 seconds.
+2022-05-13 01:50:13,413 - INFO - Loading homepage.
+2022-05-13 01:50:24,867 - INFO - Saving homepage.
+2022-05-13 01:50:25,131 - INFO - Recommended videos: ['C7txOdJEDWw', 'NP7YtqspL58', 'bkfoL9afMcM', 'HtBevengm94', 'pMc_EDK2S5Y', 'AVJY-CkZAZM', 'yO3JsvEu5wY', 'zjA2lhec1Pk', 'fED-O5cd83o', '1crk7Na2h3w']
+2022-05-13 01:50:30,152 - INFO - Loading video ID 59S1OmtsZZo.
+2022-05-13 01:50:41,376 - INFO - Saving videopage
+2022-05-13 01:50:41,624 - INFO - Recommended videos: ['we4ZzjKxFHM', 'Unzc731iCUY', 'a2vzNaRXaFY', 'NS4UT_t73b0', 'yv73EIb1KoQ', 'pIYyg2b8eVA', 'EohpY7oJj7I', 'vNWG3UljBsk', 'zN2NdiFJFh0', '5D3crqpClPY']
+2022-05-13 01:50:41,795 - INFO - Watching video for 246 seconds.
+2022-05-13 01:54:47,803 - INFO - Loading homepage.
+2022-05-13 01:54:58,815 - INFO - Saving homepage.
+2022-05-13 01:54:59,068 - INFO - Recommended videos: ['zjA2lhec1Pk', 'C7txOdJEDWw', 'NP7YtqspL58', '3plapROTP7c', 'AVJY-CkZAZM', '1crk7Na2h3w', 'vhTFkUpB8zc', 'pMc_EDK2S5Y', 'DMlotOBWYhw', 'yO3JsvEu5wY']
+2022-05-13 01:55:04,085 - INFO - Loading video ID K7OCGtBo_tE.
+2022-05-13 01:55:15,355 - INFO - Saving videopage
+2022-05-13 01:55:15,617 - INFO - Recommended videos: ['DcA5TotAkhs', 'roRnAfCZ9Ko', 'Ruvi7B8e8Zk', 'UZMIbo_DxJk', 'wu2twZdrM-E', '0CUzQBXosqE', 'GNHOD6uXjjA', 'N2N5ZwX6U20', 'A4lHyDy3pFo', 'EohpY7oJj7I']
+2022-05-13 01:55:15,792 - INFO - Watching video for 363 seconds.
+2022-05-13 02:01:18,813 - INFO - Loading homepage.
+2022-05-13 02:01:30,825 - INFO - Saving homepage.
+2022-05-13 02:01:31,108 - INFO - Recommended videos: ['zjA2lhec1Pk', 'bkfoL9afMcM', 'NP7YtqspL58', 'C7txOdJEDWw', '1crk7Na2h3w', 'AVJY-CkZAZM', '3plapROTP7c', 'pMc_EDK2S5Y', 'IveCoft5M0Y', '0SQ-TJKPPIg']
+2022-05-13 02:01:36,120 - INFO - Loading video ID e7rBeM9tgpw.
+2022-05-13 02:01:47,304 - INFO - Saving videopage
+2022-05-13 02:01:47,559 - INFO - Recommended videos: ['DibwdGokbcQ', 'inlQ85CPDAM', 'Ye7QvwCGniA', 'sfiWwKaLyu4', 'DcA5TotAkhs', 'YThelfB2fvg', 'QS7Sv6WEYUo', 'ixQCEVz8bVU', 's4qk2OLeWjM', 'mMgyHAN1eMw']
+2022-05-13 02:01:47,736 - INFO - Watching video for 43 seconds.
+2022-05-13 02:02:30,746 - INFO - Loading homepage.
+2022-05-13 02:02:42,107 - INFO - Saving homepage.
+2022-05-13 02:02:42,379 - INFO - Recommended videos: ['zjA2lhec1Pk', 'C7txOdJEDWw', 'NP7YtqspL58', 'pMc_EDK2S5Y', 'vhTFkUpB8zc', 'jf8onKnstdM', 'rEYOkWeD2fM', 'IveCoft5M0Y', '00FDR1E0zvE', '7afgxY9fm1o']
+2022-05-13 02:02:47,397 - INFO - Loading video ID PValA8UxSnw.
+2022-05-13 02:02:58,524 - INFO - Saving videopage
+2022-05-13 02:02:58,770 - INFO - Recommended videos: ['XfR9iY5y94s', 'cAMt0YJ0MyA', 'Oqinrb9Yjoo', 'QtPx6WdNM30', 'agUS6GnZr_U', 'TZK-qsrZtkk', 'd_X0xiPD8y8', 'dxO-DeAEZDM', 'bXPVen5X2BA', '_xaj8QSJZ0E']
+2022-05-13 02:02:58,944 - INFO - Watching video for 129 seconds.
+2022-05-13 02:05:07,955 - INFO - Loading homepage.
+2022-05-13 02:05:19,460 - INFO - Saving homepage.
+2022-05-13 02:05:19,735 - INFO - Recommended videos: ['zjA2lhec1Pk', 'NP7YtqspL58', 'u5QHHEW8Nzg', 'HNdoJRUEexU', '1crk7Na2h3w', 'jf8onKnstdM', '3plapROTP7c', 'pMc_EDK2S5Y', 'Fi3RvBcHsdA', 'FtdVglihDok']
+2022-05-13 02:05:24,795 - INFO - Loading video ID vKb01XLPR7E.
+2022-05-13 02:05:36,043 - INFO - Saving videopage
+2022-05-13 02:05:36,295 - INFO - Recommended videos: ['DcA5TotAkhs', 'AumMfhOWKxw', '6G59zsjM2UI', 'Unzc731iCUY', 'FD2c6vAw4KI', 'NS4UT_t73b0', 'ouZrZa5pLXk', '2sRvBXE90Vg', 'vtIzMaLkCaM', '6vj96QetfTg']
+2022-05-13 02:05:36,471 - INFO - Watching video for 849 seconds.
+2022-05-13 02:19:45,441 - INFO - Loading homepage.
+2022-05-13 02:19:56,922 - INFO - Saving homepage.
+2022-05-13 02:19:57,189 - INFO - Recommended videos: ['zjA2lhec1Pk', 'NP7YtqspL58', '3plapROTP7c', 'Yl9Vrbe6l2Y', 'DMlotOBWYhw', 'jf8onKnstdM', 'IveCoft5M0Y', '1crk7Na2h3w', 'RCOzmjcOsSw', 'ZrbgKj585OE']
+2022-05-13 02:20:02,219 - INFO - Loading video ID kuARFR_lyjA.
+2022-05-13 02:20:13,436 - INFO - Saving videopage
+2022-05-13 02:20:13,685 - INFO - Recommended videos: ['DcA5TotAkhs', 'ver-JM3D26M', 'MToW4Hy_CcM', 'FD2c6vAw4KI', 'KuNPqysY07A', 'uEA5VQ-vBIw', 'enf9SV1Jy9U', '1xRtZybpyig', 'P9dZPiKDGlg', 'u2K9Mobldtw']
+2022-05-13 02:20:13,857 - INFO - Watching video for 171 seconds.
+2022-05-13 02:23:04,865 - INFO - Loading homepage.
+2022-05-13 02:23:16,448 - INFO - Saving homepage.
+2022-05-13 02:23:16,700 - INFO - Recommended videos: ['zjA2lhec1Pk', 'NP7YtqspL58', 'Yl9Vrbe6l2Y', 'R_noBxw4Dik', 'yO3JsvEu5wY', 'jf8onKnstdM', 'vlPhAFixBL4', 'HtBevengm94', 'ZvyoMPtXqSE', 'SDfWiYi1-sI']
+2022-05-13 02:23:21,718 - INFO - Loading video ID n6qBXjx3lu0.
+2022-05-13 02:23:32,978 - INFO - Saving videopage
+2022-05-13 02:23:33,233 - INFO - Recommended videos: ['DcA5TotAkhs', 'lXYpqaxO9oU', 'IlU-zDU6aQ0', 'JYalx8bvEyg', 'Unzc731iCUY', 'vtIzMaLkCaM', 'E3bIvMXDUj8', 'GsDrXc94NGU', 'Q-_QyhYfReQ', 'K_O4BrwHWH4']
+2022-05-13 02:23:33,416 - INFO - Watching video for 967 seconds.
+2022-05-13 02:39:40,418 - INFO - Loading homepage.
+2022-05-13 02:39:52,426 - INFO - Saving homepage.
+2022-05-13 02:39:52,695 - INFO - Recommended videos: ['yO3JsvEu5wY', 'vlPhAFixBL4', 'u-UGUtbAFB8', 'zjA2lhec1Pk', 'NP7YtqspL58', 'xOorlF9lPks', 'WpbB-1wVM3w', 'LbTPzWU2X7U', '1crk7Na2h3w', 'Yl9Vrbe6l2Y']
+2022-05-13 02:39:57,745 - INFO - Loading video ID b_KYJbjDWAs.
+2022-05-13 02:40:09,042 - INFO - Saving videopage
+2022-05-13 02:40:09,318 - INFO - Recommended videos: ['nIqjJBMa1zo', 'Ye7QvwCGniA', 'DcA5TotAkhs', 'PX8wEYM29FI', 'ix_uGswgAkQ', 'bEWdAYvANcc', 'tVD7Y2QKqZA', 'y3sCT-dIal8', 'JXKZVK9ciH8', '0OCFq472_hc']
+2022-05-13 02:40:09,494 - INFO - Watching video for 292 seconds.
+2022-05-13 02:45:01,500 - INFO - Loading homepage.
+2022-05-13 02:45:13,393 - INFO - Saving homepage.
+2022-05-13 02:45:13,653 - INFO - Recommended videos: ['NP7YtqspL58', '3plapROTP7c', 'rX-p8ZSS5r4', '1crk7Na2h3w', 'IBnwH6o_ew8', 'xOorlF9lPks', 'WNGChwJAQBQ', 'SDfWiYi1-sI', 'GMGKeAtghYY', 'UIP4kTDFhTw']
+2022-05-13 02:45:18,671 - INFO - Loading video ID km8KMkZQm1Y.
+2022-05-13 02:45:29,647 - INFO - Saving videopage
+2022-05-13 02:45:29,838 - ERROR - Unable to find recommendations!
+2022-05-13 02:45:30,004 - INFO - Watching video for 1059 seconds.
+2022-05-13 03:03:08,974 - INFO - Loading homepage.
+2022-05-13 03:03:20,918 - INFO - Saving homepage.
+2022-05-13 03:03:21,173 - INFO - Recommended videos: ['zjA2lhec1Pk', 'KhmUixSXxDo', 'B_zcaMoh358', 'zBHXzN2kX94', 'Q-_QyhYfReQ', 'xOorlF9lPks', 'NP7YtqspL58', 'k9Oi_x2Eo_Y', '4q1gqtTZR00', '1crk7Na2h3w']
+2022-05-13 03:03:26,235 - INFO - Loading video ID cuCrgYuswQM.
+2022-05-13 03:03:37,758 - INFO - Saving videopage
+2022-05-13 03:03:38,016 - INFO - Recommended videos: ['KuNPqysY07A', 'Ye7QvwCGniA', 'Og7yI6Uf3wI', 'Unzc731iCUY', 'i7F-7BggUx0', 'gnk4sgOFjBQ', 'a2vzNaRXaFY', 'C-yhzrCFsA0', 'tCms70V6zu8', 'vOWED1-7mAs']
+2022-05-13 03:03:38,207 - INFO - Watching video for 537 seconds.
+2022-05-13 03:12:35,208 - INFO - Loading homepage.
+2022-05-13 03:12:46,625 - INFO - Saving homepage.
+2022-05-13 03:12:46,860 - INFO - Recommended videos: ['zjA2lhec1Pk', 'KhmUixSXxDo', '00FDR1E0zvE', 'yO3JsvEu5wY', 'xOorlF9lPks', '4S2KU48Oxtw', 'fd5qf4pG-xg', '0KU7UM3i4qw', '1crk7Na2h3w', '4gGIu9tj7IA']
+2022-05-13 03:12:51,878 - INFO - Loading video ID nXGYZyh8b7k.
+2022-05-13 03:13:02,821 - INFO - Saving videopage
+2022-05-13 03:13:03,065 - INFO - Recommended videos: ['sATY-COrZUk', 'itKOUFh3rlc', '9ou1pl0XNRs', 'JXKZVK9ciH8', 'e40t3sza9zE', 'EslyBIPiihg', 'bom2GALQxjE', 'sfiWwKaLyu4', 'ecoeS7B5vnY', 'yfoWPPY692Y']
+2022-05-13 03:13:03,232 - INFO - Watching video for 341 seconds.
+2022-05-13 03:18:44,230 - INFO - Loading homepage.
+2022-05-13 03:18:55,549 - INFO - Saving homepage.
+2022-05-13 03:18:55,786 - INFO - Recommended videos: ['zjA2lhec1Pk', 'vhTFkUpB8zc', 'yO3JsvEu5wY', 'KhmUixSXxDo', 'iQja0tt8F-I', 'xOorlF9lPks', 'zBHXzN2kX94', 'yJjRffrPAw8', '4S2KU48Oxtw', '1crk7Na2h3w']
+2022-05-13 03:19:00,805 - INFO - Loading video ID pKM-_x5vgNI.
+2022-05-13 03:19:11,693 - INFO - Saving videopage
+2022-05-13 03:19:11,934 - INFO - Recommended videos: ['qM39_hDY-rI', '7wLj5axvS_U', '_xaj8QSJZ0E', 'MkteQd-0c2U', 's4qk2OLeWjM', 'jFLs88JXp6A', '8iYrzOXCFTA', '07LvSqgKyjQ', '2TU7Cq18ZCM', 'aeNEfGbib8U']
+2022-05-13 03:19:12,104 - INFO - Watching video for 293 seconds.
+2022-05-13 03:24:10,111 - INFO - 
+SCRUB PHASE
+2022-05-13 03:24:10,113 - INFO - Loading homepage.
+2022-05-13 03:24:21,444 - INFO - Saving homepage.
+2022-05-13 03:24:21,690 - INFO - Recommended videos: ['yO3JsvEu5wY', '4S2KU48Oxtw', 'HtBevengm94', 'HNdoJRUEexU', 'yNUK2crjmlY', 'xOorlF9lPks', 'NP7YtqspL58', 'zjA2lhec1Pk', 'u0cKuFfYnVw', 'dKUcRplG0Qk']
+2022-05-13 03:24:26,708 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:24:26,966 - INFO - Found video HtBevengm94 from unwanted channel UCZtDKD0pFpPclXA7ZAti90w.
+2022-05-13 03:24:37,759 - INFO - Attempting to press the dislike button.
+2022-05-13 03:24:38,079 - INFO - Success at attempt #1
+2022-05-13 03:24:43,089 - INFO - Loading homepage.
+2022-05-13 03:24:54,176 - INFO - Saving homepage.
+2022-05-13 03:24:54,415 - INFO - Recommended videos: ['yO3JsvEu5wY', 'IBnwH6o_ew8', 'iQja0tt8F-I', 'u0cKuFfYnVw', '55fg8Uj8WCI', 'xOorlF9lPks', '3plapROTP7c', '6rYWeyTb0xU', '2sMjKMA9RlM', 'qYbYD4AInYw']
+2022-05-13 03:24:59,432 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:24:59,672 - INFO - Found video IBnwH6o_ew8 from unwanted channel UCmrLCXSDScliR7q8AxxjvXg.
+2022-05-13 03:25:09,862 - INFO - Attempting to press the dislike button.
+2022-05-13 03:25:10,032 - INFO - Success at attempt #1
+2022-05-13 03:25:15,042 - INFO - Loading homepage.
+2022-05-13 03:25:26,156 - INFO - Saving homepage.
+2022-05-13 03:25:26,392 - INFO - Recommended videos: ['yO3JsvEu5wY', 'HNdoJRUEexU', 'yNUK2crjmlY', 'PZ_d2O5ZT2c', 'xOorlF9lPks', 'zjA2lhec1Pk', 'GD8TKkwd6AE', '3plapROTP7c', 'NP7YtqspL58', 'ihaB8AFOhZo']
+2022-05-13 03:25:31,410 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:25:31,638 - INFO - Found video HNdoJRUEexU from unwanted channel UCLM6JlQkQ9tltBL9Bipci9g.
+2022-05-13 03:25:41,828 - INFO - Attempting to press the dislike button.
+2022-05-13 03:25:42,029 - INFO - Success at attempt #1
+2022-05-13 03:25:47,040 - INFO - Loading homepage.
+2022-05-13 03:25:58,290 - INFO - Saving homepage.
+2022-05-13 03:25:58,526 - INFO - Recommended videos: ['yO3JsvEu5wY', 'u0cKuFfYnVw', 'zjA2lhec1Pk', 'yNUK2crjmlY', 'pMc_EDK2S5Y', 'xOorlF9lPks', '3plapROTP7c', 'NP7YtqspL58', 'dKUcRplG0Qk', '3Upj5t0JSfk']
+2022-05-13 03:26:03,546 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:26:03,785 - INFO - Found video u0cKuFfYnVw from unwanted channel UCutpp9X6rKErxUkv4wKBRPA.
+2022-05-13 03:26:13,957 - INFO - Attempting to press the dislike button.
+2022-05-13 03:26:14,105 - INFO - Success at attempt #1
+2022-05-13 03:26:19,115 - INFO - Loading homepage.
+2022-05-13 03:26:30,189 - INFO - Saving homepage.
+2022-05-13 03:26:30,445 - INFO - Recommended videos: ['yO3JsvEu5wY', 'iQja0tt8F-I', 'yNUK2crjmlY', 'zjA2lhec1Pk', 'xOorlF9lPks', 'c_7El61YYT8', 'vhTFkUpB8zc', '3plapROTP7c', '3Upj5t0JSfk', 'dKUcRplG0Qk']
+2022-05-13 03:26:35,464 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:26:35,712 - INFO - Found video iQja0tt8F-I from unwanted channel UCN0-RRaxMgh86eOwndAklxw.
+2022-05-13 03:26:45,910 - INFO - Attempting to press the dislike button.
+2022-05-13 03:26:46,087 - INFO - Success at attempt #1
+2022-05-13 03:26:51,097 - INFO - Loading homepage.
+2022-05-13 03:27:02,310 - INFO - Saving homepage.
+2022-05-13 03:27:02,547 - INFO - Recommended videos: ['yO3JsvEu5wY', 'yNUK2crjmlY', 'zjA2lhec1Pk', '3Upj5t0JSfk', 'xOorlF9lPks', 'rEYOkWeD2fM', 'vhTFkUpB8zc', '3vRr-A-_j7E', 'NP7YtqspL58', '3plapROTP7c']
+2022-05-13 03:27:07,560 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:27:07,800 - INFO - Found video yNUK2crjmlY from unwanted channel UCHC60upCUfq7EAfw6oDQRDA.
+2022-05-13 03:27:18,009 - INFO - Attempting to press the dislike button.
+2022-05-13 03:27:18,173 - INFO - Success at attempt #1
+2022-05-13 03:27:23,183 - INFO - Loading homepage.
+2022-05-13 03:27:34,150 - INFO - Saving homepage.
+2022-05-13 03:27:34,398 - INFO - Recommended videos: ['yO3JsvEu5wY', 'zjA2lhec1Pk', 'GD8TKkwd6AE', 'KhmUixSXxDo', 'xOorlF9lPks', 'KXSX5mD8HwM', '3plapROTP7c', 'dKUcRplG0Qk', 'NP7YtqspL58', '3Upj5t0JSfk']
+2022-05-13 03:27:39,410 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:27:39,650 - INFO - Found video KXSX5mD8HwM from unwanted channel UCutpp9X6rKErxUkv4wKBRPA.
+2022-05-13 03:27:49,885 - INFO - Attempting to press the dislike button.
+2022-05-13 03:27:49,998 - INFO - Success at attempt #1
+2022-05-13 03:27:55,008 - INFO - Loading homepage.
+2022-05-13 03:28:06,083 - INFO - Saving homepage.
+2022-05-13 03:28:06,316 - INFO - Recommended videos: ['yO3JsvEu5wY', '7afgxY9fm1o', 'dKUcRplG0Qk', 'xOorlF9lPks', 'VyEQBVfCJBg', 'KXhyumro0oY', '3plapROTP7c', '2sMjKMA9RlM', '0KU7UM3i4qw', 'kUbFe74rwH0']
+2022-05-13 03:28:11,327 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:28:11,565 - INFO - Found video 7afgxY9fm1o from unwanted channel UCLM6JlQkQ9tltBL9Bipci9g.
+2022-05-13 03:28:21,718 - INFO - Attempting to press the dislike button.
+2022-05-13 03:28:21,875 - INFO - Success at attempt #1
+2022-05-13 03:28:26,885 - INFO - Loading homepage.
+2022-05-13 03:28:38,035 - INFO - Saving homepage.
+2022-05-13 03:28:38,267 - INFO - Recommended videos: ['yO3JsvEu5wY', 'pMc_EDK2S5Y', '3Upj5t0JSfk', '3plapROTP7c', 'xOorlF9lPks', 'NP7YtqspL58', 'dKUcRplG0Qk', '7G-SvFN5C6M', 'zjA2lhec1Pk', 'rEYOkWeD2fM']
+2022-05-13 03:28:43,285 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:28:43,525 - INFO - Found video 3plapROTP7c from unwanted channel UCZtDKD0pFpPclXA7ZAti90w.
+2022-05-13 03:28:53,737 - INFO - Attempting to press the dislike button.
+2022-05-13 03:28:53,914 - INFO - Success at attempt #1
+2022-05-13 03:28:58,924 - INFO - Loading homepage.
+2022-05-13 03:29:10,000 - INFO - Saving homepage.
+2022-05-13 03:29:10,234 - INFO - Recommended videos: ['yO3JsvEu5wY', '3Upj5t0JSfk', 'tmamPItLdOY', 'dKUcRplG0Qk', 'xOorlF9lPks', 'NP7YtqspL58', 'tRafKxFKWnQ', 'zjA2lhec1Pk', '2sMjKMA9RlM', '4q1gqtTZR00']
+2022-05-13 03:29:15,253 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:29:15,484 - INFO - Found video NP7YtqspL58 from unwanted channel UCN0-RRaxMgh86eOwndAklxw.
+2022-05-13 03:29:25,684 - INFO - Attempting to press the dislike button.
+2022-05-13 03:29:25,868 - INFO - Success at attempt #1
+2022-05-13 03:29:30,881 - INFO - Loading homepage.
+2022-05-13 03:29:41,868 - INFO - Saving homepage.
+2022-05-13 03:29:42,102 - INFO - Recommended videos: ['zjA2lhec1Pk', 'sd7dSHU4BKs', 'dKUcRplG0Qk', '3Upj5t0JSfk', 'SDfWiYi1-sI', 'xOorlF9lPks', '2sMjKMA9RlM', 'WpbB-1wVM3w', 'yO3JsvEu5wY', '7G-SvFN5C6M']
+2022-05-13 03:29:47,121 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:29:47,351 - INFO - Found video RHpalC3WaXY from unwanted channel UCutpp9X6rKErxUkv4wKBRPA.
+2022-05-13 03:29:57,469 - INFO - Loading homepage.
+2022-05-13 03:30:08,569 - INFO - Saving homepage.
+2022-05-13 03:30:08,802 - INFO - Recommended videos: ['zjA2lhec1Pk', 'Vt9K6kmpx44', 'dKUcRplG0Qk', '2sMjKMA9RlM', 'RHpalC3WaXY', 'xOorlF9lPks', 'SDfWiYi1-sI', '0KU7UM3i4qw', 'yO3JsvEu5wY', 'aeUmdctGFh4']
+2022-05-13 03:30:13,821 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:30:14,074 - INFO - Found video RHpalC3WaXY from unwanted channel UCutpp9X6rKErxUkv4wKBRPA.
+2022-05-13 03:30:24,249 - INFO - Attempting to press the dislike button.
+2022-05-13 03:30:24,386 - INFO - Success at attempt #1
+2022-05-13 03:30:29,396 - INFO - Loading homepage.
+2022-05-13 03:30:40,525 - INFO - Saving homepage.
+2022-05-13 03:30:40,759 - INFO - Recommended videos: ['yO3JsvEu5wY', '3Upj5t0JSfk', 'zjA2lhec1Pk', 'dKUcRplG0Qk', 'xOorlF9lPks', 'gjvOMoDf4-4', '2sMjKMA9RlM', '7G-SvFN5C6M', 'aeUmdctGFh4', '0KU7UM3i4qw']
+2022-05-13 03:30:45,778 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:30:46,019 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:30:56,038 - INFO - Loading homepage.
+2022-05-13 03:31:07,213 - INFO - Saving homepage.
+2022-05-13 03:31:07,447 - INFO - Recommended videos: ['yO3JsvEu5wY', 'BMZv1uZ5DcI', 'tmamPItLdOY', '3Upj5t0JSfk', 'dKUcRplG0Qk', 'xOorlF9lPks', 'aeUmdctGFh4', 'MICPyrnGYwg', '2sMjKMA9RlM', '0KU7UM3i4qw']
+2022-05-13 03:31:12,465 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:31:12,704 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:31:22,724 - INFO - Loading homepage.
+2022-05-13 03:31:33,831 - INFO - Saving homepage.
+2022-05-13 03:31:34,077 - INFO - Recommended videos: ['zjA2lhec1Pk', '3Upj5t0JSfk', 'yO3JsvEu5wY', 'Kf6VqaJkMRM', '2sMjKMA9RlM', 'xOorlF9lPks', 'dKUcRplG0Qk', '0KU7UM3i4qw', 'rEYOkWeD2fM', 'aeUmdctGFh4']
+2022-05-13 03:31:39,096 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:31:39,336 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:31:49,356 - INFO - Loading homepage.
+2022-05-13 03:32:00,537 - INFO - Saving homepage.
+2022-05-13 03:32:00,770 - INFO - Recommended videos: ['yO3JsvEu5wY', 'BMZv1uZ5DcI', '3Upj5t0JSfk', 'dKUcRplG0Qk', 'aeUmdctGFh4', 'xOorlF9lPks', '1SDOjs-8X7w', 'KhmUixSXxDo', '2sMjKMA9RlM', '-rTT588cgtc']
+2022-05-13 03:32:05,789 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:32:06,037 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:32:16,056 - INFO - Loading homepage.
+2022-05-13 03:32:27,041 - INFO - Saving homepage.
+2022-05-13 03:32:27,276 - INFO - Recommended videos: ['yO3JsvEu5wY', 'BMZv1uZ5DcI', '0KU7UM3i4qw', '3Upj5t0JSfk', 'xOorlF9lPks', 'aeUmdctGFh4', 'dKUcRplG0Qk', '1SDOjs-8X7w', 'rEYOkWeD2fM', '2sMjKMA9RlM']
+2022-05-13 03:32:32,289 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:32:32,530 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:32:42,544 - INFO - Loading homepage.
+2022-05-13 03:32:53,863 - INFO - Saving homepage.
+2022-05-13 03:32:54,083 - INFO - Recommended videos: ['yO3JsvEu5wY', '3Upj5t0JSfk', 'aeUmdctGFh4', 'dKUcRplG0Qk', 'xOorlF9lPks', '2sMjKMA9RlM', 'iSqt41QQIKM', '7G-SvFN5C6M', '0KU7UM3i4qw', '-rTT588cgtc']
+2022-05-13 03:32:59,093 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:32:59,342 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:33:09,357 - INFO - Loading homepage.
+2022-05-13 03:33:20,374 - INFO - Saving homepage.
+2022-05-13 03:33:20,608 - INFO - Recommended videos: ['zjA2lhec1Pk', '3Upj5t0JSfk', 'dKUcRplG0Qk', 'rEYOkWeD2fM', 'xOorlF9lPks', '2sMjKMA9RlM', 'gjvOMoDf4-4', '7G-SvFN5C6M', '0KU7UM3i4qw', '-rTT588cgtc']
+2022-05-13 03:33:25,665 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:33:25,914 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:33:35,930 - INFO - Loading homepage.
+2022-05-13 03:33:47,028 - INFO - Saving homepage.
+2022-05-13 03:33:47,262 - INFO - Recommended videos: ['yO3JsvEu5wY', 'BMZv1uZ5DcI', 'zjA2lhec1Pk', '3Upj5t0JSfk', 'dKUcRplG0Qk', 'xOorlF9lPks', 'rEYOkWeD2fM', 'lKq4q6lM2T0', '2sMjKMA9RlM', '0KU7UM3i4qw']
+2022-05-13 03:33:52,297 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:33:52,540 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:34:02,559 - INFO - Loading homepage.
+2022-05-13 03:34:13,641 - INFO - Saving homepage.
+2022-05-13 03:34:13,880 - INFO - Recommended videos: ['zjA2lhec1Pk', 'BMZv1uZ5DcI', 'yO3JsvEu5wY', 'dKUcRplG0Qk', 'xOorlF9lPks', 'Kf6VqaJkMRM', '2sMjKMA9RlM', 'aeUmdctGFh4', '-rTT588cgtc', '1pNV2WGMb00']
+2022-05-13 03:34:18,899 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:34:19,102 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:34:29,117 - INFO - Loading homepage.
+2022-05-13 03:34:40,146 - INFO - Saving homepage.
+2022-05-13 03:34:40,388 - INFO - Recommended videos: ['zjA2lhec1Pk', '3Upj5t0JSfk', 'yO3JsvEu5wY', '2sMjKMA9RlM', 'xOorlF9lPks', 'dKUcRplG0Qk', '0KU7UM3i4qw', '7G-SvFN5C6M', 'iSqt41QQIKM', '9cwA8xxPG64']
+2022-05-13 03:34:45,407 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:34:45,648 - INFO - Found video KXhyumro0oY from unwanted channel UCN0-RRaxMgh86eOwndAklxw.
+2022-05-13 03:34:55,765 - INFO - Loading homepage.
+2022-05-13 03:35:06,778 - INFO - Saving homepage.
+2022-05-13 03:35:07,012 - INFO - Recommended videos: ['zjA2lhec1Pk', 'rPlr0ZgH9Kc', '3Upj5t0JSfk', 'dKUcRplG0Qk', 'SDfWiYi1-sI', 'xOorlF9lPks', '2sMjKMA9RlM', 'yO3JsvEu5wY', '0KU7UM3i4qw', '7G-SvFN5C6M']
+2022-05-13 03:35:12,033 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:35:12,336 - INFO - Found video KXhyumro0oY from unwanted channel UCN0-RRaxMgh86eOwndAklxw.
+2022-05-13 03:35:22,474 - INFO - Loading homepage.
+2022-05-13 03:35:33,586 - INFO - Saving homepage.
+2022-05-13 03:35:33,829 - INFO - Recommended videos: ['yO3JsvEu5wY', 'BMZv1uZ5DcI', 'PblWN-vJgUU', 'aeUmdctGFh4', '3Upj5t0JSfk', 'xOorlF9lPks', 'dKUcRplG0Qk', '2sMjKMA9RlM', 'Kf6VqaJkMRM', '0KU7UM3i4qw']
+2022-05-13 03:35:38,848 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:35:39,118 - INFO - Found video KXhyumro0oY from unwanted channel UCN0-RRaxMgh86eOwndAklxw.
+2022-05-13 03:35:49,218 - INFO - Loading homepage.
+2022-05-13 03:36:00,474 - INFO - Saving homepage.
+2022-05-13 03:36:00,694 - INFO - Recommended videos: ['zjA2lhec1Pk', 'rPlr0ZgH9Kc', '3Upj5t0JSfk', 'dKUcRplG0Qk', 'DZCBRHOg3PQ', 'xOorlF9lPks', 'pMc_EDK2S5Y', 'yO3JsvEu5wY', '2sMjKMA9RlM', 'BMZv1uZ5DcI']
+2022-05-13 03:36:05,713 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:36:05,962 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:36:15,979 - INFO - Loading homepage.
+2022-05-13 03:36:27,045 - INFO - Saving homepage.
+2022-05-13 03:36:27,278 - INFO - Recommended videos: ['3Upj5t0JSfk', 'yO3JsvEu5wY', '0KU7UM3i4qw', 'dKUcRplG0Qk', 'xOorlF9lPks', '2sMjKMA9RlM', 'KXhyumro0oY', 'BMZv1uZ5DcI', 'rEYOkWeD2fM', '-ixm-UEWN6c']
+2022-05-13 03:36:32,298 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:36:32,545 - INFO - Found video KXhyumro0oY from unwanted channel UCN0-RRaxMgh86eOwndAklxw.
+2022-05-13 03:36:42,787 - INFO - Attempting to press the dislike button.
+2022-05-13 03:36:42,964 - INFO - Success at attempt #1
+2022-05-13 03:36:47,974 - INFO - Loading homepage.
+2022-05-13 03:36:59,087 - INFO - Saving homepage.
+2022-05-13 03:36:59,322 - INFO - Recommended videos: ['zjA2lhec1Pk', 'Vt9K6kmpx44', '2sMjKMA9RlM', 'dKUcRplG0Qk', '3Upj5t0JSfk', 'xOorlF9lPks', 'SDfWiYi1-sI', '0KU7UM3i4qw', 'rPql1XEqa5Q', 'yO3JsvEu5wY']
+2022-05-13 03:37:04,341 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:37:04,583 - INFO - Found video 4hh6CTvmQec from unwanted channel UCmrLCXSDScliR7q8AxxjvXg.
+2022-05-13 03:37:14,702 - INFO - Loading homepage.
+2022-05-13 03:37:25,833 - INFO - Saving homepage.
+2022-05-13 03:37:26,081 - INFO - Recommended videos: ['zjA2lhec1Pk', '3Upj5t0JSfk', 'dKUcRplG0Qk', 'rEYOkWeD2fM', '7G-SvFN5C6M', 'xOorlF9lPks', '2sMjKMA9RlM', 'iSqt41QQIKM', 'KhmUixSXxDo', '1SDOjs-8X7w']
+2022-05-13 03:37:31,099 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:37:31,347 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:37:41,366 - INFO - Loading homepage.
+2022-05-13 03:37:53,861 - INFO - Saving homepage.
+2022-05-13 03:37:54,090 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', '3Upj5t0JSfk', '0KU7UM3i4qw', 'vhTFkUpB8zc', 'xOorlF9lPks', 'rEYOkWeD2fM', 'dKUcRplG0Qk', '2sMjKMA9RlM', '7G-SvFN5C6M']
+2022-05-13 03:37:59,110 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:37:59,420 - INFO - Found video vhTFkUpB8zc from unwanted channel UCutpp9X6rKErxUkv4wKBRPA.
+2022-05-13 03:38:09,617 - INFO - Attempting to press the dislike button.
+2022-05-13 03:38:09,791 - INFO - Success at attempt #1
+2022-05-13 03:38:14,801 - INFO - Loading homepage.
+2022-05-13 03:38:25,937 - INFO - Saving homepage.
+2022-05-13 03:38:26,167 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', '3Upj5t0JSfk', 'xOorlF9lPks', 'dKUcRplG0Qk', '2sMjKMA9RlM', 'WpbB-1wVM3w', 'xrCfQZ5fovk', '0KU7UM3i4qw', '7G-SvFN5C6M']
+2022-05-13 03:38:31,187 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:38:31,422 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:38:41,443 - INFO - Loading homepage.
+2022-05-13 03:38:52,442 - INFO - Saving homepage.
+2022-05-13 03:38:52,673 - INFO - Recommended videos: ['zjA2lhec1Pk', '3Upj5t0JSfk', 'yO3JsvEu5wY', '7G-SvFN5C6M', '2sMjKMA9RlM', 'xOorlF9lPks', 'dKUcRplG0Qk', '0KU7UM3i4qw', 'WpbB-1wVM3w', '-rTT588cgtc']
+2022-05-13 03:38:57,692 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:38:57,928 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:39:07,945 - INFO - Loading homepage.
+2022-05-13 03:39:19,008 - INFO - Saving homepage.
+2022-05-13 03:39:19,241 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', '3Upj5t0JSfk', '7G-SvFN5C6M', '2sMjKMA9RlM', 'xOorlF9lPks', 'dKUcRplG0Qk', '0KU7UM3i4qw', '5CVSIa9606Y', 'rEYOkWeD2fM']
+2022-05-13 03:39:24,260 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:39:24,500 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:39:34,518 - INFO - Loading homepage.
+2022-05-13 03:39:45,717 - INFO - Saving homepage.
+2022-05-13 03:39:45,948 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', 'dKUcRplG0Qk', '2sMjKMA9RlM', 'xOorlF9lPks', 'WbHhIpRwPC8', 'VyEQBVfCJBg', 'rEYOkWeD2fM', '3Upj5t0JSfk', 'aeUmdctGFh4']
+2022-05-13 03:39:50,968 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:39:51,182 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:40:01,201 - INFO - Loading homepage.
+2022-05-13 03:40:12,265 - INFO - Saving homepage.
+2022-05-13 03:40:12,517 - INFO - Recommended videos: ['zjA2lhec1Pk', 'KhmUixSXxDo', '2sMjKMA9RlM', 'dKUcRplG0Qk', '7G-SvFN5C6M', 'xOorlF9lPks', '3Upj5t0JSfk', 'iSqt41QQIKM', 'yO3JsvEu5wY', '0YivOoOlMVA']
+2022-05-13 03:40:17,537 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:40:17,766 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:40:27,783 - INFO - Loading homepage.
+2022-05-13 03:40:38,844 - INFO - Saving homepage.
+2022-05-13 03:40:39,074 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', '2sMjKMA9RlM', 'dKUcRplG0Qk', 'xOorlF9lPks', 'RlvTw8kcP6A', '7G-SvFN5C6M', '0KU7UM3i4qw', '3Upj5t0JSfk', '1SDOjs-8X7w']
+2022-05-13 03:40:44,093 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:40:44,334 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:40:54,354 - INFO - Loading homepage.
+2022-05-13 03:41:05,770 - INFO - Saving homepage.
+2022-05-13 03:41:06,002 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', 'BMZv1uZ5DcI', '3Upj5t0JSfk', '0KU7UM3i4qw', 'xOorlF9lPks', 'dKUcRplG0Qk', '1SDOjs-8X7w', 'rEYOkWeD2fM', '2sMjKMA9RlM']
+2022-05-13 03:41:11,021 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:41:11,284 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:41:21,305 - INFO - Loading homepage.
+2022-05-13 03:41:32,397 - INFO - Saving homepage.
+2022-05-13 03:41:32,635 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', '3Upj5t0JSfk', '5ZaRNZSfixU', 'rEYOkWeD2fM', 'xOorlF9lPks', '2sMjKMA9RlM', 'dKUcRplG0Qk', '7G-SvFN5C6M', 'Z3iNOrICnD8']
+2022-05-13 03:41:37,655 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:41:37,898 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:41:47,910 - INFO - Loading homepage.
+2022-05-13 03:41:58,924 - INFO - Saving homepage.
+2022-05-13 03:41:59,159 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', 'BMZv1uZ5DcI', '3Upj5t0JSfk', 'xOorlF9lPks', '0KU7UM3i4qw', 'dKUcRplG0Qk', '2sMjKMA9RlM', '7G-SvFN5C6M', 'WpbB-1wVM3w']
+2022-05-13 03:42:04,179 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:42:04,425 - INFO - Found video Zno7JXtquoM from unwanted channel UCLM6JlQkQ9tltBL9Bipci9g.
+2022-05-13 03:42:14,546 - INFO - Loading homepage.
+2022-05-13 03:42:25,665 - INFO - Saving homepage.
+2022-05-13 03:42:25,898 - INFO - Recommended videos: ['zjA2lhec1Pk', 'rPlr0ZgH9Kc', '3Upj5t0JSfk', 'dKUcRplG0Qk', 'mAPG18zNtXk', 'xOorlF9lPks', '2sMjKMA9RlM', 'yO3JsvEu5wY', '1SDOjs-8X7w', '7G-SvFN5C6M']
+2022-05-13 03:42:30,918 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:42:31,130 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:42:41,149 - INFO - Loading homepage.
+2022-05-13 03:42:52,289 - INFO - Saving homepage.
+2022-05-13 03:42:52,540 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', 'pMc_EDK2S5Y', 'dKUcRplG0Qk', 'xOorlF9lPks', '2sMjKMA9RlM', 'BMZv1uZ5DcI', '0KU7UM3i4qw', '3Upj5t0JSfk', 'aeUmdctGFh4']
+2022-05-13 03:42:57,559 - INFO - Checking homepage for video from unwanted channel.
+2022-05-13 03:42:57,800 - INFO - No videos from unwanted channels were found.
+2022-05-13 03:43:12,823 - INFO - 
+TEARDOWN PHASE
+2022-05-13 03:43:12,824 - INFO - Loading homepage.
+2022-05-13 03:43:23,869 - INFO - Saving homepage.
+2022-05-13 03:43:24,102 - INFO - Recommended videos: ['zjA2lhec1Pk', 'yO3JsvEu5wY', 'BMZv1uZ5DcI', '3Upj5t0JSfk', 'SzAmAWO9dwg', 'xOorlF9lPks', 'dKUcRplG0Qk', '7G-SvFN5C6M', 'rEYOkWeD2fM', '2sMjKMA9RlM']
+2022-05-13 03:43:29,122 - INFO - Loading video ID pKM-_x5vgNI.
+2022-05-13 03:43:40,124 - INFO - Saving videopage
+2022-05-13 03:43:40,339 - INFO - Recommended videos: ['OvdQ-O_YQKw', 'DraZM4omRUk', 'UzbSqNg0_7o', 'ETEg-SB01QY', 'YRvf00NooN8', '8PUCSyIkEus', '16YEMiNxNCs', 'HfwPL-bd_mk', 'axY35kYud88', 'iHWmj6bLUU8']
+2022-05-13 03:43:45,517 - INFO - Clearing watch history.
+2022-05-13 03:44:06,668 - ERROR - Error! Saving html to ./failures/alt-right_dislike_recommendation_0.html
+Traceback (most recent call last):
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrub_main.py", line 162, in main
+    scrub_experiment(bot)
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrub_main.py", line 149, in scrub_experiment
+    teardown(bot)
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrub_main.py", line 131, in teardown
+    bot.clear_history()
+  File "/Users/avliu/Documents/Research/youtube_audits/burst/scrubber.py", line 669, in clear_history
+    WebDriverWait(self.driver, clear_wait_secs).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.iZdpV')))
+  File "/Users/avliu/opt/anaconda3/envs/burst/lib/python3.10/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
