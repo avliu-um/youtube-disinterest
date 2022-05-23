@@ -185,8 +185,9 @@ class Scrubber(object):
 
         success = False
         while success is False and counter < max_tries:
-            self.__youtube_login()
-            success = self.__was_login_successful()
+            self.youtube_login()
+            time.sleep(5)
+            success = self.was_login_successful()
             counter += 1
 
         if success:
@@ -200,7 +201,7 @@ class Scrubber(object):
     # We use a locator rather than an element (i.e. 'find_element(...)' to pass into the until method, because locator
     #   doesn't return an error when not present (yet), and therefore allows 'until' to do its job by repeatedly pinging
     #   the locator
-    def __youtube_login(self):
+    def youtube_login(self):
         """
         Perform the login
         """
@@ -226,20 +227,19 @@ class Scrubber(object):
             EC.element_to_be_clickable((By.ID, 'submit'))
         ).click()
 
-    # Copied from Tomlein et al. (2021)
-    # An interesting way of checking whether we've logged in or not
-    # The reasoning seems to be that if you are logged in then google doesn't change your url to some other page
-    #   (e.g. create an account or something... idk)
-    # I don't understand this, it certainly didn't prevent our non-registered login from going through
-    def __was_login_successful(self):
+    def was_login_successful(self):
         """
         (Not necessarily required if we're confident a login occurs) Confirm the login was successful
         """
-        checking_url = 'https://myactivity.google.com/item'
-        # self.driver.get(checking_url)
-        # time.sleep(0.25)
-        # return self.driver.current_url.count(checking_url) == 1
-        return True
+        youtube_url = 'https://www.youtube.com/'
+        self.driver.get(youtube_url)
+        time.sleep(5)
+        logged_in = False
+        try:
+            self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Sign in"]')
+        except NoSuchElementException:
+            logged_in = True
+        return logged_in
 
     def load_and_save_homepage(self):
         """
