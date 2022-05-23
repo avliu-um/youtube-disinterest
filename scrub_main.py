@@ -1,7 +1,9 @@
 from scrubber import Scrubber
 import time
+import datetime
 import argparse
 import os
+from util import write_to_bucket
 
 TEST = Scrubber.TEST
 
@@ -77,13 +79,6 @@ def scrub(bot):
             bot.phase_level += 1
             bot.level += 1
 
-    elif bot.scrubbing_strategy == 'none':
-        for i in range(CONTROL_ITER_LIMIT):
-            bot.load_and_save_homepage()
-            time.sleep(5)
-            bot.phase_level += 1
-            bot.level += 1
-
     # Recommendation-based
     elif bot.scrubbing_strategy == 'dislike recommendation':
         for i in range(REC_ITER_LIMIT):
@@ -106,6 +101,14 @@ def scrub(bot):
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.no_channel()
+            time.sleep(5)
+            bot.phase_level += 1
+            bot.level += 1
+
+    # Control
+    elif bot.scrubbing_strategy == 'none':
+        for i in range(CONTROL_ITER_LIMIT):
+            bot.load_and_save_homepage()
             time.sleep(5)
             bot.phase_level += 1
             bot.level += 1
@@ -153,6 +156,10 @@ def scrub_experiment(bot):
 
 
 def main():
+    # Creating the outputs directory
+    os.makedirs('outputs')
+    os.makedirs('outputs/fails')
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--filepath', type=str, required=True,
                         help='The filepath to the configuration file')
@@ -163,12 +170,19 @@ def main():
     try:
         scrub_experiment(bot)
     except:
-        fail_filepath = os.path.join('.', 'failures', bot.name + '.html')
+        fail_filepath = bot.get_fail_filepath()
         bot.log('Error! Saving html to ' + fail_filepath, True)
-
         html = bot.driver.page_source
         with open(fail_filepath, 'w') as f:
             f.write(html)
+        bot.fail_count += 1
+    finally:
+        # write failure(s), log, results
+        dt = datetime.datetime.now().strftime('%Y-%m-%d/%H:%M:%S')
+        write_to_bucket(bot.results_filepath, 'outputs/{0}/{1}'.format(dt, bot.results_filename))
+        write_to_bucket(bot.log_filepath, 'outputs/{0}/{1}'.format(dt, bot.log_filename))
+        for i in range(bot.fail_count):
+            write_to_bucket(bot.get_fail_filepath(i), 'outputs/{0}/{1}'.format(dt, bot.get_fail_filename(i)))
 
 
 if __name__ == '__main__':

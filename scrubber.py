@@ -22,7 +22,7 @@ MAX_RECS = 10
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
 class Scrubber(object):
 
-    TEST = False
+    TEST = True
 
     def __init__(self, profile_filepath):
         def __get_logger(log_filepath):
@@ -103,6 +103,7 @@ class Scrubber(object):
         if self.scrubbing_strategy == 'dislike recommendation' or \
                 self.scrubbing_strategy == 'not interested' or \
                 self.scrubbing_strategy == 'no channel':
+            #  TODO: Move this to Util, change profiles to just csv files
             # Get the list of channels from csv
             if type(self.scrubbing_extras) == str and self.scrubbing_extras[-4:] == '.csv':
                 with open(self.scrubbing_extras, newline='') as f:
@@ -128,8 +129,14 @@ class Scrubber(object):
         name = name.replace('.', '_')
         name = name.replace(' ', '_')
         self.name = name
-        self.results_filepath = os.path.join('.', 'results', '{0}.csv'.format(name))
-        self.log_filepath = os.path.join('.', 'logs', '{0}.log'.format(name))
+
+        self.results_filename = 'results_{0}.csv'.format(name)
+        self.log_filename = 'logs_{0}.log'.format(name)
+        # Increments at each failure
+        self.fail_count = 0
+
+        self.results_filepath = os.path.join('.', 'outputs', self.results_filename)
+        self.log_filepath = os.path.join('.', 'outputs', self.log_filename)
 
         open(self.results_filepath, 'x')
         self.logger = __get_logger(self.log_filepath)
@@ -142,6 +149,15 @@ class Scrubber(object):
 
         self.log('Created bot in community {0} and scrubbing strategy {1}'
                  .format(self.community, self.scrubbing_strategy))
+
+    def get_fail_filename(self, count=-1):
+        if count == -1:
+            return 'fail_{0}_{1}.html'.format(self.name, self.fail_count)
+        else:
+            return 'fail_{0}_{1}.html'.format(self.name, count)
+
+    def get_fail_filepath(self, count=-1):
+        return os.path.join('.', 'outputs', 'fails', self.get_fail_filename(count))
 
     def set_phase(self, phase):
         self.phase = phase
@@ -277,11 +293,23 @@ class Scrubber(object):
         """
         Load a videopage, wait, and then save the recommendations
         """
-        self.__load_videopage(vid_id)
-        time.sleep(LOAD_BUFFER_SECONDS)
-        self.__save_videopage(vid_id)
-        duration = self.__get_videopage_seconds()
-        return duration
+        # TODO: Abstract/carry this try/except logic elsewhere
+        try:
+            self.__load_videopage(vid_id)
+            time.sleep(LOAD_BUFFER_SECONDS)
+            self.__save_videopage(vid_id)
+            duration = self.__get_videopage_seconds()
+            return duration
+        # Might be a bit broad with key error
+        except (EC.NoSuchElementException, KeyError):
+            # Copied from scrub_main.py
+            fail_filepath = self.get_fail_filepath()
+            self.log('Error! Saving html to ' + fail_filepath, True)
+            html = self.driver.page_source
+            with open(fail_filepath, 'w') as f:
+                f.write(html)
+            self.fail_count += 1
+            return 0
 
     def __load_videopage(self, vid_id):
         """

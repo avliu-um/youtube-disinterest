@@ -1,0 +1,15 @@
+{
+  "community": "timer",
+  "scrubbing_strategy": "none",
+  "note": "many-fails",
+
+  "staining_videos": [
+    "blah",
+    "blah"
+  ],
+  "scrubbing_extras": [],
+
+  "account_username": "sean.carter.99.test",
+  "account_password": "99problems",
+  "chrome_arguments": []
+}
