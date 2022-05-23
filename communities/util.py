@@ -1,10 +1,4 @@
-import datetime
-import os.path
-import pandas as pd
 from googleapiclient.discovery import build
-import boto3
-import json
-
 
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
@@ -12,10 +6,6 @@ dev_key_file = './yt_api_dev_key.txt'
 text_file = open(dev_key_file, "r")
 DEVELOPER_KEY = text_file.read()
 text_file.close()
-
-
-def test():
-    print('hi')
 
 
 # Get video ids, along with title and description, from a certain channel
@@ -68,14 +58,7 @@ def execute_request(request):
     if 'items' in response.keys():
         items = response['items']
 
-    return items 
-
-
-# TODO: Encorporate into request/response logic
-def write_to_bucket(source, dest):
-    # Make sure to configure ~/.aws/configure file
-    s3 = boto3.resource('s3')
-    s3.Bucket('youtube-audit').upload_file(source, dest)
+    return items
 
 
 def main():

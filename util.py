@@ -2,6 +2,7 @@
 
 import json, re
 import pandas as pd
+import boto3
 
 
 def find_value(html, key, num_chars=2, separator='"'):
@@ -110,3 +111,8 @@ def append_df(df, existing_file_name, index):
     final_df.to_csv(existing_file_name, index=index)
 
 
+# TODO: Encorporate into request/response logic
+def write_to_bucket(source, dest):
+    # Make sure to configure ~/.aws/configure file
+    s3 = boto3.resource('s3')
+    s3.Bucket('youtube-audit').upload_file(source, dest)

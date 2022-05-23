@@ -1,5 +1,3 @@
-import pandas as pd
-
 # Create the 'stain' column which is True if the video is in the list of channels
 def stain_col(results_df, channels):
     results_df['stain'] = results_df.apply(
