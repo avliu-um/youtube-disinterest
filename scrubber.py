@@ -536,8 +536,13 @@ class Scrubber(object):
         contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
 
         self.log('Deleting most recent.')
-        button = contents.find_element(By.CSS_SELECTOR, 'button')
-        button.click()
+        # TODO: Change this hacky fix
+        try:
+            button = contents.find_element(By.CSS_SELECTOR, 'button')
+            button.click()
+        except NoSuchElementException:
+            self.log('No most recent video to delete!')
+
 
     def dislike_recommended(self):
         unwanted_video = self.scrub_homepage()

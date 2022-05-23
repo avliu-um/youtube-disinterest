@@ -66,6 +66,7 @@ def scrub(bot):
             bot.delete_most_recent()
             time.sleep(5)
             bot.phase_level += 1
+            bot.level += 1
     elif bot.scrubbing_strategy == 'dislike':
         for seed_vid in bot.staining_videos:
             bot.load_and_save_homepage()
@@ -107,6 +108,7 @@ def scrub(bot):
             bot.no_channel()
             time.sleep(5)
             bot.phase_level += 1
+            bot.level += 1
 
     else:
         raise NotImplementedError

@@ -2,4 +2,6 @@ __pychache__/
 .idea/
 .DS_Store/
 .ipynb_checkpoints/
-yt_api_dev_key.txt
+results/
+failures/
+communities/yt_api_dev_key.txt
