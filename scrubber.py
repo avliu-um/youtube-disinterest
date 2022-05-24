@@ -181,6 +181,8 @@ class Scrubber(object):
 
         success = False
         while success is False and counter < max_tries:
+            if counter > 0:
+                self.log('Login attempt failed, trying again')
             self.youtube_login()
             time.sleep(5)
             success = self.was_login_successful()
