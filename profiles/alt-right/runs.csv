@@ -1,13 +1,13 @@
-community,scrubbing_strategy,note,staining_videos,scrubbing_extras,account_username,account_password
-alt-right,not interested,0,communities/alt-right/samples/videos_0.csv,communities/alt-right/channel_list.csv,Kendall.Tracy,scrub2022
-alt-right,not interested,1,communities/alt-right/samples/videos_1.csv,communities/alt-right/channel_list.csv,Sage.Ashley,scrub2022
-alt-right,not interested,2,communities/alt-right/samples/videos_2.csv,communities/alt-right/channel_list.csv,Billie.Cassidy,scrub2022
-alt-right,no channel,0,communities/alt-right/samples/videos_3.csv,communities/alt-right/channel_list.csv,Alex.Kory,scrub2022
-alt-right,no channel,1,communities/alt-right/samples/videos_4.csv,communities/alt-right/channel_list.csv,Clarke.Cal,scrub2022
-alt-right,no channel,2,communities/alt-right/samples/videos_5.csv,communities/alt-right/channel_list.csv,Paxton.Paxton,scrub2022
-alt-right,dislike recommendation,0,communities/alt-right/samples/videos_6.csv,communities/alt-right/channel_list.csv,Gray.Bobbie,scrub2022
-alt-right,dislike recommendation,1,communities/alt-right/samples/videos_7.csv,communities/alt-right/channel_list.csv,Cassidy.Peyton,scrub2022
-alt-right,dislike recommendation,2,communities/alt-right/samples/videos_8.csv,communities/alt-right/channel_list.csv,Salem.Morgan,scrub2022
+community,scrubbing_strategy,note,staining_videos_csv,scrubbing_extras_csv,account_username,account_password
+alt-right,not interested,0,communities/alt-right/samples/videos_0.csv,communities/alt-right/alt-right_channels.csv,Kendall.Tracy,scrub2022
+alt-right,not interested,1,communities/alt-right/samples/videos_1.csv,communities/alt-right/alt-right_channels.csv,Sage.Ashley,scrub2022
+alt-right,not interested,2,communities/alt-right/samples/videos_2.csv,communities/alt-right/alt-right_channels.csv,Billie.Cassidy,scrub2022
+alt-right,no channel,0,communities/alt-right/samples/videos_3.csv,communities/alt-right/alt-right_channels.csv,Alex.Kory,scrub2022
+alt-right,no channel,1,communities/alt-right/samples/videos_4.csv,communities/alt-right/alt-right_channels.csv,Clarke.Cal,scrub2022
+alt-right,no channel,2,communities/alt-right/samples/videos_5.csv,communities/alt-right/alt-right_channels.csv,Paxton.Paxton,scrub2022
+alt-right,dislike recommendation,0,communities/alt-right/samples/videos_6.csv,communities/alt-right/alt-right_channels.csv,Gray.Bobbie,scrub2022
+alt-right,dislike recommendation,1,communities/alt-right/samples/videos_7.csv,communities/alt-right/alt-right_channels.csv,Cassidy.Peyton,scrub2022
+alt-right,dislike recommendation,2,communities/alt-right/samples/videos_8.csv,communities/alt-right/alt-right_channels.csv,Salem.Morgan,scrub2022
 alt-right,delete,0,communities/alt-right/samples/videos_9.csv,,Gabriel.Embry,scrub2022
 alt-right,delete,1,communities/alt-right/samples/videos_10.csv,,Taylor.Reagan,scrub2022
 alt-right,delete,2,communities/alt-right/samples/videos_11.csv,,Tracy.Hildred,scrub2022

@@ -3,6 +3,7 @@ import time
 import datetime
 import argparse
 import os
+import json
 from util import write_to_bucket
 
 # This is the iteration limit for scrubbing actions that involve interacting with recommendations
@@ -154,18 +155,41 @@ def scrub_experiment(bot):
     teardown(bot)
     bot.log('\nDONE!')
 
+# Legacy
+# This parses arguments in a json under the profiles folder
+# We've now moved to passing in attributes as a whole without parsing json
+def parse_profile_json():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--filepath', type=str, required=True,
+                        help='The filepath to the configuration file')
+    args = parser.parse_args()
+    bot_filepath = args.filepath
+
+    with open(bot_filepath) as json_file:
+        profile = json.load(json_file)
+
+    scrubbing_extras = None
+    if 'scrubbing_extras' in profile.keys():
+        scrubbing_extras = profile['scrubbing_extras']
+
+    bot = Scrubber(
+        community=profile['community'],
+        scrubbing_strategy=profile['scrubbing_strategy'],
+        note=profile['note'],
+        account_username=profile['account_username'],
+        account_password=profile['account_password'],
+        staining_videos_csv=profile['staining_videos'],
+        scrubbing_extras_csv=scrubbing_extras
+    )
+
+    return bot
 
 def main():
     # Creating the outputs directory
     os.makedirs('outputs')
     os.makedirs('outputs/fails')
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--filepath', type=str, required=True,
-                        help='The filepath to the configuration file')
-    args = parser.parse_args()
-    bot_filepath = args.filepath
-    bot = Scrubber(bot_filepath)
+    bot = parse_profile_json()
 
     try:
         scrub_experiment(bot)

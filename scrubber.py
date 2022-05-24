@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementNotInteractableException, \
     ElementClickInterceptedException
 
-import sys, os, time, json, logging, re, datetime, csv
+import sys, os, time, logging, re, datetime, csv
 import pandas as pd
 
 from util import find_value, find_json, find_jsons, append_df
@@ -24,7 +24,8 @@ class Scrubber(object):
 
     SIM_REC_MATCH = True
 
-    def __init__(self, profile_filepath):
+    def __init__(self, community, scrubbing_strategy, note, account_username, account_password,
+                 staining_videos_csv, scrubbing_extras_csv=None):
         def __get_logger(log_filepath):
             """
             Create a log file.
@@ -77,19 +78,19 @@ class Scrubber(object):
 
             return driver
 
-        with open(profile_filepath) as json_file:
-            profile = json.load(json_file)
+        self.community = community
+        self.scrubbing_strategy = scrubbing_strategy
+        self.note = note
+        self.account_username = account_username
+        self.account_password = account_password
+        self.staining_videos_csv = staining_videos_csv
+        if scrubbing_extras_csv is not None:
+            self.scrubbing_extras_csv = scrubbing_extras_csv
 
-        self.community = profile['community']
-        self.scrubbing_strategy = profile['scrubbing_strategy']
-        self.note = profile['note']
-        self.account_username = profile['account_username']
-        self.account_password = profile['account_password']
 
         # Staining videos
         test_vid = 'CuOTY6yGygo'
-        staining_videos_csv = profile['staining_videos']
-        with open(staining_videos_csv, newline='') as f:
+        with open(self.staining_videos_csv, newline='') as f:
             lines = f.readlines()
             lines = [line.rstrip() for line in lines]
             self.staining_videos = lines
@@ -102,9 +103,7 @@ class Scrubber(object):
 
         # Scrubbing stuff
         if self.scrubbing_strategy in ['not interested', 'no channel', 'dislike recommendation', 'watch']:
-            assert('scrubbing_extras' in profile.keys())
-            scrubbing_channel_csv = profile['scrubbing_extras']
-            with open(scrubbing_channel_csv, newline='') as f:
+            with open(scrubbing_extras_csv, newline='') as f:
                 lines = f.readlines()
                 lines = [line.rstrip() for line in lines]
                 scrubbing_extras = lines
@@ -120,9 +119,9 @@ class Scrubber(object):
                 self.scrubbing_channels = scrubbing_extras
 
 
-        name = self.community + '_' + self.scrubbing_strategy + '_' + self.note
+        name = self.community + '_' + self.scrubbing_strategy + '_' + str(self.note)
         name = name.replace('.', '_')
-        name = name.replace(' ', '_')
+        name = name.replace(' ', '-')
         self.name = name
 
         self.results_filename = 'results_{0}.csv'.format(name)
