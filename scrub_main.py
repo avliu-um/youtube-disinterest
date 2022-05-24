@@ -22,6 +22,7 @@ def stain(bot):
     bot.set_phase('stain')
 
     for seed_vid in bot.staining_videos:
+        bot.log('Phase level: {0}'.format(bot.phase_level))
         bot.load_and_save_homepage()
         time.sleep(5)
         duration = bot.load_and_save_videopage(seed_vid)
@@ -38,6 +39,8 @@ def scrub(bot):
     bot.phase_level = 0
 
     # videopage experiment stage 2
+    bot.log('Phase level: {0}'.format(bot.phase_level))
+    bot.log('Videopage experiment stage 2')
     bot.load_and_save_videopage(bot.videopage_experiment_vid)
     time.sleep(5)
     bot.phase_level += 1
@@ -46,6 +49,7 @@ def scrub(bot):
     # Watch-based
     if bot.scrubbing_strategy == 'watch':
         for burst_vid in bot.scrubbing_videos:
+            bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
             duration = bot.load_and_save_videopage(burst_vid)
@@ -57,6 +61,7 @@ def scrub(bot):
     # History-based
     elif bot.scrubbing_strategy == 'delete':
         for i in range(len(bot.staining_videos)):
+            bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.delete_most_recent()
@@ -65,6 +70,7 @@ def scrub(bot):
             bot.level += 1
     elif bot.scrubbing_strategy == 'dislike':
         for seed_vid in bot.staining_videos:
+            bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.load_and_save_videopage(seed_vid)
@@ -76,6 +82,7 @@ def scrub(bot):
     # Recommendation-based
     elif bot.scrubbing_strategy == 'dislike recommendation':
         for i in range(SCRUB_ITER_LIMIT):
+            bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.dislike_recommended()
@@ -84,6 +91,7 @@ def scrub(bot):
             bot.level += 1
     elif bot.scrubbing_strategy == 'not interested':
         for i in range(SCRUB_ITER_LIMIT):
+            bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.not_interested()
@@ -92,6 +100,7 @@ def scrub(bot):
             bot.level += 1
     elif bot.scrubbing_strategy == 'no channel':
         for i in range(SCRUB_ITER_LIMIT):
+            bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.no_channel()
@@ -102,6 +111,7 @@ def scrub(bot):
     # Control
     elif bot.scrubbing_strategy == 'none':
         for i in range(SCRUB_ITER_LIMIT):
+            bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.phase_level += 1
@@ -119,6 +129,7 @@ def teardown(bot):
     bot.phase_level = 0
 
     # videopage experiment stage 3
+    bot.log('Videopage experiment stage 3')
     bot.load_and_save_videopage(bot.videopage_experiment_vid)
     time.sleep(5)
 

@@ -97,8 +97,8 @@ class Scrubber(object):
             assert(type(video) == str)
             assert(len(video) == len(test_vid))
 
-        if len(self.staining_videos) > 0:
-            self.videopage_experiment_vid = self.staining_videos[0]
+        assert(len(self.staining_videos) > 0)
+        self.videopage_experiment_vid = self.staining_videos[0]
 
         # Scrubbing stuff
         if self.scrubbing_strategy in ['not interested', 'no channel', 'dislike recommendation', 'watch']:
@@ -140,6 +140,8 @@ class Scrubber(object):
         self.phase = "setup"
         self.phase_level = 0
         self.level = 0
+        self.videopage_level = 0
+        self.homepage_level = 0
 
         self.log('Created bot in community {0} and scrubbing strategy {1}'
                  .format(self.community, self.scrubbing_strategy))
@@ -235,13 +237,31 @@ class Scrubber(object):
             logged_in = True
         return logged_in
 
+    # EXACT SAME THING as load_and_save_videoapge
+    # TODO: Abstract
     def load_and_save_homepage(self):
+        try:
+            self.__load_and_save_homepage()
+        # Might be a bit broad with key error
+        except (EC.NoSuchElementException, KeyError):
+            # Copied from scrub_main.py
+            fail_filepath = self.get_fail_filepath()
+            self.log('Error! Saving html to ' + fail_filepath, True)
+            html = self.driver.page_source
+            with open(fail_filepath, 'w') as f:
+                f.write(html)
+            self.fail_count += 1
+            return 0
+
+    def __load_and_save_homepage(self):
         """
         Load the homepage, wait, and then save its recommendations
         """
         self.__load_homepage()
         time.sleep(LOAD_BUFFER_SECONDS)
         self.__save_homepage()
+
+        self.homepage_level += 1
 
     def __load_homepage(self):
         """
@@ -289,10 +309,7 @@ class Scrubber(object):
         """
         # TODO: Abstract/carry this try/except logic elsewhere
         try:
-            self.__load_videopage(vid_id)
-            time.sleep(LOAD_BUFFER_SECONDS)
-            self.__save_videopage(vid_id)
-            duration = self.__get_videopage_seconds()
+            duration = self.__load_and_save_videopage(vid_id)
             return duration
         # Might be a bit broad with key error
         except (EC.NoSuchElementException, KeyError):
@@ -304,6 +321,19 @@ class Scrubber(object):
                 f.write(html)
             self.fail_count += 1
             return 0
+
+    def __load_and_save_videopage(self, vid_id):
+        """
+        Load a videopage, wait, and then save the recommendations
+        """
+        self.__load_videopage(vid_id)
+        time.sleep(LOAD_BUFFER_SECONDS)
+        self.__save_videopage(vid_id)
+        duration = self.__get_videopage_seconds()
+
+        self.videopage_level += 1
+
+        return duration
 
     def __load_videopage(self, vid_id):
         """
@@ -531,6 +561,10 @@ class Scrubber(object):
             row['phase_level'] = self.phase_level
         if 'level' not in row:
             row['level'] = self.level
+        if 'homepage_level' not in row:
+            row['homepage_level'] = self.homepage_level
+        if 'videopage_level' not in row:
+            row['videopage_level'] = self.videopage_level
         if 'time' not in row:
             row['time'] = datetime.datetime.now()
         return row

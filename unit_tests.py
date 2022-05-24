@@ -27,7 +27,7 @@ def test_many_fails():
 
 
 def test_profile():
-    test_filepath = 'profiles/unit_tests/actions/test_timer_not-interested_0.json'
+    test_filepath = 'profiles/unit_tests/actions/test_timer_watch_0.json'
     bot = Scrubber(test_filepath)
     scrub_experiment(bot)
 
