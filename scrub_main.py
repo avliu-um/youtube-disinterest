@@ -5,27 +5,15 @@ import argparse
 import os
 from util import write_to_bucket
 
-TEST = Scrubber.TEST
-
 # This is the iteration limit for scrubbing actions that involve interacting with recommendations
-REC_ITER_LIMIT = 40
-# This is the iteration limit for the control group that does nothing but refresh the homepage
-CONTROL_ITER_LIMIT = 40
-
-if TEST:
-    REC_ITER_LIMIT = 1
-    CONTROL_ITER_LIMIT = 1
+SCRUB_ITER_LIMIT = 40
 
 
 def setup(bot):
 
     bot.log('SETUP PHASE')
 
-    if TEST:
-        bot.log('We are in TEST mode')
-
-    if bot.has_account:
-        bot.login()
+    bot.login()
 
 
 def stain(bot):
@@ -48,6 +36,12 @@ def scrub(bot):
     bot.set_phase('scrub')
 
     bot.phase_level = 0
+
+    # videopage experiment stage 2
+    bot.load_and_save_videopage(bot.videopage_experiment_vid)
+    time.sleep(5)
+    bot.phase_level += 1
+    bot.level += 1
 
     # Watch-based
     if bot.scrubbing_strategy == 'watch':
@@ -81,7 +75,7 @@ def scrub(bot):
 
     # Recommendation-based
     elif bot.scrubbing_strategy == 'dislike recommendation':
-        for i in range(REC_ITER_LIMIT):
+        for i in range(SCRUB_ITER_LIMIT):
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.dislike_recommended()
@@ -89,7 +83,7 @@ def scrub(bot):
             bot.phase_level += 1
             bot.level += 1
     elif bot.scrubbing_strategy == 'not interested':
-        for i in range(REC_ITER_LIMIT):
+        for i in range(SCRUB_ITER_LIMIT):
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.not_interested()
@@ -97,7 +91,7 @@ def scrub(bot):
             bot.phase_level += 1
             bot.level += 1
     elif bot.scrubbing_strategy == 'no channel':
-        for i in range(REC_ITER_LIMIT):
+        for i in range(SCRUB_ITER_LIMIT):
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.no_channel()
@@ -107,7 +101,7 @@ def scrub(bot):
 
     # Control
     elif bot.scrubbing_strategy == 'none':
-        for i in range(CONTROL_ITER_LIMIT):
+        for i in range(SCRUB_ITER_LIMIT):
             bot.load_and_save_homepage()
             time.sleep(5)
             bot.phase_level += 1
@@ -123,24 +117,19 @@ def teardown(bot):
     bot.set_phase('teardown')
 
     bot.phase_level = 0
-    bot.level += 1
 
-    if len(bot.staining_videos) > 0:
-        final_stain_vid = bot.staining_videos[0]
-        bot.load_and_save_homepage()
-        time.sleep(5)
-        bot.load_and_save_videopage(final_stain_vid)
-        time.sleep(5)
+    # videopage experiment stage 3
+    bot.load_and_save_videopage(bot.videopage_experiment_vid)
+    time.sleep(5)
 
-    if not TEST:
-        bot.clear_history()
-        time.sleep(5)
-        bot.clear_not_interested()
-        time.sleep(5)
-        bot.clear_likes_dislikes()
-        time.sleep(5)
-        bot.clear_subscriptions()
-        time.sleep(5)
+    bot.clear_history()
+    time.sleep(5)
+    bot.clear_not_interested()
+    time.sleep(5)
+    bot.clear_likes_dislikes()
+    time.sleep(5)
+    bot.clear_subscriptions()
+    time.sleep(5)
 
 
 def scrub_experiment(bot):

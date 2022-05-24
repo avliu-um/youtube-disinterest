@@ -1,9 +1,10 @@
 from scrubber import Scrubber
+from scrub_main import scrub_experiment
 import os
 import time
 
 
-def test_was_login_successessful():
+def test_was_login_successful():
     good_filepath = 'profiles/unit_tests/login.json'
     bot = Scrubber(good_filepath)
     time.sleep(5)
@@ -25,7 +26,13 @@ def test_many_fails():
     assert(len(os.listdir('outputs/fails')) > 1)
 
 
+def test_profile():
+    test_filepath = 'profiles/unit_tests/actions/test_timer_not-interested_0.json'
+    bot = Scrubber(test_filepath)
+    scrub_experiment(bot)
+
+
 if __name__ == '__main__':
     os.makedirs('outputs')
     os.makedirs('outputs/fails')
-    test_was_login_successessful()
+    test_profile()

@@ -1,0 +1,11 @@
+{
+  "community": "timer",
+  "scrubbing_strategy": "none",
+  "note": "test-0",
+
+  "staining_videos": "communities/timers/samples/videos_0.csv",
+
+  "account_username": "sean.carter.99.test",
+  "account_password": "99problems",
+  "chrome_arguments": []
+}

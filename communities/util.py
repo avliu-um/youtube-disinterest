@@ -1,4 +1,5 @@
 from googleapiclient.discovery import build
+import pandas as pd
 
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
@@ -6,6 +7,12 @@ dev_key_file = './yt_api_dev_key.txt'
 text_file = open(dev_key_file, "r")
 DEVELOPER_KEY = text_file.read()
 text_file.close()
+
+
+# TODO: Use
+def list_to_csv(data, file):
+    d = pd.DataFrame({'id': data})
+    d.to_csv(file, header=False, index=False)
 
 
 # Get video ids, along with title and description, from a certain channel

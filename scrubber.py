@@ -22,7 +22,7 @@ MAX_RECS = 10
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
 class Scrubber(object):
 
-    TEST = True
+    SIM_REC_MATCH = True
 
     def __init__(self, profile_filepath):
         def __get_logger(log_filepath):
@@ -40,11 +40,12 @@ class Scrubber(object):
             logger.setLevel(logging.INFO)
             return logger
 
-        def __get_driver(chrome_arguments):
+        def __get_driver(chrome_arguments=None):
             """
             Initialize Selenium webdriver with Chrome options.
             """
-            # TODO: Use OS Join
+            if chrome_arguments is None:
+                chrome_arguments = []
             adblock_filepath = 'conf/webdriver/adblock.crx'
             if sys.platform == 'win32':
                 driver_path = 'conf/webdriver/chromedriver.exe'
@@ -63,7 +64,6 @@ class Scrubber(object):
             driver = webdriver.Chrome(driver_path, options=chrome_options)
             driver.maximize_window()
 
-            # TODO: This needs testing
             time.sleep(3)
             driver.get("chrome://extensions/?id=cjpalhdlnbpafiamejdnhcphjbkeiagm")
             time.sleep(3)
@@ -83,47 +83,42 @@ class Scrubber(object):
         self.community = profile['community']
         self.scrubbing_strategy = profile['scrubbing_strategy']
         self.note = profile['note']
+        self.account_username = profile['account_username']
+        self.account_password = profile['account_password']
 
-        staining_videos = profile['staining_videos']
-        # Hacky way of re-testing the staining video on the final staining iteration
-        if len(staining_videos)>0:
-            staining_videos.append(staining_videos[0])
-        self.staining_videos = staining_videos
-        self.scrubbing_extras = profile['scrubbing_extras']
+        # Staining videos
+        test_vid = 'CuOTY6yGygo'
+        staining_videos_csv = profile['staining_videos']
+        with open(staining_videos_csv, newline='') as f:
+            lines = f.readlines()
+            lines = [line.rstrip() for line in lines]
+            self.staining_videos = lines
+        for video in self.staining_videos:
+            assert(type(video) == str)
+            assert(len(video) == len(test_vid))
 
-        self.has_account = False
-        if len(profile['account_username']) > 0 and len(profile['account_password']) > 0:
-            self.account_username = profile['account_username']
-            self.account_password = profile['account_password']
-            self.has_account = True
-        self.chrome_arguments = profile['chrome_arguments']
+        if len(self.staining_videos) > 0:
+            self.videopage_experiment_vid = self.staining_videos[0]
 
-        self.unwanted_channels = None
-        self.scrubbing_videos = None
-        if self.scrubbing_strategy == 'dislike recommendation' or \
-                self.scrubbing_strategy == 'not interested' or \
-                self.scrubbing_strategy == 'no channel':
-            #  TODO: Move this to Util, change profiles to just csv files
-            # Get the list of channels from csv
-            if type(self.scrubbing_extras) == str and self.scrubbing_extras[-4:] == '.csv':
-                with open(self.scrubbing_extras, newline='') as f:
-                    lines = f.readlines()
-                    lines = [line.rstrip() for line in lines]
-                    self.unwanted_channels = lines
-
-            elif type(self.scrubbing_extras) == list:
-                self.unwanted_channels = self.scrubbing_extras
+        # Scrubbing stuff
+        if self.scrubbing_strategy in ['not interested', 'no channel', 'dislike recommendation', 'watch']:
+            assert('scrubbing_extras' in profile.keys())
+            scrubbing_channel_csv = profile['scrubbing_extras']
+            with open(scrubbing_channel_csv, newline='') as f:
+                lines = f.readlines()
+                lines = [line.rstrip() for line in lines]
+                scrubbing_extras = lines
+            for extra in scrubbing_extras:
+                assert (type(extra) == str)
+                if self.scrubbing_strategy == 'watch':
+                    assert (len(extra) == len(test_vid))
+                else:
+                    assert (extra[:2] == 'UC')
+            if self.scrubbing_strategy == 'watch':
+                self.scrubbing_videos = scrubbing_extras
             else:
-                raise TypeError
-            # Make sure it's actually a list of channels that start with 'UC...'
-            for channel in self.unwanted_channels:
-                assert(type(channel) == str)
-                assert(channel[:2] == 'UC')
-        elif self.scrubbing_strategy == 'watch':
-            self.scrubbing_videos = self.scrubbing_extras
-            assert(type(self.scrubbing_videos) == list)
-            for video in self.scrubbing_videos:
-                assert(type(video) == str)
+                self.scrubbing_channels = scrubbing_extras
+
 
         name = self.community + '_' + self.scrubbing_strategy + '_' + self.note
         name = name.replace('.', '_')
@@ -140,12 +135,11 @@ class Scrubber(object):
 
         open(self.results_filepath, 'x')
         self.logger = __get_logger(self.log_filepath)
-        self.driver = __get_driver(self.chrome_arguments)
+        self.driver = __get_driver()
 
         self.phase = "setup"
         self.phase_level = 0
         self.level = 0
-        self.disliked_videos = set()
 
         self.log('Created bot in community {0} and scrubbing strategy {1}'
                  .format(self.community, self.scrubbing_strategy))
@@ -411,7 +405,6 @@ class Scrubber(object):
         # Add it to our disliked videos list for later un-disliking
         url = self.driver.current_url
         video_id = url[len('https://www.youtube.com/watch?v='):]
-        self.disliked_videos.add(video_id)
 
         self.video_action('dislike')
 
@@ -659,12 +652,12 @@ class Scrubber(object):
             video = videos[i]
             video_id = video['videoId']
             channel_id = video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
-            if channel_id in self.unwanted_channels:
+            if channel_id in self.scrubbing_channels:
                 self.log('Found video {0} from unwanted channel {1}.'.format(video_id, channel_id))
                 unwanted_video_id = video_id
                 break
-            elif self.TEST and i == 3:
-                self.log('TEST: Pretending that the fourth video ({0}, {1}) matches'.format(video_id, channel_id))
+            elif self.SIM_REC_MATCH and i == 3:
+                self.log('SIM_REC_MATCH: Pretending that the fourth video ({0}, {1}) matches'.format(video_id, channel_id))
                 unwanted_video_id = video_id
                 break
 
