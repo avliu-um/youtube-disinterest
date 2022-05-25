@@ -1,0 +1,8 @@
+community,scrubbing_strategy,note,staining_videos_csv,scrubbing_extras_csv,account_username,account_password
+testing,not interested,0,communities/testing/samples/videos_0.csv,communities/testing/timer_channels.csv,sean.carter.99.test,99problems
+testing,no channel,0,communities/testing/samples/videos_0.csv,communities/testing/timer_channels.csv,sean.carter.99.test,99problems
+testing,dislike recommendation,0,communities/testing/samples/videos_0.csv,communities/testing/timer_channels.csv,sean.carter.99.test,99problems
+testing,delete,0,communities/testing/samples/videos_0.csv,,sean.carter.99.test,99problems
+testing,dislike,0,communities/testing/samples/videos_0.csv,,sean.carter.99.test,99problems
+testing,watch,0,communities/testing/samples/videos_0.csv,communities/testing/samples/videos_0.csv,sean.carter.99.test,99problems
+testing,none,0,communities/testing/samples/videos_0.csv,,sean.carter.99.test,99problems
