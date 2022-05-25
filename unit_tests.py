@@ -1,5 +1,5 @@
 from scrubber import Scrubber
-from scrub_main import scrub_experiment, write_s3
+from scrub_main import scrub_experiment
 import os
 import time
 import pandas as pd
@@ -16,6 +16,7 @@ default_attributes = {
 }
 
 # Attempting to dislike a video that we know is inappropriate
+# Should log error message, save the html, and move on
 def test_dislike_inappropriate():
     attributes = {
         'community': 'testing',
@@ -26,9 +27,13 @@ def test_dislike_inappropriate():
         'account_password': '99problems'
     }
     bot = Scrubber(**attributes)
+    bot.login()
+    time.sleep(5)
 
     bot.load_and_save_videopage(bot.staining_videos[0])
+    time.sleep(5)
     bot.dislike_video()
+    time.sleep(5)
 
 
 def test_was_login_successful():
@@ -67,6 +72,8 @@ def test_many_fails():
     assert(len(os.listdir('outputs/fails')) > 1)
 
 
+# Should log error message and save the html (twice), and move on
+# Simoltaneously test many failures, and writing to s3
 def test_delete_empty():
     attributes = {
         'community': 'testing',
@@ -77,10 +84,17 @@ def test_delete_empty():
         'account_password': '99problems'
     }
     bot = Scrubber(**attributes)
-
+    bot.login()
+    time.sleep(5)
     bot.clear_history()
+    time.sleep(5)
+
     bot.delete_most_recent()
-    pass
+    time.sleep(5)
+    bot.delete_most_recent()
+    time.sleep(5)
+
+    bot.write_s3()
 
 
 def test_not_interested():
@@ -118,6 +132,7 @@ def test_homepage():
     bot.login()
     bot.load_and_save_homepage()
 
+
 def full_strategy_tests():
     my_row = 5
 
@@ -131,6 +146,7 @@ def full_strategy_tests():
     bot = Scrubber(**attributes, sim_rec_match=False)
 
     scrub_experiment(bot, scrub_iter_limit=2)
+
 
 def run_real():
     attributes = {
@@ -146,9 +162,9 @@ def run_real():
 
     scrub_experiment(bot)
 
-    write_s3(bot)
+    bot.write_s3()
 
 if __name__ == '__main__':
     os.makedirs('outputs')
     os.makedirs('outputs/fails')
-    run_real()
+    test_delete_empty()

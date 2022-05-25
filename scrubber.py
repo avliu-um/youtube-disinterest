@@ -190,6 +190,7 @@ class Scrubber(object):
                 self.youtube_login_2()
             else:
                 self.youtube_login()
+            # May get prompted for phone number here
             time.sleep(10)
             success = self.was_login_successful()
             counter += 1
@@ -265,21 +266,12 @@ class Scrubber(object):
             logged_in = True
         return logged_in
 
-    # EXACT SAME THING as load_and_save_videoapge
-    # TODO: Abstract
     def load_and_save_homepage(self):
         try:
             self.__load_and_save_homepage()
         # Might be a bit broad with key error
         except (EC.NoSuchElementException, KeyError):
-            # Copied from scrub_main.py
-            fail_filepath = self.get_fail_filepath()
-            self.log('Error! Saving html to ' + fail_filepath, True)
-            html = self.driver.page_source
-            with open(fail_filepath, 'w') as f:
-                f.write(html)
-            self.fail_count += 1
-            return 0
+            self.fail_safely()
 
     def __load_and_save_homepage(self):
         """
@@ -355,19 +347,12 @@ class Scrubber(object):
         """
         Load a videopage, wait, and then save the recommendations
         """
-        # TODO: Abstract/carry this try/except logic elsewhere
         try:
             duration = self.__load_and_save_videopage(vid_id)
             return duration
         # Might be a bit broad with key error
         except (EC.NoSuchElementException, KeyError):
-            # Copied from scrub_main.py
-            fail_filepath = self.get_fail_filepath()
-            self.log('Error! Saving html to ' + fail_filepath, True)
-            html = self.driver.page_source
-            with open(fail_filepath, 'w') as f:
-                f.write(html)
-            self.fail_count += 1
+            self.fail_safely()
             return 0
 
     def __load_and_save_videopage(self, vid_id):
@@ -502,13 +487,13 @@ class Scrubber(object):
                     return success
                 else:
                     counter += 1
-            except (NoSuchElementException, TimeoutException):
+            # TODO LONGTERM: Make this more specific, think about a "WebInteractionError" to raise whenever the thing
+            except:
                 counter += 1
                 if counter > 5:
                     self.log('All attempts failed.')
-                    raise
-        self.log('All attempts failed.')
-        raise RuntimeError(f'All attempts failed.')
+                    break
+        self.fail_safely()
 
     # Modified from Tomlein et al. (2021)
     def __interact_with_action_button(self, action, turn_on=True):
@@ -567,7 +552,9 @@ class Scrubber(object):
         """
         Get the dislike button and its status (pressed or nah)
         """
-        WebDriverWait(self.driver, 30).until(
+        # TODO: Abstract
+        wait_element_secs = 10
+        WebDriverWait(self.driver, wait_element_secs).until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#menu-container'))
         )
 
@@ -625,24 +612,26 @@ class Scrubber(object):
         append_df(recs_df, self.results_filepath, False)
 
     def delete_most_recent(self):
-        history_url = 'https://www.youtube.com/feed/history'
-
-        self.log('Loading history page.')
-        self.driver.get(history_url)
-
-        time.sleep(5)
-
-        WebDriverWait(self.driver, 30).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#contents'))
-        )
-        contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
-
-        self.log('Deleting most recent.')
+        # TODO: Abstract
+        element_wait_secs = 10
         try:
+            history_url = 'https://www.youtube.com/feed/history'
+
+            self.log('Loading history page.')
+            self.driver.get(history_url)
+
+            time.sleep(5)
+
+            WebDriverWait(self.driver, element_wait_secs).until(
+                EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#contents'))
+            )
+            contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
+
+            self.log('Deleting most recent.')
             button = contents.find_element(By.CSS_SELECTOR, 'button')
             button.click()
-        except NoSuchElementException:
-            self.log('No most recent video to delete!')
+        except (ElementNotInteractableException, NoSuchElementException, ElementClickInterceptedException):
+            self.fail_safely()
 
     def dislike_recommended(self):
         unwanted_video = self.scrub_homepage()
@@ -920,6 +909,14 @@ class Scrubber(object):
             except NoSuchElementException:
                 break
 
+    def fail_safely(self):
+        fail_filepath = self.get_fail_filepath()
+        self.log('Error! Saving html to ' + fail_filepath, True)
+        html = self.driver.page_source
+        with open(fail_filepath, 'w') as f:
+            f.write(html)
+        self.fail_count += 1
+
     def write_s3(self):
         # write failure(s), log, results
         dt = datetime.datetime.now().strftime('%Y-%m-%d/%H:%M:%S')
@@ -927,3 +924,4 @@ class Scrubber(object):
         write_to_bucket(self.log_filepath, 'outputs/{0}/{1}'.format(dt, self.log_filename))
         for i in range(self.fail_count):
             write_to_bucket(self.get_fail_filepath(i), 'outputs/{0}/{1}'.format(dt, self.get_fail_filename(i)))
+
