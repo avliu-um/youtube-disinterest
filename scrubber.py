@@ -17,15 +17,15 @@ from util import find_value, find_json, find_jsons, append_df
 MAX_WATCH_SECONDS = 1800
 LOAD_BUFFER_SECONDS = 10
 MAX_RECS = 10
+MAX_SCRUB_NET_SIZE = 10
 
 
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
 class Scrubber(object):
 
-    SIM_REC_MATCH = True
-
     def __init__(self, community, scrubbing_strategy, note, account_username, account_password,
-                 staining_videos_csv, scrubbing_extras_csv=None):
+                 staining_videos_csv, scrubbing_extras_csv=None,
+                 sim_rec_match=False):
         def __get_logger(log_filepath):
             """
             Create a log file.
@@ -86,6 +86,9 @@ class Scrubber(object):
         self.staining_videos_csv = staining_videos_csv
         if scrubbing_extras_csv is not None:
             self.scrubbing_extras_csv = scrubbing_extras_csv
+
+        # testing related
+        self.sim_rec_match = sim_rec_match
 
 
         # Staining videos
@@ -277,24 +280,44 @@ class Scrubber(object):
         """
         Save the top recommendations (just video ID's) on the homepage
         """
-        num_homepage_recs = 10
-        yt_video_url = 'https://www.youtube.com/watch?v='
 
         self.log('Saving homepage.')
 
+        # Grab just what we need from js: the channel id
+        channels_dict = {}
         html = self.driver.page_source
         initial_data = find_value(html, 'var ytInitialData = ', 0, '\n').rstrip(';')
-        videos = find_jsons(initial_data, '"videoRenderer":{')
+        js_videos = find_jsons(initial_data, '"videoRenderer":{')
+        for js_video in js_videos:
+            try:
+                js_vid = js_video['videoId']
+                js_cid = js_video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
+                channels_dict[js_vid] = js_cid
+            except KeyError:
+                continue
 
+        # Use webelements to find video ids in rank order
+        video_ids = []
+        elems = self.driver.find_elements(By.CSS_SELECTOR, 'a#video-title-link[href^="/watch?v="]')
+        for elem in elems:
+            link = elem.get_attribute('href')
+            if len(link) > len('https://www.youtube.com/watch?v='):
+                vid = link[len('https://www.youtube.com/watch?v='):]
+                video_ids.append(vid)
+
+        # Run through the rank order video ids, each time finding its corresponding channel id, and writing the results
         recs_data = []
         recs_ids = []
-        for i in range(len(videos)):
+        for i in range(len(video_ids)):
             if i > MAX_RECS-1:
                 break
 
-            video = videos[i]
-            video_id = video['videoId']
-            channel_id = video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
+            video_id = video_ids[i]
+            if video_id in channels_dict:
+                channel_id = channels_dict[video_id]
+            else:
+                channel_id = None
+
             rec_data = {'video_id': video_id, 'channel_id': channel_id, 'rank': i, 'component': 'homepage'}
 
             rec_data = self.__attach_context(rec_data)
@@ -678,23 +701,44 @@ class Scrubber(object):
 
         self.log('Checking homepage for video from unwanted channel.')
 
+        # Copied from save_homepage
+        channels_dict = {}
         html = self.driver.page_source
         initial_data = find_value(html, 'var ytInitialData = ', 0, '\n').rstrip(';')
-        videos = find_jsons(initial_data, '"videoRenderer":{')
+        js_videos = find_jsons(initial_data, '"videoRenderer":{')
+        for js_video in js_videos:
+            try:
+                js_vid = js_video['videoId']
+                js_cid = js_video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
+                channels_dict[js_vid] = js_cid
+            except KeyError:
+                continue
+
+        # Use webelements to find video ids in rank order
+        video_ids = []
+        elems = self.driver.find_elements(By.CSS_SELECTOR, 'a#video-title-link[href^="/watch?v="]')
+        for elem in elems:
+            link = elem.get_attribute('href')
+            if len(link) > len('https://www.youtube.com/watch?v='):
+                vid = link[len('https://www.youtube.com/watch?v='):]
+                video_ids.append(vid)
 
         unwanted_video_id = None
-        for i in range(len(videos)):
-            video = videos[i]
-            video_id = video['videoId']
-            channel_id = video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
-            if channel_id in self.scrubbing_channels:
-                self.log('Found video {0} from unwanted channel {1}.'.format(video_id, channel_id))
-                unwanted_video_id = video_id
+        for i in range(len(video_ids)):
+            if i > MAX_SCRUB_NET_SIZE:
                 break
-            elif self.SIM_REC_MATCH and i == 3:
-                self.log('SIM_REC_MATCH: Pretending that the fourth video ({0}, {1}) matches'.format(video_id, channel_id))
-                unwanted_video_id = video_id
-                break
+            video_id = video_ids[i]
+            if video_id in channels_dict:
+                channel_id = channels_dict[video_id]
+
+                if channel_id in self.scrubbing_channels:
+                    self.log('Found video {0} from unwanted channel {1}.'.format(video_id, channel_id))
+                    unwanted_video_id = video_id
+                    break
+                elif self.sim_rec_match and i == 3:
+                    self.log('SIM_REC_MATCH: Pretending that the fourth video ({0}, {1}) matches'.format(video_id, channel_id))
+                    unwanted_video_id = video_id
+                    break
 
         if unwanted_video_id:
             # FIND BUTTON/VIDEO CARD IN HTML

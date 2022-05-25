@@ -6,9 +6,6 @@ import os
 import json
 from util import write_to_bucket
 
-# This is the iteration limit for scrubbing actions that involve interacting with recommendations
-SCRUB_ITER_LIMIT = 40
-
 
 def setup(bot):
 
@@ -32,7 +29,8 @@ def stain(bot):
         bot.level += 1
 
 
-def scrub(bot):
+# scrub_iter_limit is the limit on the number of scrub iterations for the rec-based scrubbing strategies
+def scrub(bot, scrub_iter_limit=40):
 
     bot.log('\nSCRUB PHASE')
     bot.set_phase('scrub')
@@ -82,7 +80,7 @@ def scrub(bot):
 
     # Recommendation-based
     elif bot.scrubbing_strategy == 'dislike recommendation':
-        for i in range(SCRUB_ITER_LIMIT):
+        for i in range(scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -91,7 +89,7 @@ def scrub(bot):
             bot.phase_level += 1
             bot.level += 1
     elif bot.scrubbing_strategy == 'not interested':
-        for i in range(SCRUB_ITER_LIMIT):
+        for i in range(scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -100,7 +98,7 @@ def scrub(bot):
             bot.phase_level += 1
             bot.level += 1
     elif bot.scrubbing_strategy == 'no channel':
-        for i in range(SCRUB_ITER_LIMIT):
+        for i in range(scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -111,7 +109,7 @@ def scrub(bot):
 
     # Control
     elif bot.scrubbing_strategy == 'none':
-        for i in range(SCRUB_ITER_LIMIT):
+        for i in range(scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -144,13 +142,13 @@ def teardown(bot):
     time.sleep(5)
 
 
-def scrub_experiment(bot):
+def scrub_experiment(bot, scrub_iter_limit=40):
     bot.log('BEGIN!\n')
     setup(bot)
     time.sleep(5)
     stain(bot)
     time.sleep(5)
-    scrub(bot)
+    scrub(bot, scrub_iter_limit)
     time.sleep(5)
     teardown(bot)
     bot.log('\nDONE!')
