@@ -190,7 +190,7 @@ class Scrubber(object):
                 self.youtube_login_2()
             else:
                 self.youtube_login()
-            time.sleep(5)
+            time.sleep(10)
             success = self.was_login_successful()
             counter += 1
 
@@ -240,7 +240,7 @@ class Scrubber(object):
 
         input_field = self.driver.find_element(By.CSS_SELECTOR, 'input#identifierId')
         input_field.send_keys(self.account_username)
-        time.sleep(10)
+        time.sleep(5)
         next_button = self.driver.find_element(By.CSS_SELECTOR, 'div#identifierNext')
         next_button.click()
         time.sleep(5)
