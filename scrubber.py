@@ -185,7 +185,11 @@ class Scrubber(object):
         while success is False and counter < max_tries:
             if counter > 0:
                 self.log('Login attempt failed, trying again')
-            self.youtube_login()
+            # Hacky way to alternate
+            if counter % 2 == 0:
+                self.youtube_login_2()
+            else:
+                self.youtube_login()
             time.sleep(5)
             success = self.was_login_successful()
             counter += 1
@@ -207,7 +211,8 @@ class Scrubber(object):
         """
         # Maximum wait time for page to load when logging in
         login_wait_secs = 30
-        login_url = 'https://accounts.google.com/ServiceLogin?service=chromiumsync'
+        #login_url = 'https://accounts.google.com/ServiceLogin?service=chromiumsync'
+        login_url = 'https://accounts.google.com'
 
         self.driver.get(login_url)
 
@@ -226,6 +231,25 @@ class Scrubber(object):
         WebDriverWait(self.driver, login_wait_secs).until(
             EC.element_to_be_clickable((By.ID, 'submit'))
         ).click()
+
+    # New login page discovered 5/24
+    def youtube_login_2(self):
+        login_url = 'https://accounts.google.com'
+        self.driver.get(login_url)
+        time.sleep(5)
+
+        input_field = self.driver.find_element(By.CSS_SELECTOR, 'input#identifierId')
+        input_field.send_keys(self.account_username)
+        time.sleep(10)
+        next_button = self.driver.find_element(By.CSS_SELECTOR, 'div#identifierNext')
+        next_button.click()
+        time.sleep(5)
+
+        password = self.driver.find_element(By.CSS_SELECTOR, 'input[type="password"]')
+        password.send_keys(self.account_password)
+        time.sleep(5)
+        next_button = self.driver.find_element(By.CSS_SELECTOR, 'div#passwordNext')
+        next_button.click()
 
     def was_login_successful(self):
         """
@@ -456,10 +480,6 @@ class Scrubber(object):
 
     # We only implement this one because it's the only one being used so far for our scrubbing experiment
     def dislike_video(self):
-        # Add it to our disliked videos list for later un-disliking
-        url = self.driver.current_url
-        video_id = url[len('https://www.youtube.com/watch?v='):]
-
         self.video_action('dislike')
 
     # Modified from Tomlein et al. (2021)
@@ -597,7 +617,10 @@ class Scrubber(object):
         """
         Write recommendations list into csv
         """
-        assert (len(recs) > 0)
+        #hacky fix
+        if len(recs) == 0:
+            self.log('error with writing')
+            recs = self.__attach_context({})
         recs_df = pd.DataFrame(recs)
         append_df(recs_df, self.results_filepath, False)
 
@@ -615,13 +638,11 @@ class Scrubber(object):
         contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
 
         self.log('Deleting most recent.')
-        # TODO: Change this hacky fix
         try:
             button = contents.find_element(By.CSS_SELECTOR, 'button')
             button.click()
         except NoSuchElementException:
             self.log('No most recent video to delete!')
-
 
     def dislike_recommended(self):
         unwanted_video = self.scrub_homepage()

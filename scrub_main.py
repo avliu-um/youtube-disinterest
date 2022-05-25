@@ -59,7 +59,8 @@ def scrub(bot, scrub_iter_limit=40):
 
     # History-based
     elif bot.scrubbing_strategy == 'delete':
-        for i in range(len(bot.staining_videos)):
+        # If you delete a video from watch history it deletes ALL occurences of that video
+        for i in range(len(set(bot.staining_videos))):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)

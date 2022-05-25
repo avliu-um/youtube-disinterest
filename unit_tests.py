@@ -5,6 +5,16 @@ import time
 import pandas as pd
 
 
+default_attributes = {
+        'community': 'testing',
+        'scrubbing_strategy': 'dislike recommendation',
+        'note': '',
+        'staining_videos_csv': 'communities/testing/samples/videos_non_existent.csv',
+        'scrubbing_extras_csv': 'communities/testing/placeholder_channels.csv',
+        'account_username': 'sean.carter.99.test',
+        'account_password': '99problems'
+}
+
 # Attempting to dislike a video that we know is inappropriate
 def test_dislike_inappropriate():
     attributes = {
@@ -89,16 +99,9 @@ def test_not_interested():
 
     bot.not_interested()
 
+
 def test_dislike_recommended():
-    attributes = {
-        'community': 'testing',
-        'scrubbing_strategy': 'dislike recommendation',
-        'note': '',
-        'staining_videos_csv': 'communities/testing/samples/videos_non_existent.csv',
-        'scrubbing_extras_csv': 'communities/testing/placeholder_channels.csv',
-        'account_username': 'sean.carter.99.test',
-        'account_password': '99problems'
-    }
+    attributes = default_attributes
     bot = Scrubber(**attributes, sim_rec_match=True)
 
     bot.login()
@@ -108,8 +111,15 @@ def test_dislike_recommended():
     time.sleep(5)
 
 
+def test_homepage():
+    attributes = default_attributes
+    attributes['note'] = 'homepage'
+    bot = Scrubber(**attributes, sim_rec_match=True)
+    bot.login()
+    bot.load_and_save_homepage()
+
 def full_strategy_tests():
-    my_row = 2
+    my_row = 5
 
     runs_filepath = 'runs/strategy_test_runs.csv'
     runs = pd.read_csv(runs_filepath).to_dict('index')
@@ -118,11 +128,25 @@ def full_strategy_tests():
     strategy = attributes['scrubbing_strategy']
     print('testing strategy: {0}'.format(strategy))
 
-    bot = Scrubber(**attributes, sim_rec_match=True)
+    bot = Scrubber(**attributes, sim_rec_match=False)
 
     scrub_experiment(bot, scrub_iter_limit=2)
+
+def run_real():
+    attributes = {
+        'community': 'alt-right',
+        'scrubbing_strategy': 'watch',
+        'note': '0',
+        'staining_videos_csv': 'communities/alt-right/samples/videos_24.csv',
+        'scrubbing_extras_csv': 'communities/politics/samples/videos_center_24.csv',
+        'account_username': 'sean.carter.99.test',
+        'account_password': '99problems'
+    }
+    bot = Scrubber(**attributes, sim_rec_match=False)
+
+    scrub_experiment(bot)
 
 if __name__ == '__main__':
     os.makedirs('outputs')
     os.makedirs('outputs/fails')
-    test_dislike_recommended()
+    run_real()
