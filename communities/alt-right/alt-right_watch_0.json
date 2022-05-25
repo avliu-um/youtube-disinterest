@@ -1,0 +1,12 @@
+{
+  "community": "alt-right",
+  "scrubbing_strategy": "watch",
+  "note": "0",
+
+  "staining_videos": "communities/alt-right/samples/videos_24.csv",
+  "scrubbing_extras": "communities/politics/samples/videos_center_24.csv",
+
+  "account_username": "Tandy.Dakota",
+  "account_password": "scrub2022",
+  "chrome_arguments": []
+}

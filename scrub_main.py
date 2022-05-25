@@ -156,7 +156,7 @@ def scrub_experiment(bot):
     bot.log('\nDONE!')
 
 # Legacy
-# This parses arguments in a json under the profiles folder
+# This parses arguments in a json under the communities folder
 # We've now moved to passing in attributes as a whole without parsing json
 def parse_profile_json():
     parser = argparse.ArgumentParser()

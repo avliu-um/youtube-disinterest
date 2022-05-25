@@ -1,3 +1,0 @@
-media_ratings.csv: from Siqi's project, which uses mbfc
-mbfc_seed_videos2.json: from Siqi's project, which uses his "extract_seed_videos.py" code
-    - videos arranged from most recent to least

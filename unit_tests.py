@@ -5,7 +5,7 @@ import time
 
 
 def test_was_login_successful():
-    good_filepath = 'profiles/unit_tests/login.json'
+    good_filepath = 'communities/unit_tests/login.json'
     bot = Scrubber(good_filepath)
     time.sleep(5)
     assert(not bot.was_login_successful())
@@ -15,7 +15,7 @@ def test_was_login_successful():
 
 
 def test_many_fails():
-    test_filepath = 'profiles/unit_tests/many_fails.json'
+    test_filepath = 'communities/unit_tests/many_fails.json'
     bot = Scrubber(test_filepath)
 
     for seed_vid in bot.staining_videos:
@@ -27,7 +27,7 @@ def test_many_fails():
 
 
 def test_profile():
-    test_filepath = 'profiles/alt-right/alt-right_watch_0.json'
+    test_filepath = 'communities/alt-right/alt-right_watch_0.json'
     bot = Scrubber(test_filepath)
     scrub_experiment(bot)
 
