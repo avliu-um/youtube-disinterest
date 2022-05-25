@@ -1,5 +1,5 @@
 from scrubber import Scrubber
-from scrub_main import scrub_experiment
+from scrub_main import scrub_experiment, write_s3
 import os
 import time
 import pandas as pd
@@ -145,6 +145,8 @@ def run_real():
     bot = Scrubber(**attributes, sim_rec_match=False)
 
     scrub_experiment(bot)
+
+    write_s3(bot)
 
 if __name__ == '__main__':
     os.makedirs('outputs')

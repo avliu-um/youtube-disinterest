@@ -1,10 +1,8 @@
 from scrubber import Scrubber
 import time
-import datetime
 import argparse
 import os
 import json
-from util import write_to_bucket
 
 
 def setup(bot):
@@ -48,6 +46,9 @@ def scrub(bot, scrub_iter_limit=40):
     # Watch-based
     if bot.scrubbing_strategy == 'watch':
         for burst_vid in bot.scrubbing_videos:
+            # Usually silent, but allows for more control when testing
+            if bot.phase_level > scrub_iter_limit:
+                break
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -61,6 +62,8 @@ def scrub(bot, scrub_iter_limit=40):
     elif bot.scrubbing_strategy == 'delete':
         # If you delete a video from watch history it deletes ALL occurences of that video
         for i in range(len(set(bot.staining_videos))):
+            if bot.phase_level > scrub_iter_limit:
+                break
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -70,6 +73,8 @@ def scrub(bot, scrub_iter_limit=40):
             bot.level += 1
     elif bot.scrubbing_strategy == 'dislike':
         for seed_vid in bot.staining_videos:
+            if bot.phase_level > scrub_iter_limit:
+                break
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -200,12 +205,7 @@ def main():
             f.write(html)
         bot.fail_count += 1
     finally:
-        # write failure(s), log, results
-        dt = datetime.datetime.now().strftime('%Y-%m-%d/%H:%M:%S')
-        write_to_bucket(bot.results_filepath, 'outputs/{0}/{1}'.format(dt, bot.results_filename))
-        write_to_bucket(bot.log_filepath, 'outputs/{0}/{1}'.format(dt, bot.log_filename))
-        for i in range(bot.fail_count):
-            write_to_bucket(bot.get_fail_filepath(i), 'outputs/{0}/{1}'.format(dt, bot.get_fail_filename(i)))
+        bot.write_s3()
 
 
 if __name__ == '__main__':

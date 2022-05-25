@@ -11,7 +11,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException,
 import sys, os, time, logging, re, datetime, csv
 import pandas as pd
 
-from util import find_value, find_json, find_jsons, append_df
+from util import find_value, find_json, find_jsons, append_df, write_to_bucket
 
 # 30 minutes suggested (Tomlein et al. 2021)
 MAX_WATCH_SECONDS = 1800
@@ -919,3 +919,11 @@ class Scrubber(object):
 
             except NoSuchElementException:
                 break
+
+    def write_s3(self):
+        # write failure(s), log, results
+        dt = datetime.datetime.now().strftime('%Y-%m-%d/%H:%M:%S')
+        write_to_bucket(self.results_filepath, 'outputs/{0}/{1}'.format(dt, self.results_filename))
+        write_to_bucket(self.log_filepath, 'outputs/{0}/{1}'.format(dt, self.log_filename))
+        for i in range(self.fail_count):
+            write_to_bucket(self.get_fail_filepath(i), 'outputs/{0}/{1}'.format(dt, self.get_fail_filename(i)))
