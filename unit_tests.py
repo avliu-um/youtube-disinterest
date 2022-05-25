@@ -134,7 +134,7 @@ def test_homepage():
 
 
 def full_strategy_tests():
-    my_row = 5
+    my_row = 4
 
     runs_filepath = 'runs/strategy_test_runs.csv'
     runs = pd.read_csv(runs_filepath).to_dict('index')
@@ -151,10 +151,9 @@ def full_strategy_tests():
 def run_real():
     attributes = {
         'community': 'alt-right',
-        'scrubbing_strategy': 'watch',
+        'scrubbing_strategy': 'dislike',
         'note': '0',
-        'staining_videos_csv': 'communities/alt-right/samples/videos_24.csv',
-        'scrubbing_extras_csv': 'communities/politics/samples/videos_center_24.csv',
+        'staining_videos_csv': 'communities/alt-right/samples/videos_23.csv',
         'account_username': 'sean.carter.99.test',
         'account_password': '99problems'
     }
@@ -162,9 +161,8 @@ def run_real():
 
     scrub_experiment(bot)
 
-    bot.write_s3()
 
 if __name__ == '__main__':
     os.makedirs('outputs')
     os.makedirs('outputs/fails')
-    test_delete_empty()
+    run_real()

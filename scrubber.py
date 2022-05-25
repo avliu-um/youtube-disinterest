@@ -190,7 +190,7 @@ class Scrubber(object):
                 self.youtube_login_2()
             else:
                 self.youtube_login()
-            # May get prompted for phone number here
+            # May get prompted for recaptcha or phone number here
             time.sleep(10)
             success = self.was_login_successful()
             counter += 1
