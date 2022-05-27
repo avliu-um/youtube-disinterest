@@ -1,13 +1,26 @@
 from scrubber import Scrubber
 import time
-import datetime
-import argparse
-import os
-import json
-from util import write_to_bucket
+import argparse, json
 
-# This is the iteration limit for scrubbing actions that involve interacting with recommendations
-SCRUB_ITER_LIMIT = 40
+
+# scrub_iter_limit: Cap on the number of scrubbing actions
+def scrub_experiment(attributes, scrub_iter_limit=40):
+    bot = Scrubber(**attributes)
+
+    try:
+        bot.log('BEGIN!\n')
+        setup(bot)
+        time.sleep(5)
+        stain(bot)
+        time.sleep(5)
+        scrub(bot, scrub_iter_limit)
+        time.sleep(5)
+        teardown(bot)
+        bot.log('\nDONE!')
+    except:
+        bot.fail_safely()
+    finally:
+        bot.write_s3()
 
 
 def setup(bot):
@@ -32,7 +45,8 @@ def stain(bot):
         bot.level += 1
 
 
-def scrub(bot):
+# scrub_iter_limit is the limit on the number of scrub iterations for the rec-based scrubbing strategies
+def scrub(bot, scrub_iter_limit=40):
 
     bot.log('\nSCRUB PHASE')
     bot.set_phase('scrub')
@@ -50,6 +64,9 @@ def scrub(bot):
     # Watch-based
     if bot.scrubbing_strategy == 'watch':
         for burst_vid in bot.scrubbing_videos:
+            # Usually silent, but allows for more control when testing
+            if bot.phase_level > scrub_iter_limit:
+                break
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -61,7 +78,10 @@ def scrub(bot):
 
     # History-based
     elif bot.scrubbing_strategy == 'delete':
-        for i in range(len(bot.staining_videos)):
+        # If you delete a video from watch history it deletes ALL occurences of that video
+        for i in range(len(set(bot.staining_videos))):
+            if bot.phase_level > scrub_iter_limit:
+                break
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -71,6 +91,8 @@ def scrub(bot):
             bot.level += 1
     elif bot.scrubbing_strategy == 'dislike':
         for seed_vid in bot.staining_videos:
+            if bot.phase_level > scrub_iter_limit:
+                break
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -82,7 +104,7 @@ def scrub(bot):
 
     # Recommendation-based
     elif bot.scrubbing_strategy == 'dislike recommendation':
-        for i in range(SCRUB_ITER_LIMIT):
+        for i in range(scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -91,7 +113,7 @@ def scrub(bot):
             bot.phase_level += 1
             bot.level += 1
     elif bot.scrubbing_strategy == 'not interested':
-        for i in range(SCRUB_ITER_LIMIT):
+        for i in range(scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -100,7 +122,7 @@ def scrub(bot):
             bot.phase_level += 1
             bot.level += 1
     elif bot.scrubbing_strategy == 'no channel':
-        for i in range(SCRUB_ITER_LIMIT):
+        for i in range(scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -111,7 +133,7 @@ def scrub(bot):
 
     # Control
     elif bot.scrubbing_strategy == 'none':
-        for i in range(SCRUB_ITER_LIMIT):
+        for i in range(scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -144,69 +166,21 @@ def teardown(bot):
     time.sleep(5)
 
 
-def scrub_experiment(bot):
-    bot.log('BEGIN!\n')
-    setup(bot)
-    time.sleep(5)
-    stain(bot)
-    time.sleep(5)
-    scrub(bot)
-    time.sleep(5)
-    teardown(bot)
-    bot.log('\nDONE!')
-
-# Legacy
-# This parses arguments in a json under the profiles folder
-# We've now moved to passing in attributes as a whole without parsing json
-def parse_profile_json():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--filepath', type=str, required=True,
-                        help='The filepath to the configuration file')
-    args = parser.parse_args()
-    bot_filepath = args.filepath
-
-    with open(bot_filepath) as json_file:
-        profile = json.load(json_file)
-
-    scrubbing_extras = None
-    if 'scrubbing_extras' in profile.keys():
-        scrubbing_extras = profile['scrubbing_extras']
-
-    bot = Scrubber(
-        community=profile['community'],
-        scrubbing_strategy=profile['scrubbing_strategy'],
-        note=profile['note'],
-        account_username=profile['account_username'],
-        account_password=profile['account_password'],
-        staining_videos_csv=profile['staining_videos'],
-        scrubbing_extras_csv=scrubbing_extras
-    )
-
-    return bot
-
 def main():
-    # Creating the outputs directory
-    os.makedirs('outputs')
-    os.makedirs('outputs/fails')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--community', type=str, required=True)
+    parser.add_argument('--scrubbing_strategy', type=str, required=True)
+    parser.add_argument('--note', type=str)
+    parser.add_argument('--staining_videos_csv', type=str, required=True)
+    parser.add_argument('--scrubbing_extras_csv', type=str, required=False,
+                        help='Required if strategy is rec-based')
+    parser.add_argument('--account_username', type=str, required=True)
+    parser.add_argument('--account_password', type=str, required=True)
+    args = parser.parse_args()
 
-    bot = parse_profile_json()
+    attributes = vars(args)
 
-    try:
-        scrub_experiment(bot)
-    except:
-        fail_filepath = bot.get_fail_filepath()
-        bot.log('Error! Saving html to ' + fail_filepath, True)
-        html = bot.driver.page_source
-        with open(fail_filepath, 'w') as f:
-            f.write(html)
-        bot.fail_count += 1
-    finally:
-        # write failure(s), log, results
-        dt = datetime.datetime.now().strftime('%Y-%m-%d/%H:%M:%S')
-        write_to_bucket(bot.results_filepath, 'outputs/{0}/{1}'.format(dt, bot.results_filename))
-        write_to_bucket(bot.log_filepath, 'outputs/{0}/{1}'.format(dt, bot.log_filename))
-        for i in range(bot.fail_count):
-            write_to_bucket(bot.get_fail_filepath(i), 'outputs/{0}/{1}'.format(dt, bot.get_fail_filename(i)))
+    scrub_experiment(attributes)
 
 
 if __name__ == '__main__':

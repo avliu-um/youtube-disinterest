@@ -1,27 +1,21 @@
 import pandas as pd
 from scrub_main import scrub_experiment
-from scrubber import Scrubber
-import os
 
 
-def get_attributes():
-    my_row = 0
-    runs_filepath = './profiles/alt-right/runs.csv'
+def get_attributes(runs_filepath, row):
     runs = pd.read_csv(runs_filepath).to_dict('index')
-    attributes = runs[my_row]
+    attributes = runs[row]
 
     return attributes
 
+
 def main():
-    attributes = get_attributes()
+    runs_filepath = 'runs/alt-right_runs.csv'
+    my_row = 0
 
-    # Creating the outputs directory
-    os.makedirs('outputs')
-    os.makedirs('outputs/fails')
+    attributes = get_attributes(runs_filepath, my_row)
+    scrub_experiment(attributes)
 
-    bot = Scrubber(**attributes)
-
-    scrub_experiment(bot)
 
 if __name__ == '__main__':
     main()

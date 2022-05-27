@@ -8,21 +8,20 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementNotInteractableException, \
     ElementClickInterceptedException
 
-import sys, os, time, logging, re, datetime, csv
+import sys, os, time, logging, re, datetime
 import pandas as pd
 
-from util import find_value, find_json, find_jsons, append_df
+from util import find_value, find_json, find_jsons, append_df, write_to_bucket
 
 # 30 minutes suggested (Tomlein et al. 2021)
 MAX_WATCH_SECONDS = 1800
 LOAD_BUFFER_SECONDS = 10
 MAX_RECS = 10
+MAX_SCRUB_NET_SIZE = 10
 
 
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
 class Scrubber(object):
-
-    SIM_REC_MATCH = True
 
     def __init__(self, community, scrubbing_strategy, note, account_username, account_password,
                  staining_videos_csv, scrubbing_extras_csv=None):
@@ -78,6 +77,10 @@ class Scrubber(object):
 
             return driver
 
+        # Creating the outputs directory
+        os.makedirs('outputs')
+        os.makedirs('outputs/fails')
+
         self.community = community
         self.scrubbing_strategy = scrubbing_strategy
         self.note = note
@@ -86,7 +89,6 @@ class Scrubber(object):
         self.staining_videos_csv = staining_videos_csv
         if scrubbing_extras_csv is not None:
             self.scrubbing_extras_csv = scrubbing_extras_csv
-
 
         # Staining videos
         test_vid = 'CuOTY6yGygo'
@@ -182,8 +184,13 @@ class Scrubber(object):
         while success is False and counter < max_tries:
             if counter > 0:
                 self.log('Login attempt failed, trying again')
-            self.youtube_login()
-            time.sleep(5)
+            # Hacky way to alternate
+            if counter % 2 == 0:
+                self.youtube_login_2()
+            else:
+                self.youtube_login()
+            # May get prompted for recaptcha or phone number here
+            time.sleep(10)
             success = self.was_login_successful()
             counter += 1
 
@@ -204,7 +211,8 @@ class Scrubber(object):
         """
         # Maximum wait time for page to load when logging in
         login_wait_secs = 30
-        login_url = 'https://accounts.google.com/ServiceLogin?service=chromiumsync'
+        #login_url = 'https://accounts.google.com/ServiceLogin?service=chromiumsync'
+        login_url = 'https://accounts.google.com'
 
         self.driver.get(login_url)
 
@@ -224,6 +232,25 @@ class Scrubber(object):
             EC.element_to_be_clickable((By.ID, 'submit'))
         ).click()
 
+    # New login page discovered 5/24
+    def youtube_login_2(self):
+        login_url = 'https://accounts.google.com'
+        self.driver.get(login_url)
+        time.sleep(5)
+
+        input_field = self.driver.find_element(By.CSS_SELECTOR, 'input#identifierId')
+        input_field.send_keys(self.account_username)
+        time.sleep(5)
+        next_button = self.driver.find_element(By.CSS_SELECTOR, 'div#identifierNext')
+        next_button.click()
+        time.sleep(5)
+
+        password = self.driver.find_element(By.CSS_SELECTOR, 'input[type="password"]')
+        password.send_keys(self.account_password)
+        time.sleep(5)
+        next_button = self.driver.find_element(By.CSS_SELECTOR, 'div#passwordNext')
+        next_button.click()
+
     def was_login_successful(self):
         """
         (Not necessarily required if we're confident a login occurs) Confirm the login was successful
@@ -238,21 +265,12 @@ class Scrubber(object):
             logged_in = True
         return logged_in
 
-    # EXACT SAME THING as load_and_save_videoapge
-    # TODO: Abstract
     def load_and_save_homepage(self):
         try:
             self.__load_and_save_homepage()
         # Might be a bit broad with key error
         except (EC.NoSuchElementException, KeyError):
-            # Copied from scrub_main.py
-            fail_filepath = self.get_fail_filepath()
-            self.log('Error! Saving html to ' + fail_filepath, True)
-            html = self.driver.page_source
-            with open(fail_filepath, 'w') as f:
-                f.write(html)
-            self.fail_count += 1
-            return 0
+            self.fail_safely()
 
     def __load_and_save_homepage(self):
         """
@@ -277,24 +295,44 @@ class Scrubber(object):
         """
         Save the top recommendations (just video ID's) on the homepage
         """
-        num_homepage_recs = 10
-        yt_video_url = 'https://www.youtube.com/watch?v='
 
         self.log('Saving homepage.')
 
+        # Grab just what we need from js: the channel id
+        channels_dict = {}
         html = self.driver.page_source
         initial_data = find_value(html, 'var ytInitialData = ', 0, '\n').rstrip(';')
-        videos = find_jsons(initial_data, '"videoRenderer":{')
+        js_videos = find_jsons(initial_data, '"videoRenderer":{')
+        for js_video in js_videos:
+            try:
+                js_vid = js_video['videoId']
+                js_cid = js_video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
+                channels_dict[js_vid] = js_cid
+            except KeyError:
+                continue
 
+        # Use webelements to find video ids in rank order
+        video_ids = []
+        elems = self.driver.find_elements(By.CSS_SELECTOR, 'a#video-title-link[href^="/watch?v="]')
+        for elem in elems:
+            link = elem.get_attribute('href')
+            if len(link) > len('https://www.youtube.com/watch?v='):
+                vid = link[len('https://www.youtube.com/watch?v='):]
+                video_ids.append(vid)
+
+        # Run through the rank order video ids, each time finding its corresponding channel id, and writing the results
         recs_data = []
         recs_ids = []
-        for i in range(len(videos)):
+        for i in range(len(video_ids)):
             if i > MAX_RECS-1:
                 break
 
-            video = videos[i]
-            video_id = video['videoId']
-            channel_id = video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
+            video_id = video_ids[i]
+            if video_id in channels_dict:
+                channel_id = channels_dict[video_id]
+            else:
+                channel_id = None
+
             rec_data = {'video_id': video_id, 'channel_id': channel_id, 'rank': i, 'component': 'homepage'}
 
             rec_data = self.__attach_context(rec_data)
@@ -308,19 +346,12 @@ class Scrubber(object):
         """
         Load a videopage, wait, and then save the recommendations
         """
-        # TODO: Abstract/carry this try/except logic elsewhere
         try:
             duration = self.__load_and_save_videopage(vid_id)
             return duration
         # Might be a bit broad with key error
         except (EC.NoSuchElementException, KeyError):
-            # Copied from scrub_main.py
-            fail_filepath = self.get_fail_filepath()
-            self.log('Error! Saving html to ' + fail_filepath, True)
-            html = self.driver.page_source
-            with open(fail_filepath, 'w') as f:
-                f.write(html)
-            self.fail_count += 1
+            self.fail_safely()
             return 0
 
     def __load_and_save_videopage(self, vid_id):
@@ -433,10 +464,6 @@ class Scrubber(object):
 
     # We only implement this one because it's the only one being used so far for our scrubbing experiment
     def dislike_video(self):
-        # Add it to our disliked videos list for later un-disliking
-        url = self.driver.current_url
-        video_id = url[len('https://www.youtube.com/watch?v='):]
-
         self.video_action('dislike')
 
     # Modified from Tomlein et al. (2021)
@@ -459,13 +486,13 @@ class Scrubber(object):
                     return success
                 else:
                     counter += 1
-            except (NoSuchElementException, TimeoutException):
+            # TODO LONGTERM: Make this more specific, think about a "WebInteractionError" to raise whenever the thing
+            except:
                 counter += 1
                 if counter > 5:
                     self.log('All attempts failed.')
-                    raise
-        self.log('All attempts failed.')
-        raise RuntimeError(f'All attempts failed.')
+                    break
+        self.fail_safely()
 
     # Modified from Tomlein et al. (2021)
     def __interact_with_action_button(self, action, turn_on=True):
@@ -524,7 +551,9 @@ class Scrubber(object):
         """
         Get the dislike button and its status (pressed or nah)
         """
-        WebDriverWait(self.driver, 30).until(
+        # TODO: Abstract
+        wait_element_secs = 10
+        WebDriverWait(self.driver, wait_element_secs).until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#menu-container'))
         )
 
@@ -574,34 +603,37 @@ class Scrubber(object):
         """
         Write recommendations list into csv
         """
-        assert (len(recs) > 0)
+        #hacky fix
+        if len(recs) == 0:
+            self.log('error with writing')
+            recs = self.__attach_context({})
         recs_df = pd.DataFrame(recs)
         append_df(recs_df, self.results_filepath, False)
 
     def delete_most_recent(self):
-        history_url = 'https://www.youtube.com/feed/history'
-
-        self.log('Loading history page.')
-        self.driver.get(history_url)
-
-        time.sleep(5)
-
-        WebDriverWait(self.driver, 30).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#contents'))
-        )
-        contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
-
-        self.log('Deleting most recent.')
-        # TODO: Change this hacky fix
+        # TODO: Abstract
+        element_wait_secs = 10
         try:
+            history_url = 'https://www.youtube.com/feed/history'
+
+            self.log('Loading history page.')
+            self.driver.get(history_url)
+
+            time.sleep(5)
+
+            WebDriverWait(self.driver, element_wait_secs).until(
+                EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#contents'))
+            )
+            contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
+
+            self.log('Deleting most recent.')
             button = contents.find_element(By.CSS_SELECTOR, 'button')
             button.click()
-        except NoSuchElementException:
-            self.log('No most recent video to delete!')
+        except (ElementNotInteractableException, NoSuchElementException, ElementClickInterceptedException):
+            self.fail_safely()
 
-
-    def dislike_recommended(self):
-        unwanted_video = self.scrub_homepage()
+    def dislike_recommended(self, sim_rec_match=False):
+        unwanted_video = self.scrub_homepage(sim_rec_match=sim_rec_match)
         time.sleep(5)
         if unwanted_video:
             unwanted_video.click()
@@ -610,8 +642,8 @@ class Scrubber(object):
 
     # Implementing this after realizing you can do "tell us why" --> "don't like video"
     #   after clicking on the actual not interested button
-    def not_interested(self):
-        found = self.menu_service('not interested')
+    def not_interested(self, sim_rec_match=False):
+        found = self.menu_service('not interested', sim_rec_match=sim_rec_match)
         time.sleep(5)
 
         if found:
@@ -632,11 +664,11 @@ class Scrubber(object):
             submit_button = self.driver.find_element(By.CSS_SELECTOR, 'ytd-button-renderer#submit')
             submit_button.click()
 
-    def no_channel(self):
-        self.menu_service('no channel')
+    def no_channel(self, sim_rec_match=False):
+        self.menu_service('no channel', sim_rec_match)
 
-    def menu_service(self, action):
-        unwanted_video = self.scrub_homepage()
+    def menu_service(self, action, sim_rec_match):
+        unwanted_video = self.scrub_homepage(sim_rec_match)
         time.sleep(5)
         if unwanted_video:
 
@@ -670,7 +702,7 @@ class Scrubber(object):
             return True
         return False
 
-    def scrub_homepage(self):
+    def scrub_homepage(self, sim_rec_match):
         """
         Load the homepage
         """
@@ -678,23 +710,44 @@ class Scrubber(object):
 
         self.log('Checking homepage for video from unwanted channel.')
 
+        # Copied from save_homepage
+        channels_dict = {}
         html = self.driver.page_source
         initial_data = find_value(html, 'var ytInitialData = ', 0, '\n').rstrip(';')
-        videos = find_jsons(initial_data, '"videoRenderer":{')
+        js_videos = find_jsons(initial_data, '"videoRenderer":{')
+        for js_video in js_videos:
+            try:
+                js_vid = js_video['videoId']
+                js_cid = js_video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
+                channels_dict[js_vid] = js_cid
+            except KeyError:
+                continue
+
+        # Use webelements to find video ids in rank order
+        video_ids = []
+        elems = self.driver.find_elements(By.CSS_SELECTOR, 'a#video-title-link[href^="/watch?v="]')
+        for elem in elems:
+            link = elem.get_attribute('href')
+            if len(link) > len('https://www.youtube.com/watch?v='):
+                vid = link[len('https://www.youtube.com/watch?v='):]
+                video_ids.append(vid)
 
         unwanted_video_id = None
-        for i in range(len(videos)):
-            video = videos[i]
-            video_id = video['videoId']
-            channel_id = video['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
-            if channel_id in self.scrubbing_channels:
-                self.log('Found video {0} from unwanted channel {1}.'.format(video_id, channel_id))
-                unwanted_video_id = video_id
+        for i in range(len(video_ids)):
+            if i > MAX_SCRUB_NET_SIZE:
                 break
-            elif self.SIM_REC_MATCH and i == 3:
-                self.log('SIM_REC_MATCH: Pretending that the fourth video ({0}, {1}) matches'.format(video_id, channel_id))
-                unwanted_video_id = video_id
-                break
+            video_id = video_ids[i]
+            if video_id in channels_dict:
+                channel_id = channels_dict[video_id]
+
+                if channel_id in self.scrubbing_channels:
+                    self.log('Found video {0} from unwanted channel {1}.'.format(video_id, channel_id))
+                    unwanted_video_id = video_id
+                    break
+                elif sim_rec_match and i == 3:
+                    self.log('SIM_REC_MATCH: Pretending that the fourth video ({0}, {1}) matches'.format(video_id, channel_id))
+                    unwanted_video_id = video_id
+                    break
 
         if unwanted_video_id:
             # FIND BUTTON/VIDEO CARD IN HTML
@@ -854,3 +907,20 @@ class Scrubber(object):
 
             except NoSuchElementException:
                 break
+
+    def fail_safely(self):
+        fail_filepath = self.get_fail_filepath()
+        self.log('Error! Saving html to ' + fail_filepath, True)
+        html = self.driver.page_source
+        with open(fail_filepath, 'w') as f:
+            f.write(html)
+        self.fail_count += 1
+
+    def write_s3(self):
+        # write failure(s), log, results
+        dt = datetime.datetime.now().strftime('%Y-%m-%d/%H:%M:%S')
+        write_to_bucket(self.results_filepath, 'outputs/{0}/{1}'.format(dt, self.results_filename))
+        write_to_bucket(self.log_filepath, 'outputs/{0}/{1}'.format(dt, self.log_filename))
+        for i in range(self.fail_count):
+            write_to_bucket(self.get_fail_filepath(i), 'outputs/{0}/{1}'.format(dt, self.get_fail_filename(i)))
+
