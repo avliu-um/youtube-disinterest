@@ -5,6 +5,23 @@ import os
 import json
 
 
+def scrub_experiment(bot, scrub_iter_limit=40):
+    try:
+        bot.log('BEGIN!\n')
+        setup(bot)
+        time.sleep(5)
+        stain(bot)
+        time.sleep(5)
+        scrub(bot, scrub_iter_limit)
+        time.sleep(5)
+        teardown(bot)
+        bot.log('\nDONE!')
+    except:
+        bot.fail_safely()
+    finally:
+        bot.write_s3()
+
+
 def setup(bot):
 
     bot.log('SETUP PHASE')
@@ -148,17 +165,6 @@ def teardown(bot):
     time.sleep(5)
 
 
-def scrub_experiment(bot, scrub_iter_limit=40):
-    bot.log('BEGIN!\n')
-    setup(bot)
-    time.sleep(5)
-    stain(bot)
-    time.sleep(5)
-    scrub(bot, scrub_iter_limit)
-    time.sleep(5)
-    teardown(bot)
-    bot.log('\nDONE!')
-
 # Legacy
 # This parses arguments in a json under the communities folder
 # We've now moved to passing in attributes as a whole without parsing json
@@ -188,24 +194,10 @@ def parse_profile_json():
 
     return bot
 
+
 def main():
-    # Creating the outputs directory
-    os.makedirs('outputs')
-    os.makedirs('outputs/fails')
-
     bot = parse_profile_json()
-
-    try:
-        scrub_experiment(bot)
-    except:
-        fail_filepath = bot.get_fail_filepath()
-        bot.log('Error! Saving html to ' + fail_filepath, True)
-        html = bot.driver.page_source
-        with open(fail_filepath, 'w') as f:
-            f.write(html)
-        bot.fail_count += 1
-    finally:
-        bot.write_s3()
+    scrub_experiment(bot)
 
 
 if __name__ == '__main__':

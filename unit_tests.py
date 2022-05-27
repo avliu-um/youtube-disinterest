@@ -151,18 +151,15 @@ def full_strategy_tests():
 def run_real():
     attributes = {
         'community': 'alt-right',
-        'scrubbing_strategy': 'dislike',
+        'scrubbing_strategy': 'none',
         'note': '0',
-        'staining_videos_csv': 'communities/alt-right/samples/videos_23.csv',
+        'staining_videos_csv': 'communities/alt-right/samples/videos_22.csv',
         'account_username': 'sean.carter.99.test',
         'account_password': '99problems'
     }
     bot = Scrubber(**attributes, sim_rec_match=False)
-
     scrub_experiment(bot)
 
 
 if __name__ == '__main__':
-    os.makedirs('outputs')
-    os.makedirs('outputs/fails')
     run_real()

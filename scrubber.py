@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementNotInteractableException, \
     ElementClickInterceptedException
 
-import sys, os, time, logging, re, datetime, csv
+import sys, os, time, logging, re, datetime
 import pandas as pd
 
 from util import find_value, find_json, find_jsons, append_df, write_to_bucket
@@ -77,6 +77,10 @@ class Scrubber(object):
             time.sleep(3)
 
             return driver
+
+        # Creating the outputs directory
+        os.makedirs('outputs')
+        os.makedirs('outputs/fails')
 
         self.community = community
         self.scrubbing_strategy = scrubbing_strategy
