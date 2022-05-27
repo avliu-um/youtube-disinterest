@@ -172,14 +172,15 @@ def main():
     parser.add_argument('--scrubbing_strategy', type=str, required=True)
     parser.add_argument('--note', type=str)
     parser.add_argument('--staining_videos_csv', type=str, required=True)
-    parser.add_argument('--scrubbing_extras_csv', type=str, required=True,
+    parser.add_argument('--scrubbing_extras_csv', type=str, required=False,
                         help='Required if strategy is rec-based')
     parser.add_argument('--account_username', type=str, required=True)
     parser.add_argument('--account_password', type=str, required=True)
-
     args = parser.parse_args()
 
-    scrub_experiment(args)
+    attributes = vars(args)
+
+    scrub_experiment(attributes)
 
 
 if __name__ == '__main__':
