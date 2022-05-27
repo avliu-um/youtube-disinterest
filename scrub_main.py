@@ -1,10 +1,11 @@
 from scrubber import Scrubber
 import time
-import argparse
-import json
 
 
-def scrub_experiment(bot, scrub_iter_limit=40):
+# scrub_iter_limit: Cap on the number of scrubbing actions
+def scrub_experiment(attributes, scrub_iter_limit=40):
+    bot = Scrubber(**attributes)
+
     try:
         bot.log('BEGIN!\n')
         setup(bot)
@@ -162,42 +163,3 @@ def teardown(bot):
     time.sleep(5)
     bot.clear_subscriptions()
     time.sleep(5)
-
-
-# Legacy
-# This parses arguments in a json under the communities folder
-# We've now moved to passing in attributes as a whole without parsing json
-def parse_profile_json():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--filepath', type=str, required=True,
-                        help='The filepath to the configuration file')
-    args = parser.parse_args()
-    bot_filepath = args.filepath
-
-    with open(bot_filepath) as json_file:
-        profile = json.load(json_file)
-
-    scrubbing_extras = None
-    if 'scrubbing_extras' in profile.keys():
-        scrubbing_extras = profile['scrubbing_extras']
-
-    bot = Scrubber(
-        community=profile['community'],
-        scrubbing_strategy=profile['scrubbing_strategy'],
-        note=profile['note'],
-        account_username=profile['account_username'],
-        account_password=profile['account_password'],
-        staining_videos_csv=profile['staining_videos'],
-        scrubbing_extras_csv=scrubbing_extras
-    )
-
-    return bot
-
-
-def main():
-    bot = parse_profile_json()
-    scrub_experiment(bot)
-
-
-if __name__ == '__main__':
-    main()

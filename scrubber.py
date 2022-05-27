@@ -24,8 +24,7 @@ MAX_SCRUB_NET_SIZE = 10
 class Scrubber(object):
 
     def __init__(self, community, scrubbing_strategy, note, account_username, account_password,
-                 staining_videos_csv, scrubbing_extras_csv=None,
-                 sim_rec_match=False):
+                 staining_videos_csv, scrubbing_extras_csv=None):
         def __get_logger(log_filepath):
             """
             Create a log file.
@@ -90,10 +89,6 @@ class Scrubber(object):
         self.staining_videos_csv = staining_videos_csv
         if scrubbing_extras_csv is not None:
             self.scrubbing_extras_csv = scrubbing_extras_csv
-
-        # testing related
-        self.sim_rec_match = sim_rec_match
-
 
         # Staining videos
         test_vid = 'CuOTY6yGygo'
@@ -637,8 +632,8 @@ class Scrubber(object):
         except (ElementNotInteractableException, NoSuchElementException, ElementClickInterceptedException):
             self.fail_safely()
 
-    def dislike_recommended(self):
-        unwanted_video = self.scrub_homepage()
+    def dislike_recommended(self, sim_rec_match=False):
+        unwanted_video = self.scrub_homepage(sim_rec_match=sim_rec_match)
         time.sleep(5)
         if unwanted_video:
             unwanted_video.click()
@@ -647,8 +642,8 @@ class Scrubber(object):
 
     # Implementing this after realizing you can do "tell us why" --> "don't like video"
     #   after clicking on the actual not interested button
-    def not_interested(self):
-        found = self.menu_service('not interested')
+    def not_interested(self, sim_rec_match=False):
+        found = self.menu_service('not interested', sim_rec_match=sim_rec_match)
         time.sleep(5)
 
         if found:
@@ -669,11 +664,11 @@ class Scrubber(object):
             submit_button = self.driver.find_element(By.CSS_SELECTOR, 'ytd-button-renderer#submit')
             submit_button.click()
 
-    def no_channel(self):
-        self.menu_service('no channel')
+    def no_channel(self, sim_rec_match=False):
+        self.menu_service('no channel', sim_rec_match)
 
-    def menu_service(self, action):
-        unwanted_video = self.scrub_homepage()
+    def menu_service(self, action, sim_rec_match):
+        unwanted_video = self.scrub_homepage(sim_rec_match)
         time.sleep(5)
         if unwanted_video:
 
@@ -707,7 +702,7 @@ class Scrubber(object):
             return True
         return False
 
-    def scrub_homepage(self):
+    def scrub_homepage(self, sim_rec_match):
         """
         Load the homepage
         """
@@ -749,7 +744,7 @@ class Scrubber(object):
                     self.log('Found video {0} from unwanted channel {1}.'.format(video_id, channel_id))
                     unwanted_video_id = video_id
                     break
-                elif self.sim_rec_match and i == 3:
+                elif sim_rec_match and i == 3:
                     self.log('SIM_REC_MATCH: Pretending that the fourth video ({0}, {1}) matches'.format(video_id, channel_id))
                     unwanted_video_id = video_id
                     break

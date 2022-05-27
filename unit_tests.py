@@ -107,7 +107,7 @@ def test_not_interested():
         'account_username': 'sean.carter.99.test',
         'account_password': '99problems'
     }
-    bot = Scrubber(**attributes, sim_rec_match=True)
+    bot = Scrubber(**attributes)
 
     bot.login()
 
@@ -116,19 +116,19 @@ def test_not_interested():
 
 def test_dislike_recommended():
     attributes = default_attributes
-    bot = Scrubber(**attributes, sim_rec_match=True)
+    bot = Scrubber(**attributes)
 
     bot.login()
 
     bot.load_and_save_homepage()
-    bot.dislike_recommended()
+    bot.dislike_recommended(sim_rec_match=True)
     time.sleep(5)
 
 
 def test_homepage():
     attributes = default_attributes
     attributes['note'] = 'homepage'
-    bot = Scrubber(**attributes, sim_rec_match=True)
+    bot = Scrubber(**attributes)
     bot.login()
     bot.load_and_save_homepage()
 
@@ -143,9 +143,7 @@ def full_strategy_tests():
     strategy = attributes['scrubbing_strategy']
     print('testing strategy: {0}'.format(strategy))
 
-    bot = Scrubber(**attributes, sim_rec_match=False)
-
-    scrub_experiment(bot, scrub_iter_limit=2)
+    scrub_experiment(attributes, scrub_iter_limit=2)
 
 
 def run_real():
@@ -157,8 +155,7 @@ def run_real():
         'account_username': 'sean.carter.99.test',
         'account_password': '99problems'
     }
-    bot = Scrubber(**attributes, sim_rec_match=False)
-    scrub_experiment(bot)
+    scrub_experiment(attributes)
 
 
 if __name__ == '__main__':
