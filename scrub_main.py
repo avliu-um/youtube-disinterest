@@ -1,5 +1,6 @@
 from scrubber import Scrubber
 import time
+import argparse, json
 
 
 # scrub_iter_limit: Cap on the number of scrubbing actions
@@ -163,3 +164,23 @@ def teardown(bot):
     time.sleep(5)
     bot.clear_subscriptions()
     time.sleep(5)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--community', type=str, required=True)
+    parser.add_argument('--scrubbing_strategy', type=str, required=True)
+    parser.add_argument('--note', type=str)
+    parser.add_argument('--staining_videos_csv', type=str, required=True)
+    parser.add_argument('--scrubbing_extras_csv', type=str, required=True,
+                        help='Required if strategy is rec-based')
+    parser.add_argument('--account_username', type=str, required=True)
+    parser.add_argument('--account_password', type=str, required=True)
+
+    args = parser.parse_args()
+
+    scrub_experiment(args)
+
+
+if __name__ == '__main__':
+    main()
