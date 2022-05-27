@@ -134,7 +134,7 @@ def test_homepage():
 
 
 def full_strategy_tests():
-    my_row = 4
+    my_row = 6
 
     runs_filepath = 'runs/strategy_test_runs.csv'
     runs = pd.read_csv(runs_filepath).to_dict('index')
@@ -162,4 +162,4 @@ def run_real():
 
 
 if __name__ == '__main__':
-    run_real()
+    full_strategy_tests()

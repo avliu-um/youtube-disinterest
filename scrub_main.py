@@ -1,7 +1,6 @@
 from scrubber import Scrubber
 import time
 import argparse
-import os
 import json
 
 
