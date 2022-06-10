@@ -24,7 +24,7 @@ MAX_SCRUB_NET_SIZE = 10
 class Scrubber(object):
 
     def __init__(self, community, scrubbing_strategy, note, account_username, account_password,
-                 staining_videos_csv, scrubbing_extras_csv=None):
+                 staining_videos_csv, scrubbing_extras_csv=None, s3_bucket='youtube-audit-bucket'):
         def __get_logger(log_filepath):
             """
             Create a log file.
@@ -89,6 +89,7 @@ class Scrubber(object):
         self.staining_videos_csv = staining_videos_csv
         if scrubbing_extras_csv is not None:
             self.scrubbing_extras_csv = scrubbing_extras_csv
+        self.s3_bucket = s3_bucket
 
         # Staining videos
         test_vid = 'CuOTY6yGygo'
@@ -919,8 +920,9 @@ class Scrubber(object):
     def write_s3(self):
         # write failure(s), log, results
         dt = datetime.datetime.now().strftime('%Y-%m-%d/%H:%M:%S')
-        write_to_bucket(self.results_filepath, 'outputs/{0}/{1}'.format(dt, self.results_filename))
-        write_to_bucket(self.log_filepath, 'outputs/{0}/{1}'.format(dt, self.log_filename))
+        write_to_bucket(self.s3_bucket, self.results_filepath, 'outputs/{0}/{1}'.format(dt, self.results_filename))
+        write_to_bucket(self.s3_bucket, self.log_filepath, 'outputs/{0}/{1}'.format(dt, self.log_filename))
         for i in range(self.fail_count):
-            write_to_bucket(self.get_fail_filepath(i), 'outputs/{0}/{1}'.format(dt, self.get_fail_filename(i)))
+            write_to_bucket(self.s3_bucket, self.get_fail_filepath(i),
+                            'outputs/{0}/{1}'.format(dt, self.get_fail_filename(i)))
 

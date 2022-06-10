@@ -111,7 +111,21 @@ def append_df(df, existing_file_name, index):
     final_df.to_csv(existing_file_name, index=index)
 
 
-def write_to_bucket(source, dest):
+def write_to_bucket(aws_bucket, source, dest):
     # Make sure to configure ~/.aws/configure file
     s3 = boto3.resource('s3')
-    s3.Bucket('youtube-audit').upload_file(source, dest)
+    s3.Bucket(aws_bucket).upload_file(source, dest)
+
+
+def main():
+    bucket = 'youtube-audit'
+    f = open("test_result_file.txt", "a")
+    f.write("File content!")
+    f.close()
+    destination = 'test_folder/test_results_file.txt'
+
+    write_to_bucket(bucket, "./test_result_file.txt", destination)
+
+
+if __name__ == '__main__':
+    main()

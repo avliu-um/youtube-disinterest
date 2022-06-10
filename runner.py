@@ -1,6 +1,10 @@
 import pandas as pd
 from scrub_main import scrub_experiment
 
+"""
+Code to run the rows of the CSV's in the 'runs' folder
+"""
+
 
 def get_attributes(runs_filepath, row):
     runs = pd.read_csv(runs_filepath).to_dict('index')

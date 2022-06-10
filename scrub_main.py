@@ -176,6 +176,8 @@ def main():
                         help='Required if strategy is rec-based')
     parser.add_argument('--account_username', type=str, required=True)
     parser.add_argument('--account_password', type=str, required=True)
+    parser.add_argument('--s3_bucket', type=str, required=False,
+                        help='default is "youtube-audit-bucket"')
     args = parser.parse_args()
 
     attributes = vars(args)
