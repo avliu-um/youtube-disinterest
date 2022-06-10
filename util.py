@@ -118,7 +118,7 @@ def write_to_bucket(aws_bucket, source, dest):
 
 
 def main():
-    bucket = 'youtube-audit'
+    bucket = 'test-youtube-audit-bucket'
     f = open("test_result_file.txt", "a")
     f.write("File content!")
     f.close()
