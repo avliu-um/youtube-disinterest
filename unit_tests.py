@@ -158,5 +158,12 @@ def run_real():
     scrub_experiment(attributes)
 
 
+def test_undetected_chromedriver():
+    import undetected_chromedriver as uc
+    driver = uc.Chrome()
+    driver.get('https://nowsecure.nl')
+    time.sleep(10)
+
+
 if __name__ == '__main__':
-    full_strategy_tests()
+    test_undetected_chromedriver()
