@@ -1,19 +1,21 @@
 from scrubber import Scrubber
 import time
 import argparse, json
+from selenium.webdriver.common.by import By
 
 
 def first_login(attributes):
     bot = Scrubber(**attributes)
     
     bot.youtube_login_2()
+    time.sleep(5)
 
     try: 
-        email_button = self.driver.find_element(By.CSS_SELECTOR, 'div.vxx8jf')
+        email_button = bot.driver.find_element(By.CSS_SELECTOR, 'div.vxx8jf')
         email_button.click()
         time.sleep(5)
     except:
-        bot.log('Unable to find the verification email button')
+        bot.log('Unable to find the verification email button', True)
     finally:
         # Wait on my go to stop 
         # input('Input any button to end this \n')
