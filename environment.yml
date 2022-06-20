@@ -26,4 +26,5 @@ dependencies:
     - s3transfer==0.5.0
     - selenium==3.141.0
     - six==1.16.0
+    - undetected-chromedriver==3.1.5.post4
     - urllib3==1.26.9

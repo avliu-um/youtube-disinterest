@@ -13,11 +13,15 @@ import pandas as pd
 
 from util import find_value, find_json, find_jsons, append_df, write_to_bucket
 
+import undetected_chromedriver as uc
+
+
 # 30 minutes suggested (Tomlein et al. 2021)
 MAX_WATCH_SECONDS = 1800
 LOAD_BUFFER_SECONDS = 10
 MAX_RECS = 10
 MAX_SCRUB_NET_SIZE = 10
+CHROME_VERSION = 102
 
 
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
@@ -40,40 +44,13 @@ class Scrubber(object):
             logger.setLevel(logging.INFO)
             return logger
 
-        def __get_driver(chrome_arguments=None):
-            """
-            Initialize Selenium webdriver with Chrome options.
-            """
-            if chrome_arguments is None:
-                chrome_arguments = []
-            adblock_filepath = 'conf/webdriver/adblock.crx'
-            if sys.platform == 'win32':
-                driver_path = 'conf/webdriver/chromedriver.exe'
-            elif sys.platform == 'darwin':
-                driver_path = 'conf/webdriver/chromedriver_mac64'
-            else:
-                driver_path = 'conf/webdriver/chromedriver_linux64'
-
-            chrome_options = webdriver.ChromeOptions()
+        def __get_driver():
+            chrome_options = uc.ChromeOptions()
             chrome_options.add_argument('--mute-audio')
+            chrome_options.add_argument('--load-extension=./conf/webdriver/uBlock-Origin')
 
-            for chrome_argument in chrome_arguments:
-                chrome_options.add_argument(chrome_argument)
-
-            chrome_options.add_extension(adblock_filepath)
-            driver = webdriver.Chrome(driver_path, options=chrome_options)
+            driver = uc.Chrome(options=chrome_options, version_main=CHROME_VERSION)
             driver.maximize_window()
-
-            time.sleep(3)
-            driver.get("chrome://extensions/?id=cjpalhdlnbpafiamejdnhcphjbkeiagm")
-            time.sleep(3)
-            driver.execute_script(
-                "return document.querySelector('extensions-manager').shadowRoot.querySelector('#viewManager > extension"
-                "s-detail-view.active').shadowRoot.querySelector('div#container.page-container > div.page-content > div"
-                "#options-section extensions-toggle-row#allow-incognito').shadowRoot.querySelector('label#label input')"
-                ".click()"
-            )
-            time.sleep(3)
 
             return driver
 
@@ -137,7 +114,9 @@ class Scrubber(object):
 
         open(self.results_filepath, 'x')
         self.logger = __get_logger(self.log_filepath)
+        # TESTING
         self.driver = __get_driver()
+        time.sleep(3)
 
         self.phase = "setup"
         self.phase_level = 0
@@ -213,7 +192,14 @@ class Scrubber(object):
         # Maximum wait time for page to load when logging in
         login_wait_secs = 30
         #login_url = 'https://accounts.google.com/ServiceLogin?service=chromiumsync'
-        login_url = 'https://accounts.google.com'
+        login_url = 'https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?' \
+                    'redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&' \
+                    'prompt=consent&response_type=code&' \
+                    'client_id=407408718192.apps.googleusercontent.com&' \
+                    'scope=email&' \
+                    'access_type=offline&' \
+                    'flowName=GeneralOAuthFlow'
+        print('logging into: {0}'.format(login_url))
 
         self.driver.get(login_url)
 
@@ -235,7 +221,14 @@ class Scrubber(object):
 
     # New login page discovered 5/24
     def youtube_login_2(self):
-        login_url = 'https://accounts.google.com'
+        login_url = 'https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?' \
+                    'redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&' \
+                    'prompt=consent&response_type=code&' \
+                    'client_id=407408718192.apps.googleusercontent.com&' \
+                    'scope=email&' \
+                    'access_type=offline&' \
+                    'flowName=GeneralOAuthFlow'
+        print('logging into: {0}'.format(login_url))
         self.driver.get(login_url)
         time.sleep(5)
 
