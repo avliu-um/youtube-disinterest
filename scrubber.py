@@ -21,6 +21,7 @@ MAX_WATCH_SECONDS = 1800
 LOAD_BUFFER_SECONDS = 10
 MAX_RECS = 10
 MAX_SCRUB_NET_SIZE = 10
+CHROME_VERSION = 102
 
 
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
@@ -48,7 +49,7 @@ class Scrubber(object):
             chrome_options.add_argument('--mute-audio')
             chrome_options.add_argument('--load-extension=./conf/webdriver/uBlock-Origin')
 
-            driver = uc.Chrome(options=chrome_options)
+            driver = uc.Chrome(options=chrome_options, version_main=CHROME_VERSION)
             driver.maximize_window()
 
             return driver
