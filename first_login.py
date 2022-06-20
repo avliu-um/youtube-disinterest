@@ -13,7 +13,7 @@ def first_login(attributes):
         email_button.click()
         time.sleep(5)
     except:
-        bot.log('Unable to find the verification email button")
+        bot.log('Unable to find the verification email button')
     finally:
         # Wait on my go to stop 
         input('Input any button to end this \n')
