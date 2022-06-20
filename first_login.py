@@ -16,7 +16,10 @@ def first_login(attributes):
         bot.log('Unable to find the verification email button')
     finally:
         # Wait on my go to stop 
-        input('Input any button to end this \n')
+        # input('Input any button to end this \n')
+        
+        # 2 hours * 60 minutes * 60 seconds
+        time.sleep(7200)
 
 
 def main():
