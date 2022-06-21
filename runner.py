@@ -14,8 +14,8 @@ def get_attributes(runs_filepath, row):
 
 
 def main():
-    runs_filepath = 'runs/alt-right_runs.csv'
-    my_row = 4
+    runs_filepath = 'runs/strategy_test_runs.csv'
+    my_row = 0
 
     attributes = get_attributes(runs_filepath, my_row)
     scrub_experiment(attributes)

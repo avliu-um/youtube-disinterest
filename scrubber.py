@@ -599,9 +599,11 @@ class Scrubber(object):
         """
         #hacky fix
         if len(recs) == 0:
-            self.log('error with writing')
+            self.log('error with writing- no recommendations!')
             recs = self.__attach_context({})
-        recs_df = pd.DataFrame(recs)
+            recs_df = pd.DataFrame([recs])
+        else:
+            recs_df = pd.DataFrame(recs)
         append_df(recs_df, self.results_filepath, False)
 
     def delete_most_recent(self):
