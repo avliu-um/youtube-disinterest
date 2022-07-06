@@ -96,6 +96,27 @@ def test_delete_empty():
 
     bot.write_s3()
 
+def test_delete():
+    attributes = {
+        'community': 'testing',
+        'scrubbing_strategy': 'delete',
+        'note': 'delete-empty',
+        'staining_videos_csv': 'communities/testing/samples/videos_non_existent.csv',
+        'account_username': 'sean.carter.99.test',
+        'account_password': '99problems'
+    }
+    bot = Scrubber(**attributes)
+
+    bot.login()
+    time.sleep(5)
+
+    bot.delete_most_recent()
+    time.sleep(5)
+    bot.delete_most_recent()
+    time.sleep(5)
+
+    bot.write_s3()
+
 
 def test_not_interested():
     attributes = {
@@ -166,4 +187,4 @@ def test_undetected_chromedriver():
 
 
 if __name__ == '__main__':
-    test_undetected_chromedriver()
+    test_delete()
