@@ -120,7 +120,6 @@ class Scrubber(object):
 
         self.phase = "setup"
         self.phase_level = 0
-        self.level = 0
         self.videopage_level = 0
         self.homepage_level = 0
 
@@ -583,8 +582,6 @@ class Scrubber(object):
             row['phase'] = self.phase
         if 'phase_level' not in row:
             row['phase_level'] = self.phase_level
-        if 'level' not in row:
-            row['level'] = self.level
         if 'homepage_level' not in row:
             row['homepage_level'] = self.homepage_level
         if 'videopage_level' not in row:
@@ -907,9 +904,15 @@ class Scrubber(object):
     def fail_safely(self):
         fail_filepath = self.get_fail_filepath()
         self.log('Error! Saving html to ' + fail_filepath, True)
-        html = self.driver.page_source
-        with open(fail_filepath, 'w') as f:
-            f.write(html)
+        # Sometimes, there are issues with writing the html file itself for further investigation later
+        #    (e.g. delay from message renderer). But in these cases, we still would like to "fail safely"
+        #    and move on to the next step.
+        try:
+            html = self.driver.page_source
+            with open(fail_filepath, 'w') as f:
+                f.write(html)
+        except:
+            self.log('Cannot write error html for some reason', True)
         self.fail_count += 1
 
     def write_s3(self):
