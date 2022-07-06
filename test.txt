@@ -1,3 +1,0 @@
-asdf
-
-ok now we're doing a thing where we're testing whether the *correct* cronjob expression ordering ('ec2-user cd /home/...') works. Let's see if this text shows up in the next cronjob run!
