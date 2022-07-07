@@ -83,6 +83,13 @@ class Scrubber(object):
 
         # Scrubbing stuff
         if self.scrubbing_strategy in ['not interested', 'no channel', 'dislike recommendation', 'watch']:
+
+            # TODO: HACK
+            # TODO: HACK
+            # TODO: HACK
+            if scrubbing_extras_csv == 'communities/anthitheist_channels.csv':
+                scrubbing_extras_csv = 'communities/antitheist/anthitheist_channels.csv'
+
             with open(scrubbing_extras_csv, newline='') as f:
                 lines = f.readlines()
                 lines = [line.rstrip() for line in lines]
