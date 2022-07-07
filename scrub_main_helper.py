@@ -67,7 +67,7 @@ def main():
 
     attributes = vars(args)
 
-    function = args['function']
+    function = attributes['function']
     if function == 'first_login':
         first_login(attributes)
     elif function == 'teardown':
