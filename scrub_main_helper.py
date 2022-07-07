@@ -9,6 +9,9 @@ from selenium.webdriver.common.by import By
 # Designed to help with first login of audit, where we have to deal with the email page
 
 def first_login(attributes):
+    # Hacky fix to drop the "function" attribute
+    del attributes['function']
+
     bot = Scrubber(**attributes)
     
     bot.youtube_login_2()
@@ -29,6 +32,9 @@ def first_login(attributes):
 
 
 def teardown(attributes):
+    # Hacky fix to drop the "function" attribute
+    del attributes['function']
+    
     bot = Scrubber(**attributes)
 
     bot.youtube_login_2()
