@@ -490,7 +490,7 @@ class Scrubber(object):
             # TODO LONGTERM: Make this more specific, think about a "WebInteractionError" to raise whenever the thing
             # TODO ANTITHEIST: Trying to print the stacktrace here
             except Exception as e:
-                self.log(e)
+                self.log(str(e))
 
                 counter += 1
                 if counter > 5:
