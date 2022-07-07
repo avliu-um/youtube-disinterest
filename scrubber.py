@@ -152,7 +152,7 @@ class Scrubber(object):
         """
         if exception:
             print(message)
-            self.logger.exception(message)
+            self.logger.exception(message, stack_info=True)
         else:
             print(message)
             self.logger.info(message)

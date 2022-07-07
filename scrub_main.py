@@ -43,6 +43,8 @@ def stain(bot, stain_start_level=0):
     bot.log('\nSTAIN PHASE')
     bot.set_phase('stain')
 
+    bot.phase_level = stain_start_level
+
     for seed_vid in bot.staining_videos[stain_start_level:]:
         bot.log('Phase level: {0}'.format(bot.phase_level))
         bot.load_and_save_homepage()
@@ -61,7 +63,7 @@ def scrub(bot, scrub_start_level=0, scrub_iter_limit=40):
     bot.log('\nSCRUB PHASE')
     bot.set_phase('scrub')
 
-    bot.phase_level = 0
+    bot.phase_level = scrub_start_level
 
     # Watch-based
     if bot.scrubbing_strategy == 'watch':
