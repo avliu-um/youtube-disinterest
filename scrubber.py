@@ -107,23 +107,23 @@ class Scrubber(object):
         name = name.replace(' ', '-')
         self.name = name
 
+        # TODO: Some shifting so that we can avoid annoying process of deleting outputs folder at each version issue
+        self.driver = __get_driver()
+
         self.results_filename = 'results_{0}.csv'.format(name)
         self.log_filename = 'logs_{0}.log'.format(name)
         # Increments at each failure
         self.fail_count = 0
 
+        self.results_filepath = os.path.join('.', 'outputs', self.results_filename)
+        self.log_filepath = os.path.join('.', 'outputs', self.log_filename)
+
         # TODO: Making the outputs thing the LAST thing. Annoying to delete each time if driver doesn't load (random!)
         # Creating the outputs directory
         os.makedirs('outputs')
         os.makedirs('outputs/fails')
-
-        self.results_filepath = os.path.join('.', 'outputs', self.results_filename)
-        self.log_filepath = os.path.join('.', 'outputs', self.log_filename)
-
         open(self.results_filepath, 'x')
         self.logger = __get_logger(self.log_filepath)
-        # TESTING
-        self.driver = __get_driver()
         time.sleep(3)
 
         self.phase = "setup"
