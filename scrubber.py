@@ -488,10 +488,7 @@ class Scrubber(object):
                 else:
                     counter += 1
             # TODO LONGTERM: Make this more specific, think about a "WebInteractionError" to raise whenever the thing
-            # TODO ANTITHEIST: Trying to print the stacktrace here
-            except Exception as e:
-                self.log(str(e))
-
+            except:
                 counter += 1
                 if counter > 5:
                     self.log('All attempts failed.')
@@ -555,14 +552,10 @@ class Scrubber(object):
         """
         Get the dislike button and its status (pressed or nah)
         """
-        # TODO: Abstract
-        wait_element_secs = 10
-        WebDriverWait(self.driver, wait_element_secs).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#menu-container'))
-        )
+        # WebDriverWait was breaking this
+        time.sleep(5)
 
-        menu = self.driver.find_element(By.CSS_SELECTOR, 'div#menu-container')
-        buttons = menu.find_elements(By.CSS_SELECTOR, 'button.yt-icon-button')
+        buttons = self.driver.find_elements(By.CSS_SELECTOR, 'div#menu-container button.yt-icon-button')
         for elem in buttons:
             label = elem.get_attribute('aria-label')
             if re.search('\A[Dd]islike', label):
