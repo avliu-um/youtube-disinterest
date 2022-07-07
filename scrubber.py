@@ -88,7 +88,7 @@ class Scrubber(object):
             # TODO: HACK
             # TODO: HACK
             if scrubbing_extras_csv == 'communities/antitheist_channels.csv':
-                scrubbing_extras_csv = 'communities/antitheist/anthitheist_channels.csv'
+                scrubbing_extras_csv = 'communities/antitheist/antitheist_channels.csv'
 
             with open(scrubbing_extras_csv, newline='') as f:
                 lines = f.readlines()
