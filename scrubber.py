@@ -54,10 +54,6 @@ class Scrubber(object):
 
             return driver
 
-        # Creating the outputs directory
-        os.makedirs('outputs')
-        os.makedirs('outputs/fails')
-
         self.community = community
         self.scrubbing_strategy = scrubbing_strategy
         self.note = note
@@ -129,6 +125,11 @@ class Scrubber(object):
         self.phase_level = 0
         self.videopage_level = 0
         self.homepage_level = 0
+
+        # TODO: Making the outputs thing the LAST thing. Annoying to delete each time if driver doesn't load (random!)
+        # Creating the outputs directory
+        os.makedirs('outputs')
+        os.makedirs('outputs/fails')
 
         self.log('Created bot in community {0} and scrubbing strategy {1}'
                  .format(self.community, self.scrubbing_strategy))
