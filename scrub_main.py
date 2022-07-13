@@ -11,6 +11,9 @@ def scrub_experiment(attributes, scrub_iter_limit=40):
         bot.log('BEGIN!\n')
         setup(bot)
         time.sleep(5)
+        # Place teardown first now... to both (1) safeguard against unwanted teardown and (2) avoid rerunning
+        teardown(bot)
+        time.sleep(5)
         videopage_experiment(bot, 0)
         time.sleep(5)
         stain(bot, stain_start_level=0)
@@ -21,7 +24,6 @@ def scrub_experiment(attributes, scrub_iter_limit=40):
         time.sleep(5)
         videopage_experiment(bot, 2)
         time.sleep(5)
-        # Moved teardown stuff to scrub_main_helper.py as a safeguard for myself
         bot.log('\nDONE!')
     except:
         bot.fail_safely()
@@ -155,6 +157,20 @@ def videopage_experiment(bot, stage):
     bot.phase_level = stage
     bot.log('Videopage experiment stage {0}'.format(stage))
     bot.load_and_save_videopage(bot.videopage_experiment_vid)
+    time.sleep(5)
+
+
+def teardown(bot):
+    bot.log('\nTEARDOWN PHASE')
+    bot.set_phase('teardown')
+
+    bot.clear_history()
+    time.sleep(5)
+    bot.clear_not_interested()
+    time.sleep(5)
+    bot.clear_likes_dislikes()
+    time.sleep(5)
+    bot.clear_subscriptions()
     time.sleep(5)
 
 

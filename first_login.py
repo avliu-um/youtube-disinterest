@@ -9,9 +9,6 @@ from selenium.webdriver.common.by import By
 # Designed to help with first login of audit, where we have to deal with the email page
 
 def first_login(attributes):
-    # TODO: Hacky fix to drop the "function" attribute
-    del attributes['function']
-
     bot = Scrubber(**attributes)
     
     bot.youtube_login_2()
@@ -31,29 +28,6 @@ def first_login(attributes):
         time.sleep(7200)
 
 
-def teardown(attributes):
-    # TODO: Hacky fix to drop the "function" attribute
-    del attributes['function']
-
-    bot = Scrubber(**attributes)
-
-    bot.youtube_login_2()
-    time.sleep(5)
-
-    bot.log('\nTEARDOWN PHASE')
-    bot.set_phase('teardown')
-
-    bot.clear_history()
-    time.sleep(5)
-    bot.clear_not_interested()
-    time.sleep(5)
-    bot.clear_likes_dislikes()
-    time.sleep(5)
-    bot.clear_subscriptions()
-    time.sleep(5)
-
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--community', type=str, required=True)
@@ -66,20 +40,13 @@ def main():
     parser.add_argument('--account_password', type=str, required=True)
     parser.add_argument('--s3_bucket', type=str, required=False,
                         help='default is "youtube-audit-bucket"')
-    # What to run
-    parser.add_argument('--function', type=str, required=True)
 
     args = parser.parse_args()
 
     attributes = vars(args)
 
-    function = attributes['function']
-    if function == 'first_login':
-        first_login(attributes)
-    elif function == 'teardown':
-        first_login(attributes)
-    else:
-        raise NotImplementedError
+    first_login(attributes)
+
 
 if __name__ == '__main__':
     main()

@@ -1,4 +1,5 @@
-community,scrubbing_strategy,note,staining_videos_left_csv,scrubbing_extras_csv,account_username,account_password
+# TODO: THIS NEEDS FIXING
+community,scrubbing_strategy,note,staining_videos_csv,scrubbing_extras_csv,account_username,account_password
 antitheist,not interested,0,communities/antitheist/samples/videos_0.csv,communities/politics/antitheist_channels.csv,kendalltracy61,scrub2022
 antitheist,not interested,1,communities/antitheist/samples/videos_1.csv,communities/politics/antitheist_channels.csv,sageashley17,scrub2022
 antitheist,not interested,2,communities/antitheist/samples/videos_2.csv,communities/politics/antitheist_channels.csv,billiecassidy27,scrub2022

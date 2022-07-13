@@ -4,6 +4,9 @@ import os
 import time
 import pandas as pd
 
+from selenium.webdriver.common.by import By
+import re
+
 
 default_attributes = {
         'community': 'testing',
@@ -185,6 +188,21 @@ def test_undetected_chromedriver():
     driver.get('https://nowsecure.nl')
     time.sleep(10)
 
+def test_dislike():
+    import undetected_chromedriver as uc
+    driver = uc.Chrome()
+    driver.get('file:///Users/avliu/Documents/Research/youtube_audits/other/antitheist_outputs/10:08:23/fail_antitheist_dislike_1_0.html')
+    time.sleep(5)
+
+    buttons = driver.find_elements(By.CSS_SELECTOR, 'div#menu-container button.yt-icon-button')
+    time.sleep(3)
+
+    for elem in buttons:
+        label = elem.get_attribute('aria-label')
+        if re.search('\A[Dd]islike', label):
+            pressed = elem.get_attribute('aria-pressed') == 'true'
+            return elem, pressed
+
 
 if __name__ == '__main__':
-    test_delete()
+    test_dislike()

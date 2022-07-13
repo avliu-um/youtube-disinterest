@@ -1,22 +1,22 @@
-community,scrubbing_strategy,note,staining_videos_left_csv,scrubbing_extras_csv,account_username,account_password
+community,scrubbing_strategy,note,staining_videos_csv,scrubbing_extras_csv,account_username,account_password
 politics-left,not interested,0,communities/politics/samples/videos_left_0.csv,communities/politics/channels_left.csv,kendalltracy61,scrub2022
 politics-left,not interested,1,communities/politics/samples/videos_left_1.csv,communities/politics/channels_left.csv,sageashley17,scrub2022
 politics-left,not interested,2,communities/politics/samples/videos_left_2.csv,communities/politics/channels_left.csv,billiecassidy27,scrub2022
-politics-left,no channel,0,communities/politics/samples/videos_left_3.csv,communities/politics/channels_left.csv,alexkory722,scrub2022
-politics-left,no channel,1,communities/politics/samples/videos_left_4.csv,communities/politics/channels_left.csv,clarkecal3,scrub2022
-politics-left,no channel,2,communities/politics/samples/videos_left_5.csv,communities/politics/channels_left.csv,paxtonpaxton29,scrub2022
-politics-left,dislike recommendation,0,communities/politics/samples/videos_left_6.csv,communities/politics/channels_left.csv,Tandy.Dakota,scrub2022
-politics-left,dislike recommendation,1,communities/politics/samples/videos_left_7.csv,communities/politics/channels_left.csv,cassidypeyton26,scrub2022
-politics-left,dislike recommendation,2,communities/politics/samples/videos_left_8.csv,communities/politics/channels_left.csv,salemmorgan311,scrub2022
-politics-left,delete,0,communities/politics/samples/videos_left_9.csv,,gabrielembry910,scrub2022
-politics-left,delete,1,communities/politics/samples/videos_left_10.csv,,taylorreagan372,scrub2022
-politics-left,delete,2,communities/politics/samples/videos_left_11.csv,,tracy.hildred,scrub2022
-politics-left,dislike,0,communities/politics/samples/videos_left_12.csv,,elliott.jessie012,scrub2022
-politics-left,dislike,1,communities/politics/samples/videos_left_13.csv,,frankyle89,scrub2022
-politics-left,dislike,2,communities/politics/samples/videos_left_14.csv,,jflynn593,scrub2022
-politics-left,watch,0,communities/politics/samples/videos_left_15.csv,communities/politics/samples/videos_left_center_0.csv,kennedypaxton3,scrub2022
-politics-left,watch,1,communities/politics/samples/videos_left_16.csv,communities/politics/samples/videos_left_center_1.csv,augustangel374,scrub2022
-politics-left,watch,2,communities/politics/samples/videos_left_17.csv,communities/politics/samples/videos_left_center_2.csv,reagan.albie,scrub2022
-politics-left,none,0,communities/politics/samples/videos_left_18.csv,,tannershay27,scrub2022
-politics-left,none,1,communities/politics/samples/videos_left_19.csv,,charemery0,scrub2022
-politics-left,none,2,communities/politics/samples/videos_left_20.csv,,jayrowan33,scrub2022
+politics-left,no channel,0,communities/politics/samples/videos_left_0.csv,communities/politics/channels_left.csv,alexkory722,scrub2022
+politics-left,no channel,1,communities/politics/samples/videos_left_1.csv,communities/politics/channels_left.csv,clarkecal3,scrub2022
+politics-left,no channel,2,communities/politics/samples/videos_left_2.csv,communities/politics/channels_left.csv,paxtonpaxton29,scrub2022
+politics-left,dislike recommendation,0,communities/politics/samples/videos_left_0.csv,communities/politics/channels_left.csv,Tandy.Dakota,scrub2022
+politics-left,dislike recommendation,1,communities/politics/samples/videos_left_1.csv,communities/politics/channels_left.csv,cassidypeyton26,scrub2022
+politics-left,dislike recommendation,2,communities/politics/samples/videos_left_2.csv,communities/politics/channels_left.csv,salemmorgan311,scrub2022
+politics-left,delete,0,communities/politics/samples/videos_left_0.csv,,gabrielembry910,scrub2022
+politics-left,delete,1,communities/politics/samples/videos_left_1.csv,,taylorreagan372,scrub2022
+politics-left,delete,2,communities/politics/samples/videos_left_2.csv,,tracy.hildred,scrub2022
+politics-left,dislike,0,communities/politics/samples/videos_left_0.csv,,elliott.jessie012,scrub2022
+politics-left,dislike,1,communities/politics/samples/videos_left_1.csv,,frankyle89,scrub2022
+politics-left,dislike,2,communities/politics/samples/videos_left_2.csv,,jflynn593,scrub2022
+politics-left,watch,0,communities/politics/samples/videos_left_0.csv,communities/politics/samples/videos_center_0.csv,kennedypaxton3,scrub2022
+politics-left,watch,1,communities/politics/samples/videos_left_1.csv,communities/politics/samples/videos_center_0.csv,augustangel374,scrub2022
+politics-left,watch,2,communities/politics/samples/videos_left_2.csv,communities/politics/samples/videos_center_0.csv,reagan.albie,scrub2022
+politics-left,none,0,communities/politics/samples/videos_left_0.csv,,tannershay27,scrub2022
+politics-left,none,1,communities/politics/samples/videos_left_1.csv,,charemery0,scrub2022
+politics-left,none,2,communities/politics/samples/videos_left_2.csv,,jayrowan33,scrub2022

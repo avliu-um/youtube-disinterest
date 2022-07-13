@@ -80,12 +80,6 @@ class Scrubber(object):
         # Scrubbing stuff
         if self.scrubbing_strategy in ['not interested', 'no channel', 'dislike recommendation', 'watch']:
 
-            # TODO: HACK
-            # TODO: HACK
-            # TODO: HACK
-            if scrubbing_extras_csv == 'communities/antitheist_channels.csv':
-                scrubbing_extras_csv = 'communities/antitheist/antitheist_channels.csv'
-
             with open(scrubbing_extras_csv, newline='') as f:
                 lines = f.readlines()
                 lines = [line.rstrip() for line in lines]
@@ -107,7 +101,6 @@ class Scrubber(object):
         name = name.replace(' ', '-')
         self.name = name
 
-        # TODO: Some shifting so that we can avoid annoying process of deleting outputs folder at each version issue
         self.driver = __get_driver()
 
         self.results_filename = 'results_{0}.csv'.format(name)
@@ -118,7 +111,6 @@ class Scrubber(object):
         self.results_filepath = os.path.join('.', 'outputs', self.results_filename)
         self.log_filepath = os.path.join('.', 'outputs', self.log_filename)
 
-        # TODO: Making the outputs thing the LAST thing. Annoying to delete each time if driver doesn't load (random!)
         # Creating the outputs directory
         os.makedirs('outputs')
         os.makedirs('outputs/fails')
@@ -616,11 +608,8 @@ class Scrubber(object):
             self.log('Loading history page.')
             self.driver.get(history_url)
 
-            time.sleep(5)
+            time.sleep(element_wait_secs)
 
-            WebDriverWait(self.driver, element_wait_secs).until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#contents'))
-            )
             contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
 
             self.log('Deleting most recent.')
@@ -631,30 +620,30 @@ class Scrubber(object):
 
     def dislike_recommended(self, sim_rec_match=False):
         unwanted_video = self.scrub_homepage(sim_rec_match=sim_rec_match)
-        time.sleep(5)
+        time.sleep(10)
         if unwanted_video:
             unwanted_video.click()
-            time.sleep(5)
+            time.sleep(10)
             self.dislike_video()
 
     # Implementing this after realizing you can do "tell us why" --> "don't like video"
     #   after clicking on the actual not interested button
     def not_interested(self, sim_rec_match=False):
         found = self.menu_service('not interested', sim_rec_match=sim_rec_match)
-        time.sleep(5)
+        time.sleep(10)
 
         if found:
             # click "tell us why"
             tell_us_why_button = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Tell us why"]')
             tell_us_why_button.click()
-            time.sleep(5)
+            time.sleep(10)
 
             # click "I don't like the video"
             check_boxes = self.driver.find_elements(By.CSS_SELECTOR, 'div#reasons tp-yt-paper-checkbox')
             for check_box in check_boxes:
                 if check_box.text == "I don't like the video":
                     check_box.click()
-                    time.sleep(5)
+                    time.sleep(10)
                     break
 
             # click "Submit"
@@ -666,7 +655,7 @@ class Scrubber(object):
 
     def menu_service(self, action, sim_rec_match):
         unwanted_video = self.scrub_homepage(sim_rec_match)
-        time.sleep(5)
+        time.sleep(10)
         if unwanted_video:
 
             self.log('Attempting to click the {0} button'.format(action))
@@ -675,7 +664,7 @@ class Scrubber(object):
             menu = unwanted_video.find_element(By.CSS_SELECTOR, 'ytd-menu-renderer')
             menu.click()
 
-            time.sleep(5)
+            time.sleep(10)
 
             content_wrapper = self.driver.find_element(By.CSS_SELECTOR, 'div#contentWrapper')
             buttons = content_wrapper.find_elements(By.CSS_SELECTOR, 'ytd-menu-service-item-renderer')
