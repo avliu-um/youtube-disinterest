@@ -262,7 +262,8 @@ class Scrubber(object):
         try:
             self.__load_and_save_homepage()
         # Might be a bit broad with key error
-        except (EC.NoSuchElementException, KeyError):
+        except (EC.NoSuchElementException, KeyError) as e:
+            self.log(e)
             self.fail_safely()
 
     def __load_and_save_homepage(self):
@@ -343,7 +344,8 @@ class Scrubber(object):
             duration = self.__load_and_save_videopage(vid_id)
             return duration
         # Might be a bit broad with key error
-        except (EC.NoSuchElementException, KeyError):
+        except (EC.NoSuchElementException, KeyError) as e:
+            self.log(e)
             self.fail_safely()
             return 0
 
@@ -485,6 +487,7 @@ class Scrubber(object):
                 if counter > 5:
                     self.log('All attempts failed.')
                     break
+        # TODO: Print stacktrace
         self.fail_safely()
 
     # Modified from Tomlein et al. (2021)
@@ -615,7 +618,8 @@ class Scrubber(object):
             self.log('Deleting most recent.')
             button = contents.find_element(By.CSS_SELECTOR, 'button')
             button.click()
-        except (ElementNotInteractableException, NoSuchElementException, ElementClickInterceptedException):
+        except (ElementNotInteractableException, NoSuchElementException, ElementClickInterceptedException) as e:
+            self.log(e)
             self.fail_safely()
 
     def dislike_recommended(self, sim_rec_match=False):
