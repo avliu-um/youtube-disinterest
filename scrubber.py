@@ -604,7 +604,8 @@ class Scrubber(object):
 
     def delete_most_recent(self):
         # TODO: Abstract
-        element_wait_secs = 10
+        # Waiting for the *entire* history to load takes longer than usual
+        element_wait_secs = 30
         try:
             history_url = 'https://www.youtube.com/feed/history'
 
