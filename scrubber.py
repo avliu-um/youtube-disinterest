@@ -473,7 +473,7 @@ class Scrubber(object):
         max_tries = 5
 
         self.log('Attempting to press the {0} button.'.format(action))
-        while counter < max_tries:
+        while True:
             try:
                 success = self.__interact_with_action_button(action, turn_on)
                 if success:
@@ -629,6 +629,7 @@ class Scrubber(object):
         if unwanted_video:
             unwanted_video.click()
             time.sleep(10)
+            # TODO: Assert video is clicked on
             self.dislike_video()
 
     # Implementing this after realizing you can do "tell us why" --> "don't like video"

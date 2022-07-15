@@ -12,21 +12,21 @@ def scrub_experiment(attributes, scrub_iter_limit=40):
         setup(bot)
         time.sleep(5)
         # Place teardown first now... to both (1) safeguard against unwanted teardown and (2) avoid rerunning
-        # TODO: CHANGE BACK
-        #teardown(bot)
-        #time.sleep(5)
-        #videopage_experiment(bot, 0)
-        #time.sleep(5)
-        #stain(bot, stain_start_level=0)
-        #time.sleep(5)
-        #videopage_experiment(bot, 1)
-        #time.sleep(5)
+        teardown(bot)
+        time.sleep(5)
+        videopage_experiment(bot, 0)
+        time.sleep(5)
+        stain(bot, stain_start_level=0)
+        time.sleep(5)
+        videopage_experiment(bot, 1)
+        time.sleep(5)
         scrub(bot, scrub_start_level=0, scrub_iter_limit=scrub_iter_limit)
         time.sleep(5)
         videopage_experiment(bot, 2)
         time.sleep(5)
         bot.log('\nDONE!')
-    except:
+    except Exception as e:
+        print(e)
         bot.fail_safely()
     finally:
         bot.write_s3()
