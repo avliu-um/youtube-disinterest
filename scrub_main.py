@@ -16,11 +16,11 @@ def scrub_experiment(attributes, scrub_iter_limit=40):
         time.sleep(5)
         videopage_experiment(bot, 0)
         time.sleep(5)
-        stain(bot, stain_start_level=0)
+        stain(bot, stain_start_phase_level=0)
         time.sleep(5)
         videopage_experiment(bot, 1)
         time.sleep(5)
-        scrub(bot, scrub_start_level=0, scrub_iter_limit=scrub_iter_limit)
+        scrub(bot, scrub_start_phase_level=0, scrub_start_homepage_level=0, scrub_iter_limit=scrub_iter_limit)
         time.sleep(5)
         videopage_experiment(bot, 2)
         time.sleep(5)
@@ -39,16 +39,18 @@ def setup(bot):
     bot.login()
 
 
-def stain(bot, stain_start_level=0):
+def stain(bot, stain_start_phase_level=0):
 
-    assert(stain_start_level < len(bot.staining_videos))
+    assert(stain_start_phase_level < len(bot.staining_videos))
 
     bot.log('\nSTAIN PHASE')
     bot.set_phase('stain')
 
-    bot.phase_level = stain_start_level
+    bot.phase_level = stain_start_phase_level
+    # Can guarantee that homepage level in the stain phase is the same as the phase level
+    bot.homepage_level = stain_start_phase_level
 
-    for seed_vid in bot.staining_videos[stain_start_level:]:
+    for seed_vid in bot.staining_videos[stain_start_phase_level:]:
         bot.log('Phase level: {0}'.format(bot.phase_level))
         bot.load_and_save_homepage()
         time.sleep(5)
@@ -57,23 +59,25 @@ def stain(bot, stain_start_level=0):
         bot.phase_level += 1
 
 
-# scrub_start_level is where in the audit to start scrubbing
+# scrub_start_phase_level is the phase level the audit is to start scrubbing
+# scrub_start_homepage_level is the homepage level where the audit is to start scrubbing
 # scrub_iter_limit is the limit on the number of scrub iterations for the rec-based scrubbing strategies
-def scrub(bot, scrub_start_level=0, scrub_iter_limit=40):
+def scrub(bot, scrub_start_phase_level=0, scrub_start_homepage_level=0, scrub_iter_limit=40):
 
-    assert(scrub_start_level < scrub_iter_limit)
+    assert(scrub_start_phase_level < scrub_iter_limit)
 
     bot.log('\nSCRUB PHASE')
     bot.set_phase('scrub')
 
-    bot.phase_level = scrub_start_level
+    bot.phase_level = scrub_start_phase_level
+    bot.homepage_level = scrub_start_homepage_level
 
     # Watch-based
     if bot.scrubbing_strategy == 'watch':
 
-        assert(scrub_start_level < len(bot.scrubbing_videos))
+        assert(scrub_start_phase_level < len(bot.scrubbing_videos))
 
-        for burst_vid in bot.scrubbing_videos[scrub_start_level:]:
+        for burst_vid in bot.scrubbing_videos[scrub_start_phase_level:]:
             # Usually silent, but allows for more control when testing
             if bot.phase_level > scrub_iter_limit:
                 break
@@ -88,10 +92,10 @@ def scrub(bot, scrub_start_level=0, scrub_iter_limit=40):
     # History-based
     elif bot.scrubbing_strategy == 'delete':
 
-        assert(scrub_start_level < len(bot.staining_videos))
+        assert(scrub_start_phase_level < len(bot.staining_videos))
 
         # If you delete a video from watch history it deletes ALL occurences of that video
-        for i in range(scrub_start_level, len(set(bot.staining_videos))):
+        for i in range(scrub_start_phase_level, len(set(bot.staining_videos))):
             if bot.phase_level > scrub_iter_limit:
                 break
             bot.log('Phase level: {0}'.format(bot.phase_level))
@@ -102,9 +106,9 @@ def scrub(bot, scrub_start_level=0, scrub_iter_limit=40):
             bot.phase_level += 1
     elif bot.scrubbing_strategy == 'dislike':
 
-        assert(scrub_start_level < len(bot.staining_videos))
+        assert(scrub_start_phase_level < len(bot.staining_videos))
 
-        for seed_vid in bot.staining_videos[scrub_start_level:]:
+        for seed_vid in bot.staining_videos[scrub_start_phase_level:]:
             if bot.phase_level > scrub_iter_limit:
                 break
             bot.log('Phase level: {0}'.format(bot.phase_level))
@@ -117,7 +121,7 @@ def scrub(bot, scrub_start_level=0, scrub_iter_limit=40):
 
     # Recommendation-based
     elif bot.scrubbing_strategy == 'dislike recommendation':
-        for i in range(scrub_start_level, scrub_iter_limit):
+        for i in range(scrub_start_phase_level, scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -125,7 +129,7 @@ def scrub(bot, scrub_start_level=0, scrub_iter_limit=40):
             time.sleep(5)
             bot.phase_level += 1
     elif bot.scrubbing_strategy == 'not interested':
-        for i in range(scrub_start_level, scrub_iter_limit):
+        for i in range(scrub_start_phase_level, scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -133,7 +137,7 @@ def scrub(bot, scrub_start_level=0, scrub_iter_limit=40):
             time.sleep(5)
             bot.phase_level += 1
     elif bot.scrubbing_strategy == 'no channel':
-        for i in range(scrub_start_level, scrub_iter_limit):
+        for i in range(scrub_start_phase_level, scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
@@ -143,7 +147,7 @@ def scrub(bot, scrub_start_level=0, scrub_iter_limit=40):
 
     # Control
     elif bot.scrubbing_strategy == 'none':
-        for i in range(scrub_iter_limit):
+        for i in range(scrub_start_phase_level, scrub_iter_limit):
             bot.log('Phase level: {0}'.format(bot.phase_level))
             bot.load_and_save_homepage()
             time.sleep(5)
