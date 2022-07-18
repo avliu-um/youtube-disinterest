@@ -720,8 +720,14 @@ class Scrubber(object):
         elems = self.driver.find_elements(By.CSS_SELECTOR, 'a#video-title-link[href^="/watch?v="]')
         for elem in elems:
             link = elem.get_attribute('href')
-            if len(link) > len('https://www.youtube.com/watch?v='):
-                vid = link[len('https://www.youtube.com/watch?v='):]
+            watch_url = 'https://www.youtube.com/watch?v='
+
+            # Not really true all the time, but this is useful when testing bugs offline
+            #if sim_rec_match:
+                #watch_url = 'file:///watch?v='
+
+            if len(link) > len(watch_url):
+                vid = link[len(watch_url):]
                 video_ids.append(vid)
 
         unwanted_video_id = None
@@ -736,22 +742,18 @@ class Scrubber(object):
                     self.log('Found video {0} from unwanted channel {1}.'.format(video_id, channel_id))
                     unwanted_video_id = video_id
                     break
-                elif sim_rec_match and i == 3:
-                    self.log('SIM_REC_MATCH: Pretending that the fourth video ({0}, {1}) matches'.format(video_id, channel_id))
+                elif sim_rec_match and i == MAX_SCRUB_NET_SIZE-1:
+                    self.log('SIM_REC_MATCH: Pretending that video #{0} ({1}, {2}) matches'.format(i, video_id,
+                                                                                                   channel_id))
                     unwanted_video_id = video_id
                     break
 
         if unwanted_video_id:
             # FIND BUTTON/VIDEO CARD IN HTML
-            recs = self.driver.find_elements(By.CSS_SELECTOR, 'div#contents div#content')
-            unwanted_query = 'a[href*="/watch?v=' + unwanted_video_id + '"]'
-            for rec in recs:
-                try:
-                    # Seeing if video id is findable in this video card
-                    rec.find_element(By.CSS_SELECTOR, unwanted_query)
-                    return rec
-                except:
-                    continue
+            rec = self.driver.find_element(
+                By.CSS_SELECTOR, 'div#contents div#content a[href*="/watch?v={0}"]'.format(unwanted_video_id)
+            )
+            return rec
         else:
             self.log('No videos from unwanted channels were found.')
             return None

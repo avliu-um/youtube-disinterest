@@ -149,6 +149,16 @@ def test_dislike_recommended():
     time.sleep(5)
 
 
+def test_rec_scrub_top_news():
+    attributes = default_attributes
+    bot = Scrubber(**attributes)
+
+    bot.driver.get('file:///Users/avliu/Documents/Research/youtube_audits/burst/bad_webpages/fail_politics-left_no-channel_1_3.html')
+
+    bot.dislike_recommended(sim_rec_match=True)
+    time.sleep(5)
+
+
 def test_homepage():
     attributes = default_attributes
     attributes['note'] = 'homepage'
@@ -205,4 +215,4 @@ def test_dislike():
 
 
 if __name__ == '__main__':
-    test_dislike()
+    test_rec_scrub_top_news()

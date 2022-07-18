@@ -3,4 +3,5 @@ __pychache__/
 .DS_Store/
 .ipynb_checkpoints/
 outputs/
+bad_webpages/
 communities/yt_api_dev_key.txt
