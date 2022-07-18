@@ -158,6 +158,15 @@ def test_rec_scrub_top_news():
     bot.dislike_recommended(sim_rec_match=True)
     time.sleep(5)
 
+def test_delete_issue():
+    attributes = default_attributes
+    bot = Scrubber(**attributes)
+
+    bad_delete_url = 'file:///Users/avliu/Documents/Research/youtube_audits/burst/bad_webpages/fail_politics-left_delete_1_3.html'
+
+    bot.delete_most_recent(bad_delete_url)
+    time.sleep(5)
+
 
 def test_homepage():
     attributes = default_attributes
@@ -215,4 +224,4 @@ def test_dislike():
 
 
 if __name__ == '__main__':
-    test_rec_scrub_top_news()
+    test_homepage()

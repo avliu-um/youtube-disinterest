@@ -49,6 +49,15 @@ class Scrubber(object):
             chrome_options.add_argument('--mute-audio')
             chrome_options.add_argument('--load-extension=./conf/webdriver/uBlock-Origin')
 
+            # Chromedriver making things more efficient
+            # https://stackoverflow.com/questions/48450594/selenium-timed-out-receiving-message-from-renderer
+            #chrome_options.add_argument('start-maximized')
+            #chrome_options.add_argument('enable-automation')
+            #chrome_options.add_argument('--no-sandbox')
+            chrome_options.add_argument('--disable-dev-shm-usage')
+            chrome_options.add_argument('--disable-browser-side-navigation')
+            chrome_options.add_argument('--disable-gpu')
+
             driver = uc.Chrome(options=chrome_options, version_main=CHROME_VERSION)
             driver.maximize_window()
 
@@ -602,17 +611,15 @@ class Scrubber(object):
             recs_df = pd.DataFrame(recs)
         append_df(recs_df, self.results_filepath, False)
 
-    def delete_most_recent(self):
+    def delete_most_recent(self, history_url='https://www.youtube.com/feed/history'):
         # TODO: Abstract
         # Waiting for the *entire* history to load takes longer than usual
         element_wait_secs = 30
         try:
-            history_url = 'https://www.youtube.com/feed/history'
-
             self.log('Loading history page.')
             self.driver.get(history_url)
 
-            time.sleep(element_wait_secs)
+            time.sleep(5)
 
             contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
 
