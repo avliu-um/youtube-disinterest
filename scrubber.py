@@ -327,23 +327,30 @@ class Scrubber(object):
         recs_data = []
         recs_ids = []
         for i in range(len(video_ids)):
-            if i > MAX_RECS-1:
-                break
+            # Collect as much info as possible
+            #if i > MAX_RECS-1:
+                #break
 
-            video_id = video_ids[i]
-            if video_id in channels_dict:
-                channel_id = channels_dict[video_id]
-            else:
-                channel_id = None
+            try:
+                video_id = video_ids[i]
+                if video_id in channels_dict:
+                    channel_id = channels_dict[video_id]
+                else:
+                    channel_id = None
 
-            rec_data = {'video_id': video_id, 'channel_id': channel_id, 'rank': i, 'component': 'homepage'}
+                rec_data = {'video_id': video_id, 'channel_id': channel_id, 'rank': i, 'component': 'homepage'}
 
-            rec_data = self.__attach_context(rec_data)
-            recs_data.append(rec_data)
-            recs_ids.append(video_id)
+                rec_data = self.__attach_context(rec_data)
+                recs_data.append(rec_data)
+                recs_ids.append(video_id)
+
+            except KeyError:
+                continue
 
         self.log('Recommended videos: {0}'.format(recs_ids))
-        self.__write_recs(recs_data)
+
+        if len(recs_data) > 0:
+            self.__write_recs(recs_data)
 
     def load_and_save_videopage(self, vid_id):
         """
@@ -415,8 +422,10 @@ class Scrubber(object):
             video_suggestions = secondary_results['secondaryResults']['results']
         for rec in video_suggestions:
             # 0 indexed
-            if rank > MAX_RECS-1:
-                break
+            # Collecting as much info as possible, so we don't use this
+            # if rank > MAX_RECS-1:
+                # break
+
             # This video is autoplay
             if 'compactAutoplayRenderer' in rec:
                 rec = rec['compactAutoplayRenderer']['contents'][0]['compactVideoRenderer']
@@ -430,20 +439,25 @@ class Scrubber(object):
                 continue
 
             # Find the video ID
-            if found and 'videoId' in rec:
-                video_id = rec['videoId']
-                cid = rec['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
+            if found:
+                try:
+                    video_id = rec['videoId']
+                    cid = rec['longBylineText']['runs'][0]['navigationEndpoint']['browseEndpoint']['browseId']
 
-                rec_data = {'video_id': video_id, 'channel_id': cid, 'rank': rank, 'component': 'videopage',
-                            'watch_video_id': watch_id}
-                rec_data = self.__attach_context(rec_data)
-                recs.append(rec_data)
-                rec_ids.append(video_id)
+                    rec_data = {'video_id': video_id, 'channel_id': cid, 'rank': rank, 'component': 'videopage',
+                                'watch_video_id': watch_id}
+                    rec_data = self.__attach_context(rec_data)
+                    recs.append(rec_data)
+                    rec_ids.append(video_id)
+
+                except KeyError:
+                    continue
 
             rank += 1
 
-        self.__write_recs(recs)
         self.log('Recommended videos: {0}'.format(rec_ids))
+        if len(recs) > 0:
+            self.__write_recs(recs)
 
     def __get_videopage_seconds(self):
         """

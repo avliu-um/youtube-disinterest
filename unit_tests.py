@@ -224,4 +224,4 @@ def test_dislike():
 
 
 if __name__ == '__main__':
-    test_homepage()
+    test_dislike_recommended()
