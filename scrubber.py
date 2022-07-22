@@ -650,13 +650,19 @@ class Scrubber(object):
                 unwanted_video_id
             )
 
-            # find click the menu
-            unwanted_video = self.driver.find_element(By.XPATH, video_card_path)
-            unwanted_video.click()
-            time.sleep(10)
+            try:
+                # find click the menu
+                unwanted_video = self.driver.find_element(By.XPATH, video_card_path)
+                unwanted_video.click()
+                time.sleep(10)
+            except (ElementNotInteractableException, NoSuchElementException, ElementClickInterceptedException) as e:
+                self.log(e)
+                self.fail_safely()
 
             # TODO: Assert video is clicked on
             self.dislike_video()
+
+
 
     # Implementing this after realizing you can do "tell us why" --> "don't like video"
     #   after clicking on the actual not interested button
@@ -684,11 +690,17 @@ class Scrubber(object):
                             submit_path
                             ]
 
-            for button_path in button_paths:
-                button = self.driver.find_element(By.XPATH, button_path)
-                button.click()
+            try:
+                self.log('Attempting to press not interested')
 
-                time.sleep(5)
+                for button_path in button_paths:
+                    button = self.driver.find_element(By.XPATH, button_path)
+                    button.click()
+
+                    time.sleep(5)
+            except (ElementNotInteractableException, NoSuchElementException, ElementClickInterceptedException) as e:
+                self.log(e)
+                self.fail_safely()
 
     def no_channel(self, sim_rec_match=False):
         unwanted_video_id = self.scrub_homepage(sim_rec_match=sim_rec_match)
@@ -703,15 +715,22 @@ class Scrubber(object):
                 'recommend channel'
             )
 
-            # find click the menu
-            menu = self.driver.find_element(By.XPATH, menu_path)
-            menu.click()
+            try:
+                self.log('Attempting to press no channel')
 
-            time.sleep(5)
+                # find click the menu
+                menu = self.driver.find_element(By.XPATH, menu_path)
+                menu.click()
 
-            # find and click the "not interested" button
-            button = self.driver.find_element(By.XPATH, no_channel_path)
-            button.click()
+                time.sleep(5)
+
+                # find and click the "not interested" button
+                button = self.driver.find_element(By.XPATH, no_channel_path)
+                button.click()
+
+            except (ElementNotInteractableException, NoSuchElementException, ElementClickInterceptedException) as e:
+                self.log(e)
+                self.fail_safely()
 
     # TODO: See if it's necessary to scrub more than just the top 10
     def scrub_homepage(self, sim_rec_match):
@@ -767,6 +786,9 @@ class Scrubber(object):
                                                                                                    channel_id))
                     unwanted_video_id = video_id
                     break
+
+        if not unwanted_video_id:
+            self.log('Could not find unwanted videos')
 
         return unwanted_video_id
 
