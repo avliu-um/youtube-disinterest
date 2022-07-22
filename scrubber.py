@@ -626,98 +626,97 @@ class Scrubber(object):
         append_df(recs_df, self.results_filepath, False)
 
     def delete_most_recent(self, history_url='https://www.youtube.com/feed/history'):
-        # TODO: Abstract
-        # Waiting for the *entire* history to load takes longer than usual
-        element_wait_secs = 30
         try:
+            delete_path = "//div[@id='contents']//button[@aria-label='Remove from watch history']"
+
             self.log('Loading history page.')
             self.driver.get(history_url)
 
-            time.sleep(5)
-
-            contents = self.driver.find_element(By.CSS_SELECTOR, 'div#contents')
+            time.sleep(10)
 
             self.log('Deleting most recent.')
-            button = contents.find_element(By.CSS_SELECTOR, 'button')
-            button.click()
+            delete_button = self.driver.find_element(By.XPATH, delete_path)
+            delete_button.click()
+
         except (ElementNotInteractableException, NoSuchElementException, ElementClickInterceptedException) as e:
             self.log(e)
             self.fail_safely()
 
     def dislike_recommended(self, sim_rec_match=False):
-        unwanted_video = self.scrub_homepage(sim_rec_match=sim_rec_match)
-        time.sleep(10)
-        if unwanted_video:
+        unwanted_video_id = self.scrub_homepage(sim_rec_match=sim_rec_match)
+
+        if unwanted_video_id:
+            video_card_path = "//div[@id='contents']//div[@id='content'][descendant::a[@href[contains(.,'{0}')]]]".format(
+                unwanted_video_id
+            )
+
+            # find click the menu
+            unwanted_video = self.driver.find_element(By.XPATH, video_card_path)
             unwanted_video.click()
             time.sleep(10)
+
             # TODO: Assert video is clicked on
             self.dislike_video()
 
     # Implementing this after realizing you can do "tell us why" --> "don't like video"
     #   after clicking on the actual not interested button
+    # Note: no confirmation from webpage after submit button!
     def not_interested(self, sim_rec_match=False):
-        found = self.menu_service('not interested', sim_rec_match=sim_rec_match)
+        unwanted_video_id = self.scrub_homepage(sim_rec_match=sim_rec_match)
         time.sleep(10)
 
-        if found:
-            # click "tell us why"
-            tell_us_why_button = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Tell us why"]')
-            tell_us_why_button.click()
-            time.sleep(10)
+        if unwanted_video_id:
 
-            # click "I don't like the video"
-            check_boxes = self.driver.find_elements(By.CSS_SELECTOR, 'div#reasons tp-yt-paper-checkbox')
-            for check_box in check_boxes:
-                if check_box.text == "I don't like the video":
-                    check_box.click()
-                    time.sleep(10)
-                    break
+            menu_path = "//div[@id='contents']//div[@id='content'][descendant::a[@href[contains(.,'{0}')]]]//ytd-menu-renderer".format(
+                unwanted_video_id
+            )
+            no_channel_path = "//div[@id='contentWrapper']//ytd-menu-service-item-renderer[descendant::text()[contains(.,'{0}')]]".format(
+                'Not interested'
+            )
+            tell_us_why_path = "//tp-yt-paper-button[@aria-label='Tell us why']"
+            check_box_path = "//tp-yt-paper-checkbox[descendant::text()[contains(.,'like the video')]]"
+            submit_path = "//ytd-button-renderer[@id='submit']"
 
-            # click "Submit"
-            submit_button = self.driver.find_element(By.CSS_SELECTOR, 'ytd-button-renderer#submit')
-            submit_button.click()
+            button_paths = [menu_path,
+                            no_channel_path,
+                            tell_us_why_path,
+                            check_box_path,
+                            submit_path
+                            ]
+
+            for button_path in button_paths:
+                button = self.driver.find_element(By.XPATH, button_path)
+                button.click()
+
+                time.sleep(5)
 
     def no_channel(self, sim_rec_match=False):
-        self.menu_service('no channel', sim_rec_match)
-
-    def menu_service(self, action, sim_rec_match):
-        unwanted_video = self.scrub_homepage(sim_rec_match)
+        unwanted_video_id = self.scrub_homepage(sim_rec_match=sim_rec_match)
         time.sleep(10)
-        if unwanted_video:
 
-            self.log('Attempting to click the {0} button'.format(action))
+        if unwanted_video_id:
 
-            # Click the three dots
-            menu = unwanted_video.find_element(By.CSS_SELECTOR, 'ytd-menu-renderer')
+            menu_path = "//div[@id='contents']//div[@id='content'][descendant::a[@href[contains(.,'{0}')]]]//ytd-menu-renderer".format(
+                unwanted_video_id
+            )
+            no_channel_path = "//div[@id='contentWrapper']//ytd-menu-service-item-renderer[descendant::text()[contains(.,'{0}')]]".format(
+                'recommend channel'
+            )
+
+            # find click the menu
+            menu = self.driver.find_element(By.XPATH, menu_path)
             menu.click()
 
-            time.sleep(10)
+            time.sleep(5)
 
-            content_wrapper = self.driver.find_element(By.CSS_SELECTOR, 'div#contentWrapper')
-            buttons = content_wrapper.find_elements(By.CSS_SELECTOR, 'ytd-menu-service-item-renderer')
-            if action == 'not interested':
-                button_text = 'Not interested'
-            elif action == 'no channel':
-                button_text = "Don't recommend channel"
-            else:
-                raise NotImplementedError
-            found = False
-            for button in buttons:
-                if button_text in button.text:
-                    button.click()
-                    self.log('Clicked!')
-                    found = True
-                    break
-            if not found:
-                self.log('Button not found.')
-                raise NotImplementedError
-            # Indicating whether a video to scrub was actually found
-            return True
-        return False
+            # find and click the "not interested" button
+            button = self.driver.find_element(By.XPATH, no_channel_path)
+            button.click()
 
+    # TODO: See if it's necessary to scrub more than just the top 10
     def scrub_homepage(self, sim_rec_match):
         """
-        Load the homepage
+        Find a video in the home page for which we should scrub
         """
         # assert(self.driver.current_url == 'https://www.youtube.com')
 
@@ -769,15 +768,7 @@ class Scrubber(object):
                     unwanted_video_id = video_id
                     break
 
-        if unwanted_video_id:
-            # FIND BUTTON/VIDEO CARD IN HTML
-            rec = self.driver.find_element(
-                By.CSS_SELECTOR, 'div#contents div#content a[href*="/watch?v={0}"]'.format(unwanted_video_id)
-            )
-            return rec
-        else:
-            self.log('No videos from unwanted channels were found.')
-            return None
+        return unwanted_video_id
 
     def attempt(self, fun):
         """

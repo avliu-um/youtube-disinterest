@@ -124,7 +124,7 @@ def test_delete():
 def test_not_interested():
     attributes = {
         'community': 'testing',
-        'scrubbing_strategy': 'not interested',
+        'scrubbing_strategy': 'no channel',
         'note': '',
         'staining_videos_csv': 'communities/testing/samples/videos_non_existent.csv',
         'scrubbing_extras_csv': 'communities/testing/placeholder_channels.csv',
@@ -135,7 +135,9 @@ def test_not_interested():
 
     bot.login()
 
-    bot.not_interested()
+    bot.no_channel(sim_rec_match=True)
+
+    time.sleep(5)
 
 
 def test_dislike_recommended():
@@ -162,9 +164,22 @@ def test_delete_issue():
     attributes = default_attributes
     bot = Scrubber(**attributes)
 
-    bad_delete_url = 'file:///Users/avliu/Documents/Research/youtube_audits/burst/bad_webpages/fail_politics-left_delete_1_3.html'
+    bad_delete_url = 'file:///Users/avliu/Documents/Research/youtube_audits/burst/bad_webpages/fail_politics-left_delete_0_39.html'
 
     bot.delete_most_recent(bad_delete_url)
+    time.sleep(5)
+
+def test_rec_scrub_issue():
+    attributes = default_attributes
+
+    attributes['scrubbing_extras_csv'] = 'communities/politics/channels_left.csv'
+
+    bot = Scrubber(**attributes)
+
+    bad_webpage = 'file:///Users/avliu/Documents/Research/youtube_audits/burst/bad_webpages/fail_politics-left_dislike-recommendation_0_1.html'
+    bot.driver.get(bad_webpage)
+
+    bot.not_interested()
     time.sleep(5)
 
 
@@ -224,4 +239,4 @@ def test_dislike():
 
 
 if __name__ == '__main__':
-    test_dislike_recommended()
+    test_delete_issue()
