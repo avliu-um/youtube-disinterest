@@ -646,9 +646,11 @@ class Scrubber(object):
         unwanted_video_id = self.scrub_homepage(sim_rec_match=sim_rec_match)
 
         if unwanted_video_id:
-            video_card_path = "//div[@id='contents']//div[@id='content'][descendant::a[@href[contains(.,'{0}')]]]".format(
-                unwanted_video_id
-            )
+
+            video_card_path = "//div[@id='contents']" \
+                              "//div[@id='content' and @class='style-scope ytd-rich-item-renderer']" \
+                              "[descendant::a[@href[contains(.,'{0}')]]]"\
+                .format(unwanted_video_id)
 
             try:
                 # find click the menu
@@ -673,9 +675,10 @@ class Scrubber(object):
 
         if unwanted_video_id:
 
-            menu_path = "//div[@id='contents']//div[@id='content'][descendant::a[@href[contains(.,'{0}')]]]//ytd-menu-renderer".format(
-                unwanted_video_id
-            )
+            menu_path = "//div[@id='contents']" \
+                        "//div[@id='content' and @class='style-scope ytd-rich-item-renderer']" \
+                        "[descendant::a[@href[contains(.,'{0}')]]]//ytd-menu-renderer"\
+                .format(unwanted_video_id)
             no_channel_path = "//div[@id='contentWrapper']//ytd-menu-service-item-renderer[descendant::text()[contains(.,'{0}')]]".format(
                 'Not interested'
             )
@@ -708,9 +711,10 @@ class Scrubber(object):
 
         if unwanted_video_id:
 
-            menu_path = "//div[@id='contents']//div[@id='content'][descendant::a[@href[contains(.,'{0}')]]]//ytd-menu-renderer".format(
-                unwanted_video_id
-            )
+            menu_path = "//div[@id='contents']" \
+                        "//div[@id='content' and @class='style-scope ytd-rich-item-renderer']" \
+                        "[descendant::a[@href[contains(.,'{0}')]]]//ytd-menu-renderer"\
+                .format(unwanted_video_id)
             no_channel_path = "//div[@id='contentWrapper']//ytd-menu-service-item-renderer[descendant::text()[contains(.,'{0}')]]".format(
                 'recommend channel'
             )
