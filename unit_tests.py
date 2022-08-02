@@ -156,7 +156,7 @@ def test_rec_scrub_top_news():
     attributes['scrubbing_extras_csv'] = 'communities/politics/channels_left.csv'
     bot = Scrubber(**attributes)
 
-    bot.driver.get('file:///Users/avliu/Documents/Research/youtube_audits/burst/bad_webpages/fail_politics-left_no-channel_1_0.html')
+    bot.driver.get('file:///Users/avliu/Documents/Research/youtube_audits/burst/bad_webpages/fail_politics-left_no-channel_0_0.html')
 
     bot.no_channel(sim_rec_match=True)
     time.sleep(5)
@@ -165,7 +165,7 @@ def test_delete_issue():
     attributes = default_attributes
     bot = Scrubber(**attributes)
 
-    bad_delete_url = 'file:///Users/avliu/Documents/Research/youtube_audits/burst/bad_webpages/fail_politics-left_delete_0_39.html'
+    bad_delete_url = 'file:///Users/avliu/Documents/Research/youtube_audits/burst/bad_webpages/fail_politics-left_delete_2_11.html'
 
     bot.delete_most_recent(bad_delete_url)
     time.sleep(5)
@@ -240,4 +240,4 @@ def test_dislike():
 
 
 if __name__ == '__main__':
-    test_rec_scrub_top_news()
+    test_delete_issue()

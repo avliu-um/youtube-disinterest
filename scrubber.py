@@ -632,7 +632,7 @@ class Scrubber(object):
             self.log('Loading history page.')
             self.driver.get(history_url)
 
-            time.sleep(10)
+            time.sleep(30)
 
             self.log('Deleting most recent.')
             delete_button = self.driver.find_element(By.XPATH, delete_path)
@@ -766,8 +766,8 @@ class Scrubber(object):
             watch_url = 'https://www.youtube.com/watch?v='
 
             # Not really true all the time, but this is useful when testing bugs offline
-            #if sim_rec_match:
-                #watch_url = 'file:///watch?v='
+            if sim_rec_match:
+                watch_url = 'file:///watch?v='
 
             if len(link) > len(watch_url):
                 vid = link[len(watch_url):]
