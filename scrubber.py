@@ -632,7 +632,7 @@ class Scrubber(object):
             self.log('Loading history page.')
             self.driver.get(history_url)
 
-            time.sleep(30)
+            time.sleep(40)
 
             self.log('Deleting most recent.')
             delete_button = self.driver.find_element(By.XPATH, delete_path)
