@@ -18,6 +18,7 @@ def first_login(attributes):
         email_button = bot.driver.find_element(By.CSS_SELECTOR, 'div.vxx8jf')
         email_button.click()
         time.sleep(5)
+        bot.log('successful login')
     except:
         bot.log('Unable to find the verification email button', True)
     finally:
