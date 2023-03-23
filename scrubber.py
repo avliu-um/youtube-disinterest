@@ -21,7 +21,7 @@ MAX_WATCH_SECONDS = 1800
 LOAD_BUFFER_SECONDS = 10
 MAX_RECS = 10
 MAX_SCRUB_NET_SIZE = 10
-CHROME_VERSION = 102
+CHROME_VERSION = 111
 
 
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
@@ -736,7 +736,6 @@ class Scrubber(object):
                 self.log(e)
                 self.fail_safely()
 
-    # TODO: See if it's necessary to scrub more than just the top 10
     def scrub_homepage(self, sim_rec_match):
         """
         Find a video in the home page for which we should scrub

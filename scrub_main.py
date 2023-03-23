@@ -3,6 +3,7 @@ import time
 import argparse, json
 
 
+# This is the experiment described in the paper
 # scrub_iter_limit: Cap on the number of scrubbing actions
 def scrub_experiment(attributes, scrub_iter_limit=40):
     bot = Scrubber(**attributes)
