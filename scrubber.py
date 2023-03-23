@@ -135,6 +135,10 @@ class Scrubber(object):
         self.log('Created bot in community {0} and scrubbing strategy {1}'
                  .format(self.community, self.scrubbing_strategy))
 
+    """
+    FAILING AND ERROR LOGGING
+    """
+
     def get_fail_filename(self, count=-1):
         if count == -1:
             return 'fail_{0}_{1}.html'.format(self.name, self.fail_count)
@@ -158,6 +162,10 @@ class Scrubber(object):
             print(message)
             self.logger.info(message)
 
+    """
+    LOGIN
+    """
+
     # Modified from Tomlein et al. (2021)
     def login(self):
         """
@@ -172,11 +180,7 @@ class Scrubber(object):
         while success is False and counter < max_tries:
             if counter > 0:
                 self.log('Login attempt failed, trying again')
-            # Hacky way to alternate
-            if counter % 2 == 0:
-                self.youtube_login_2()
-            else:
-                self.youtube_login()
+            self.youtube_login()
             # May get prompted for recaptcha or phone number here
             time.sleep(10)
             success = self.was_login_successful()
@@ -188,47 +192,9 @@ class Scrubber(object):
             self.log('All login Attempts failed')
             raise RuntimeError(f'All login attempts failed.')
 
-    # Modified from Tomlein et al. (2021)
-    # Waiting documentation: https://www.selenium.dev/documentation/webdriver/waits/
-    # We use a locator rather than an element (i.e. 'find_element(...)' to pass into the until method, because locator
-    #   doesn't return an error when not present (yet), and therefore allows 'until' to do its job by repeatedly pinging
-    #   the locator
-    def youtube_login(self):
-        """
-        Perform the login
-        """
-        # Maximum wait time for page to load when logging in
-        login_wait_secs = 30
-        #login_url = 'https://accounts.google.com/ServiceLogin?service=chromiumsync'
-        login_url = 'https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?' \
-                    'redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&' \
-                    'prompt=consent&response_type=code&' \
-                    'client_id=407408718192.apps.googleusercontent.com&' \
-                    'scope=email&' \
-                    'access_type=offline&' \
-                    'flowName=GeneralOAuthFlow'
-        print('logging into: {0}'.format(login_url))
-
-        self.driver.get(login_url)
-
-        # Submit username and click next
-        WebDriverWait(self.driver, login_wait_secs).until(
-            EC.visibility_of_element_located((By.ID, 'Email'))
-        ).send_keys(self.account_username)
-        WebDriverWait(self.driver, login_wait_secs).until(
-            EC.element_to_be_clickable((By.ID, 'next'))
-        ).click()
-
-        # Submit password and click next
-        WebDriverWait(self.driver, login_wait_secs).until(
-            EC.visibility_of_element_located((By.ID, 'password'))
-        ).send_keys(self.account_password)
-        WebDriverWait(self.driver, login_wait_secs).until(
-            EC.element_to_be_clickable((By.ID, 'submit'))
-        ).click()
-
     # New login page discovered 5/24
-    def youtube_login_2(self):
+    # (Old login used 'webdriver waits', and was modified from Tomlein et al. (2021) )
+    def youtube_login(self):
         login_url = 'https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?' \
                     'redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground&' \
                     'prompt=consent&response_type=code&' \
@@ -266,6 +232,10 @@ class Scrubber(object):
         except NoSuchElementException:
             logged_in = True
         return logged_in
+
+    """
+    TODO
+    """
 
     def load_and_save_homepage(self):
         try:
@@ -728,7 +698,7 @@ class Scrubber(object):
 
                 time.sleep(5)
 
-                # find and click the "not interested" button
+                # find and click the "don't recommend channel" button
                 button = self.driver.find_element(By.XPATH, no_channel_path)
                 button.click()
 
