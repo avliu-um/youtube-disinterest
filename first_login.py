@@ -11,7 +11,7 @@ from selenium.webdriver.common.by import By
 def first_login(attributes):
     bot = Scrubber(**attributes)
     
-    bot.youtube_login_2()
+    bot.youtube_login()
     time.sleep(5)
 
     try: 

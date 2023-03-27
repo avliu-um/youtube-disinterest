@@ -17,7 +17,7 @@ import undetected_chromedriver as uc
 
 
 # 30 minutes suggested (Tomlein et al. 2021)
-MAX_WATCH_SECONDS = 1800
+MAX_WATCH_SECONDS = 600
 LOAD_BUFFER_SECONDS = 10
 MAX_RECS = 10
 MAX_SCRUB_NET_SIZE = 10
@@ -339,16 +339,16 @@ class Scrubber(object):
         """
         Load a videopage, wait, and then save the recommendations
         """
-        self.__load_videopage(vid_id)
+        self.load_videopage(vid_id)
         time.sleep(LOAD_BUFFER_SECONDS)
-        self.__save_videopage(vid_id)
-        duration = self.__get_videopage_seconds()
+        self.save_videopage(vid_id)
+        duration = self.get_videopage_seconds()
 
         self.videopage_level += 1
 
         return duration
 
-    def __load_videopage(self, vid_id):
+    def load_videopage(self, vid_id):
         """
         Load the videopage
         """
@@ -358,7 +358,7 @@ class Scrubber(object):
         videopage_url = youtube_watch_url + vid_id
         self.driver.get(videopage_url)
 
-    def __save_videopage(self, watch_id):
+    def save_videopage(self, watch_id):
         """
         Find and write recommendations on the videopage (both video ID's and channel ID's)
         Examines the js code (rather than raw html) because channel ID's are only available there
@@ -429,7 +429,7 @@ class Scrubber(object):
         if len(recs) > 0:
             self.__write_recs(recs)
 
-    def __get_videopage_seconds(self):
+    def get_videopage_seconds(self):
         """
         Get the duration of the video
         """
@@ -708,12 +708,13 @@ class Scrubber(object):
 
     def scrub_homepage(self, sim_rec_match):
         """
-        Find a video in the home page for which we should scrub
+        Find the first video ID on the homepage for which the channel ID is in self.scrubbing_channels
         """
         # assert(self.driver.current_url == 'https://www.youtube.com')
 
         self.log('Checking homepage for video from unwanted channel.')
 
+        # Build vid --> cid dict
         # Copied from save_homepage
         channels_dict = {}
         html = self.driver.page_source
@@ -764,6 +765,21 @@ class Scrubber(object):
             self.log('Could not find unwanted videos')
 
         return unwanted_video_id
+
+    def videopage_click_next_up(self):
+        """
+        :return: None
+        """
+        next_video = self.driver.find_element_by_css_selector('div#related div.ytd-compact-video-renderer')
+        next_video.click()
+
+    def get_videopage_video_by_regex(self, regex):
+        """
+        Get the ELEMENT of a video whose title matches this
+        css: div#related span#video-title
+        :return:
+        """
+        raise NotImplementedError
 
     def attempt(self, fun):
         """

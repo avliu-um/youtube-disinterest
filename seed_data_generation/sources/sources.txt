@@ -1,0 +1,7 @@
+channel_attributes.csv: attributes of the channels of the AIN and Ledwich datasets. For Ledwich channels, just the ones that are still available
+df_channels_en.tsv.gz: from Ribeiro et al.'s YouNiverse. See here for datasets: https://zenodo.org/record/4650046#.Yo2NeJPMIUE
+
+media_ratings.csv: from Siqi's project, which uses mbfc
+    - which project from Siqi? His original polarizer: https://docs.google.com/presentation/d/1RB1NBwz0hmIXa8tgaP4zSTKGA5jIn-iEd5kgV2-cKpA/edit#slide=id.g8dcd1a1633_0_0
+mbfc_seed_videos2.json: from Siqi's project, which uses his "extract_seed_videos.py" code
+    - videos arranged from most recent to least
