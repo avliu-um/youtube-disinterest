@@ -12,6 +12,6 @@ This project uses the Selenium web testing software to simulate users. It uses t
 ## Included files
 
 * scrubber.py - class for the sock puppet. It includes code to log into, interact with, collect data from, and watch videos on YouTube
-* scrub_main.py - [TODO]
+* scrub_main.py - run the experiment by specifying the actions to be performed by the bot during each phase
 * seed_data_generation/ - generate the videos that our bots watch during the "stain phase" by querying the YouTube API for videos from selected topics
 * analysis/ - analysis script of data after performing manual labeling, answering the RQ's of our paper
