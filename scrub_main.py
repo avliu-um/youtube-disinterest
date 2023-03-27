@@ -3,39 +3,6 @@ import time
 import argparse, json
 
 
-def bear_experiment(attributes, start_vid, depth):
-    # Not actually using most of the attributes of Scrubber
-    bot = Scrubber(**attributes)
-
-    try:
-        # teardown(bot)
-        bot.login()
-        time.sleep(5)
-        bot.load_videopage(start_vid)
-        time.sleep(5)
-
-        total_duration = 0
-        max_duration = 2*60
-        total_depth = 0
-        max_depth = 6
-
-        while True:
-            if total_depth > max_depth:
-                break
-
-            bot.log(f'Recommendaiton iteration: {total_depth}')
-            bot.save_videopage(bot.driver.current_url[len('https://www.youtube.com/watch?v='):])
-
-            watch_duration = bot.get_videopage_seconds()
-            bot.watch_video(watch_duration)
-            bot.videopage_click_next_up()
-
-            total_depth += 1
-
-    except Exception as e:
-        print(e)
-        bot.fail_safely()
-
 # This is the experiment described in the paper
 # scrub_iter_limit: Cap on the number of scrubbing actions
 def scrub_experiment(attributes, scrub_iter_limit=40):
@@ -212,7 +179,39 @@ def teardown(bot):
     bot.clear_subscriptions()
     time.sleep(5)
 
+def bear_experiment(attributes, start_vid, depth):
+    # Not actually using most of the attributes of Scrubber
+    bot = Scrubber(**attributes)
 
+    try:
+        # teardown(bot)
+        bot.login()
+        time.sleep(5)
+        bot.load_videopage(start_vid)
+        time.sleep(5)
+
+        total_duration = 0
+        max_duration = 2*60
+        total_depth = 0
+        max_depth = 6
+
+        while True:
+            if total_depth > max_depth:
+                break
+
+            bot.log(f'Recommendaiton iteration: {total_depth}')
+            bot.save_videopage(bot.driver.current_url[len('https://www.youtube.com/watch?v='):])
+
+            watch_duration = bot.get_videopage_seconds()
+            bot.watch_video(watch_duration)
+            bot.videopage_click_next_up()
+
+            total_depth += 1
+
+    except Exception as e:
+        print(e)
+        bot.fail_safely()
+    
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--community', type=str, required=True)
