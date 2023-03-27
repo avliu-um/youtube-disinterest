@@ -12,4 +12,4 @@ This project uses the Selenium web testing software to simulate users. It uses t
 ## Included files
 
 * scrubber.py - class for the sock puppet. It includes code to log into, interact with, collect data from, and watch videos on YouTube
-* driver.py - [TODO]
+* scrub_main.py - [TODO]
