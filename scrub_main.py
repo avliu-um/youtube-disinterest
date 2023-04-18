@@ -233,7 +233,7 @@ def main():
     bear_vid_1 = 'sbxYCqKhO0s'
     bear_vid_2 = '0c2ZIiXCdgg'
     test_vid = '0yZcDeVsj_Y'
-    bear_experiment(attributes, bear_vid_2, 10)
+    bear_experiment(attributes, test_vid, 3)
 
 
 if __name__ == '__main__':
