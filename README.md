@@ -44,7 +44,6 @@ Sock puppet data collection pipeline
 - (TODO) Diagrams: Algorithm and flowchart
 
 ![Data collection pipeline](./figures/data_collection_pipeline.png)
-![Data collection algorithm](./figures/data_collection_algorithm.png)
 
 Sock puppet technicalities
 - files: communities/, runs/, runner.py, separate [repo](https://github.com/carleski/ytburst-terraform) with Rob Carleski
