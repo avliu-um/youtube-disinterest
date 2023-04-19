@@ -73,6 +73,7 @@ Second pass analysis
 - e.g. we saw that the "Not interested" button worked best by reducing up to 97% of recommendations from the unwanted topic over time, on average across all topics
 
 ![Second-pass homepage analysis](./figures/mwu_homepage.png)
+![Second-pass videopage analysis](./figures/mwu_videopage.png)
 
 Survey analysis
 - files: survey/
