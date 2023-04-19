@@ -3,8 +3,6 @@
 
 This project uses code scripts to simulate YouTube users. These scripts detail the behavior of a given simulated user. Many of these "sock puppets" are run in parallel in the cloud, which is detailed a separate [project](https://github.com/carleski/ytburst-terraform), with the help of Rob Carleski. Together, these sock puppet scripts serve as the data collection portion of a paper on YouTube user agency and ability to contest bad recommendations. It is currently under review at ICWSM. 
 
-![Alt text](./figures/AIN_analysis.png)
-
 ## Description
 
 Can YouTube users effectively remove unwanted recommendations? We simulated users of a variety of interests and disinterests to answer this question. Broadly, these sock puppets first purposely populate their feed with videos from this unwanted topic ("stain phase"); Then, they take on one of a variety of strategies to try to eliminate such videos from being recommended ("scrub phase"). These strategies correspond to different features on YouTube that one could use to indicate disinterest towards certain videos, such as the "Not Interested" button, the "Dislike" button, and the "Delete from watch history" button. We collect data on how recommendations change throughout these phases in order to characterize how well YouTube's recommendation system responds to these sock puppets' various interactions with the system.
@@ -45,9 +43,12 @@ Sock puppet data collection pipeline
 - Phases are "stain phase", then "scrub phase"
 - (TODO) Diagrams: Algorithm and flowchart
 
+![Data collection pipeline](./figures/data_collection_pipeline.png)
+![Data collection algorithm](./figures/data_collection_algorithm.png)
+
 Sock puppet technicalities
-- files: (Rob's code), communities/, runs/, runner.py
-- sock puppets each have their own Google account, and uses Selenium with the undetected-chromedriver package to interact with YouTube and scarpe data, while evading Google restrictions
+- files: communities/, runs/, runner.py, separate [repo](https://github.com/carleski/ytburst-terraform) with Rob Carleski
+- sock puppets each have their own Google account, and use Selenium with the undetected-chromedriver package to interact with YouTube and scarpe data, while evading Google restrictions
 - uses terraform to create an AWS EC2 swarm, and saves data to AWS S3
 
 ### Data Analysis- bots
@@ -55,9 +56,29 @@ Sock puppet technicalities
 First pass analysis- 
 - incorrect labeling: using the channel lists that exist
 - (TODO) cool plot: It looks like some features are better than others!
-- (TODO) making a mixed effects logistic regression model, and ranking the coefficients to find the most influential variable (i.e. most effective scrubbing strategies). We see that the "not-interested" strategy works best!
+- (TODO: FORMULA) making a mixed effects logistic regression model, and ranking the coefficients to find the most influential variable (i.e. most effective scrubbing strategies). We see that the "not-interested" strategy works best!
 - (TODO) another cool plot: stackplots on the types of categories within the AIN shows that for some strategies, all 
 - Next, I estimated the conditional probability that the bot did interact with the system, given that it should have interacted, so that I could understand the efficacy of the startegy
 
+![Looking at how topics within the Alternative Influence Network change over time](./figures/AIN_analysis.png)
+![Initial results](./figures/first_labeling_initial_results.png)
 
 Data labeling- doing it less naively
+- Realized in my first pass that data labeling may contain a bias- we were labeling purely by automatic methods (i.e. cross-checking recommendations' channels with our existing channel lists). Considered other labeling options...
+- (CODE- Mozilla/) pre-tested the Mozilla model (LINK), and found that their definition of similarity differed from ours
+- (CODE- Manual_labeling_12-31/) Decided on a mix of  manual/automatic labeling. Designed and implemented manual labeling pipeline, and estimated my remaining manual data labeling load
+
+Second pass analysis
+- After performing my new data labeling, I answered my main RQ's
+- e.g. we saw that the "Not interested" button worked best by reducing up to 97% of recommendations from the unwanted topic over time, on average across all topics
+
+![Second-pass homepage analysis](./figures/mwu_homepage.png)
+
+Survey analysis
+- files: survey/
+- Performed post-stratification by matching our survey sample with the adult YouTube population on age/gender breakdowns
+- Visualized the difference between my survey sample's population demographic breakdown and that of the general YouTube-using population
+- Estimated the post-stratified percentage of those who know about and use different features to remove unwanted recommendations, as well as their percieved efficacy
+
+![Post-stratification population comparisons](./figures/post_stratification_populations.png)
+![Post-stratification results](./figures/post_stratification_results.png)
