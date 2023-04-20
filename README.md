@@ -20,20 +20,19 @@ Main finding- the most effective way to remove unwanted content recommendations,
 
 ![Second-pass homepage analysis](./figures/mwu_homepage.png)
 
-We then run a user survey on Qualtrics to understand how users interact with the features that we tested. (TODO).
-
-
-From the user survey, we estimate that 44% of the YouTube adult population is unaware that this button exists.
+We then run a user survey on Qualtrics to understand how users interact with the features that we tested. From the user survey, we estimate that 44% of the YouTube adult population is unaware that this button exists.
 
 ![Post-stratification results](./figures/post_stratification_results.png)
 
-## Included files [COMPLETE]
+## Included files [TODO: COMPLETE]
 
 * scrubber.py - class for the sock puppet. It includes code to log into, interact with, collect data from, and watch videos on YouTube
 * scrub_main.py - run the experiment by specifying the actions to be performed by the bot during each phase
 * seed_data_generation/ - generate the videos that our bots watch during the "stain phase" by querying the YouTube API for videos from selected topics
 * analysis/ - analysis script of data after performing manual labeling, answering the RQ's of our paper
 * communications/ - TODO
+
+
 
 ## Musings
 
