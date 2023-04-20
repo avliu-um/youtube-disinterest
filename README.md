@@ -6,6 +6,7 @@ Can YouTube users effectively remove unwanted recommendations? We simulated user
 
 This repository contains code for data collection and analysis related to the project. It is currently under review (Revise and Resubmit) at ICWSM.
 
+![cartoon_overview](./figures/cartoon_overview.png)
 
 ## Project overview
 
