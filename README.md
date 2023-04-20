@@ -17,7 +17,7 @@ This project uses the Selenium web testing software to simulate users. It uses t
 
 Main finding- the most effective way to remove unwanted content recommendations, out of those we tested, was the "Not interested" button: using this button removed 97% of videos from an unwanted topic on the homepage.
 
-[MAIN TABLE with circled row]
+![Second-pass homepage analysis](./figures/mwu_homepage.png)
 
 We then run a user survey on Qualtrics to understand how users interact with the features that we tested. (TODO).
 
