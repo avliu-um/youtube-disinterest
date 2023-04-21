@@ -4,7 +4,7 @@
 
 Can YouTube users effectively remove unwanted recommendations? We simulated users of a variety of interests and disinterests to answer this question. We then run a user survey to understand how users interact with the features that we tested. 
 
-We find that the "Not interested" button worked best: using this button removed 97% of videos from an unwanted topic on the homepage.  From the survey, we estimate that 44% of the YouTube adult population is unaware that this button exists.
+We find that the "Not interested" button worked best: using this button removed 97% of videos from an unwanted topic on the homepage.  Unfortunately, we estimate from the survey that 44% of the YouTube adult population is unaware that this button exists.
 
 This repository contains code for data collection and analysis related to the project. It is currently under review (Revise and Resubmit) at ICWSM.
 
