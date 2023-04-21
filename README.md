@@ -6,7 +6,7 @@ Can YouTube users effectively remove unwanted recommendations? We simulated user
 
 We find that the "Not interested" button worked best: using this button removed 97% of videos from an unwanted topic on the homepage.  Unfortunately, we estimate from the survey that 44% of the YouTube adult population is unaware that this button exists.
 
-This repository contains code for data collection and analysis related to the project. It is currently under review (Revise and Resubmit) at ICWSM. You can find presentation [here (~5 minutes)](https://docs.google.com/presentation/d/1xPxY9KAEN_cKlmAsYtw5mFL0FOOKX1wAD58GBENwLEU/edit#slide=id.g1fdd7edca8c_0_865) and [here (~40 minutes)](https://docs.google.com/presentation/d/1Tr8CHOl5Ehc8TvKqfdxqDvD67frDe9mRM_j7JEhSUN4/edit#slide=id.g20c8997232a_0_0). Writing can be found [here](https://www.overleaf.com/read/fptfhdxnxhxv)
+This repository contains code for data collection and analysis related to the project. It is currently under review (Revise and Resubmit) at ICWSM. You can find slides for presentations [here (~5 minutes)](https://docs.google.com/presentation/d/1xPxY9KAEN_cKlmAsYtw5mFL0FOOKX1wAD58GBENwLEU/edit#slide=id.g1fdd7edca8c_0_865) and [here (~40 minutes)](https://docs.google.com/presentation/d/1Tr8CHOl5Ehc8TvKqfdxqDvD67frDe9mRM_j7JEhSUN4/edit#slide=id.g20c8997232a_0_0). Additionally, the paper itself can be found [here](https://www.overleaf.com/read/fptfhdxnxhxv) (conference publication will be linked after acceptance).
 
 ![cartoon_overview](./figures/cartoon_overview.png)
 
