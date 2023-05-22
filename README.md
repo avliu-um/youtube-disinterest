@@ -41,3 +41,8 @@ We then run a user survey on Qualtrics to understand how users interact with the
 * seed_data_generation/ - generate the videos that our bots watch during the "stain phase" by querying the YouTube API for videos from selected topics
 * data/ - cleaning, manual labeling, and analysis scripts for data (we answer our Research Questions here)
 * survey/ - data wrangling and analysis related to Qualtrics survey
+
+## Requirements
+
+* see environment.yml for required Python packages
+* a [chromedriver](https://chromedriver.storage.googleapis.com/index.html)
