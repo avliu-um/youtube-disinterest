@@ -37,5 +37,5 @@ We then run a user survey on Qualtrics to understand how users interact with the
 * scrubber.py - class for the sock puppet. It includes code to log into, interact with, collect data from, and watch videos on YouTube
 * scrub_main.py - run the experiment by specifying the actions to be performed by the bot during each phase
 * seed_data_generation/ - generate the videos that our bots watch during the "stain phase" by querying the YouTube API for videos from selected topics
-* analysis/ - analysis script of data after performing manual labeling, answering the research questions of our paper related to sock puppets/bots
+* data/ - cleaning, manual labeling, and analysis scripts for data (we answer our Research Questions here)
 * survey/ - data wrangling and analysis related to Qualtrics survey
