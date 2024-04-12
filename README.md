@@ -46,3 +46,8 @@ We then run a user survey on Qualtrics to understand how users interact with the
 
 * see environment.yml for required Python packages
 * a [chromedriver](https://chromedriver.storage.googleapis.com/index.html)
+
+## Annotation
+
+* The annotation codebook is available [here](annotation_codebook.pdf)
+* The annotation results and IRR calculation can be previewed [here](https://docs.google.com/spreadsheets/d/1aI5AUV-x4_TJvnf5X70R-gVJA0ekEdGGIEW_lP7yqgA/edit?usp=sharing)
