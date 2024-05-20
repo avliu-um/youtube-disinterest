@@ -6,3 +6,4 @@ __pycache__/
 outputs/
 bad_webpages/
 communities/yt_api_dev_key.txt
+*.DS_Store
