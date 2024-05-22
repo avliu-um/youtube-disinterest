@@ -2,3 +2,6 @@ selenium
 undetected-chromedriver
 pandas
 boto3
+seaborn
+scipy
+matplotlib

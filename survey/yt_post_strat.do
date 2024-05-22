@@ -1,4 +1,4 @@
-use "/Users/avliu/Documents/Research/youtube_audits/survey/post_stratification/sex_age_20.dta"
+use "/PATH/TO/burst/survey/post_stratification/sex_age_20.dta"
 svyset _n, fpc(n_pop) poststrata(type) postweight(n_type)
 
 svy: mean delete_aware
