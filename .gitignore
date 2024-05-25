@@ -8,3 +8,6 @@ outputs/
 bad_webpages/
 communities/yt_api_dev_key.txt
 *.DS_Store
+.vscode/
+survey/yt_disinterest_survey_results.csv
+survey/prolific_demographics.csv
