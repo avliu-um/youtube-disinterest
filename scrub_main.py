@@ -12,9 +12,6 @@ def scrub_experiment(attributes, scrub_iter_limit=40):
         bot.log('BEGIN!\n')
         setup(bot)
         time.sleep(5)
-        # Place teardown first now... to both (1) safeguard against unwanted teardown and (2) avoid rerunning
-        teardown(bot)
-        time.sleep(5)
         videopage_experiment(bot, 0)
         time.sleep(5)
         stain(bot, stain_start_phase_level=0)
@@ -24,6 +21,8 @@ def scrub_experiment(attributes, scrub_iter_limit=40):
         scrub(bot, scrub_start_phase_level=0, scrub_start_homepage_level=40, scrub_iter_limit=scrub_iter_limit)
         time.sleep(5)
         videopage_experiment(bot, 2)
+        time.sleep(5)
+        teardown(bot)
         time.sleep(5)
         bot.log('\nDONE!')
     except Exception as e:

@@ -21,7 +21,7 @@ MAX_WATCH_SECONDS = 600
 LOAD_BUFFER_SECONDS = 10
 MAX_RECS = 10
 MAX_SCRUB_NET_SIZE = 10
-CHROME_VERSION = 111
+CHROME_VERSION = 124
 
 
 # Much of this code is inspired by Siqi Wu's YouTube Polarizer: https://github.com/avalanchesiqi/youtube-polarizer
@@ -121,8 +121,8 @@ class Scrubber(object):
         self.log_filepath = os.path.join('.', 'outputs', self.log_filename)
 
         # Creating the outputs directory
-        os.makedirs('outputs')
-        os.makedirs('outputs/fails')
+        os.makedirs('outputs', exist_ok=True)
+        os.makedirs('outputs/fails', exist_ok=True)
         open(self.results_filepath, 'x')
         self.logger = __get_logger(self.log_filepath)
         time.sleep(3)
@@ -525,10 +525,10 @@ class Scrubber(object):
         Get the like button and its status (pressed or nah)
         """
         WebDriverWait(self.driver, 30).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, 'div#menu-container'))
+            EC.visibility_of_element_located((By.CSS_SELECTOR, 'ytd-watch-metadata div#menu button'))
         )
 
-        menu = self.driver.find_element(By.CSS_SELECTOR, 'div#menu-container')
+        menu = self.driver.find_element(By.CSS_SELECTOR, 'ytd-watch-metadata div#menu button')
         buttons = menu.find_elements(By.CSS_SELECTOR, 'button.yt-icon-button')
         for elem in buttons:
             label = elem.get_attribute('aria-label')
@@ -543,13 +543,14 @@ class Scrubber(object):
         # WebDriverWait was breaking this
         time.sleep(5)
 
-        buttons = self.driver.find_elements(By.CSS_SELECTOR, 'div#menu-container button.yt-icon-button')
+        buttons = self.driver.find_elements(By.CSS_SELECTOR, 'ytd-watch-metadata div#menu button')
         for elem in buttons:
             label = elem.get_attribute('aria-label')
             if re.search('\A[Dd]islike', label):
                 pressed = elem.get_attribute('aria-pressed') == 'true'
                 return elem, pressed
 
+    # NOT SUPPORTED
     def __get_subscribe_button(self):
         """
         Get the subscribe button and its status (pressed or nah)
@@ -649,7 +650,7 @@ class Scrubber(object):
                         "//div[@id='content' and @class='style-scope ytd-rich-item-renderer']" \
                         "[descendant::a[@href[contains(.,'{0}')]]]//ytd-menu-renderer"\
                 .format(unwanted_video_id)
-            no_channel_path = "//div[@id='contentWrapper']//ytd-menu-service-item-renderer[descendant::text()[contains(.,'{0}')]]".format(
+            not_interested_path = "//div[@id='contentWrapper']//ytd-menu-service-item-renderer[descendant::text()[contains(.,'{0}')]]".format(
                 'Not interested'
             )
             tell_us_why_path = "//tp-yt-paper-button[@aria-label='Tell us why']"
@@ -657,10 +658,10 @@ class Scrubber(object):
             submit_path = "//ytd-button-renderer[@id='submit']"
 
             button_paths = [menu_path,
-                            no_channel_path,
-                            tell_us_why_path,
-                            check_box_path,
-                            submit_path
+                            not_interested_path,
+                            #tell_us_why_path,
+                            #check_box_path,
+                            #submit_path
                             ]
 
             try:
@@ -735,10 +736,6 @@ class Scrubber(object):
             link = elem.get_attribute('href')
             watch_url = 'https://www.youtube.com/watch?v='
 
-            # Not really true all the time, but this is useful when testing bugs offline
-            if sim_rec_match:
-                watch_url = 'file:///watch?v='
-
             if len(link) > len(watch_url):
                 vid = link[len(watch_url):]
                 video_ids.append(vid)
@@ -770,7 +767,7 @@ class Scrubber(object):
         """
         :return: None
         """
-        next_video = self.driver.find_element_by_css_selector('div#related div.ytd-compact-video-renderer')
+        next_video = self.driver.find_element(By.CSS_SELECTOR, 'div#related div.ytd-compact-video-renderer')
         next_video.click()
 
     def get_videopage_video_by_regex(self, regex):
@@ -823,15 +820,15 @@ class Scrubber(object):
             # Wait until hamburger element on page loads and click it
             WebDriverWait(self.driver, clear_wait_secs).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.gb_vc:nth-child(1)')))
             WebDriverWait(self.driver, clear_wait_secs).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.gb_vc:nth-child(1)')))
-            self.driver.find_element_by_css_selector('div.gb_vc:nth-child(1)').click()
+            self.driver.find_element(By.CSS_SELECTOR, 'div.gb_vc:nth-child(1)').click()
             self.__open_clear_history_popup()
 
         # Wait until the popup windows gets loaded
-        WebDriverWait(self.driver, clear_wait_secs).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.iZdpV')))
-        WebDriverWait(self.driver, clear_wait_secs).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.iZdpV')))
+        WebDriverWait(self.driver, clear_wait_secs).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.cSvfje')))
+        WebDriverWait(self.driver, clear_wait_secs).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.cSvfje')))
 
         # Find link for deleting all history in choices and click it
-        choice_list = self.driver.find_elements_by_css_selector('div.iZdpV')
+        choice_list = self.driver.find_elements(By.CSS_SELECTOR, 'div.cSvfje')
         for choice in choice_list:
             if choice.text == 'Always' or choice.text == 'All time':
                 choice.click()
@@ -841,7 +838,7 @@ class Scrubber(object):
         WebDriverWait(self.driver, clear_wait_secs).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.Df8Did')))
         time.sleep(1)
         # Find all buttons
-        buttons = self.driver.find_element_by_css_selector('div.Df8Did').find_elements_by_css_selector('span.VfPpkd-vQzf8d')
+        buttons = self.driver.find_element(By.CSS_SELECTOR, 'div.Df8Did').find_elements(By.CSS_SELECTOR, 'span.VfPpkd-vQzf8d')
         for button in buttons:
             # In case there are multiple sources of history are present click `Next` and find `Delete` button to click
             if button.text == 'Next':
@@ -850,7 +847,7 @@ class Scrubber(object):
                 # Wait while new buttons load
                 time.sleep(1)
                 # Find all the buttons and click `Delete`
-                other_buttons = self.driver.find_element_by_css_selector('div.Df8Did').find_elements_by_css_selector('span.VfPpkd-vQzf8d')
+                other_buttons = self.driver.find_element(By.CSS_SELECTOR, 'div.Df8Did').find_elements(By.CSS_SELECTOR, 'span.VfPpkd-vQzf8d')
                 for other_button in other_buttons:
                     if other_button.text == 'Delete':
                         other_button.find_element_by_xpath('..').click()
@@ -866,7 +863,7 @@ class Scrubber(object):
         # Wait until menu opens and find link for deleting all activity
         WebDriverWait(self.driver, clear_wait_secs).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'a.IlZEuc')))
         WebDriverWait(self.driver, clear_wait_secs).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'a.IlZEuc')))
-        navigation_menu_links = self.driver.find_elements_by_css_selector('.IlZEuc')
+        navigation_menu_links = self.driver.find_elements(By.CSS_SELECTOR, '.IlZEuc')
         for link in navigation_menu_links:
             if link.text == 'Delete activity by':
                 # Check if menu is open
@@ -874,7 +871,7 @@ class Scrubber(object):
                     link.click()
                     return True
                 except ElementNotInteractableException:
-                    self.driver.find_element_by_css_selector('div.gb_vc:nth-child(1)').click()
+                    self.driver.find_element(By.CSS_SELECTOR, 'div.gb_vc:nth-child(1)').click()
                     link.click()
                     return True
         return False
@@ -885,12 +882,12 @@ class Scrubber(object):
 
         time.sleep(5)
 
-        delete_button = self.driver.find_element_by_css_selector('div[jsname=ks0aWd] button')
+        delete_button = self.driver.find_element(By.CSS_SELECTOR, 'div[jsname=ks0aWd] button')
         delete_button.click()
 
         time.sleep(5)
 
-        confirm_delete_button = self.driver.find_element_by_css_selector('[class="XfpsVe J9fJmf"] [class=Crf1o]')
+        confirm_delete_button = self.driver.find_element(By.CSS_SELECTOR, '[class="XfpsVe J9fJmf"] [class=Crf1o]')
         confirm_delete_button.click()
 
     def __clear_likes_dislikes(self):
@@ -899,12 +896,12 @@ class Scrubber(object):
 
         time.sleep(5)
 
-        delete_button = self.driver.find_element_by_css_selector('a[jsname=BWf65c]')
+        delete_button = self.driver.find_element(By.CSS_SELECTOR, 'a[jsname=BWf65c]')
         delete_button.click()
 
         time.sleep(5)
 
-        confirm_delete_button = self.driver.find_element_by_css_selector('[class="XfpsVe J9fJmf"] [class=Crf1o]')
+        confirm_delete_button = self.driver.find_element(By.CSS_SELECTOR, '[class="XfpsVe J9fJmf"] [class=Crf1o]')
         confirm_delete_button.click()
 
     def __clear_subscriptions(self):
@@ -914,12 +911,12 @@ class Scrubber(object):
         while True:
             try:
                 time.sleep(5)
-                x_button = self.driver.find_element_by_css_selector('div.YkIxob div.iM6vT')
+                x_button = self.driver.find_element(By.CSS_SELECTOR, 'div.YkIxob div.iM6vT')
                 x_button.click()
 
                 time.sleep(5)
 
-                confirm_delete_button = self.driver.find_element_by_css_selector('[class="XfpsVe J9fJmf"] [class=Crf1o]')
+                confirm_delete_button = self.driver.find_element(By.CSS_SELECTOR, '[class="XfpsVe J9fJmf"] [class=Crf1o]')
                 confirm_delete_button.click()
 
             except NoSuchElementException:
